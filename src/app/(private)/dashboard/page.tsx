@@ -7,6 +7,8 @@ import { EnrollmentSuspensionsChart } from "./_charts/course/EnrollmentSuspensio
 import { TeacherHoursDistributionChart } from "./_charts/course/TeacherHoursDistributionChart";
 import { DistributionCoordinationMeetingsChart } from "./_charts/coordination/DistributionCoordinationMeetingsChart";
 import { ServicesProvidedByCoordinationChart } from "./_charts/coordination/ServicesProvidedByCoordinationChart";
+import { EnglishProficiencyLevelIngressChart } from "./_charts/ingress/EnglishProficiencyLevelIngressChart";
+import { TrainingProfileIngressChart } from "./_charts/ingress/TrainingProfileIngressChart";
 
 export default function DashboardPage() {
   return (
@@ -36,6 +38,17 @@ export default function DashboardPage() {
           <DistributionCoordinationMeetingsChart />
 
           <ServicesProvidedByCoordinationChart />
+        </div>
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.INGRESS}
+        className="flex flex-col gap-8"
+      >
+        <div className="grid grid-cols-7 gap-8">
+          <TrainingProfileIngressChart />
+
+          <EnglishProficiencyLevelIngressChart />
         </div>
       </TabsContent>
     </Tabs>

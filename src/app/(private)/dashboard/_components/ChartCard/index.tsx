@@ -7,9 +7,14 @@ import {
 } from "@unidash/components/Card";
 import { CardChartProps } from "./cardChartProps.interface";
 
-export function ChartCard({ children, description, title }: CardChartProps) {
+export function ChartCard({
+  children,
+  description,
+  title,
+  className,
+}: CardChartProps) {
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
 
