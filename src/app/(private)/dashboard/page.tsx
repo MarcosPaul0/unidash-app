@@ -9,6 +9,11 @@ import { DistributionCoordinationMeetingsChart } from "./_charts/coordination/Di
 import { ServicesProvidedByCoordinationChart } from "./_charts/coordination/ServicesProvidedByCoordinationChart";
 import { EnglishProficiencyLevelIngressChart } from "./_charts/ingress/EnglishProficiencyLevelIngressChart";
 import { TrainingProfileIngressChart } from "./_charts/ingress/TrainingProfileIngressChart";
+import { WorkStatusChart } from "./_charts/courseCompletionWork/WorkStatusChart";
+import { RegistrationByTypeOfComplementaryActivity } from "./_charts/complementaryActivities/RegistrationByTypeOfComplementaryActivity";
+import { RegistrationByTypeOfExtensionActivity } from "./_charts/extensionActivities/RegistrationByTypeOfExtensionActivity";
+import { CitiesWithTheHighestInternships } from "./_charts/internships/CitiesWithTheHighestInternships";
+import { InternshipsByAreaChart } from "./_charts/internships/InternshipsByAreaChart";
 
 export default function DashboardPage() {
   return (
@@ -49,6 +54,38 @@ export default function DashboardPage() {
           <TrainingProfileIngressChart />
 
           <EnglishProficiencyLevelIngressChart />
+        </div>
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.CONCLUSION}
+        className="flex flex-col gap-8"
+      >
+        <WorkStatusChart />
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.ACTIVITIES}
+        className="flex flex-col gap-8"
+      >
+        <RegistrationByTypeOfComplementaryActivity />
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.EXTENSION}
+        className="flex flex-col gap-8"
+      >
+        <RegistrationByTypeOfExtensionActivity />
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.INTERNSHIPS}
+        className="flex flex-col gap-8"
+      >
+        <div className="grid grid-cols-2 gap-8">
+          <CitiesWithTheHighestInternships />
+
+          <InternshipsByAreaChart />
         </div>
       </TabsContent>
     </Tabs>

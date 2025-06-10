@@ -13,68 +13,38 @@ import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 
 const chartData = [
   {
-    year: "2025",
-    undergraduateChamber: 22,
-    boardOfDirectors: 12,
-    courseBoard: 13,
+    semester: "Primeiro semestre",
+    email: 22,
+    system: 12,
+    resolution: 13,
   },
   {
-    year: "2024",
-    undergraduateChamber: 4,
-    boardOfDirectors: 2,
-    courseBoard: 3,
-  },
-  {
-    year: "2023",
-    undergraduateChamber: 5,
-    boardOfDirectors: 12,
-    courseBoard: 9,
-  },
-  {
-    year: "2022",
-    undergraduateChamber: 12,
-    boardOfDirectors: 23,
-    courseBoard: 18,
-  },
-  {
-    year: "2021",
-    undergraduateChamber: 12,
-    boardOfDirectors: 21,
-    courseBoard: 15,
-  },
-  {
-    year: "2020",
-    undergraduateChamber: 1,
-    boardOfDirectors: 24,
-    courseBoard: 20,
-  },
-  {
-    year: "2019",
-    undergraduateChamber: 23,
-    boardOfDirectors: 4,
-    courseBoard: 13,
+    semester: "Segundo semestre",
+    email: 4,
+    system: 2,
+    resolution: 3,
   },
 ];
 
 const chartConfig = {
-  undergraduateChamber: {
-    label: "Câmara de graduação",
-    color: "var(--chart-8)",
+  email: {
+    label: "Matrículas",
+    color: "var(--chart-5)",
   },
-  boardOfDirectors: {
-    label: "Conselho diretor",
+  system: {
+    label: "Defesas",
     color: "var(--chart-1)",
   },
-  courseBoard: {
-    label: "Colegiado de curso",
-    color: "var(--chart-10)",
+  resolution: {
+    label: "Abandono",
+    color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-export function DistributionCoordinationMeetingsChart() {
+export function WorkStatusChart() {
   return (
     <ChartCard
-      title="Distribuição de reuniões da coordenação por tipo de instância e ano"
+      title="Atendimentos realizados pela coordenação por tipo de canal e ano"
       description="Teste de descrição"
     >
       <ChartContainer
@@ -90,19 +60,15 @@ export function DistributionCoordinationMeetingsChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="year" tickLine={false} axisLine={false} />
+          <XAxis dataKey="semester" tickLine={false} axisLine={false} />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar
-            dataKey="undergraduateChamber"
-            fill="var(--color-undergraduateChamber)"
-            radius={[4, 4, 4, 4]}
-          >
+          <Bar dataKey="email" fill="var(--color-email)" radius={[4, 4, 4, 4]}>
             <LabelList
-              dataKey="undergraduateChamber"
+              dataKey="email"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -112,12 +78,12 @@ export function DistributionCoordinationMeetingsChart() {
           </Bar>
 
           <Bar
-            dataKey="boardOfDirectors"
-            fill="var(--color-boardOfDirectors)"
+            dataKey="system"
+            fill="var(--color-system)"
             radius={[4, 4, 4, 4]}
           >
             <LabelList
-              dataKey="boardOfDirectors"
+              dataKey="system"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -127,12 +93,12 @@ export function DistributionCoordinationMeetingsChart() {
           </Bar>
 
           <Bar
-            dataKey="courseBoard"
-            fill="var(--color-courseBoard)"
+            dataKey="resolution"
+            fill="var(--color-resolution)"
             radius={[4, 4, 4, 4]}
           >
             <LabelList
-              dataKey="courseBoard"
+              dataKey="resolution"
               position="top"
               offset={12}
               className="fill-card-foreground"

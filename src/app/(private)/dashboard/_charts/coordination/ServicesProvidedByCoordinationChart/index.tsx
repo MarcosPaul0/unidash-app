@@ -90,13 +90,7 @@ export function ServicesProvidedByCoordinationChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis
-            dataKey="teacher"
-            tickLine={false}
-            tickMargin={20}
-            axisLine={false}
-            angle={330}
-          />
+          <XAxis dataKey="year" tickLine={false} axisLine={false} />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
