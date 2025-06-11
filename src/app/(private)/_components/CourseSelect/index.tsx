@@ -16,7 +16,7 @@ export function CourseSelect() {
         className={`
             max-w-[460px] w-full bg-button data-[placeholder]:text-button-foreground
             px-4 text-2xl font-title font-semibold text-button-foreground
-            [&_svg:not([class*='text-'])]:text-button-foreground
+            [&_svg:not([class*='text-'])]:text-button-foreground rounded-2xl
           `}
         size="lg"
       >

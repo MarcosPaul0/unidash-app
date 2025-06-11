@@ -9,42 +9,35 @@ import {
   ChartTooltipContent,
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, LabelList } from "recharts";
 
 const chartData = [
   {
-    semester: "Primeiro semestre",
-    email: 22,
-    system: 12,
-    resolution: 13,
-  },
-  {
-    semester: "Segundo semestre",
-    email: 4,
-    system: 2,
-    resolution: 3,
+    bigger: 22,
+    medium: 12,
+    smaller: 13,
   },
 ];
 
 const chartConfig = {
-  email: {
-    label: "Matrículas",
+  bigger: {
+    label: "Maior",
+    color: "var(--chart-3)",
+  },
+  medium: {
+    label: "Médio",
     color: "var(--chart-5)",
   },
-  system: {
-    label: "Defesas",
+  smaller: {
+    label: "Menor",
     color: "var(--chart-1)",
-  },
-  resolution: {
-    label: "Abandono",
-    color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-export function WorkStatusChart() {
+export function DistributionOfTimeSpentCompletingInternshipChart() {
   return (
     <ChartCard
-      title="Situação de TCCs: matrículas, defesas e abandonos por semestre"
+      title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
       description="Teste de descrição"
     >
       <ChartContainer
@@ -60,15 +53,17 @@ export function WorkStatusChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="semester" tickLine={false} axisLine={false} />
-
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar dataKey="email" fill="var(--color-email)" radius={[4, 4, 4, 4]}>
+          <Bar
+            dataKey="bigger"
+            fill="var(--color-bigger)"
+            radius={[4, 4, 4, 4]}
+          >
             <LabelList
-              dataKey="email"
+              dataKey="bigger"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -78,12 +73,12 @@ export function WorkStatusChart() {
           </Bar>
 
           <Bar
-            dataKey="system"
-            fill="var(--color-system)"
+            dataKey="medium"
+            fill="var(--color-medium)"
             radius={[4, 4, 4, 4]}
           >
             <LabelList
-              dataKey="system"
+              dataKey="medium"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -93,12 +88,12 @@ export function WorkStatusChart() {
           </Bar>
 
           <Bar
-            dataKey="resolution"
-            fill="var(--color-resolution)"
+            dataKey="smaller"
+            fill="var(--color-smaller)"
             radius={[4, 4, 4, 4]}
           >
             <LabelList
-              dataKey="resolution"
+              dataKey="smaller"
               position="top"
               offset={12}
               className="fill-card-foreground"

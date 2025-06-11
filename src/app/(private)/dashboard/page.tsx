@@ -12,8 +12,15 @@ import { TrainingProfileIngressChart } from "./_charts/ingress/TrainingProfileIn
 import { WorkStatusChart } from "./_charts/courseCompletionWork/WorkStatusChart";
 import { RegistrationByTypeOfComplementaryActivity } from "./_charts/complementaryActivities/RegistrationByTypeOfComplementaryActivity";
 import { RegistrationByTypeOfExtensionActivity } from "./_charts/extensionActivities/RegistrationByTypeOfExtensionActivity";
-import { CitiesWithTheHighestInternships } from "./_charts/internships/CitiesWithTheHighestInternships";
+import { CitiesWithTheHighestInternshipsChart } from "./_charts/internships/CitiesWithTheHighestInternshipsChart";
 import { InternshipsByAreaChart } from "./_charts/internships/InternshipsByAreaChart";
+import { PerformanceInDefensesChart } from "./_charts/courseCompletionWork/PerformanceInDefensesChart";
+import { WorkGuidanceByTeacherChart } from "./_charts/courseCompletionWork/WorkGuidanceByTeacherChart";
+import { DistributionOfTimeSpentCompletingInternshipChart } from "./_charts/internships/DistributionOfTimeSpentCompletingInternshipChart";
+import { TotalNumberOfInternshipsByTeacherChart } from "./_charts/internships/TotalNumberOfInternshipsByTeacherChart";
+import { DistributionTechnicalScientificProductionsChart } from "./_charts/technicalScientificProductions/DistributionTechnicalScientificProductionsChart";
+import { TechnicalScientificProductionsByTypeAndTeacherChart } from "./_charts/technicalScientificProductions/TechnicalScientificProductionsByTypeAndTeacherChart";
+import { ResearchAndExtensionProjectsByTeacherChart } from "./_charts/researchAndExtensionProjects/ResearchAndExtensionProjectsByTeacherChart";
 
 export default function DashboardPage() {
   return (
@@ -62,6 +69,10 @@ export default function DashboardPage() {
         className="flex flex-col gap-8"
       >
         <WorkStatusChart />
+
+        <PerformanceInDefensesChart />
+
+        <WorkGuidanceByTeacherChart />
       </TabsContent>
 
       <TabsContent
@@ -83,10 +94,27 @@ export default function DashboardPage() {
         className="flex flex-col gap-8"
       >
         <div className="grid grid-cols-2 gap-8">
-          <CitiesWithTheHighestInternships />
+          <CitiesWithTheHighestInternshipsChart />
 
           <InternshipsByAreaChart />
         </div>
+
+        <div className="grid grid-cols-2 gap-8">
+          <DistributionOfTimeSpentCompletingInternshipChart />
+
+          <TotalNumberOfInternshipsByTeacherChart />
+        </div>
+      </TabsContent>
+
+      <TabsContent
+        value={CHARTS_CATEGORIES.PRODUCTIONS}
+        className="flex flex-col gap-8"
+      >
+        <DistributionTechnicalScientificProductionsChart />
+
+        <TechnicalScientificProductionsByTypeAndTeacherChart />
+
+        <ResearchAndExtensionProjectsByTeacherChart />
       </TabsContent>
     </Tabs>
   );

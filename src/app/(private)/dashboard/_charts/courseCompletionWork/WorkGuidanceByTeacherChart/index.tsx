@@ -12,24 +12,30 @@ import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCar
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 
 const chartData = [
-  { city: "Itajubá", count: 22 },
-  { city: "São Paulo", count: 12 },
-  { city: "Campinas", count: 12 },
-  { city: "São João Del Rei", count: 8 },
-  { city: "São José dos Campos", count: 4 },
+  { teacher: "Adriana", orientations: 186 },
+  { teacher: "Rodrigo", orientations: 305 },
+  { teacher: "Alexandre", orientations: 237 },
+  { teacher: "Minoru", orientations: 73 },
+  { teacher: "Pedro", orientations: 209 },
+  { teacher: "Rafael", orientations: 214 },
+  { teacher: "Luiz", orientations: 214 },
+  { teacher: "Adler", orientations: 214 },
+  { teacher: "Vanessa", orientations: 214 },
+  { teacher: "Bruno", orientations: 214 },
+  { teacher: "Melise", orientations: 214 },
 ];
 
 const chartConfig = {
-  count: {
-    label: "Quantidade de estágios realizadoss",
+  orientations: {
+    label: "Orientações",
     color: "var(--chart-9)",
   },
 } satisfies ChartConfig;
 
-export function CitiesWithTheHighestInternships() {
+export function WorkGuidanceByTeacherChart() {
   return (
     <ChartCard
-      title="Cidades com maior número de estágios supervisionados cadastrados"
+      title="Total de orientações de TCC por professor"
       description="Teste de descrição"
     >
       <ChartContainer
@@ -46,7 +52,7 @@ export function CitiesWithTheHighestInternships() {
           <CartesianGrid vertical={false} />
 
           <XAxis
-            dataKey="city"
+            dataKey="teacher"
             tickLine={false}
             tickMargin={20}
             axisLine={false}
@@ -56,9 +62,13 @@ export function CitiesWithTheHighestInternships() {
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
+          <Bar
+            dataKey="orientations"
+            fill="var(--color-orientations)"
+            radius={[4, 4, 4, 4]}
+          >
             <LabelList
-              dataKey="count"
+              dataKey="orientations"
               position="top"
               offset={12}
               className="fill-card-foreground"
