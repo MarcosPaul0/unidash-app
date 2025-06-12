@@ -21,6 +21,10 @@ import { TotalNumberOfInternshipsByTeacherChart } from "./_charts/internships/To
 import { DistributionTechnicalScientificProductionsChart } from "./_charts/technicalScientificProductions/DistributionTechnicalScientificProductionsChart";
 import { TechnicalScientificProductionsByTypeAndTeacherChart } from "./_charts/technicalScientificProductions/TechnicalScientificProductionsByTypeAndTeacherChart";
 import { ResearchAndExtensionProjectsByTeacherChart } from "./_charts/researchAndExtensionProjects/ResearchAndExtensionProjectsByTeacherChart";
+import { LevelOfProficiencyDeclaredByIngressChart } from "./_charts/ingress/LevelOfProficiencyDeclaredByIngressChart";
+import { ReasonsGivenForChoosingTheCourseChart } from "./_charts/ingress/ReasonsGivenForChoosingTheCourseChart";
+import { KnowledgeDeclaredInTechnologiesChart } from "./_charts/ingress/KnowledgeDeclaredInTechnologiesChart";
+import { ReasonsGivenForChoosingUniversityChart } from "./_charts/ingress/ReasonsGivenForChoosingUniversityChart";
 
 export default function DashboardPage() {
   return (
@@ -61,6 +65,16 @@ export default function DashboardPage() {
           <TrainingProfileIngressChart />
 
           <EnglishProficiencyLevelIngressChart />
+        </div>
+
+        <LevelOfProficiencyDeclaredByIngressChart />
+
+        <div className="grid grid-cols-3 gap-8">
+          <ReasonsGivenForChoosingTheCourseChart />
+
+          <KnowledgeDeclaredInTechnologiesChart />
+
+          <ReasonsGivenForChoosingUniversityChart />
         </div>
       </TabsContent>
 
