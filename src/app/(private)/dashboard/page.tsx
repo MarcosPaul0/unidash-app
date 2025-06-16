@@ -25,6 +25,10 @@ import { LevelOfProficiencyDeclaredByIngressChart } from "./_charts/ingress/Leve
 import { ReasonsGivenForChoosingTheCourseChart } from "./_charts/ingress/ReasonsGivenForChoosingTheCourseChart";
 import { KnowledgeDeclaredInTechnologiesChart } from "./_charts/ingress/KnowledgeDeclaredInTechnologiesChart";
 import { ReasonsGivenForChoosingUniversityChart } from "./_charts/ingress/ReasonsGivenForChoosingUniversityChart";
+import { PersonalGoodsDeclaredByIngressChart } from "./_charts/ingress/PersonalGoodsDeclaredByIngressChart";
+import { HabitsAndHobbiesDeclaredByIngressChart } from "./_charts/ingress/HabitsAndHobbiesDeclaredByIngressChart";
+import { KnowledgeAndDesireForNightCoursesChart } from "./_charts/ingress/KnowledgeAndDesireForNightCoursesChart";
+import { DistributionIngressByExpectedProfessionalPerformanceChart } from "./_charts/ingress/DistributionIngressByExpectedProfessionalPerformanceChart";
 
 export default function DashboardPage() {
   return (
@@ -75,6 +79,18 @@ export default function DashboardPage() {
           <KnowledgeDeclaredInTechnologiesChart />
 
           <ReasonsGivenForChoosingUniversityChart />
+        </div>
+
+        <div className="grid grid-cols-2 gap-8">
+          <PersonalGoodsDeclaredByIngressChart />
+
+          <HabitsAndHobbiesDeclaredByIngressChart />
+        </div>
+
+        <div className="grid grid-cols-2 gap-8">
+          <KnowledgeAndDesireForNightCoursesChart />
+
+          <DistributionIngressByExpectedProfessionalPerformanceChart />
         </div>
       </TabsContent>
 
