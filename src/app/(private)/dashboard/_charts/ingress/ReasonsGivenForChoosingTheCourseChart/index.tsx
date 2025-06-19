@@ -85,7 +85,7 @@ export function ReasonsGivenForChoosingTheCourseChart() {
   return (
     <ChartCard
       title="Motivos declarados pelos ingressantes para escolha do curso"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig}>
         <BarChart

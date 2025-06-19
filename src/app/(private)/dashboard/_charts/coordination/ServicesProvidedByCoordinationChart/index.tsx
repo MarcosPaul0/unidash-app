@@ -75,7 +75,7 @@ export function ServicesProvidedByCoordinationChart() {
   return (
     <ChartCard
       title="Atendimentos realizados pela coordenação por tipo de canal e ano"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -90,7 +90,12 @@ export function ServicesProvidedByCoordinationChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="year" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="year"
+            tickLine={false}
+            axisLine={false}
+            fontSize={14}
+          />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 

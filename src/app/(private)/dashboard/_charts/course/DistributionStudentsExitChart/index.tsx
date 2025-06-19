@@ -35,8 +35,8 @@ const chartConfig = {
 export function DistributionStudentsExitChart() {
   return (
     <ChartCard
-      title="Distribuição de alunos por tipo de saída e semestre do curso"
-      description="Teste de descrição"
+      title="Distribuição de alunos por tipo de saída e semestre no ano de 2023"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -48,9 +48,11 @@ export function DistributionStudentsExitChart() {
           <XAxis
             dataKey="type"
             tickLine={false}
-            tickMargin={20}
+            tickMargin={30}
             axisLine={false}
             angle={330}
+            height={100}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

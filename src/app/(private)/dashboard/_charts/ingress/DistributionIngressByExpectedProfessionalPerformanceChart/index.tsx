@@ -30,7 +30,7 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart() {
   return (
     <ChartCard
       title="Distribuição dos ingressantes por expectativa de atuação profissional"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}

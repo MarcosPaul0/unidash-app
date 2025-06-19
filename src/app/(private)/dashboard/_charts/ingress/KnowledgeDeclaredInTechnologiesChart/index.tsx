@@ -67,7 +67,7 @@ export function KnowledgeDeclaredInTechnologiesChart() {
   return (
     <ChartCard
       title="Conhecimentos declarados em tecnologias pelos ingressantes"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer className="max-h-[430px] h-full" config={chartConfig}>
         <BarChart

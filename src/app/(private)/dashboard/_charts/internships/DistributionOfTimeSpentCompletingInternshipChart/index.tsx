@@ -38,7 +38,7 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
   return (
     <ChartCard
       title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}

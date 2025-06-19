@@ -45,7 +45,7 @@ export function WorkStatusChart() {
   return (
     <ChartCard
       title="Situação de TCCs: matrículas, defesas e abandonos por semestre"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -60,13 +60,18 @@ export function WorkStatusChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="semester" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="semester"
+            tickLine={false}
+            axisLine={false}
+            fontSize={14}
+          />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar dataKey="email" fill="var(--color-email)" radius={[4, 4, 4, 4]}>
+          <Bar dataKey="email" fill="var(--color-email)" radius={[8, 8, 8, 8]}>
             <LabelList
               dataKey="email"
               position="top"
@@ -80,7 +85,7 @@ export function WorkStatusChart() {
           <Bar
             dataKey="system"
             fill="var(--color-system)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="system"
@@ -95,7 +100,7 @@ export function WorkStatusChart() {
           <Bar
             dataKey="resolution"
             fill="var(--color-resolution)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="resolution"

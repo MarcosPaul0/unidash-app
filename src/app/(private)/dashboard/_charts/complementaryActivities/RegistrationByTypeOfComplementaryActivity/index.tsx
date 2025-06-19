@@ -31,7 +31,7 @@ export function RegistrationByTypeOfComplementaryActivity() {
   return (
     <ChartCard
       title="Cadastros de atividades complementares por tipo de atividade"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -49,8 +49,9 @@ export function RegistrationByTypeOfComplementaryActivity() {
           <XAxis
             dataKey="activity"
             tickLine={false}
-            tickMargin={20}
+            tickMargin={10}
             axisLine={false}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

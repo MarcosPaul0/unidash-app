@@ -84,7 +84,7 @@ export function ResearchAndExtensionProjectsByTeacherChart() {
   return (
     <ChartCard
       title="Projetos de pesquisa e extensão realizadas pelos professores"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}

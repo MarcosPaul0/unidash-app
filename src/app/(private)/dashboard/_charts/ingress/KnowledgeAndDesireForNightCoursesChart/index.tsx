@@ -42,7 +42,7 @@ export function KnowledgeAndDesireForNightCoursesChart() {
   return (
     <ChartCard
       title="Conhecimento prévio e desejo de curso noturno entre ingressantes"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig}>
         <BarChart

@@ -31,7 +31,7 @@ export function InternshipsByAreaChart() {
   return (
     <ChartCard
       title="Estágios supervisionados por área de atuação profissional"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -51,7 +51,9 @@ export function InternshipsByAreaChart() {
             tickLine={false}
             tickMargin={40}
             axisLine={false}
-            angle={328}
+            height={80}
+            fontSize={14}
+            angle={340}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

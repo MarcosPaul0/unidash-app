@@ -75,7 +75,7 @@ export function DistributionCoordinationMeetingsChart() {
   return (
     <ChartCard
       title="Distribuição de reuniões da coordenação por tipo de instância e ano"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -90,7 +90,12 @@ export function DistributionCoordinationMeetingsChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="year" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="year"
+            tickLine={false}
+            axisLine={false}
+            fontSize={14}
+          />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 

@@ -36,7 +36,7 @@ export function WorkGuidanceByTeacherChart() {
   return (
     <ChartCard
       title="Total de orientações de TCC por professor"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -54,8 +54,9 @@ export function WorkGuidanceByTeacherChart() {
           <XAxis
             dataKey="teacher"
             tickLine={false}
-            tickMargin={20}
+            tickMargin={10}
             axisLine={false}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

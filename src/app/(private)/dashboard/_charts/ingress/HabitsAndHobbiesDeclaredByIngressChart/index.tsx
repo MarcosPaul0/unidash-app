@@ -139,7 +139,7 @@ export function HabitsAndHobbiesDeclaredByIngressChart() {
   return (
     <ChartCard
       title="Hábitos e hobbies declarados pelos alunos ingressantes"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig}>
         <BarChart

@@ -129,7 +129,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
   return (
     <ChartCard
       title="Produções técnico-científicas por tipo e professor"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -144,6 +144,8 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
             tickMargin={20}
             axisLine={false}
             angle={330}
+            fontSize={14}
+            height={80}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -167,12 +169,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
             />
           </Bar>
 
-          <Bar
-            dataKey="congress"
-            stackId="a"
-            fill="var(--color-congress)"
-            radius={[4, 4, 0, 0]}
-          >
+          <Bar dataKey="congress" stackId="a" fill="var(--color-congress)">
             <LabelList
               dataKey="congress"
               position="inside"
@@ -184,12 +181,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
             />
           </Bar>
 
-          <Bar
-            dataKey="abstract"
-            stackId="a"
-            fill="var(--color-abstract)"
-            radius={[4, 4, 0, 0]}
-          >
+          <Bar dataKey="abstract" stackId="a" fill="var(--color-abstract)">
             <LabelList
               dataKey="abstract"
               position="inside"
@@ -205,7 +197,6 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
             dataKey="bookChapter"
             stackId="a"
             fill="var(--color-bookChapter)"
-            radius={[4, 4, 0, 0]}
           >
             <LabelList
               dataKey="bookChapter"

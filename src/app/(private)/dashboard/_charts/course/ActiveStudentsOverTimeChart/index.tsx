@@ -28,8 +28,8 @@ const chartConfig = {
 export function ActiveStudentsOverTimeChart() {
   return (
     <ChartCard
-      title="Alunos ativos ao longo do tempo no curso"
-      description="Teste de descrição"
+      title="Alunos ativos no curso ao longo dos anos"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -51,6 +51,7 @@ export function ActiveStudentsOverTimeChart() {
             tickLine={false}
             axisLine={false}
             tickMargin={8}
+            fontSize={14}
           />
 
           <ChartTooltip

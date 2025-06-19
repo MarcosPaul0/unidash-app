@@ -38,8 +38,8 @@ const chartConfig = {
 export function TeacherHoursDistributionChart() {
   return (
     <ChartCard
-      title="Distribuição de carga horária didática por docente"
-      description="Teste de descrição"
+      title="Distribuição de carga horária didática por docente no período de 2022 a 2024"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -59,7 +59,8 @@ export function TeacherHoursDistributionChart() {
             tickLine={false}
             tickMargin={20}
             axisLine={false}
-            angle={330}
+            angle={334}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

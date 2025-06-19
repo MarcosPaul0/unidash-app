@@ -39,7 +39,7 @@ export function EnglishProficiencyLevelIngressChart() {
   return (
     <ChartCard
       title="Nível de proficiência em inglês dos alunos ingressantes"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-3"
     >
       <ChartContainer

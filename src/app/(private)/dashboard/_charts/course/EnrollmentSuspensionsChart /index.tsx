@@ -35,8 +35,8 @@ const chartConfig = {
 export function EnrollmentSuspensionsChart() {
   return (
     <ChartCard
-      title="Distribuição de alunos por tipo de saída e semestre do curso"
-      description="Teste de descrição"
+      title="Trancamentos de matrícula por semestre e motivo declarado pelos alunos no ano de 2023"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -50,7 +50,7 @@ export function EnrollmentSuspensionsChart() {
             tickLine={false}
             tickMargin={20}
             axisLine={false}
-            angle={330}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

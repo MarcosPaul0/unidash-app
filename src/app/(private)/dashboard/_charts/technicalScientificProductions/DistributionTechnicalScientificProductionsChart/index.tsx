@@ -30,7 +30,7 @@ export function DistributionTechnicalScientificProductionsChart() {
   return (
     <ChartCard
       title="Distribuição de produções técnico-científicas por tipo"
-      description="Teste de descrição"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
@@ -50,6 +50,7 @@ export function DistributionTechnicalScientificProductionsChart() {
             tickLine={false}
             tickMargin={20}
             axisLine={false}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
