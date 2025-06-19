@@ -4,6 +4,7 @@ import { ActiveStudentsOverTimeChart } from "../../_charts/course/ActiveStudents
 import { DistributionStudentsExitChart } from "../../_charts/course/DistributionStudentsExitChart";
 import { EnrollmentSuspensionsChart } from "../../_charts/course/EnrollmentSuspensionsChart ";
 import { TeacherHoursDistributionChart } from "../../_charts/course/TeacherHoursDistributionChart";
+import { Topic } from "../../_components/Topic";
 
 export function CourseContent() {
   return (
@@ -11,6 +12,8 @@ export function CourseContent() {
       value={CHARTS_CATEGORIES.COURSE}
       className="flex flex-col gap-8"
     >
+      <Topic title="Indicadores do curso" />
+
       <div className="grid grid-cols-2 gap-8">
         <ActiveStudentsOverTimeChart />
 

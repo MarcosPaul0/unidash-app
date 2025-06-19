@@ -99,6 +99,8 @@ export function ResearchAndExtensionProjectsByTeacherChart() {
             tickMargin={20}
             axisLine={false}
             angle={330}
+            height={80}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

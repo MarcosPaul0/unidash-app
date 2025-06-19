@@ -10,6 +10,7 @@ import { PersonalGoodsDeclaredByIngressChart } from "../../_charts/ingress/Perso
 import { HabitsAndHobbiesDeclaredByIngressChart } from "../../_charts/ingress/HabitsAndHobbiesDeclaredByIngressChart";
 import { KnowledgeAndDesireForNightCoursesChart } from "../../_charts/ingress/KnowledgeAndDesireForNightCoursesChart";
 import { DistributionIngressByExpectedProfessionalPerformanceChart } from "../../_charts/ingress/DistributionIngressByExpectedProfessionalPerformanceChart";
+import { Topic } from "../../_components/Topic";
 
 export function IngressContent() {
   return (
@@ -17,6 +18,8 @@ export function IngressContent() {
       value={CHARTS_CATEGORIES.INGRESS}
       className="flex flex-col gap-8"
     >
+      <Topic title="Indicadores de ingresso" />
+
       <div className="grid grid-cols-7 gap-8">
         <TrainingProfileIngressChart />
 

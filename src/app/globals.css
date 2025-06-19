@@ -14,6 +14,8 @@
 
   --tab: #e2ebfb;
 
+  --ghost: #e5edfe;
+
   --destructive: #fa4b42;
 
   --radius: 0.625rem;
@@ -69,6 +71,9 @@
 
   --color-button: var(--primary);
   --color-button-foreground: var(--tertiary);
+
+  --color-ghost: var(--ghost);
+  --color-ghost-foreground: var(--primary);
 
   --color-menu: var(--tertiary);
   --color-menu-foreground: var(--quaternary);
