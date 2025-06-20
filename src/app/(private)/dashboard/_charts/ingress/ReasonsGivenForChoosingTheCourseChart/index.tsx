@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import {
   ChartConfig,
@@ -52,11 +52,11 @@ const chartConfig = {
     label: "Motivo",
   },
   computerAsHobby: {
-    label: "Computador como hobby",
+    label: "Computador hobby",
     color: "var(--chart-8)",
   },
   financialReasons: {
-    label: "Motivos financeiros",
+    label: "Financeiros",
     color: "var(--chart-8)",
   },
   courseQuality: {
@@ -64,15 +64,15 @@ const chartConfig = {
     color: "var(--chart-8)",
   },
   moreInterestingBySISU: {
-    label: "Mais interessante pelo SISU",
+    label: "Interessante SISU",
     color: "var(--chart-8)",
   },
   notFirstChoice: {
-    label: "Não foi a primeiraopção",
+    label: "Não prioritária",
     color: "var(--chart-8)",
   },
   desireHigherEducation: {
-    label: "Desejo de formação superior",
+    label: "Desejo de graduação",
     color: "var(--chart-8)",
   },
   professionalUpdate: {
@@ -99,13 +99,13 @@ export function ReasonsGivenForChoosingTheCourseChart() {
           <YAxis
             dataKey="reason"
             type="category"
-            tickLine={false}
-            tickMargin={0}
             axisLine={false}
+            tickMargin={0}
             tickFormatter={(value) =>
               chartConfig[value as keyof typeof chartConfig]?.label
             }
-            width={100}
+            width={190}
+            fontSize={14}
           />
 
           <XAxis dataKey="count" type="number" hide />
@@ -115,7 +115,16 @@ export function ReasonsGivenForChoosingTheCourseChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5} />
+          <Bar dataKey="count" layout="vertical" radius={5}>
+            <LabelList
+              dataKey="count"
+              position="center"
+              offset={12}
+              className="fill-card-foreground"
+              fontSize={18}
+              fontWeight={600}
+            />
+          </Bar>
         </BarChart>
       </ChartContainer>
     </ChartCard>

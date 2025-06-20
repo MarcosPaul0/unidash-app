@@ -35,7 +35,7 @@ export function RegistrationByTypeOfComplementaryActivity() {
     >
       <ChartContainer
         config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
+        className="min-h-[440px] max-h-[440px] w-full"
       >
         <BarChart
           accessibilityLayer

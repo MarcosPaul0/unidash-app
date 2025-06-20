@@ -30,11 +30,9 @@ export function ActiveStudentsOverTimeChart() {
     <ChartCard
       title="Alunos ativos no curso ao longo dos anos"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-3"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <LineChart
           accessibilityLayer
           data={chartData}

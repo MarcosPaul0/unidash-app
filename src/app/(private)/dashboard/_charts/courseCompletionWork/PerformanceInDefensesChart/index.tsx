@@ -41,11 +41,9 @@ export function PerformanceInDefensesChart() {
     <ChartCard
       title="Desempenho nas defesas de TCC por docente"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-4"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
 
@@ -55,11 +53,12 @@ export function PerformanceInDefensesChart() {
             tickMargin={10}
             axisLine={false}
             fontSize={14}
+            height={50}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="approved"

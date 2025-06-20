@@ -89,7 +89,7 @@ export function TrainingProfileIngressChart() {
             layout="vertical"
             align="right"
             verticalAlign="middle"
-            className="flex-col items-start"
+            className="flex-col items-start text-base"
           />
         </PieChart>
       </ChartContainer>

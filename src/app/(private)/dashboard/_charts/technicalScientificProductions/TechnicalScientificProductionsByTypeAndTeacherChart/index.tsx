@@ -105,7 +105,7 @@ const chartData = [
 const chartConfig = {
   periodical: {
     label: "Periódicos",
-    color: "var(--chart-11)",
+    color: "var(--chart-12)",
   },
   congress: {
     label: "Congressos",
@@ -113,15 +113,15 @@ const chartConfig = {
   },
   abstract: {
     label: "Resumos",
-    color: "var(--chart-7)",
+    color: "var(--chart-13)",
   },
   bookChapter: {
     label: "Capítulo de livros",
-    color: "var(--chart-6)",
+    color: "var(--chart-9)",
   },
   program: {
     label: "Programas",
-    color: "var(--chart-9)",
+    color: "var(--chart-14)",
   },
 } satisfies ChartConfig;
 
@@ -133,7 +133,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
     >
       <ChartContainer
         config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
+        className="min-h-[440px] max-h-[440px] w-full"
       >
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
@@ -150,7 +150,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart() {
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="periodical"

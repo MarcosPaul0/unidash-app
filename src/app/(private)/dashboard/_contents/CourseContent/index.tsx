@@ -14,15 +14,17 @@ export function CourseContent() {
     >
       <Topic title="Indicadores do curso" />
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-7 gap-8">
         <ActiveStudentsOverTimeChart />
 
         <DistributionStudentsExitChart />
       </div>
 
-      <EnrollmentSuspensionsChart />
+      <div className="grid grid-cols-7 gap-8">
+        <EnrollmentSuspensionsChart />
 
-      <TeacherHoursDistributionChart />
+        <TeacherHoursDistributionChart />
+      </div>
     </TabsContent>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import {
   ChartConfig,
@@ -56,10 +56,10 @@ export function KnowledgeAndDesireForNightCoursesChart() {
           <YAxis
             dataKey="opinion"
             type="category"
-            tickLine={false}
-            tickMargin={0}
+            tickMargin={10}
             axisLine={false}
-            width={100}
+            width={130}
+            fontSize={14}
           />
 
           <XAxis dataKey="no" type="number" hide />
@@ -75,7 +75,16 @@ export function KnowledgeAndDesireForNightCoursesChart() {
             radius={[5, 0, 0, 5]}
             stackId="a"
             fill="var(--color-yes)"
-          />
+          >
+            <LabelList
+              dataKey="yes"
+              position="center"
+              offset={12}
+              className="fill-card-foreground"
+              fontSize={18}
+              fontWeight={600}
+            />
+          </Bar>
 
           <Bar
             dataKey="no"
@@ -83,7 +92,16 @@ export function KnowledgeAndDesireForNightCoursesChart() {
             radius={[0, 5, 5, 0]}
             stackId="a"
             fill="var(--color-no)"
-          />
+          >
+            <LabelList
+              dataKey="no"
+              position="center"
+              offset={12}
+              className="fill-card-foreground"
+              fontSize={18}
+              fontWeight={600}
+            />
+          </Bar>
         </BarChart>
       </ChartContainer>
     </ChartCard>

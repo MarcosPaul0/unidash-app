@@ -37,11 +37,9 @@ export function DistributionStudentsExitChart() {
     <ChartCard
       title="Distribuição de alunos por tipo de saída e semestre no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-4"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
 
@@ -50,7 +48,7 @@ export function DistributionStudentsExitChart() {
             tickLine={false}
             tickMargin={30}
             axisLine={false}
-            angle={330}
+            angle={340}
             height={100}
             fontSize={14}
           />

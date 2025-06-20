@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import {
   ChartConfig,
@@ -95,17 +95,18 @@ export function ReasonsGivenForChoosingUniversityChart() {
           margin={{
             left: 0,
           }}
+          barGap={100}
         >
           <YAxis
             dataKey="reason"
             type="category"
-            tickLine={false}
-            tickMargin={0}
             axisLine={false}
+            tickMargin={0}
             tickFormatter={(value) =>
               chartConfig[value as keyof typeof chartConfig]?.label
             }
-            width={100}
+            width={190}
+            fontSize={14}
           />
 
           <XAxis dataKey="count" type="number" hide />
@@ -115,7 +116,16 @@ export function ReasonsGivenForChoosingUniversityChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5} />
+          <Bar dataKey="count" layout="vertical" radius={5}>
+            <LabelList
+              dataKey="count"
+              position="center"
+              offset={12}
+              className="fill-card-foreground"
+              fontSize={18}
+              fontWeight={600}
+            />
+          </Bar>
         </BarChart>
       </ChartContainer>
     </ChartCard>

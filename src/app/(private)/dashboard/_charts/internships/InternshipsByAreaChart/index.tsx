@@ -33,10 +33,7 @@ export function InternshipsByAreaChart() {
       title="Estágios supervisionados por área de atuação profissional"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
           data={chartData}

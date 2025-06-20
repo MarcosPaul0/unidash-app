@@ -20,7 +20,7 @@ export function InternshipsContent() {
         <InternshipsByAreaChart />
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-7 gap-8">
         <DistributionOfTimeSpentCompletingInternshipChart />
 
         <TotalNumberOfInternshipsByTeacherChart />

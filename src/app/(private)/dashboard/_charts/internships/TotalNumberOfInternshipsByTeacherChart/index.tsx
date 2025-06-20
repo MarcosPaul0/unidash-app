@@ -3,8 +3,6 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -38,10 +36,11 @@ export function TotalNumberOfInternshipsByTeacherChart() {
     <ChartCard
       title="Total de orientações de estágio supervisionado por professor"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-4"
     >
       <ChartContainer
         config={chartConfig}
-        className="min-h-[150px] h-full w-full"
+        className="min-h-[440px] h-full w-full"
       >
         <BarChart
           accessibilityLayer
@@ -59,11 +58,10 @@ export function TotalNumberOfInternshipsByTeacherChart() {
             axisLine={false}
             angle={330}
             height={50}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-
-          <ChartLegend content={<ChartLegendContent />} />
 
           <Bar
             dataKey="orientations"

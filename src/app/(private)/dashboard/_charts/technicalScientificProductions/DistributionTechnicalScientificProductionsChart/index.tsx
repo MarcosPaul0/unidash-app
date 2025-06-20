@@ -3,8 +3,6 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -29,12 +27,12 @@ const chartConfig = {
 export function DistributionTechnicalScientificProductionsChart() {
   return (
     <ChartCard
-      title="Distribuição de produções técnico-científicas por tipo"
+      title="Distribuição de produções técnico-científicas por tipo no ano de 2020"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
         config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
+        className="min-h-[440px] max-h-[440px] w-full"
       >
         <BarChart
           accessibilityLayer
@@ -51,11 +49,10 @@ export function DistributionTechnicalScientificProductionsChart() {
             tickMargin={20}
             axisLine={false}
             fontSize={14}
+            height={50}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-
-          <ChartLegend content={<ChartLegendContent />} />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

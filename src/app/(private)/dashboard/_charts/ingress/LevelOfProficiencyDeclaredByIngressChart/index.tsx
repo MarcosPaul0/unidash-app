@@ -91,7 +91,7 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
     >
       <ChartContainer
         config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
+        className="max-h-[440px] min-h-[440px] w-full"
       >
         <BarChart
           accessibilityLayer
@@ -102,11 +102,16 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
         >
           <CartesianGrid vertical={false} />
 
-          <XAxis dataKey="discipline" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="discipline"
+            tickLine={false}
+            axisLine={false}
+            fontSize={14}
+          />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="little"

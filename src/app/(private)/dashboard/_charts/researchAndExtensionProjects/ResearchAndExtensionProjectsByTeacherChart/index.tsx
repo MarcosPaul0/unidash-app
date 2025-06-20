@@ -88,7 +88,7 @@ export function ResearchAndExtensionProjectsByTeacherChart() {
     >
       <ChartContainer
         config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
+        className="min-h-[440px] max-h-[440px] w-full"
       >
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
@@ -105,7 +105,7 @@ export function ResearchAndExtensionProjectsByTeacherChart() {
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="researchProjects"

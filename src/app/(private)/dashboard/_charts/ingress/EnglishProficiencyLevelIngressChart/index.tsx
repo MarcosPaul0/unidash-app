@@ -23,15 +23,15 @@ const chartConfig = {
   },
   fluent: {
     label: "Fluente",
-    color: "var(--chart-2)",
+    color: "var(--chart-1)",
   },
   intermediary: {
     label: "Intermediário",
-    color: "var(--chart-4)",
+    color: "var(--chart-5)",
   },
   low: {
     label: "Baixo",
-    color: "var(--chart-5)",
+    color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
@@ -63,7 +63,7 @@ export function EnglishProficiencyLevelIngressChart() {
             layout="vertical"
             align="right"
             verticalAlign="middle"
-            className="flex-col items-start"
+            className="flex-col items-start text-base"
           />
         </PieChart>
       </ChartContainer>

@@ -3,8 +3,6 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -38,13 +36,11 @@ const chartConfig = {
 export function TeacherHoursDistributionChart() {
   return (
     <ChartCard
-      title="Distribuição de carga horária didática por docente no período de 2022 a 2024"
+      title="Distribuição de carga horária didática por docente no ano de 2024"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-4"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
           data={chartData}
@@ -61,13 +57,14 @@ export function TeacherHoursDistributionChart() {
             axisLine={false}
             angle={334}
             fontSize={14}
+            height={80}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          {/* <ChartLegend content={<ChartLegendContent />} /> */}
 
-          <Bar
+          {/* <Bar
             dataKey="previousYear"
             fill="var(--color-previousYear)"
             radius={[4, 4, 4, 4]}
@@ -80,7 +77,7 @@ export function TeacherHoursDistributionChart() {
               fontSize={18}
               fontWeight={600}
             />
-          </Bar>
+          </Bar> */}
 
           <Bar
             dataKey="lastYear"

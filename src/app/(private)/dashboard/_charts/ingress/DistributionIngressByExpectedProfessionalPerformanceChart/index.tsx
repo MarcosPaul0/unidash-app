@@ -3,8 +3,6 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -50,13 +48,12 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart() {
             tickLine={false}
             tickMargin={20}
             axisLine={false}
-            angle={330}
-            height={50}
+            angle={338}
+            height={70}
+            fontSize={14}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-
-          <ChartLegend content={<ChartLegendContent />} />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

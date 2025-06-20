@@ -2,7 +2,6 @@ import { TabsContent } from "@unidash/components/Tabs";
 import { CHARTS_CATEGORIES } from "../../_components/ChartTabsList/chartsTabsList.constant";
 import { WorkStatusChart } from "../../_charts/courseCompletionWork/WorkStatusChart";
 import { PerformanceInDefensesChart } from "../../_charts/courseCompletionWork/PerformanceInDefensesChart";
-import { WorkGuidanceByTeacherChart } from "../../_charts/courseCompletionWork/WorkGuidanceByTeacherChart";
 import { Topic } from "../../_components/Topic";
 
 export function ConclusionContent() {
@@ -13,11 +12,13 @@ export function ConclusionContent() {
     >
       <Topic title="Indicadores de tabalho de conclusão do curso" />
 
-      <WorkStatusChart />
+      <div className="grid grid-cols-7 gap-8">
+        <WorkStatusChart />
 
-      <PerformanceInDefensesChart />
+        <PerformanceInDefensesChart />
+      </div>
 
-      <WorkGuidanceByTeacherChart />
+      {/* <WorkGuidanceByTeacherChart /> */}
     </TabsContent>
   );
 }

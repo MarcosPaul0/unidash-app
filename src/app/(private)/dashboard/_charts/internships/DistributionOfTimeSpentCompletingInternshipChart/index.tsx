@@ -39,11 +39,9 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
     <ChartCard
       title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      className="col-span-3"
     >
-      <ChartContainer
-        config={chartConfig}
-        className="max-h-[440px] min-h-[150px] w-full"
-      >
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
           data={chartData}
@@ -55,7 +53,7 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="bigger"

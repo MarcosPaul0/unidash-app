@@ -14,7 +14,7 @@ export function CourseSelect() {
     <Select>
       <SelectTrigger
         className={`
-            max-w-[460px] w-full bg-button data-[placeholder]:text-button-foreground
+            max-w-[460px] bg-button data-[placeholder]:text-button-foreground
             px-4 text-2xl font-title font-semibold text-button-foreground
             [&_svg:not([class*='text-'])]:text-button-foreground rounded-2xl
           `}
@@ -32,7 +32,7 @@ export function CourseSelect() {
         <SelectGroup>
           <SelectLabel>Cursos</SelectLabel>
           <SelectItem value="apple">Ciências da Computação</SelectItem>
-          <SelectItem value="banana">Siatemas de Informação</SelectItem>
+          <SelectItem value="banana">Sistemas de Informação</SelectItem>
           <SelectItem value="blueberry">Engenharia da Computação</SelectItem>
         </SelectGroup>
       </SelectContent>
