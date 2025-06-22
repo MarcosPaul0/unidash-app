@@ -63,6 +63,24 @@
   --chart-12: #ff6fcf;
   --chart-13: #f2b976;
   --chart-14: #e76f51;
+
+  --icon-green: #d2e2d2;
+  --icon-green-foreground: #1f6c1f;
+
+  --icon-blue: #d3e0fb;
+  --icon-blue-foreground: #2563eb;
+
+  --icon-red: #ecd4d2;
+  --icon-red-foreground: #9e281e;
+
+  --icon-yellow: #ffefc6;
+  --icon-yellow-foreground: #ffb700;
+
+  --icon-orange: #ffceb7;
+  --icon-orange-foreground: #db4f0e;
+
+  --icon-purple: #ded3ff;
+  --icon-purple-foreground: #8861ff;
 }
 
 @theme inline {
@@ -115,16 +133,6 @@
 
   --color-chart-highlight: var(--chart-highlight);
 
-  --color-chart-9: var(--chart-9);
-  --color-chart-8: var(--chart-8);
-  --color-chart-7: var(--chart-7);
-  --color-chart-6: var(--chart-6);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -132,6 +140,28 @@
 
   --font-text: var(--font-inter);
   --font-title: var(--font-poppins);
+
+  --color-icon-green: var(--icon-green);
+  --color-icon-green-foreground: var(--icon-green-foreground);
+
+  --color-icon-blue: var(--icon-blue);
+  --color-icon-blue-foreground: var(--icon-blue-foreground);
+
+  --color-icon-red: var(--icon-red);
+  --color-icon-red-foreground: var(--icon-red-foreground);
+
+  --color-icon-yellow: var(--icon-yellow);
+  --color-icon-yellow-foreground: var(--icon-yellow-foreground);
+
+  --color-icon-orange: var(--icon-orange);
+  --color-icon-orange-foreground: var(--icon-orange-foreground);
+
+  --color-icon-purple: var(--icon-purple);
+  --color-icon-purple-foreground: var(--icon-purple-foreground);
+
+  --color-increase: var(--chart-2);
+  --color-regress: var(--chart-3);
+  --color-indifferent: var(--chart-5);
 }
 
 @media (prefers-color-scheme: dark) {
