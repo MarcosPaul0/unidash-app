@@ -3,6 +3,8 @@
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -19,7 +21,7 @@ const chartData = [
 
 const chartConfig = {
   count: {
-    label: "Opção",
+    label: "Expectativa de atuação",
     color: "var(--chart-11)",
   },
 } satisfies ChartConfig;
@@ -54,6 +56,8 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart() {
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

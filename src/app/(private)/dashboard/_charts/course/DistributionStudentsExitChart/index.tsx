@@ -55,7 +55,7 @@ export function DistributionStudentsExitChart() {
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="firstSemester"

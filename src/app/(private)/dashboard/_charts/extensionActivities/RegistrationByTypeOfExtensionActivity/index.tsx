@@ -3,6 +3,8 @@
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -20,7 +22,7 @@ const chartData = [
 
 const chartConfig = {
   count: {
-    label: "2023",
+    label: "Atividades registradas",
     color: "var(--chart-10)",
   },
 } satisfies ChartConfig;
@@ -53,6 +55,8 @@ export function RegistrationByTypeOfExtensionActivity() {
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

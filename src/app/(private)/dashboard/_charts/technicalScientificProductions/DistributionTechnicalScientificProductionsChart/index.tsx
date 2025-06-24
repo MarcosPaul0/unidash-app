@@ -3,6 +3,8 @@
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -19,7 +21,7 @@ const chartData = [
 
 const chartConfig = {
   count: {
-    label: "2022",
+    label: "Produções técnico-científicas registradas",
     color: "var(--chart-8)",
   },
 } satisfies ChartConfig;
@@ -53,6 +55,8 @@ export function DistributionTechnicalScientificProductionsChart() {
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

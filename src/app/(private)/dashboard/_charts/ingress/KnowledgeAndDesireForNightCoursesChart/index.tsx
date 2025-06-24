@@ -5,6 +5,8 @@ import { ChartCard } from "../../../_components/ChartCard";
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -63,6 +65,8 @@ export function KnowledgeAndDesireForNightCoursesChart() {
             cursor={false}
             content={<ChartTooltipContent hideLabel />}
           />
+
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="yes"

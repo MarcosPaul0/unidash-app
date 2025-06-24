@@ -3,6 +3,8 @@
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -24,11 +26,11 @@ const chartData = [
 
 const chartConfig = {
   previousYear: {
-    label: "2022",
+    label: "Carga horária",
     color: "var(--chart-1)",
   },
   lastYear: {
-    label: "2023",
+    label: "Carga horária",
     color: "var(--chart-9)",
   },
 } satisfies ChartConfig;
@@ -62,7 +64,7 @@ export function TeacherHoursDistributionChart() {
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          {/* <ChartLegend content={<ChartLegendContent />} /> */}
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           {/* <Bar
             dataKey="previousYear"
