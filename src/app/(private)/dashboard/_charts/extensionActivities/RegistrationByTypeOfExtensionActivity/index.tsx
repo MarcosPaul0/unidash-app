@@ -3,8 +3,6 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -22,7 +20,7 @@ const chartData = [
 
 const chartConfig = {
   count: {
-    label: "2022",
+    label: "2023",
     color: "var(--chart-10)",
   },
 } satisfies ChartConfig;
@@ -30,7 +28,7 @@ const chartConfig = {
 export function RegistrationByTypeOfExtensionActivity() {
   return (
     <ChartCard
-      title="Cadastros em atividades de extensão por tipo de atividade"
+      title="Cadastros em atividades de extensão por tipo de atividade no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer
@@ -55,8 +53,6 @@ export function RegistrationByTypeOfExtensionActivity() {
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-
-          <ChartLegend content={<ChartLegendContent />} />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

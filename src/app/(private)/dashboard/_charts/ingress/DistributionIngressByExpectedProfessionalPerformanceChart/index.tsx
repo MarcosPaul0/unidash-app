@@ -27,7 +27,7 @@ const chartConfig = {
 export function DistributionIngressByExpectedProfessionalPerformanceChart() {
   return (
     <ChartCard
-      title="Distribuição dos ingressantes por expectativa de atuação profissional"
+      title="Distribuição dos ingressantes por expectativa de atuação profissional no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer

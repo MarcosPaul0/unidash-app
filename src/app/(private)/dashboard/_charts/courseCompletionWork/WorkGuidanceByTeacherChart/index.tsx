@@ -35,7 +35,7 @@ const chartConfig = {
 export function WorkGuidanceByTeacherChart() {
   return (
     <ChartCard
-      title="Total de orientações de TCC por professor"
+      title="Total de orientações de TCC por professor no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">

@@ -128,7 +128,7 @@ const chartConfig = {
 export function TechnicalScientificProductionsByTypeAndTeacherChart() {
   return (
     <ChartCard
-      title="Produções técnico-científicas por tipo e professor"
+      title="Produções técnico-científicas por tipo e professor no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer

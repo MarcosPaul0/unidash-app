@@ -37,8 +37,8 @@ const chartConfig = {
 export function DistributionOfTimeSpentCompletingInternshipChart() {
   return (
     <ChartCard
-      title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      title="Distribuição do tempo gasto para conclusão de estágios supervisionados no ano de 2023"
+      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024). Onde maior corresponde a tempo maior ou igual a 100 horas, médio à 80 horas e menor à 60 horas"
       className="col-span-3"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">

@@ -3,6 +3,8 @@
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
@@ -26,7 +28,7 @@ const chartData = [
 
 const chartConfig = {
   orientations: {
-    label: "Orientações",
+    label: "Orientações realizadas",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
@@ -34,7 +36,7 @@ const chartConfig = {
 export function TotalNumberOfInternshipsByTeacherChart() {
   return (
     <ChartCard
-      title="Total de orientações de estágio supervisionado por professor"
+      title="Total de orientações de estágio supervisionado por professor no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
     >
@@ -62,6 +64,8 @@ export function TotalNumberOfInternshipsByTeacherChart() {
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar
             dataKey="orientations"

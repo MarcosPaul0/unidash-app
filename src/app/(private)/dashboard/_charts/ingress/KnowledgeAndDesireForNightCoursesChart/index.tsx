@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import {
   ChartConfig,
@@ -48,21 +48,16 @@ export function KnowledgeAndDesireForNightCoursesChart() {
         <BarChart
           accessibilityLayer
           data={chartData}
-          layout="vertical"
           margin={{
             left: 0,
           }}
         >
-          <YAxis
+          <XAxis
             dataKey="opinion"
-            type="category"
             tickMargin={10}
             axisLine={false}
-            width={130}
-            fontSize={14}
+            fontSize={12}
           />
-
-          <XAxis dataKey="no" type="number" hide />
 
           <ChartTooltip
             cursor={false}
@@ -71,8 +66,7 @@ export function KnowledgeAndDesireForNightCoursesChart() {
 
           <Bar
             dataKey="yes"
-            layout="vertical"
-            radius={[5, 0, 0, 5]}
+            radius={[0, 0, 5, 5]}
             stackId="a"
             fill="var(--color-yes)"
           >
@@ -88,8 +82,7 @@ export function KnowledgeAndDesireForNightCoursesChart() {
 
           <Bar
             dataKey="no"
-            layout="vertical"
-            radius={[0, 5, 5, 0]}
+            radius={[5, 5, 0, 0]}
             stackId="a"
             fill="var(--color-no)"
           >

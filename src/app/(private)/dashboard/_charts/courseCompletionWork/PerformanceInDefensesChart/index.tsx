@@ -39,7 +39,7 @@ const chartConfig = {
 export function PerformanceInDefensesChart() {
   return (
     <ChartCard
-      title="Desempenho nas defesas de TCC por docente"
+      title="Desempenho nas defesas de TCC por docente no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
     >

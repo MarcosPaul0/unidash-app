@@ -74,7 +74,7 @@ const chartConfig = {
 export function DistributionCoordinationMeetingsChart() {
   return (
     <ChartCard
-      title="Distribuição de reuniões da coordenação por tipo de instância e ano"
+      title="Distribuição de reuniões da coordenação por tipo de instância e ano no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">

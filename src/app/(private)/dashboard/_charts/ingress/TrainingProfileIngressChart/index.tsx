@@ -64,7 +64,7 @@ const chartConfig = {
 export function TrainingProfileIngressChart() {
   return (
     <ChartCard
-      title="Perfil de formação dos ingressantes por tipo e área de conhecimento"
+      title="Perfil de formação dos ingressantes por tipo e área de conhecimento no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
     >

@@ -86,7 +86,7 @@ const chartConfig = {
 export function LevelOfProficiencyDeclaredByIngressChart() {
   return (
     <ChartCard
-      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio"
+      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer

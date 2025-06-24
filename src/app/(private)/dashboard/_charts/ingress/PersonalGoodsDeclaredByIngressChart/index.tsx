@@ -111,7 +111,7 @@ const chartConfig = {
 export function PersonalGoodsDeclaredByIngressChart() {
   return (
     <ChartCard
-      title="Bens de uso pessoal declarados pelos alunos ingressantes"
+      title="Bens de uso pessoal declarados pelos alunos ingressantes no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig}>

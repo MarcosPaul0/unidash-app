@@ -44,7 +44,7 @@ const chartConfig = {
 export function WorkStatusChart() {
   return (
     <ChartCard
-      title="Situação de TCCs: matrículas, defesas e abandonos por semestre"
+      title="Situação de TCCs: matrículas, defesas e abandonos por semestre no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-3"
     >

@@ -22,7 +22,7 @@ const chartData = [
 
 const chartConfig = {
   count: {
-    label: "2022",
+    label: "Área de atuação por estágio",
     color: "var(--chart-8)",
   },
 } satisfies ChartConfig;
@@ -30,7 +30,7 @@ const chartConfig = {
 export function InternshipsByAreaChart() {
   return (
     <ChartCard
-      title="Estágios supervisionados por área de atuação profissional"
+      title="Estágios supervisionados por área de atuação profissional no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
@@ -50,12 +50,12 @@ export function InternshipsByAreaChart() {
             axisLine={false}
             height={80}
             fontSize={14}
-            angle={340}
+            angle={-16}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
             <LabelList

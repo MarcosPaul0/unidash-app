@@ -83,7 +83,7 @@ const chartConfig = {
 export function ResearchAndExtensionProjectsByTeacherChart() {
   return (
     <ChartCard
-      title="Projetos de pesquisa e extensão realizadas pelos professores"
+      title="Projetos de pesquisa e extensão realizadas pelos professores no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer

@@ -27,7 +27,7 @@ const chartConfig = {
 export function DistributionTechnicalScientificProductionsChart() {
   return (
     <ChartCard
-      title="Distribuição de produções técnico-científicas por tipo no ano de 2020"
+      title="Distribuição de produções técnico-científicas por tipo no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer

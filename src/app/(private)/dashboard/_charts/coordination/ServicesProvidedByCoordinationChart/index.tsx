@@ -74,7 +74,7 @@ const chartConfig = {
 export function ServicesProvidedByCoordinationChart() {
   return (
     <ChartCard
-      title="Atendimentos realizados pela coordenação por tipo de canal e ano"
+      title="Atendimentos realizados pela coordenação por tipo de canal e ano no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
