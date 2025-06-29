@@ -46,10 +46,11 @@ export function EnrollmentSuspensionsChart() {
           <XAxis
             dataKey="type"
             tickLine={false}
-            tickMargin={20}
+            tickMargin={30}
             axisLine={false}
             height={80}
             fontSize={14}
+            angle={-25}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

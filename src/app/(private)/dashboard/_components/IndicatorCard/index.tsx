@@ -26,9 +26,9 @@ export function IndicatorCard({
       <CardContent className="flex items-center gap-2">
         <strong className="text-3xl">{value}</strong>
 
-        {SITUATION_ICON[situation]}
+        {situation && SITUATION_ICON[situation]}
 
-        <span className="text-xs flex-1">{observation}</span>
+        {observation && <span className="text-xs flex-1">{observation}</span>}
       </CardContent>
     </Card>
   );

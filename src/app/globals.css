@@ -162,6 +162,8 @@
   --color-increase: var(--chart-2);
   --color-regress: var(--chart-3);
   --color-indifferent: var(--chart-5);
+
+  --breakpoint-3xl: 120rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -16,8 +16,6 @@ export function ChartTabsList() {
 
       <TabsTrigger value={CHARTS_CATEGORIES.ACTIVITIES}>Atividades</TabsTrigger>
 
-      <TabsTrigger value={CHARTS_CATEGORIES.EXTENSION}>Extensão</TabsTrigger>
-
       <TabsTrigger value={CHARTS_CATEGORIES.INTERNSHIPS}>Estágios</TabsTrigger>
 
       <TabsTrigger value={CHARTS_CATEGORIES.PRODUCTIONS}>Produções</TabsTrigger>

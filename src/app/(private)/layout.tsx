@@ -5,14 +5,16 @@ import { HeaderSession } from "./_components/HeaderSession";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <SidebarProvider>
-      <SidebarSession />
+    <div className="3xl:max-w-[1920px] 3xl:mx-auto relative">
+      <SidebarProvider>
+        <SidebarSession />
 
-      <main className="w-[calc(100svw-320px)] ml-[320px] flex flex-col gap-8 p-8">
-        <HeaderSession />
+        <main className="w-[calc(100svw-320px)] ml-[320px] flex flex-col gap-8 p-8">
+          <HeaderSession />
 
-        {children}
-      </main>
-    </SidebarProvider>
+          {children}
+        </main>
+      </SidebarProvider>
+    </div>
   );
 }

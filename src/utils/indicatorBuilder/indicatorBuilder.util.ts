@@ -5,10 +5,10 @@ import {
 } from "./indicatorBuilder.interface";
 
 export class IndicatorBuilder {
-  public static percentageBuild({
+  public static buildPercentageFromValues({
     currentValue,
-    observations,
     previousValue,
+    observations,
   }: PercentageBuilderParams): PercentageBuilderReturn {
     if (currentValue == previousValue) {
       return {
@@ -17,9 +17,9 @@ export class IndicatorBuilder {
       };
     }
 
-    const percentage = new Intl.NumberFormat("pt-BR", {
-      style: "percent",
-    }).format(currentValue / previousValue);
+    const percentage = this.formatPercentage(
+      Math.abs(currentValue / previousValue - 1)
+    );
 
     if (currentValue > previousValue) {
       return {
@@ -32,5 +32,38 @@ export class IndicatorBuilder {
       observation: `${percentage} ${observations.regress}`,
       situation: SITUATION_TYPE.regress,
     };
+  }
+
+  public static buildPercentageFromPercentages({
+    currentValue,
+    previousValue,
+    observations,
+  }: PercentageBuilderParams): PercentageBuilderReturn {
+    if (currentValue == previousValue) {
+      return {
+        observation: observations.indifferent,
+        situation: SITUATION_TYPE.indifferent,
+      };
+    }
+
+    const percentage = Math.abs(currentValue - previousValue) + "%";
+
+    if (currentValue > previousValue) {
+      return {
+        observation: `${percentage} ${observations.increase}`,
+        situation: SITUATION_TYPE.increase,
+      };
+    }
+
+    return {
+      observation: `${percentage} ${observations.regress}`,
+      situation: SITUATION_TYPE.regress,
+    };
+  }
+
+  private static formatPercentage(value: number) {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "percent",
+    }).format(value);
   }
 }

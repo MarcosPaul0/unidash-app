@@ -5,7 +5,7 @@ import { iconVariants, SituationType } from "./indicatorCard.constant";
 export interface IndicatorCardProps extends VariantProps<typeof iconVariants> {
   icon: ReactNode;
   title: string;
-  value: number;
-  observation: string;
-  situation: SituationType;
+  value: number | string;
+  observation?: string;
+  situation?: SituationType;
 }

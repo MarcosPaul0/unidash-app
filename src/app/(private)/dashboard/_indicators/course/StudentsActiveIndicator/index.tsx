@@ -1,12 +1,12 @@
 import { StudentIcon } from "@phosphor-icons/react/dist/ssr";
-import { IndicatorCard } from "../../_components/IndicatorCard";
+import { IndicatorCard } from "../../../_components/IndicatorCard";
 import { IndicatorBuilder } from "@unidash/utils/indicatorBuilder/indicatorBuilder.util";
 
 export function StudentsActiveIndicator() {
-  const currentStudentsActive = 40;
-  const previousStudentsActive = 30;
+  const currentStudentsActive = 30;
+  const previousStudentsActive = 40;
 
-  const percentageObservation = IndicatorBuilder.percentageBuild({
+  const percentageObservation = IndicatorBuilder.buildPercentageFromValues({
     currentValue: currentStudentsActive,
     previousValue: previousStudentsActive,
     observations: {

@@ -4,7 +4,6 @@ export const CHARTS_CATEGORIES = {
   INGRESS: "ingress",
   CONCLUSION: "conclusion",
   ACTIVITIES: "activities",
-  EXTENSION: "extension",
   INTERNSHIPS: "internships",
   PRODUCTIONS: "productions",
 } as const;

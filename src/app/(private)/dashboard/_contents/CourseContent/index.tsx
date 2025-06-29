@@ -5,7 +5,10 @@ import { DistributionStudentsExitChart } from "../../_charts/course/Distribution
 import { EnrollmentSuspensionsChart } from "../../_charts/course/EnrollmentSuspensionsChart ";
 import { TeacherHoursDistributionChart } from "../../_charts/course/TeacherHoursDistributionChart";
 import { Topic } from "../../_components/Topic";
-import { StudentsActiveIndicator } from "../../_indicators/StudentsActiveIndicator";
+import { StudentsActiveIndicator } from "../../_indicators/course/StudentsActiveIndicator";
+import { OccupancyRateIndicator } from "../../_indicators/course/OccupancyRateIndicator";
+import { DropoutRateIndicator } from "../../_indicators/course/DropoutRateIndicator";
+import { SuccessRateIndicator } from "../../_indicators/course/SuccessRateIndicator";
 
 export function CourseContent() {
   return (
@@ -18,11 +21,11 @@ export function CourseContent() {
       <div className="grid grid-cols-4 gap-8">
         <StudentsActiveIndicator />
 
-        <StudentsActiveIndicator />
+        <OccupancyRateIndicator />
 
-        <StudentsActiveIndicator />
+        <DropoutRateIndicator />
 
-        <StudentsActiveIndicator />
+        <SuccessRateIndicator />
       </div>
 
       <div className="grid grid-cols-7 gap-8">

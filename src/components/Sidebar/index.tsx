@@ -66,7 +66,7 @@ function Sidebar({
       data-slot="sidebar"
       className={cn(
         "bg-sidebar text-sidebar-foreground flex w-(--sidebar-width) flex-col p-6 rounded-3xl",
-        "fixed left-8 h-[calc(100svh-64px)] my-8",
+        "fixed ml-8 h-[calc(100svh-64px)] my-8",
         className
       )}
       {...props}
