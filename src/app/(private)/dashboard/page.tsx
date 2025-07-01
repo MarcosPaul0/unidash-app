@@ -7,11 +7,14 @@ import { ConclusionContent } from "./_contents/ConclusionContent/inidex";
 import { ActivitiesContent } from "./_contents/ActivitiesContent";
 import { InternshipsContent } from "./_contents/InternshipsContent";
 import { ProductionsContent } from "./_contents/ProductionsContent";
+import { ChartTabsList } from "./_components/ChartTabsList";
 
 export default function DashboardPage() {
   return (
     <Tabs>
-      <Toolbar />
+      <Toolbar>
+        <ChartTabsList />
+      </Toolbar>
 
       <CourseContent />
 
