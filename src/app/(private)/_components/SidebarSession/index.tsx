@@ -1,4 +1,9 @@
-import { SquaresFourIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  BookBookmarkIcon,
+  ChalkboardTeacherIcon,
+  SquaresFourIcon,
+  StudentIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@unidash/assets/svgs/Logo";
 import {
   Sidebar,
@@ -27,18 +32,18 @@ export function SidebarSession() {
           />
           <SidebarLink
             text="Cursos"
-            href={APP_ROUTES.private.courses}
-            icon={<SquaresFourIcon size={24} />}
+            href={APP_ROUTES.private.course}
+            icon={<BookBookmarkIcon size={24} />}
           />
           <SidebarLink
-            text="Cursos"
-            href={APP_ROUTES.private.courses}
-            icon={<SquaresFourIcon size={24} />}
+            text="Alunos"
+            href={APP_ROUTES.private.student}
+            icon={<StudentIcon size={24} />}
           />
           <SidebarLink
-            text="Cursos"
-            href={APP_ROUTES.private.courses}
-            icon={<SquaresFourIcon size={24} />}
+            text="Docentes"
+            href={APP_ROUTES.private.teacher}
+            icon={<ChalkboardTeacherIcon size={24} />}
           />
         </SidebarGroup>
       </SidebarContent>
