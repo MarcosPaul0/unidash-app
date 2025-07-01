@@ -130,6 +130,9 @@
   --color-tab: transparent;
   --color-tab-foreground: var(--muted);
 
+  --color-table: var(--card);
+  --color-table-head: var(--background);
+
   --color-active-tab: var(--tab);
   --color-active-tab-foreground: var(--primary);
 
