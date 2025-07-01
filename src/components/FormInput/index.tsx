@@ -8,7 +8,7 @@ import {
   FormMessage,
 } from "@unidash/components/Form";
 import { Input } from "@unidash/components/Input";
-import { FormInputProps } from "./formInputProps.interface";
+import { FormInputProps } from "./formInput.interface";
 
 export function FormInput({
   label,
@@ -32,7 +32,7 @@ export function FormInput({
           )}
 
           <FormControl>
-            <Input {...rest} {...field} />
+            <Input placeholder={rest.placeholder} {...field} />
           </FormControl>
 
           {helper && <FormMessage>{helper}</FormMessage>}
