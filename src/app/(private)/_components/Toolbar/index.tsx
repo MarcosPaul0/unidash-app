@@ -1,15 +1,15 @@
 "use client";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { ChartTabsList } from "../../dashboard/_components/ChartTabsList";
 import { FilterForm } from "../FilterForm";
 import {
   Collapsible,
   CollapsibleContent,
 } from "@unidash/components/Collapsible";
 import { FormSelect } from "@unidash/components/FormSelect";
+import { ToolbarProps } from "./toolbar.interface";
 
-export function Toolbar() {
+export function Toolbar({ children }: ToolbarProps) {
   const formMethods = useForm();
 
   const { control } = formMethods;
@@ -18,7 +18,7 @@ export function Toolbar() {
     <FormProvider {...formMethods}>
       <Collapsible>
         <form className="flex items-center justify-between border-b-1 border-muted">
-          <ChartTabsList />
+          {children}
 
           <FilterForm />
         </form>
