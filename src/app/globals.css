@@ -33,11 +33,14 @@
 
   --chart-highlight: #e0e8f5;
 
-  --accent: #27354b;
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: #1b2a41;
+  --accent-foreground: #eff4ff;
+
+  --link: #2564eb00;
+  --link-foreground: #2564eb;
 
   --border: oklch(0.922 0 0);
-  --input: #ffffff;
+  --input: #b8b8b8;
   --ring: oklch(0.708 0 0);
 
   --sidebar: oklch(0.985 0 0);
@@ -93,6 +96,9 @@
   --color-button: var(--primary);
   --color-button-foreground: var(--tertiary);
 
+  --color-link: var(--link);
+  --color-link-foreground: var(--link-foreground);
+
   --color-ghost: var(--ghost);
   --color-ghost-foreground: var(--primary);
 
@@ -110,8 +116,10 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
