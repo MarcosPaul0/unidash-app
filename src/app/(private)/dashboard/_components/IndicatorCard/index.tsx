@@ -6,7 +6,11 @@ import {
 } from "@unidash/components/Card";
 import { IndicatorCardProps } from "./indicatorCardProps.interface";
 import { cn } from "@unidash/lib/cn";
-import { iconVariants, SITUATION_ICON } from "./indicatorCard.constant";
+import {
+  iconVariants,
+  indicatorVariants,
+  SITUATION_ICON,
+} from "./indicatorCard.constant";
 
 export function IndicatorCard({
   icon,
@@ -15,16 +19,18 @@ export function IndicatorCard({
   observation,
   situation,
   variant,
+  size,
 }: IndicatorCardProps) {
   return (
     <Card>
       <CardHeader>
         <i className={cn(iconVariants({ variant }))}>{icon}</i>
-        <CardTitle>{title}</CardTitle>
+
+        <CardTitle className="font-semibold">{title}</CardTitle>
       </CardHeader>
 
       <CardContent className="flex items-center gap-2">
-        <strong className="text-3xl">{value}</strong>
+        <strong className={cn(indicatorVariants({ size }))}>{value}</strong>
 
         {situation && SITUATION_ICON[situation]}
 

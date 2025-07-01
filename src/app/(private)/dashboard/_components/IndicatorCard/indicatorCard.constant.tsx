@@ -21,6 +21,19 @@ export const iconVariants = cva(`rounded-full p-2 w-fit text-2xl`, {
   },
 });
 
+export const indicatorVariants = cva(``, {
+  variants: {
+    size: {
+      lg: "text-3xl",
+      md: "text-2xl",
+      sm: "text-xl",
+    },
+  },
+  defaultVariants: {
+    size: "lg",
+  },
+});
+
 export const SITUATION_TYPE = {
   indifferent: "indifferent",
   increase: "increase",

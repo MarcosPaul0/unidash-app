@@ -8,6 +8,7 @@ export function MostRecurrentExtensionActivityIndicator() {
       title="Atividade mais recorrente"
       value="Projetos especiais"
       variant="blue"
+      size="md"
     />
   );
 }

@@ -1,8 +1,14 @@
 import { VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
-import { iconVariants, SituationType } from "./indicatorCard.constant";
+import {
+  iconVariants,
+  indicatorVariants,
+  SituationType,
+} from "./indicatorCard.constant";
 
-export interface IndicatorCardProps extends VariantProps<typeof iconVariants> {
+export interface IndicatorCardProps
+  extends VariantProps<typeof iconVariants>,
+    VariantProps<typeof indicatorVariants> {
   icon: ReactNode;
   title: string;
   value: number | string;

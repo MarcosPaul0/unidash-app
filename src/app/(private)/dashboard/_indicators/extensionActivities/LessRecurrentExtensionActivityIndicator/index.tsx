@@ -8,6 +8,7 @@ export function LessRecurrentExtensionActivityIndicator() {
       title="Atividade menos recorrente"
       value="Iniciação científica"
       variant="blue"
+      size="md"
     />
   );
 }
