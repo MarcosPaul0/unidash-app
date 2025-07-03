@@ -14,7 +14,8 @@
 
   --tab: #e2ebfb;
 
-  --ghost: #e5edfe;
+  --ghost: #2563eb;
+  --ghost-foreground: #2563eb;
 
   --destructive: #fa4b42;
 
@@ -22,6 +23,8 @@
 
   --card: #ffffff;
   --card-foreground: #000000;
+
+  --active-row: #fbfcff;
 
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -100,7 +103,7 @@
   --color-link-foreground: var(--link-foreground);
 
   --color-ghost: var(--ghost);
-  --color-ghost-foreground: var(--primary);
+  --color-ghost-foreground: var(--ghost-foreground);
 
   --color-menu: var(--tertiary);
   --color-menu-foreground: var(--quaternary);
@@ -132,6 +135,7 @@
 
   --color-table: var(--card);
   --color-table-head: var(--background);
+  --color-table-active-row: var(--active-row);
 
   --color-active-tab: var(--tab);
   --color-active-tab-foreground: var(--primary);
