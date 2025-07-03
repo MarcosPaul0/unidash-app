@@ -5,9 +5,9 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@unidash/lib/cn";
 
 const buttonVariants = cva(
-  `inline-flex items-center justify-center gap-2 whitespace-nowrap font-text font-bold
+  `inline-flex items-center justify-center gap-2 whitespace-nowrap font-text
   rounded-xl text-base transition-all disabled:pointer-events-none 
-  disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 
+  disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5
   shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring 
   focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 
   dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer`,
@@ -22,8 +22,7 @@ const buttonVariants = cva(
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        ghost: "bg-ghost text-ghost-foreground dark:hover:bg-ghost/50",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

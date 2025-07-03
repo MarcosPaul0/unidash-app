@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import { cn } from "@unidash/lib/cn";
+import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
@@ -42,7 +43,10 @@ function BreadcrumbLink({
   return (
     <Comp
       data-slot="breadcrumb-link"
-      className={cn("hover:text-foreground transition-colors", className)}
+      className={cn(
+        "text-foreground font-title text-xl font-regular  hover:text-primary transition-colors",
+        className
+      )}
       {...props}
     />
   );
@@ -56,7 +60,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
       aria-disabled="true"
       aria-current="page"
       className={cn(
-        "text-foreground font-title text-2xl font-semibold",
+        "text-foreground font-title text-lg font-regular",
         className
       )}
       {...props}
@@ -74,10 +78,10 @@ function BreadcrumbSeparator({
       data-slot="breadcrumb-separator"
       role="presentation"
       aria-hidden="true"
-      className={cn("[&>svg]:size-3.5", className)}
+      className={cn("[&>svg]:size-3.5 text-foreground", className)}
       {...props}
     >
-      {children ?? <ChevronRight />}
+      {children ?? <CaretRightIcon />}
     </li>
   );
 }
