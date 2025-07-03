@@ -7,6 +7,7 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { TeachersTable } from "../_components/TeachersTable";
 import { TeachersApiResponse } from "@unidash/interfaces/apiResponses/teacherApiResponse.interface";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 const teachersMock: TeachersApiResponse["teachers"] = [
   {
@@ -49,7 +50,10 @@ const teachersMock: TeachersApiResponse["teachers"] = [
 export default function ListTeacherPage() {
   return (
     <>
-      <Toolbar>
+      <Toolbar
+        link={APP_ROUTES.private.registerTeacher}
+        linkLabel="Novo docente"
+      >
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
