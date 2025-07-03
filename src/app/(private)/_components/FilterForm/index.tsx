@@ -3,13 +3,16 @@
 import {
   FunnelIcon,
   MagnifyingGlassIcon,
+  PlusIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@unidash/components/Button";
 import { CollapsibleTrigger } from "@unidash/components/Collapsible";
 import { FormInput } from "@unidash/components/FormInput";
 import { useFormContext } from "react-hook-form";
+import { FilterFormProps } from "./filterForm.interface";
+import { LinkButton } from "@unidash/components/LinkButton";
 
-export function FilterForm() {
+export function FilterForm({ link, linkLabel }: FilterFormProps) {
   // TODO pegar pelo contexto para que o componente possa ser reutilizado
   const formMethods = useFormContext();
 
@@ -19,7 +22,7 @@ export function FilterForm() {
     <div className="mb-1 flex gap-2 items-center">
       <CollapsibleTrigger asChild>
         <Button type="button">
-          <FunnelIcon size={24} />
+          <FunnelIcon />
           Filtro
         </Button>
       </CollapsibleTrigger>
@@ -31,6 +34,13 @@ export function FilterForm() {
         placeholder="Busque pelo título"
         icon={<MagnifyingGlassIcon size={24} />}
       />
+
+      {link && (
+        <LinkButton href={link} variant="ghost" size="md">
+          <PlusIcon />
+          {linkLabel}
+        </LinkButton>
+      )}
 
       <button hidden type="submit" />
     </div>

@@ -9,7 +9,7 @@ import {
 import { FormSelect } from "@unidash/components/FormSelect";
 import { ToolbarProps } from "./toolbar.interface";
 
-export function Toolbar({ children }: ToolbarProps) {
+export function Toolbar({ children, link, linkLabel }: ToolbarProps) {
   const formMethods = useForm();
 
   const { control } = formMethods;
@@ -20,7 +20,7 @@ export function Toolbar({ children }: ToolbarProps) {
         <form className="flex items-center justify-between border-b-1 border-muted">
           {children}
 
-          <FilterForm />
+          <FilterForm link={link} linkLabel={linkLabel} />
         </form>
 
         <CollapsibleContent>
