@@ -1,4 +1,4 @@
-const COURSE_STATUS = {
+export const COURSE_STATUS = {
   active: "active",
   inactive: "inactive",
 } as const;

@@ -7,6 +7,7 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { CoursesTable } from "../_components/CoursesTable";
 import { CoursesApiResponse } from "@unidash/interfaces/apiResponses/courseApiResponse.interface";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 const coursesMock: CoursesApiResponse["courses"] = [
   {
@@ -32,7 +33,7 @@ const coursesMock: CoursesApiResponse["courses"] = [
 export default function ListCoursePage() {
   return (
     <>
-      <Toolbar>
+      <Toolbar link={APP_ROUTES.private.registerCourse} linkLabel="Novo curso">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
