@@ -7,6 +7,7 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { StudentsTable } from "../_components/StudentsTable";
 import { StudentsApiResponse } from "@unidash/interfaces/apiResponses/studentApiResponse.interface";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 const studentsMock: StudentsApiResponse["students"] = [
   {
@@ -35,7 +36,7 @@ const studentsMock: StudentsApiResponse["students"] = [
 export default function ListStudentsPage() {
   return (
     <>
-      <Toolbar>
+      <Toolbar link={APP_ROUTES.private.registerStudent} linkLabel="Novo aluno">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
