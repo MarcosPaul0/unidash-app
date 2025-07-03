@@ -1,4 +1,4 @@
-const STUDENT_STATUS = {
+export const STUDENT_STATUS = {
   active: "active",
   inactive: "inactive",
 } as const;

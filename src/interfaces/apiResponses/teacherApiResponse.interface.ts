@@ -1,4 +1,4 @@
-const TEACHER_ROLE = {
+export const TEACHER_ROLE = {
   teacher: "teacher",
   internshipManager: "internshipManager",
   courseCompletionWorkManager: "courseCompletionWorkManager",
@@ -8,7 +8,7 @@ const TEACHER_ROLE = {
 
 export type TeacherRole = (typeof TEACHER_ROLE)[keyof typeof TEACHER_ROLE];
 
-const TEACHER_STATUS = {
+export const TEACHER_STATUS = {
   active: "active",
   inactive: "inactive",
 } as const;
