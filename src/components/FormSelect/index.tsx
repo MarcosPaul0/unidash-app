@@ -41,7 +41,7 @@ export function FormSelect({
 
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 {icon && (
                   <i className="text-button-foreground size-6">{icon}</i>
                 )}
