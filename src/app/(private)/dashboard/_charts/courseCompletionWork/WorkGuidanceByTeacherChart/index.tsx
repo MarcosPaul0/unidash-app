@@ -63,7 +63,7 @@ export function WorkGuidanceByTeacherChart() {
           <Bar
             dataKey="orientations"
             fill="var(--color-orientations)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="orientations"

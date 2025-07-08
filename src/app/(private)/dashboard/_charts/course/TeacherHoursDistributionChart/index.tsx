@@ -69,7 +69,7 @@ export function TeacherHoursDistributionChart() {
           {/* <Bar
             dataKey="previousYear"
             fill="var(--color-previousYear)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="previousYear"

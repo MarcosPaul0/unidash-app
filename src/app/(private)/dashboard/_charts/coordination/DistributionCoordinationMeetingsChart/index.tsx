@@ -101,7 +101,7 @@ export function DistributionCoordinationMeetingsChart() {
           <Bar
             dataKey="undergraduateChamber"
             fill="var(--color-undergraduateChamber)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="undergraduateChamber"
@@ -116,7 +116,7 @@ export function DistributionCoordinationMeetingsChart() {
           <Bar
             dataKey="boardOfDirectors"
             fill="var(--color-boardOfDirectors)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="boardOfDirectors"
@@ -131,7 +131,7 @@ export function DistributionCoordinationMeetingsChart() {
           <Bar
             dataKey="courseBoard"
             fill="var(--color-courseBoard)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="courseBoard"

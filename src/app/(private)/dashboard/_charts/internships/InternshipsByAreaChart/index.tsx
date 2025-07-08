@@ -57,7 +57,7 @@ export function InternshipsByAreaChart() {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 4, 4]}>
+          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
             <LabelList
               dataKey="count"
               position="top"

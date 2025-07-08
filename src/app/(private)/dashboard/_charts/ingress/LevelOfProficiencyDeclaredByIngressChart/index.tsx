@@ -116,7 +116,7 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
           <Bar
             dataKey="little"
             fill="var(--color-little)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="little"
@@ -131,7 +131,7 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
           <Bar
             dataKey="average"
             fill="var(--color-average)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="average"
@@ -143,7 +143,7 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
             />
           </Bar>
 
-          <Bar dataKey="many" fill="var(--color-many)" radius={[4, 4, 4, 4]}>
+          <Bar dataKey="many" fill="var(--color-many)" radius={[8, 8, 8, 8]}>
             <LabelList
               dataKey="many"
               position="top"

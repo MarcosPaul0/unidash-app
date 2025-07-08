@@ -58,7 +58,7 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
           <Bar
             dataKey="bigger"
             fill="var(--color-bigger)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="bigger"
@@ -73,7 +73,7 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
           <Bar
             dataKey="medium"
             fill="var(--color-medium)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="medium"
@@ -88,7 +88,7 @@ export function DistributionOfTimeSpentCompletingInternshipChart() {
           <Bar
             dataKey="smaller"
             fill="var(--color-smaller)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="smaller"

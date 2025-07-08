@@ -98,7 +98,7 @@ export function ServicesProvidedByCoordinationChart() {
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar dataKey="email" fill="var(--color-email)" radius={[4, 4, 4, 4]}>
+          <Bar dataKey="email" fill="var(--color-email)" radius={[8, 8, 8, 8]}>
             <LabelList
               dataKey="email"
               position="top"
@@ -112,7 +112,7 @@ export function ServicesProvidedByCoordinationChart() {
           <Bar
             dataKey="system"
             fill="var(--color-system)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="system"
@@ -127,7 +127,7 @@ export function ServicesProvidedByCoordinationChart() {
           <Bar
             dataKey="resolution"
             fill="var(--color-resolution)"
-            radius={[4, 4, 4, 4]}
+            radius={[8, 8, 8, 8]}
           >
             <LabelList
               dataKey="resolution"
