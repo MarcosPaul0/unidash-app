@@ -5,12 +5,12 @@ import "./globals.css";
 const poppins = localFont({
   src: [
     {
-      path: "./fonts/poppins-regular.ttf",
+      path: "./fonts/poppins-regular.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/poppins-semibold.ttf",
+      path: "./fonts/poppins-semibold.woff2",
       weight: "600",
       style: "normal",
     },
