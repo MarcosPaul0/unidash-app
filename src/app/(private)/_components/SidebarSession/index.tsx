@@ -1,6 +1,7 @@
 import {
   BookBookmarkIcon,
   ChalkboardTeacherIcon,
+  ChartLineUpIcon,
   SquaresFourIcon,
   StudentIcon,
 } from "@phosphor-icons/react/dist/ssr";
@@ -28,22 +29,27 @@ export function SidebarSession() {
           <SidebarLink
             text="Dashboard"
             href={APP_ROUTES.private.dashboard}
-            icon={<SquaresFourIcon size={24} />}
+            icon={<SquaresFourIcon />}
           />
           <SidebarLink
             text="Cursos"
             href={APP_ROUTES.private.course}
-            icon={<BookBookmarkIcon size={24} />}
+            icon={<BookBookmarkIcon />}
           />
           <SidebarLink
             text="Alunos"
             href={APP_ROUTES.private.student}
-            icon={<StudentIcon size={24} />}
+            icon={<StudentIcon />}
           />
           <SidebarLink
             text="Docentes"
             href={APP_ROUTES.private.teacher}
-            icon={<ChalkboardTeacherIcon size={24} />}
+            icon={<ChalkboardTeacherIcon />}
+          />
+          <SidebarLink
+            text="Indicadores"
+            href={APP_ROUTES.private.indicator}
+            icon={<ChartLineUpIcon />}
           />
         </SidebarGroup>
       </SidebarContent>
