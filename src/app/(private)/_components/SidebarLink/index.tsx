@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { SidebarLinkProps } from "./sidebarLinkProps.interface";
+import { SidebarLinkProps } from "./sidebarLink.interface";
 import { cn } from "@unidash/lib/cn";
 import { usePathname } from "next/navigation";
+import { sidebarLinkVariants } from "./sidebarLink.constant";
 
 export function SidebarLink({
   icon,
   text,
+  size,
   className,
   ...linkProps
 }: SidebarLinkProps) {
@@ -21,15 +23,14 @@ export function SidebarLink({
     <Link
       {...linkProps}
       className={cn(
-        `
-          p-4 rounded-2xl w-full text-button-foreground flex items-center
-          gap-2 hover:bg-primary 
-        `,
-        isSelected ? "bg-primary" : "bg-transparent",
+        sidebarLinkVariants({
+          variant: isSelected ? "selected" : "unselected",
+          size,
+        }),
         className
       )}
     >
-      <i className="text-2xl">{icon}</i>
+      {icon && <i className="text-2xl">{icon}</i>}
       {text}
     </Link>
   );

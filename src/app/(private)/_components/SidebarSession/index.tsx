@@ -1,7 +1,6 @@
 import {
   BookBookmarkIcon,
   ChalkboardTeacherIcon,
-  ChartLineUpIcon,
   SquaresFourIcon,
   StudentIcon,
 } from "@phosphor-icons/react/dist/ssr";
@@ -16,6 +15,7 @@ import {
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { SidebarLink } from "../SidebarLink";
 import { SidebarSignOutButton } from "../SidebarSignOutButton";
+import { SidebarIndicatorsCollapsible } from "../SidebarIndicatorsCollapsible";
 
 export function SidebarSession() {
   return (
@@ -46,11 +46,8 @@ export function SidebarSession() {
             href={APP_ROUTES.private.teacher}
             icon={<ChalkboardTeacherIcon />}
           />
-          <SidebarLink
-            text="Indicadores"
-            href={APP_ROUTES.private.indicator}
-            icon={<ChartLineUpIcon />}
-          />
+
+          <SidebarIndicatorsCollapsible />
         </SidebarGroup>
       </SidebarContent>
 

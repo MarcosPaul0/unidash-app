@@ -14,50 +14,35 @@ export const APP_ROUTES = {
     editTeacher: "/teacher/edit",
     registerTeacher: "/teacher/register",
 
-    indicator: "/indicator",
+    courseIndicator: "/courseIndicator/list",
+    registerCourseIndicator: "/courseIndicator/register",
 
-    courseIndicator: "/indicator/courseIndicator",
-    registerCourseIndicator: "/indicator/courseIndicator/register",
+    courseComplementaryActivities:
+      "/courseComplementaryActivitiesIndicator/list",
+    registerCourseComplementaryActivitiesIndicator:
+      "/courseComplementaryActivitiesIndicator/register",
 
-    courseComplementaryActivitiesExtensionIndicator:
-      "/indicator/courseComplementaryActivitiesExtensionIndicator",
-    registerCourseComplementaryActivitiesExtensionIndicator:
-      "/indicator/courseComplementaryActivitiesExtensionIndicator/register",
-
-    courseComplementaryActivitiesSearchIndicator:
-      "/indicator/courseComplementaryActivitiesSearchIndicator",
-    registerCourseComplementaryActivitiesSearchIndicator:
-      "/indicator/courseComplementaryActivitiesSearchIndicator/register",
-
-    courseComplementaryActivitiesTeachingIndicator:
-      "/indicator/courseComplementaryActivitiesTeachingIndicator",
-    registerCourseComplementaryActivitiesTeachingIndicator:
-      "/indicator/courseComplementaryActivitiesTeachingIndicator/register",
-
-    courseCompletionWorkIndicator: "/indicator/courseCompletionWorkIndicator",
+    courseCompletionWorkIndicator: "/courseCompletionWorkIndicator/list",
     registerCourseCompletionWorkIndicator:
-      "/indicator/courseCompletionWorkIndicator/register",
+      "/courseCompletionWorkIndicator/register",
 
-    courseCoordinationIndicator: "/indicator/courseCoordinationIndicator",
+    courseCoordinationIndicator: "/courseCoordinationIndicator/list",
     registerCourseCoordinationIndicator:
-      "/indicator/courseCoordinationIndicator/register",
+      "/courseCoordinationIndicator/register",
 
     courseExtensionActivitiesIndicator:
-      "/indicator/courseExtensionActivitiesIndicator",
+      "/courseExtensionActivitiesIndicator/list",
     registerCourseExtensionActivitiesIndicator:
-      "/indicator/courseExtensionActivitiesIndicator/register",
+      "/courseExtensionActivitiesIndicator/register",
 
-    courseInternshipIndicator: "/indicator/courseInternshipIndicator",
-    registerCourseInternshipIndicator:
-      "/indicator/courseInternshipIndicator/register",
+    courseInternshipIndicator: "/courseInternshipIndicator/list",
+    registerCourseInternshipIndicator: "/courseInternshipIndicator/register",
 
-    studentEgressIndicator: "/indicator/studentEgressIndicator",
-    registerStudentEgressIndicator:
-      "/indicator/studentEgressIndicator/register",
+    studentEgressIndicator: "/studentEgressIndicator/list",
+    registerStudentEgressIndicator: "/studentEgressIndicator/register",
 
-    studentIngressIndicator: "/indicator/studentIngressIndicator",
-    registerStudentIngressIndicator:
-      "/indicator/studentIngressIndicator/register",
+    studentIngressIndicator: "/studentIngressIndicator/list",
+    registerStudentIngressIndicator: "/studentIngressIndicator/register",
   },
   public: {
     login: "/login",
