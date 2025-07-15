@@ -15,6 +15,7 @@ export function FormInput({
   helper,
   name,
   control,
+  icon,
   ...rest
 }: FormInputProps) {
   return (
@@ -32,7 +33,7 @@ export function FormInput({
           )}
 
           <FormControl>
-            <Input placeholder={rest.placeholder} {...field} />
+            <Input placeholder={rest.placeholder} icon={icon} {...field} />
           </FormControl>
 
           {helper && <FormMessage>{helper}</FormMessage>}
