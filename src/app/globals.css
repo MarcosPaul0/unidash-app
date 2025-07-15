@@ -43,7 +43,8 @@
   --link-foreground: #2564eb;
 
   --border: oklch(0.922 0 0);
-  --input: #b8b8b8;
+  --input: #fff;
+  --border-input: #b8b8b8;
   --ring: oklch(0.708 0 0);
 
   --sidebar: oklch(0.985 0 0);
@@ -117,6 +118,7 @@
 
   --color-ring: var(--ring);
   --color-input: var(--input);
+  --color-border-input: var(--border-input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
 
