@@ -28,7 +28,7 @@ export function SidebarIndicatorsCollapsible() {
         </span>
       </CollapsibleTrigger>
 
-      <CollapsibleContent className="ml-4 flex flex-col gap-1">
+      <CollapsibleContent className="ml-4 mt-2 flex flex-col gap-1">
         <SidebarLink
           text="Curso"
           href={APP_ROUTES.private.courseIndicator}
@@ -45,7 +45,7 @@ export function SidebarIndicatorsCollapsible() {
           size="sm"
         />
         <SidebarLink
-          text="Atv. complementares"
+          text="Atv. complementar"
           href={APP_ROUTES.private.courseComplementaryActivities}
           size="sm"
         />
@@ -55,8 +55,13 @@ export function SidebarIndicatorsCollapsible() {
           size="sm"
         />
         <SidebarLink
-          text="Estágios"
+          text="Estágio"
           href={APP_ROUTES.private.courseInternshipIndicator}
+          size="sm"
+        />
+        <SidebarLink
+          text="Ingressantes"
+          href={APP_ROUTES.private.studentIngressIndicator}
           size="sm"
         />
       </CollapsibleContent>
