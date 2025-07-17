@@ -4,10 +4,10 @@ import { Button } from "@unidash/components/Button";
 import { PaperPlaneTiltIcon } from "@phosphor-icons/react/dist/ssr";
 import { FormRadioGroup } from "@unidash/components/FormRadioGroup";
 import { FormCheckbox } from "@unidash/components/FormCheckbox";
-import { StudentIngressForm } from "./studentIngressIndicatorForm.interface";
+import { StudentIngressIndicatorFormData } from "./studentIngressIndicatorForm.interface";
 
 export function StudentIngressIndicatorForm() {
-  const { control } = useFormContext<StudentIngressForm>();
+  const { control } = useFormContext<StudentIngressIndicatorFormData>();
 
   return (
     <Card>

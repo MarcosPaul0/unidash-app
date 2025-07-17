@@ -12,10 +12,10 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { StudentIngressIndicatorForm } from "../_components/StudentIngressIndicatorForm";
-import { StudentIngressForm } from "../_components/StudentIngressIndicatorForm/studentIngressIndicatorForm.interface";
+import { StudentIngressIndicatorFormData } from "../_components/StudentIngressIndicatorForm/studentIngressIndicatorForm.interface";
 
 export default function RegisterCourseInternshipIndicatorPage() {
-  const formMethods = useForm<StudentIngressForm>({
+  const formMethods = useForm<StudentIngressIndicatorFormData>({
     defaultValues: {
       habits: [],
       universityChoosingReasons: [],

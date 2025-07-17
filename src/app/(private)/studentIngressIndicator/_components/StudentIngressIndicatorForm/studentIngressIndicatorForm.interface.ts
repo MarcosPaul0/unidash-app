@@ -8,13 +8,13 @@ import {
   Habit,
   ProfessionalExpectation,
   UniversityChoosingReasons,
-} from "@unidash/interfaces/apiResponses/ingressIndicatorApiResponse.interface";
+} from "@unidash/interfaces/apiResponses/studentIngressIndicatorApiResponse.interface";
 
 export interface StudentIngressIndicatorFormProps {
   title: string;
 }
 
-export interface StudentIngressForm {
+export interface StudentIngressIndicatorFormData {
   educationLevel: EducationLevel;
   englishLevel: EnglishLevel;
   professionalExpectation: ProfessionalExpectation;
