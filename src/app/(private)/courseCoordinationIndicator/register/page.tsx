@@ -12,9 +12,10 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseCoordinationIndicatorForm } from "../_components/CourseCoordinationIndicatorForm";
+import { CourseCoordinationIndicatorFormData } from "../_components/CourseCoordinationIndicatorForm/courseCoordinationIndicatorForm.interface";
 
 export default function RegisterCourseCoordinationIndicatorPage() {
-  const formMethods = useForm();
+  const formMethods = useForm<CourseCoordinationIndicatorFormData>();
 
   return (
     <>
