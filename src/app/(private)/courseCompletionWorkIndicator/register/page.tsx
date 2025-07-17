@@ -12,9 +12,10 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseCompletionWorkIndicatorForm } from "../_components/CourseCompletionWorkIndicatorForm";
+import { CourseCompletionWorkIndicatorFormData } from "../_components/CourseCompletionWorkIndicatorForm/courseCompletionWorkIndicatorForm.interface";
 
 export default function RegisterCourseCompletionWorkIndicatorPage() {
-  const formMethods = useForm();
+  const formMethods = useForm<CourseCompletionWorkIndicatorFormData>();
 
   return (
     <>
