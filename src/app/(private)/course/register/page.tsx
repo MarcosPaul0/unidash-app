@@ -12,8 +12,9 @@ import {
   BreadcrumbSeparator,
 } from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
+import { CourseFormData } from "../_components/CourseForm/courseForm.interface";
 export default function RegisterCoursePage() {
-  const formMethods = useForm();
+  const formMethods = useForm<CourseFormData>();
 
   return (
     <>
