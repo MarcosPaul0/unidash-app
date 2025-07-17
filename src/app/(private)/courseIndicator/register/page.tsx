@@ -12,9 +12,10 @@ import {
 } from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseIndicatorForm } from "../_components/CourseIndicatorForm";
+import { CourseIndicatorFormData } from "../_components/CourseIndicatorForm/courseIndicatorForm.interface";
 
 export default function RegisterCourseIndicatorPage() {
-  const formMethods = useForm();
+  const formMethods = useForm<CourseIndicatorFormData>();
 
   return (
     <>
