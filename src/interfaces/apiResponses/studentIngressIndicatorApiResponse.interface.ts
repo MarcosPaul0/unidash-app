@@ -64,11 +64,6 @@ export const HABIT = {
 
 export type Habit = (typeof HABIT)[keyof typeof HABIT];
 
-export interface AffinityByDiscipline {
-  discipline: Discipline;
-  affinityLevel: AffinityLevel;
-}
-
 export const UNIVERSITY_CHOOSING_REASONS = {
   reputation: "reputation",
   closePeople: "closePeople",
@@ -106,7 +101,47 @@ export const DOMAIN_TECHNOLOGY = {
 export type DomainTechnology =
   (typeof COURSE_CHOOSING_REASONS)[keyof typeof COURSE_CHOOSING_REASONS];
 
-export interface IngressIndicatorApiResponse {
+export interface AffinityByDisciplineApiResponse {
+  affinityByDiscipline: {
+    id: string;
+    discipline: Discipline;
+    affinityLevel: AffinityLevel;
+  };
+}
+
+export interface HabitApiResponse {
+  habit: {
+    id: string;
+    habit: Habit;
+    description: string;
+  };
+}
+
+export interface UniversityChoosingReasonsApiResponse {
+  universityChoosingReason: {
+    id: string;
+    reason: UniversityChoosingReasons;
+    description: string;
+  };
+}
+
+export interface CourseChoosingReasonsApiResponse {
+  courseChoosingReason: {
+    id: string;
+    reason: CourseChoosingReasons;
+    description: string;
+  };
+}
+
+export interface DomainTechnologyApiResponse {
+  domainTechnology: {
+    id: string;
+    reason: CourseChoosingReasons;
+    description: string;
+  };
+}
+
+export interface StudentIngressIndicatorApiResponse {
   indicator: {
     educationLevel: EducationLevel;
     englishLevel: EnglishLevel;
@@ -114,9 +149,12 @@ export interface IngressIndicatorApiResponse {
     nightOption: boolean;
     differenceBetweenRelatedCourses: boolean;
     analyzedCoursePedagogicalProject: boolean;
-    affinityByDiscipline: AffinityByDiscipline[];
-    universityChoosingReasons: UniversityChoosingReasons[];
-    courseChoosingReasons: CourseChoosingReasons[];
-    domainTechnologies: DomainTechnology[];
+    habits: HabitApiResponse["habit"][];
+    affinityByDiscipline: AffinityByDisciplineApiResponse["affinityByDiscipline"][];
+    universityChoosingReasons: UniversityChoosingReasonsApiResponse["universityChoosingReason"][];
+    courseChoosingReasons: CourseChoosingReasonsApiResponse["courseChoosingReason"][];
+    domainTechnologies: DomainTechnologyApiResponse["domainTechnology"][];
+    createdAt: string;
+    updatedAt: string;
   };
 }
