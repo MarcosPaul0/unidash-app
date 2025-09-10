@@ -21,7 +21,7 @@ export function FilterForm({ link, linkLabel }: FilterFormProps) {
   return (
     <div className="mb-1 flex gap-2 items-center">
       <CollapsibleTrigger asChild>
-        <Button type="button">
+        <Button type="button" variant="ghost">
           <FunnelIcon />
           Filtro
         </Button>
@@ -34,13 +34,6 @@ export function FilterForm({ link, linkLabel }: FilterFormProps) {
         placeholder="Busque pelo título"
         icon={<MagnifyingGlassIcon size={24} />}
       />
-
-      {link && (
-        <LinkButton href={link} variant="ghost" size="md">
-          <PlusIcon />
-          {linkLabel}
-        </LinkButton>
-      )}
 
       <button hidden type="submit" />
     </div>

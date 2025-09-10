@@ -1,3 +1,5 @@
+"use client";
+
 import { CourseSelect } from "../CourseSelect";
 import { UserMenu } from "../UserMenu";
 

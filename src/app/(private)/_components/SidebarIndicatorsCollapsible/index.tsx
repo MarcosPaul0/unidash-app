@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -6,8 +8,14 @@ import {
 import { SidebarLink } from "../SidebarLink";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CaretDownIcon, ChartLineUpIcon } from "@phosphor-icons/react/dist/ssr";
+import { useCourseStore } from "@unidash/store/course.store";
+import { Can } from "@unidash/components/Can";
 
 export function SidebarIndicatorsCollapsible() {
+  const { activeCourse } = useCourseStore();
+
+  const indicatorsLinkVariant = activeCourse ? "unselected" : "disabled";
+
   return (
     <Collapsible>
       <CollapsibleTrigger className="w-full">
@@ -29,41 +37,99 @@ export function SidebarIndicatorsCollapsible() {
       </CollapsibleTrigger>
 
       <CollapsibleContent className="ml-4 mt-2 flex flex-col gap-1">
-        <SidebarLink
-          text="Curso"
-          href={APP_ROUTES.private.courseIndicator}
-          size="sm"
-        />
-        <SidebarLink
-          text="Coordenação"
-          href={APP_ROUTES.private.courseCoordinationIndicator}
-          size="sm"
-        />
-        <SidebarLink
-          text="TCC"
-          href={APP_ROUTES.private.courseCompletionWorkIndicator}
-          size="sm"
-        />
+        <Can
+          allowedRoles={["admin", "teacher"]}
+          allowedTeacherRoles={["courseManagerTeacher"]}
+        >
+          <SidebarLink
+            text="Alunos do curso"
+            href={`${APP_ROUTES.private.courseStudentsData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Saídas do curso"
+            href={`${APP_ROUTES.private.courseDepartureData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Trancamentos do curso"
+            href={`${APP_ROUTES.private.courseRegistrationLockData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Coordenação"
+            href={`${APP_ROUTES.private.courseCoordinationData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="TCC"
+            href={`${APP_ROUTES.private.courseCompletionWorkData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Ativ. compl. ensino"
+            href={`${APP_ROUTES.private.courseTeachingComplementaryActivitiesData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Ativ. compl. pesquisa"
+            href={`${APP_ROUTES.private.courseSearchComplementaryActivitiesData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Ativ. compl. extensão"
+            href={`${APP_ROUTES.private.courseExtensionComplementaryActivitiesData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Ativ. de extensão"
+            href={`${APP_ROUTES.private.courseExtensionActivitiesData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+        </Can>
+
+        <Can allowedRoles={["teacher"]}>
+          <SidebarLink
+            text="Orientações de TCCs"
+            href={`${APP_ROUTES.private.teacherSupervisedCompletionWorkData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+        </Can>
+        {/* 
         <SidebarLink
           text="Atv. complementar"
           href={APP_ROUTES.private.courseComplementaryActivities}
           size="sm"
+          variant={indicatorsLinkVariant}
         />
         <SidebarLink
           text="Atv. de extensão"
           href={APP_ROUTES.private.courseExtensionActivitiesIndicator}
           size="sm"
+          variant={indicatorsLinkVariant}
         />
         <SidebarLink
           text="Estágio"
           href={APP_ROUTES.private.courseInternshipIndicator}
           size="sm"
+          variant={indicatorsLinkVariant}
         />
         <SidebarLink
           text="Ingressantes"
           href={APP_ROUTES.private.studentIngressIndicator}
           size="sm"
-        />
+          variant={indicatorsLinkVariant}
+        /> */}
       </CollapsibleContent>
     </Collapsible>
   );

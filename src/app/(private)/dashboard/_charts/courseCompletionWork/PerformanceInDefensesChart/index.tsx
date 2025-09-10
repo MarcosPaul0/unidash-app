@@ -10,41 +10,50 @@ import {
 } from "@unidash/components/Chart";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
-
-const chartData = [
-  { teacher: "Adriana", approved: 186, reproved: 80 },
-  { teacher: "Rodrigo", approved: 305, reproved: 200 },
-  { teacher: "Alexandre", approved: 237, reproved: 120 },
-  { teacher: "Minoru", approved: 73, reproved: 190 },
-  { teacher: "Pedro", approved: 209, reproved: 130 },
-  { teacher: "Rafael", approved: 214, reproved: 140 },
-  { teacher: "Luiz", approved: 214, reproved: 140 },
-  { teacher: "Adler", approved: 214, reproved: 140 },
-  { teacher: "Vanessa", approved: 214, reproved: 140 },
-  { teacher: "Bruno", approved: 214, reproved: 140 },
-  { teacher: "Melise", approved: 214, reproved: 140 },
-];
+import { PerformanceInDefensesChartProps } from "./performanceInDefensesChart.interface";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { OrientationsByTeacher } from "@unidash/api/responses/indicators.response";
+import { ChartSelect } from "../../../_components/ChartSelect";
 
 const chartConfig = {
   approved: {
     label: "Aprovadas",
     color: "var(--chart-1)",
   },
-  reproved: {
+  failed: {
     label: "Reprovadas",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-export function PerformanceInDefensesChart() {
+export function PerformanceInDefensesChart({
+  orientationsByTeacher,
+}: PerformanceInDefensesChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<OrientationsByTeacher[]>({
+    indicators: orientationsByTeacher,
+    initialData: [],
+  });
+
   return (
     <ChartCard
-      title="Desempenho nas defesas de TCC por docente no ano de 2023"
+      title="Desempenho nas defesas de TCC por docente"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
-        <BarChart accessibilityLayer data={chartData}>
+        <BarChart accessibilityLayer data={indicatorsData}>
           <CartesianGrid vertical={false} />
 
           <XAxis
@@ -78,13 +87,13 @@ export function PerformanceInDefensesChart() {
           </Bar>
 
           <Bar
-            dataKey="reproved"
+            dataKey="failed"
             stackId="a"
-            fill="var(--color-reproved)"
+            fill="var(--color-failed)"
             radius={[4, 4, 0, 0]}
           >
             <LabelList
-              dataKey="reproved"
+              dataKey="failed"
               position="inside"
               accumulate="none"
               offset={12}

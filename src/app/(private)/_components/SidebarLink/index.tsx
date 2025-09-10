@@ -11,6 +11,7 @@ export function SidebarLink({
   text,
   size,
   className,
+  variant,
   ...linkProps
 }: SidebarLinkProps) {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export function SidebarLink({
       {...linkProps}
       className={cn(
         sidebarLinkVariants({
-          variant: isSelected ? "selected" : "unselected",
+          variant: isSelected ? "selected" : variant,
           size,
         }),
         className

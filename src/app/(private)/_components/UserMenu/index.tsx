@@ -1,30 +1,37 @@
-import { CaretRightIcon } from "@phosphor-icons/react/dist/ssr";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@unidash/components/Avatar";
+"use client";
+
+import { USER_ROLE } from "@unidash/api/responses/admin.response";
+import { Avatar, AvatarFallback } from "@unidash/components/Avatar";
+import { Skeleton } from "@unidash/components/Skeleton";
+import { useAuthStore } from "@unidash/store/auth.store";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const USER_ROLE_LABEL = {
+  [USER_ROLE.admin]: "Administrador",
+  [USER_ROLE.student]: "Discente",
+  [USER_ROLE.teacher]: "Docente",
+} as const;
 
 export function UserMenu() {
-  return (
-    <button
-      type="button"
+  const { session } = useAuthStore();
+
+  return session ? (
+    <span
       className={`
         p-2 bg-menu text-menu-foreground rounded-full
-        flex items-center gap-2 cursor-pointer 
+        flex items-center gap-2 cursor-pointer mr-0 ml-auto
       `}
     >
       <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarFallback>{Formatter.getInitials(session.name)}</AvatarFallback>
       </Avatar>
 
       <div className="flex flex-col items-start">
-        <strong className="text-sm">Marcos Paulo</strong>
-        <span className="text-xs">Administrador</span>
+        <strong className="text-sm">{session.name}</strong>
+        <span className="text-xs">{USER_ROLE_LABEL[session.role]}</span>
       </div>
-
-      <CaretRightIcon size={16} />
-    </button>
+    </span>
+  ) : (
+    <Skeleton className="w-[228px] h-[52px] rounded-full  mr-0 ml-auto" />
   );
 }

@@ -1,11 +1,4 @@
 import { Toolbar } from "@unidash/app/(private)/_components/Toolbar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@unidash/components/Breadcrumb";
-import { StudentsApiResponse } from "@unidash/interfaces/apiResponses/studentApiResponse.interface";
 import { StudentIngressIndicatorTable } from "../_components/StudentIngressIndicatorTable";
 
 const studentsMock: StudentsApiResponse["students"] = [
@@ -35,15 +28,7 @@ const studentsMock: StudentsApiResponse["students"] = [
 export default function ListCourseInternshipIndicatorPage() {
   return (
     <>
-      <Toolbar>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbPage>Indicadores de ingressantes</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </Toolbar>
+      <Toolbar breadcrumbPage="Indicadores de ingressantes" />
 
       <StudentIngressIndicatorTable ingressIndicators={studentsMock} />
     </>

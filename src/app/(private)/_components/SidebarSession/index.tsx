@@ -2,7 +2,6 @@ import {
   BookBookmarkIcon,
   ChalkboardTeacherIcon,
   SquaresFourIcon,
-  StudentIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@unidash/assets/svgs/Logo";
 import {
@@ -16,6 +15,8 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { SidebarLink } from "../SidebarLink";
 import { SidebarSignOutButton } from "../SidebarSignOutButton";
 import { SidebarIndicatorsCollapsible } from "../SidebarIndicatorsCollapsible";
+import { SidebarStudentsLink } from "../SidebarStudentsLink";
+import { Can } from "@unidash/components/Can";
 
 export function SidebarSession() {
   return (
@@ -31,21 +32,27 @@ export function SidebarSession() {
             href={APP_ROUTES.private.dashboard}
             icon={<SquaresFourIcon />}
           />
-          <SidebarLink
-            text="Cursos"
-            href={APP_ROUTES.private.course}
-            icon={<BookBookmarkIcon />}
-          />
-          <SidebarLink
-            text="Alunos"
-            href={APP_ROUTES.private.student}
-            icon={<StudentIcon />}
-          />
-          <SidebarLink
-            text="Docentes"
-            href={APP_ROUTES.private.teacher}
-            icon={<ChalkboardTeacherIcon />}
-          />
+
+          <Can allowedRoles={["admin"]}>
+            <SidebarLink
+              text="Cursos"
+              href={APP_ROUTES.private.courses}
+              icon={<BookBookmarkIcon />}
+            />
+          </Can>
+
+          <Can
+            allowedRoles={["admin", "teacher"]}
+            allowedTeacherRoles={["courseManagerTeacher"]}
+          >
+            <SidebarStudentsLink />
+
+            <SidebarLink
+              text="Docentes"
+              href={APP_ROUTES.private.teachers}
+              icon={<ChalkboardTeacherIcon />}
+            />
+          </Can>
 
           <SidebarIndicatorsCollapsible />
         </SidebarGroup>

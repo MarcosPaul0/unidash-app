@@ -1,43 +1,26 @@
 "use client";
 
-import { FormProvider, useForm } from "react-hook-form";
 import { Toolbar } from "../../_components/Toolbar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@unidash/components/Breadcrumb";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
-import { StudentForm } from "../_components/StudentForm";
+import { RegisterStudentForm } from "../_components/RegisterStudentForm";
+import { useCourseStore } from "@unidash/store/course.store";
+
 export default function RegisterStudentPage() {
-  const formMethods = useForm();
+  const { activeCourse } = useCourseStore();
 
   return (
     <>
-      <Toolbar>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href={APP_ROUTES.private.course}>
-                Lista de alunos
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+      <Toolbar
+        breadcrumbPage="Novo aluno"
+        breadcrumbItems={[
+          {
+            label: "Lista de alunos",
+            link: `${APP_ROUTES.private.student}${activeCourse?.id}`,
+          },
+        ]}
+      />
 
-            <BreadcrumbSeparator />
-
-            <BreadcrumbItem>
-              <BreadcrumbPage>Novo aluno</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </Toolbar>
-
-      <FormProvider {...formMethods}>
-        <StudentForm title="Registrar novo aluno" />
-      </FormProvider>
+      <RegisterStudentForm />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { LoginForm } from "./_components/LoginForm";
 
-export default function LoginPage() {
+export default async function LoginPage() {
   return (
     <>
       <div className="flex flex-col gap-6">

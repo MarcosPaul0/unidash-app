@@ -38,7 +38,7 @@ const chartConfig = {
 export function TeacherHoursDistributionChart() {
   return (
     <ChartCard
-      title="Distribuição de carga horária didática por docente no ano de 2023"
+      title="Distribuição de carga horária didática por docente"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
     >

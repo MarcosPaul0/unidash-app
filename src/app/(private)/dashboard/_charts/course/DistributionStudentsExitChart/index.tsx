@@ -10,16 +10,11 @@ import {
 } from "@unidash/components/Chart";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
-
-const chartData = [
-  { type: "Concluído", firstSemester: 186, secondSemester: 80 },
-  { type: "Prazo máximo", firstSemester: 305, secondSemester: 200 },
-  { type: "Abandono", firstSemester: 237, secondSemester: 120 },
-  { type: "Transferência de IES", firstSemester: 73, secondSemester: 190 },
-  { type: "Desistência", firstSemester: 209, secondSemester: 130 },
-  { type: "Excluído", firstSemester: 214, secondSemester: 140 },
-  { type: "Novo vestibular", firstSemester: 214, secondSemester: 140 },
-];
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { DistributionStudentsExitChartProps } from "./distributionStudentsExitChart.interface";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
+import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 
 const chartConfig = {
   firstSemester: {
@@ -32,15 +27,41 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function DistributionStudentsExitChart() {
+export function DistributionStudentsExitChart({
+  departures,
+}: DistributionStudentsExitChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<SemestersIndicators>({
+    indicators: departures,
+    initialData: {
+      hasDataInFirstSemester: false,
+      hasDataInSecondSemester: false,
+      data: [],
+    },
+  });
+
+  const { firstSemesterRadius, secondSemesterRadius } =
+    useSemestersChartConfiguration({ indicatorsData });
+
   return (
     <ChartCard
-      title="Distribuição de alunos por tipo de saída e semestre no ano de 2023"
+      title="Distribuição de alunos por tipo de saída e semestre"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
-        <BarChart accessibilityLayer data={chartData}>
+        <BarChart accessibilityLayer data={indicatorsData.data}>
           <CartesianGrid vertical={false} />
 
           <XAxis
@@ -57,39 +78,43 @@ export function DistributionStudentsExitChart() {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="firstSemester"
-            stackId="a"
-            fill="var(--color-firstSemester)"
-            radius={[0, 0, 8, 8]}
-          >
-            <LabelList
+          {indicatorsData.hasDataInFirstSemester && (
+            <Bar
               dataKey="firstSemester"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-foreground"
-              fontSize={18}
-              fontWeight={600}
-            />
-          </Bar>
+              stackId="a"
+              fill="var(--color-firstSemester)"
+              radius={firstSemesterRadius}
+            >
+              <LabelList
+                dataKey="firstSemester"
+                position="inside"
+                accumulate="none"
+                offset={12}
+                className="fill-foreground"
+                fontSize={18}
+                fontWeight={600}
+              />
+            </Bar>
+          )}
 
-          <Bar
-            dataKey="secondSemester"
-            stackId="a"
-            fill="var(--color-secondSemester)"
-            radius={[8, 8, 0, 0]}
-          >
-            <LabelList
+          {indicatorsData.hasDataInSecondSemester && (
+            <Bar
               dataKey="secondSemester"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-foreground"
-              fontSize={18}
-              fontWeight={600}
-            />
-          </Bar>
+              stackId="a"
+              fill="var(--color-secondSemester)"
+              radius={secondSemesterRadius}
+            >
+              <LabelList
+                dataKey="secondSemester"
+                position="inside"
+                accumulate="none"
+                offset={12}
+                className="fill-foreground"
+                fontSize={18}
+                fontWeight={600}
+              />
+            </Bar>
+          )}
         </BarChart>
       </ChartContainer>
     </ChartCard>

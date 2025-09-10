@@ -24,12 +24,15 @@
   --card: #ffffff;
   --card-foreground: #000000;
 
-  --active-row: #fbfcff;
+  --active-row: #f2f5ff;
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+
   --primary-foreground: oklch(0.985 0 0);
   --secondary-foreground: oklch(0.205 0 0);
+
+  --skeleton: #dbdfe6;
 
   --muted: #9aa3b3;
   --muted-foreground: #9ab39d;
@@ -121,6 +124,7 @@
   --color-border-input: var(--border-input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-skeleton: var(--skeleton);
 
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);

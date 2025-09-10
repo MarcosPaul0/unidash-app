@@ -10,77 +10,36 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  {
-    year: "2025",
-    email: 22,
-    system: 12,
-    resolution: 13,
-  },
-  {
-    year: "2024",
-    email: 4,
-    system: 2,
-    resolution: 3,
-  },
-  {
-    year: "2023",
-    email: 5,
-    system: 12,
-    resolution: 9,
-  },
-  {
-    year: "2022",
-    email: 12,
-    system: 23,
-    resolution: 18,
-  },
-  {
-    year: "2021",
-    email: 12,
-    system: 21,
-    resolution: 15,
-  },
-  {
-    year: "2020",
-    email: 1,
-    system: 24,
-    resolution: 20,
-  },
-  {
-    year: "2019",
-    email: 23,
-    system: 4,
-    resolution: 13,
-  },
-];
+import { ServicesProvidedByCoordinationChartProps } from "./servicesProvidedByCoordinationChart.interface";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
-  email: {
+  servicesRequestsByEmail: {
     label: "Email",
     color: "var(--chart-8)",
   },
-  system: {
+  servicesRequestsBySystem: {
     label: "SIGAA",
     color: "var(--chart-1)",
   },
-  resolution: {
-    label: "Resoluções",
-    color: "var(--chart-6)",
-  },
 } satisfies ChartConfig;
 
-export function ServicesProvidedByCoordinationChart() {
+export function ServicesProvidedByCoordinationChart({
+  services,
+  yearFrom,
+  yearTo,
+}: ServicesProvidedByCoordinationChartProps) {
+  const period = Formatter.getIndicatorsPeriod(yearFrom, yearTo);
+
   return (
     <ChartCard
-      title="Atendimentos realizados pela coordenação por tipo de canal e ano no ano de 2023"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      title="Atendimentos realizados pela coordenação por tipo de canal"
+      description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={services}
           margin={{
             top: 32,
           }}
@@ -98,24 +57,13 @@ export function ServicesProvidedByCoordinationChart() {
 
           <ChartLegend content={<ChartLegendContent />} />
 
-          <Bar dataKey="email" fill="var(--color-email)" radius={[8, 8, 8, 8]}>
-            <LabelList
-              dataKey="email"
-              position="top"
-              offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
-              fontWeight={600}
-            />
-          </Bar>
-
           <Bar
-            dataKey="system"
-            fill="var(--color-system)"
+            dataKey="servicesRequestsByEmail"
+            fill="var(--color-servicesRequestsByEmail)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="system"
+              dataKey="servicesRequestsByEmail"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -125,6 +73,21 @@ export function ServicesProvidedByCoordinationChart() {
           </Bar>
 
           <Bar
+            dataKey="servicesRequestsBySystem"
+            fill="var(--color-servicesRequestsBySystem)"
+            radius={[8, 8, 8, 8]}
+          >
+            <LabelList
+              dataKey="servicesRequestsBySystem"
+              position="top"
+              offset={12}
+              className="fill-card-foreground"
+              fontSize={18}
+              fontWeight={600}
+            />
+          </Bar>
+
+          {/* <Bar
             dataKey="resolution"
             fill="var(--color-resolution)"
             radius={[8, 8, 8, 8]}
@@ -137,7 +100,7 @@ export function ServicesProvidedByCoordinationChart() {
               fontSize={18}
               fontWeight={600}
             />
-          </Bar>
+          </Bar> */}
         </BarChart>
       </ChartContainer>
     </ChartCard>

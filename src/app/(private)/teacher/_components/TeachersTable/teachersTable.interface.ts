@@ -1,5 +1,5 @@
-import { TeachersApiResponse } from "@unidash/interfaces/apiResponses/teacherApiResponse.interface";
+import { TeachersResponse } from "@unidash/api/responses/teacher.response";
 
 export interface TeachersTableProps {
-  teachers: TeachersApiResponse["teachers"];
+  teachers: TeachersResponse["teachers"];
 }

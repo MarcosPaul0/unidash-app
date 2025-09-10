@@ -12,13 +12,16 @@ export function ChartCard({
   description,
   title,
   className,
+  complement,
 }: CardChartProps) {
   return (
     <Card className={className}>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className={complement ? "mr-28" : ""}>{title}</CardTitle>
 
         <CardDescription>{description}</CardDescription>
+
+        {complement}
       </CardHeader>
 
       <CardContent>{children}</CardContent>

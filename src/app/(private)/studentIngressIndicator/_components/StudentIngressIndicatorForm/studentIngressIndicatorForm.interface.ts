@@ -8,7 +8,7 @@ import {
   Habit,
   ProfessionalExpectation,
   UniversityChoosingReasons,
-} from "@unidash/interfaces/apiResponses/studentIngressIndicatorApiResponse.interface";
+} from "@unidash/api/responses/studentIngressIndicatorApiResponse.interface";
 
 export interface StudentIngressIndicatorFormProps {
   title: string;

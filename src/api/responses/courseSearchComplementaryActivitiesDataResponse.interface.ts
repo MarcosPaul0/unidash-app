@@ -1,0 +1,17 @@
+import { Semester } from "../dtos/courseStudentsData.dto";
+
+export interface CourseSearchComplementaryActivitiesDataResponse {
+  courseSearchComplementaryActivitiesData: {
+    id: string;
+    year: number;
+    semester: Semester;
+    scientificInitiation: number;
+    developmentInitiation: number;
+    publishedArticles: number;
+    fullPublishedArticles: number;
+    publishedAbstracts: number;
+    presentationOfWork: number;
+    participationInEvents: number;
+    createdAt: string;
+  }[];
+}

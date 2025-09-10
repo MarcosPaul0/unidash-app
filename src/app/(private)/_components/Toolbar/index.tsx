@@ -1,31 +1,67 @@
-"use client";
-
-import { FormProvider, useForm } from "react-hook-form";
-import { FilterForm } from "../FilterForm";
 import {
   Collapsible,
   CollapsibleContent,
 } from "@unidash/components/Collapsible";
-import { FormSelect } from "@unidash/components/FormSelect";
 import { ToolbarProps } from "./toolbar.interface";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@unidash/components/Breadcrumb";
+import { LinkButton } from "@unidash/components/LinkButton";
+import { PlusIcon } from "@phosphor-icons/react/dist/ssr";
+import { Fragment } from "react";
 
-export function Toolbar({ children, link, linkLabel }: ToolbarProps) {
-  const formMethods = useForm();
-
-  const { control } = formMethods;
-
+export function Toolbar({
+  breadcrumbItems,
+  breadcrumbPage,
+  addLink,
+  children,
+}: ToolbarProps) {
   return (
-    <FormProvider {...formMethods}>
-      <Collapsible>
-        <form className="flex items-center justify-between border-b-1 border-muted">
-          {children}
+    <Collapsible>
+      <div className="flex items-center justify-between border-b-1 border-muted pb-1">
+        {breadcrumbPage && (
+          <Breadcrumb>
+            <BreadcrumbList>
+              {breadcrumbItems &&
+                breadcrumbItems.map((item) => (
+                  <Fragment key={item.label}>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href={item.link}>
+                        {item.label}
+                      </BreadcrumbLink>
+                    </BreadcrumbItem>
 
-          <FilterForm link={link} linkLabel={linkLabel} />
-        </form>
+                    <BreadcrumbSeparator />
+                  </Fragment>
+                ))}
 
-        <CollapsibleContent>
-          <div>
-            <FormSelect
+              <BreadcrumbItem>
+                <BreadcrumbPage>{breadcrumbPage}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        )}
+
+        {children}
+
+        <div>
+          {addLink && (
+            <LinkButton href={addLink.link} variant="filled" size="md">
+              <PlusIcon />
+              {addLink.label}
+            </LinkButton>
+          )}
+        </div>
+      </div>
+
+      <CollapsibleContent>
+        <div>
+          {/* <FormSelect
               control={control}
               label="Filtrar por ano"
               name="year"
@@ -35,10 +71,9 @@ export function Toolbar({ children, link, linkLabel }: ToolbarProps) {
                 { label: "2024", value: "2024" },
                 { label: "2025", value: "2025" },
               ]}
-            />
-          </div>
-        </CollapsibleContent>
-      </Collapsible>
-    </FormProvider>
+            /> */}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }

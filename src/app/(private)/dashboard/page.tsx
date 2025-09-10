@@ -8,10 +8,11 @@ import { ActivitiesContent } from "./_contents/ActivitiesContent";
 import { InternshipsContent } from "./_contents/InternshipsContent";
 import { ProductionsContent } from "./_contents/ProductionsContent";
 import { ChartTabsList } from "./_components/ChartTabsList";
+import { CHARTS_CATEGORIES } from "./_components/ChartTabsList/chartsTabsList.constant";
 
 export default function DashboardPage() {
   return (
-    <Tabs>
+    <Tabs defaultValue={CHARTS_CATEGORIES.COURSE}>
       <Toolbar>
         <ChartTabsList />
       </Toolbar>

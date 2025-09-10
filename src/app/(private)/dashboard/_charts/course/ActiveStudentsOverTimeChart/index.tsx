@@ -8,38 +8,32 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "../../../_components/ChartCard";
 import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts";
-
-const chartData = [
-  { year: "2020", activeStudents: 186 },
-  { year: "2021", activeStudents: 305 },
-  { year: "2022", activeStudents: 237 },
-  { year: "2023", activeStudents: 73 },
-  { year: "2024", activeStudents: 209 },
-  { year: "2025", activeStudents: 214 },
-];
+import { ActiveStudentsOverTimeChartProps } from "./activeStudentsOverTimeChart.interface";
 
 const chartConfig = {
-  activeStudents: {
+  actives: {
     label: "Alunos ativos",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
-export function ActiveStudentsOverTimeChart() {
+export function ActiveStudentsOverTimeChart({
+  students,
+}: ActiveStudentsOverTimeChartProps) {
   return (
     <ChartCard
-      title="Alunos ativos no curso ao longo dos anos"
+      title="Alunos ativos do curso no período"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-3"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <LineChart
           accessibilityLayer
-          data={chartData}
+          data={students}
           margin={{
-            left: 16,
-            right: 16,
-            top: 10,
+            left: 30,
+            right: 30,
+            top: 60,
           }}
         >
           <CartesianGrid vertical={false} />
@@ -58,12 +52,12 @@ export function ActiveStudentsOverTimeChart() {
           />
 
           <Line
-            dataKey="activeStudents"
+            dataKey="actives"
             type="linear"
-            stroke="var(--color-activeStudents)"
+            stroke="var(--color-actives)"
             strokeWidth={2}
             dot={{
-              fill: "var(--color-activeStudents)",
+              fill: "var(--color-actives)",
             }}
             activeDot={{
               r: 6,

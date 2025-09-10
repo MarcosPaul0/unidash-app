@@ -1,5 +1,5 @@
-import { Semester } from "@unidash/interfaces/apiResponses/courseCoordinationIndicatorApiResponse.interface";
-import { ConclusionTime } from "@unidash/interfaces/apiResponses/courseInternshipIndicatorApiResponse.interface";
+import { Semester } from "@unidash/api/responses/courseCoordinationIndicatorApiResponse.interface";
+import { ConclusionTime } from "@unidash/api/responses/courseInternshipIndicatorApiResponse.interface";
 
 export interface CourseInternshipIndicatorFormProps {
   title: string;

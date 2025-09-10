@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, ReactNode } from "react";
 import { Control } from "react-hook-form";
 
-export interface SelectOptions {
+export interface SelectOption {
   label: string;
   value: string;
 }
@@ -13,5 +13,5 @@ export interface FormSelectProps extends InputHTMLAttributes<HTMLInputElement> {
   control: Control<any, any, any>;
   name: string;
   icon?: ReactNode;
-  options: SelectOptions[];
+  options: SelectOption[];
 }

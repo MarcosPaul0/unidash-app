@@ -2,38 +2,67 @@ export const APP_ROUTES = {
   private: {
     dashboard: "/dashboard",
 
-    course: "/course/list",
-    editCourse: "/course/edit",
+    courses: "/course/list",
+    editCourse: "/course/edit/",
     registerCourse: "/course/register",
+    courseTeachers: "/course/teachers/",
 
-    student: "/student/list",
-    editStudent: "/student/edit",
+    student: "/student/list/",
+    editStudent: "/student/edit/",
     registerStudent: "/student/register",
 
-    teacher: "/teacher/list",
-    editTeacher: "/teacher/edit",
+    teachers: "/teacher/list",
+    editTeacher: "/teacher/edit/",
     registerTeacher: "/teacher/register",
 
-    courseIndicator: "/courseIndicator/list",
-    registerCourseIndicator: "/courseIndicator/register",
+    courseStudentsData: "/courseStudentsData/list/",
+    registerCourseStudentsData: "/courseStudentsData/register",
 
-    courseComplementaryActivities:
-      "/courseComplementaryActivitiesIndicator/list",
-    registerCourseComplementaryActivitiesIndicator:
-      "/courseComplementaryActivitiesIndicator/register",
+    courseRegistrationLockData: "/courseRegistrationLockData/list/",
+    registerCourseRegistrationLockData: "/courseRegistrationLockData/register",
 
-    courseCompletionWorkIndicator: "/courseCompletionWorkIndicator/list",
-    registerCourseCompletionWorkIndicator:
-      "/courseCompletionWorkIndicator/register",
+    courseCoordinationData: "/courseCoordinationData/list/",
+    registerCourseCoordinationData: "/courseCoordinationData/register",
 
-    courseCoordinationIndicator: "/courseCoordinationIndicator/list",
-    registerCourseCoordinationIndicator:
-      "/courseCoordinationIndicator/register",
+    courseDepartureData: "/courseDepartureData/list/",
+    registerCourseDepartureData: "/courseDepartureData/register",
 
-    courseExtensionActivitiesIndicator:
-      "/courseExtensionActivitiesIndicator/list",
-    registerCourseExtensionActivitiesIndicator:
-      "/courseExtensionActivitiesIndicator/register",
+    courseCompletionWorkData: "/courseCompletionWorkData/list/",
+    registerCourseCompletionWorkData: "/courseCompletionWorkData/register",
+
+    teacherSupervisedCompletionWorkData:
+      "/teacherSupervisedCompletionWorkData/list/",
+    registerTeacherSupervisedCompletionWorkData:
+      "/teacherSupervisedCompletionWorkData/register",
+
+    teacherResearchAndExtensionProjectsData:
+      "/teacherResearchAndExtensionProjectsData/list/",
+    registerTeacherResearchAndExtensionProjectsData:
+      "/teacherResearchAndExtensionProjectsData/register",
+
+    teacherTechnicalScientificProductionsData:
+      "/teacherTechnicalScientificProductionsData/list/",
+    registerTeacherTechnicalScientificProductionsData:
+      "/teacherTechnicalScientificProductionsData/register",
+
+    courseTeachingComplementaryActivitiesData:
+      "/courseTeachingComplementaryActivitiesData/list/",
+    registerCourseTeachingComplementaryActivitiesData:
+      "/courseTeachingComplementaryActivitiesData/register",
+
+    courseSearchComplementaryActivitiesData:
+      "/courseSearchComplementaryActivitiesData/list/",
+    registerCourseSearchComplementaryActivitiesData:
+      "/courseSearchComplementaryActivitiesData/register",
+
+    courseExtensionComplementaryActivitiesData:
+      "/courseExtensionComplementaryActivitiesData/list/",
+    registerCourseExtensionComplementaryActivitiesData:
+      "/courseExtensionComplementaryActivitiesData/register",
+
+    courseExtensionActivitiesData: "/courseExtensionActivitiesData/list/",
+    registerCourseExtensionActivitiesData:
+      "/courseExtensionActivitiesData/register",
 
     courseInternshipIndicator: "/courseInternshipIndicator/list",
     registerCourseInternshipIndicator: "/courseInternshipIndicator/register",

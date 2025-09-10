@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import TopLoader from "nextjs-toploader";
+import { Toaster } from "sonner";
 
 const poppins = localFont({
   src: [
@@ -54,7 +56,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+        <TopLoader color="var(--primary)" showSpinner={false} />
+
         {children}
+
+        <Toaster />
       </body>
     </html>
   );

@@ -10,77 +10,40 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  {
-    year: "2025",
-    undergraduateChamber: 22,
-    boardOfDirectors: 12,
-    courseBoard: 13,
-  },
-  {
-    year: "2024",
-    undergraduateChamber: 4,
-    boardOfDirectors: 2,
-    courseBoard: 3,
-  },
-  {
-    year: "2023",
-    undergraduateChamber: 5,
-    boardOfDirectors: 12,
-    courseBoard: 9,
-  },
-  {
-    year: "2022",
-    undergraduateChamber: 12,
-    boardOfDirectors: 23,
-    courseBoard: 18,
-  },
-  {
-    year: "2021",
-    undergraduateChamber: 12,
-    boardOfDirectors: 21,
-    courseBoard: 15,
-  },
-  {
-    year: "2020",
-    undergraduateChamber: 1,
-    boardOfDirectors: 24,
-    courseBoard: 20,
-  },
-  {
-    year: "2019",
-    undergraduateChamber: 23,
-    boardOfDirectors: 4,
-    courseBoard: 13,
-  },
-];
+import { DistributionCoordinationMeetingsChartProps } from "./distributionCoordinationMeetingsChart.interface";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
-  undergraduateChamber: {
+  meetingsByUndergraduateChamber: {
     label: "Câmara de graduação",
     color: "var(--chart-8)",
   },
-  boardOfDirectors: {
+  meetingsByBoardOfDirectors: {
     label: "Conselho diretor",
     color: "var(--chart-1)",
   },
-  courseBoard: {
+  meetingsByCourseCouncil: {
     label: "Colegiado de curso",
     color: "var(--chart-10)",
   },
 } satisfies ChartConfig;
 
-export function DistributionCoordinationMeetingsChart() {
+export function DistributionCoordinationMeetingsChart({
+  meetings,
+  yearFrom,
+  yearTo,
+}: DistributionCoordinationMeetingsChartProps) {
+  const period = Formatter.getIndicatorsPeriod(yearFrom, yearTo);
+
   return (
     <ChartCard
-      title="Distribuição de reuniões da coordenação por tipo de instância e ano no ano de 2023"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      title="Distribuição de reuniões da coordenação por tipo de instância"
+      description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={meetings}
           margin={{
             top: 32,
           }}
@@ -99,12 +62,12 @@ export function DistributionCoordinationMeetingsChart() {
           <ChartLegend content={<ChartLegendContent />} />
 
           <Bar
-            dataKey="undergraduateChamber"
-            fill="var(--color-undergraduateChamber)"
+            dataKey="meetingsByUndergraduateChamber"
+            fill="var(--color-meetingsByUndergraduateChamber)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="undergraduateChamber"
+              dataKey="meetingsByUndergraduateChamber"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -114,12 +77,12 @@ export function DistributionCoordinationMeetingsChart() {
           </Bar>
 
           <Bar
-            dataKey="boardOfDirectors"
-            fill="var(--color-boardOfDirectors)"
+            dataKey="meetingsByBoardOfDirectors"
+            fill="var(--color-meetingsByBoardOfDirectors)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="boardOfDirectors"
+              dataKey="meetingsByBoardOfDirectors"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -129,12 +92,12 @@ export function DistributionCoordinationMeetingsChart() {
           </Bar>
 
           <Bar
-            dataKey="courseBoard"
-            fill="var(--color-courseBoard)"
+            dataKey="meetingsByCourseCouncil"
+            fill="var(--color-meetingsByCourseCouncil)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="courseBoard"
+              dataKey="meetingsByCourseCouncil"
               position="top"
               offset={12}
               className="fill-card-foreground"

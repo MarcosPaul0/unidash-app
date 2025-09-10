@@ -5,4 +5,5 @@ export interface CardChartProps {
   description: string;
   children: ReactNode;
   className?: string;
+  complement?: ReactNode;
 }

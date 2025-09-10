@@ -33,7 +33,7 @@ export function FormInput({
           )}
 
           <FormControl>
-            <Input placeholder={rest.placeholder} icon={icon} {...field} />
+            <Input icon={icon} {...rest} {...field} />
           </FormControl>
 
           {helper && <FormMessage>{helper}</FormMessage>}

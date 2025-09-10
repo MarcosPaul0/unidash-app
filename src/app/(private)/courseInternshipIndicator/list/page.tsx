@@ -1,11 +1,4 @@
 import { Toolbar } from "@unidash/app/(private)/_components/Toolbar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@unidash/components/Breadcrumb";
-import { StudentsApiResponse } from "@unidash/interfaces/apiResponses/studentApiResponse.interface";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseInternshipIndicatorTable } from "../_components/CourseInternshipIndicatorTable";
 
@@ -37,19 +30,10 @@ export default function ListCourseInternshipIndicatorPage() {
   return (
     <>
       <Toolbar
+        breadcrumbPage="Indicadores de estágios supervisionados"
         link={APP_ROUTES.private.registerCourseInternshipIndicator}
         linkLabel="Novo registro de estágios"
-      >
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbPage>
-                Indicadores de estágios supervisionados
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </Toolbar>
+      />
 
       <CourseInternshipIndicatorTable internshipIndicators={studentsMock} />
     </>

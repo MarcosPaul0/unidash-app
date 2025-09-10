@@ -1,69 +1,43 @@
 import { Toolbar } from "@unidash/app/(private)/_components/Toolbar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@unidash/components/Breadcrumb";
 import { TeachersTable } from "../_components/TeachersTable";
-import { TeachersApiResponse } from "@unidash/interfaces/apiResponses/teacherApiResponse.interface";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
+import { TeacherSSRService } from "@unidash/services/teacher/teacher.ssr.service";
+import { TablePagination } from "../../_components/TablePagination";
+import { Suspense } from "react";
+import { GetAllTeachersParams } from "@unidash/services/teacher/teacherParams.builder";
 
-const teachersMock: TeachersApiResponse["teachers"] = [
-  {
-    id: "teacher-1",
-    name: "Maria Clara Lopes",
-    status: "active",
-    teacherRole: "teacher",
-    createdAt: "2022-02-15T08:00:00Z",
-  },
-  {
-    id: "teacher-2",
-    name: "Roberto Almeida",
-    status: "inactive",
-    teacherRole: "internshipManager",
-    createdAt: "2021-11-05T10:30:00Z",
-  },
-  {
-    id: "teacher-3",
-    name: "Fernanda Souza",
-    status: "active",
-    teacherRole: "courseCompletionWorkManager",
-    createdAt: "2023-06-20T12:15:00Z",
-  },
-  {
-    id: "teacher-4",
-    name: "Lucas Pereira",
-    status: "active",
-    teacherRole: "complementaryActivitiesManager",
-    createdAt: "2024-01-10T09:45:00Z",
-  },
-  {
-    id: "teacher-5",
-    name: "Juliana Nogueira",
-    status: "inactive",
-    teacherRole: "extensionActivitiesManager",
-    createdAt: "2020-09-25T14:00:00Z",
-  },
-];
+interface ListTeacherPageProps {
+  searchParams: Promise<GetAllTeachersParams>;
+}
 
-export default function ListTeacherPage() {
+export default async function ListTeacherPage({
+  searchParams,
+}: ListTeacherPageProps) {
+  const params = await searchParams;
+
+  const teachersResponse = await TeacherSSRService.getAll(
+    { itemsPerPage: 12, page: params?.page },
+    {
+      isActive: params?.isActive,
+      name: params?.name,
+    }
+  );
+
   return (
     <>
       <Toolbar
-        link={APP_ROUTES.private.registerTeacher}
-        linkLabel="Novo docente"
-      >
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbPage>Lista de docentes</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </Toolbar>
+        breadcrumbPage="Lista de docentes"
+        addLink={{
+          link: APP_ROUTES.private.registerTeacher,
+          label: "Novo docente",
+        }}
+      />
 
-      <TeachersTable teachers={teachersMock} />
+      <Suspense fallback={<div>carregando...</div>}>
+        <TeachersTable teachers={teachersResponse.teachers} />
+      </Suspense>
+
+      <TablePagination totalPages={teachersResponse.totalPages} />
     </>
   );
 }

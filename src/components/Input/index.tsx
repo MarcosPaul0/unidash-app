@@ -7,7 +7,7 @@ function Input({ className, type, icon, ...props }: InputProps) {
       <div
         className={cn(
           `
-            flex items-center gap-2 border border-border-input p-3
+            flex items-center gap-2 border border-border-input px-3 h-12
             rounded-xl shadow-xs has-[:focus-visible]:ring-[3px] bg-input
             has-[:focus-visible]:border-ring has-[:focus-visible]:ring-ring/50
           `,
@@ -40,7 +40,7 @@ function Input({ className, type, icon, ...props }: InputProps) {
       className={cn(
         "file:text-foreground placeholder:text-muted-foreground selection:bg-primary",
         "selection:text-primary-foreground dark:bg-input/30 border-border-input flex w-full",
-        "min-w-0 rounded-xl border bg-transparent p-3 text-base shadow-xs",
+        "min-w-0 rounded-xl border bg-transparent px-3 h-12 text-base shadow-xs",
         "transition-[color,box-shadow] outline-none file:inline-flex file:border-0",
         "file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none",
         "disabled:cursor-not-allowed disabled:opacity-50 bg-input",

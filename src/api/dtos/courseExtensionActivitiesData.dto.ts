@@ -1,0 +1,50 @@
+import z from "zod";
+import { SEMESTER } from "./courseStudentsData.dto";
+
+export const registerCourseExtensionActivitiesDataDtoSchema = z.object({
+  year: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(new Date().getFullYear())),
+  semester: z.enum(SEMESTER),
+  specialProjects: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
+  participationInCompetitions: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  entrepreneurshipAndInnovation: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  eventOrganization: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  externalInternship: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  cultureAndExtensionProjects: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  semiannualProjects: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  workNonGovernmentalOrganization: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+  juniorCompanies: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
+  provisionOfServicesWithSelfEmployedWorkers: z
+    .transform(Number)
+    .pipe(z.number().int().min(0).max(1000)),
+});
+
+export type RegisterCourseExtensionActivitiesDataDto = z.infer<
+  typeof registerCourseExtensionActivitiesDataDtoSchema
+>;
+
+export const filterCourseExtensionActivitiesDataDtoSchema = z
+  .object({
+    year: z.int().max(new Date().getFullYear()).min(0).optional(),
+    semester: z.enum(SEMESTER).optional(),
+  })
+  .optional();
+
+export type FilterCourseExtensionActivitiesDataDto = z.infer<
+  typeof filterCourseExtensionActivitiesDataDtoSchema
+>;

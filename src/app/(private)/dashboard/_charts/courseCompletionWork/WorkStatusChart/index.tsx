@@ -10,48 +10,54 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  {
-    semester: "Primeiro semestre",
-    email: 22,
-    system: 12,
-    resolution: 13,
-  },
-  {
-    semester: "Segundo semestre",
-    email: 4,
-    system: 2,
-    resolution: 3,
-  },
-];
+import { WorkStatusChartProps } from "./workStatusChart.interface";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { WorkStatus } from "@unidash/api/responses/indicators.response";
+import { ChartSelect } from "../../../_components/ChartSelect";
 
 const chartConfig = {
-  email: {
+  enrollments: {
     label: "Matrículas",
     color: "var(--chart-5)",
   },
-  system: {
+  defenses: {
     label: "Defesas",
     color: "var(--chart-1)",
   },
-  resolution: {
+  abandonments: {
     label: "Abandono",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-export function WorkStatusChart() {
+export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<WorkStatus[]>({
+    indicators: worksStatus,
+    initialData: [],
+  });
+
   return (
     <ChartCard
-      title="Situação de TCCs: matrículas, defesas e abandonos por semestre no ano de 2023"
+      title="Situação de TCCs: matrículas, defesas e abandonos por semestre"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-3"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           margin={{
             top: 32,
           }}
@@ -69,9 +75,13 @@ export function WorkStatusChart() {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="email" fill="var(--color-email)" radius={[8, 8, 8, 8]}>
+          <Bar
+            dataKey="enrollments"
+            fill="var(--color-enrollments)"
+            radius={[8, 8, 8, 8]}
+          >
             <LabelList
-              dataKey="email"
+              dataKey="enrollments"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -81,12 +91,12 @@ export function WorkStatusChart() {
           </Bar>
 
           <Bar
-            dataKey="system"
-            fill="var(--color-system)"
+            dataKey="defenses"
+            fill="var(--color-defenses)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="system"
+              dataKey="defenses"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -96,12 +106,12 @@ export function WorkStatusChart() {
           </Bar>
 
           <Bar
-            dataKey="resolution"
-            fill="var(--color-resolution)"
+            dataKey="abandonments"
+            fill="var(--color-abandonments)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="resolution"
+              dataKey="abandonments"
               position="top"
               offset={12}
               className="fill-card-foreground"
