@@ -31,7 +31,6 @@ export class TeacherResearchAndExtensionProjectsDataCSService {
   }
 
   static async register(
-    courseId: string,
     teacherId: string,
     registerTeacherResearchAndExtensionProjectsDataDto: RegisterTeacherResearchAndExtensionProjectsDataDto
   ): Promise<void> {
@@ -39,7 +38,6 @@ export class TeacherResearchAndExtensionProjectsDataCSService {
       await apiClient.post<void>(
         UNIDASH_API_ROUTES.teacherResearchAndExtensionProjectsData.register,
         {
-          courseId,
           teacherId,
           year: registerTeacherResearchAndExtensionProjectsDataDto.year,
           semester: registerTeacherResearchAndExtensionProjectsDataDto.semester,
@@ -54,7 +52,6 @@ export class TeacherResearchAndExtensionProjectsDataCSService {
   }
 
   static async registerByTeacher(
-    courseId: string,
     registerTeacherResearchAndExtensionProjectsDataDto: RegisterTeacherResearchAndExtensionProjectsDataDto
   ): Promise<void> {
     const TeacherResearchAndExtensionProjectsDataResponse =
@@ -62,7 +59,6 @@ export class TeacherResearchAndExtensionProjectsDataCSService {
         UNIDASH_API_ROUTES.teacherResearchAndExtensionProjectsData
           .registerForTeacher,
         {
-          courseId,
           year: registerTeacherResearchAndExtensionProjectsDataDto.year,
           semester: registerTeacherResearchAndExtensionProjectsDataDto.semester,
           extensionProjects:

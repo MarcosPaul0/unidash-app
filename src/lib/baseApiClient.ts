@@ -33,6 +33,7 @@ export abstract class BaseApiClient {
   protected abstract getStoredToken(): Promise<string | null>;
   protected abstract storeToken(token: string): Promise<void>;
   protected abstract clearAuthDataAndRedirect(): Promise<void>;
+  protected abstract fetchRefresh(): Promise<Response>;
   protected abstract manageRefreshResponse(
     refreshResponse: Response
   ): Promise<void>;
@@ -54,14 +55,7 @@ export abstract class BaseApiClient {
 
     this.refreshPromise = (async () => {
       try {
-        const refreshResponse = await fetch(
-          `${this.baseUrl}${UNIDASH_API_ROUTES.auth.refresh}`,
-          {
-            method: "PATCH",
-            headers: this.headers,
-            credentials: "include",
-          }
-        );
+        const refreshResponse = await this.fetchRefresh();
 
         if (!refreshResponse.ok) {
           const errorResponse = await refreshResponse.json();

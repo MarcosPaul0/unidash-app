@@ -79,20 +79,24 @@ export function CourseSelect() {
 
       setActiveCourse(lastActiveCourse);
     })();
-  }, [setCourses, setActiveCourse]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const selectIsDisabled = courses.length <= 1;
 
   return (
     <Select
       onValueChange={handleChangeCourse}
       value={activeCourse ? activeCourse.id : undefined}
+      disabled={selectIsDisabled}
     >
       <SelectTrigger
         className={`
             max-w-[460px] bg-button data-[placeholder]:text-button-foreground
             px-4 text-xl font-title font-semibold text-button-foreground
             [&_svg:not([class*='text-'])]:text-button-foreground rounded-2xl
+            disabled:cursor-default disabled:text-button-foreground disabled:border-button
           `}
-        size="lg"
       >
         <GraduationCapIcon
           size={24}

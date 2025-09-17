@@ -1,3 +1,5 @@
+"use client";
+
 import { TabsContent } from "@unidash/components/Tabs";
 import { CHARTS_CATEGORIES } from "../../_components/ChartTabsList/chartsTabsList.constant";
 import { TrainingProfileIngressChart } from "../../_charts/ingress/TrainingProfileIngressChart";
@@ -6,13 +8,19 @@ import { LevelOfProficiencyDeclaredByIngressChart } from "../../_charts/ingress/
 import { ReasonsGivenForChoosingTheCourseChart } from "../../_charts/ingress/ReasonsGivenForChoosingTheCourseChart";
 import { KnowledgeDeclaredInTechnologiesChart } from "../../_charts/ingress/KnowledgeDeclaredInTechnologiesChart";
 import { ReasonsGivenForChoosingUniversityChart } from "../../_charts/ingress/ReasonsGivenForChoosingUniversityChart";
-import { PersonalGoodsDeclaredByIngressChart } from "../../_charts/ingress/PersonalGoodsDeclaredByIngressChart";
+import { AssetsDeclaredByIngressChart } from "../../_charts/ingress/AssetsDeclaredByIngressChart";
 import { HabitsAndHobbiesDeclaredByIngressChart } from "../../_charts/ingress/HabitsAndHobbiesDeclaredByIngressChart";
 import { KnowledgeAndDesireForNightCoursesChart } from "../../_charts/ingress/KnowledgeAndDesireForNightCoursesChart";
 import { DistributionIngressByExpectedProfessionalPerformanceChart } from "../../_charts/ingress/DistributionIngressByExpectedProfessionalPerformanceChart";
 import { Topic } from "../../_components/Topic";
+import { IndicatorsCSService } from "@unidash/services/indicators/indicators.cs.service";
+import { useFetchIndicators } from "@unidash/hooks/useFetchIndicators";
 
 export function IngressContent() {
+  const { indicators, isFetching } = useFetchIndicators({
+    fetchIndicators: IndicatorsCSService.getStudentIncomingIndicators,
+  });
+
   return (
     <TabsContent
       value={CHARTS_CATEGORIES.INGRESS}
@@ -21,31 +29,67 @@ export function IngressContent() {
       <Topic title="Indicadores de ingresso" />
 
       <div className="grid grid-cols-7 gap-8">
-        <TrainingProfileIngressChart />
+        <TrainingProfileIngressChart
+          studentIncomingByCurrentEducation={
+            indicators?.studentIncomingByCurrentEducation
+          }
+        />
 
-        <EnglishProficiencyLevelIngressChart />
+        <EnglishProficiencyLevelIngressChart
+          studentIncomingByEnglishProficiencyLevel={
+            indicators?.studentIncomingByEnglishProficiencyLevel
+          }
+        />
       </div>
 
-      <LevelOfProficiencyDeclaredByIngressChart />
+      <LevelOfProficiencyDeclaredByIngressChart
+        studentIncomingByAffinityByDiscipline={
+          indicators?.studentIncomingByAffinityByDiscipline
+        }
+      />
 
       <div className="grid grid-cols-3 gap-8">
-        <ReasonsGivenForChoosingTheCourseChart />
+        <ReasonsGivenForChoosingTheCourseChart
+          studentIncomingByCourseChoiceReason={
+            indicators?.studentIncomingByCourseChoiceReason
+          }
+        />
 
-        <KnowledgeDeclaredInTechnologiesChart />
+        <KnowledgeDeclaredInTechnologiesChart
+          studentIncomingByTechnology={indicators?.studentIncomingByTechnology}
+        />
 
-        <ReasonsGivenForChoosingUniversityChart />
+        <ReasonsGivenForChoosingUniversityChart
+          studentIncomingByUniversityChoiceReason={
+            indicators?.studentIncomingByUniversityChoiceReason
+          }
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        <PersonalGoodsDeclaredByIngressChart />
+        <AssetsDeclaredByIngressChart
+          studentIncomingByAsset={indicators?.studentIncomingByAsset}
+        />
 
-        <HabitsAndHobbiesDeclaredByIngressChart />
+        <HabitsAndHobbiesDeclaredByIngressChart
+          studentIncomingByHobbyOrHabit={
+            indicators?.studentIncomingByHobbyOrHabit
+          }
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        <KnowledgeAndDesireForNightCoursesChart />
+        <KnowledgeAndDesireForNightCoursesChart
+          studentIncomingByCourseComplements={
+            indicators?.studentIncomingByCourseComplements
+          }
+        />
 
-        <DistributionIngressByExpectedProfessionalPerformanceChart />
+        <DistributionIngressByExpectedProfessionalPerformanceChart
+          studentIncomingByWorkExpectation={
+            indicators?.studentIncomingByWorkExpectation
+          }
+        />
       </div>
     </TabsContent>
   );

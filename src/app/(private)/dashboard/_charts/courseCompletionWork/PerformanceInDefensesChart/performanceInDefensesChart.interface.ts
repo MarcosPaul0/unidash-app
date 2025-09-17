@@ -1,5 +1,5 @@
-import { CourseWorkCompletionIndicatorsStatus } from "@unidash/api/responses/indicators.response";
+import { CourseWorkCompletionIndicatorsResponse } from "@unidash/api/responses/indicators.response";
 
 export interface PerformanceInDefensesChartProps {
-  orientationsByTeacher?: CourseWorkCompletionIndicatorsStatus["orientationsByTeacher"];
+  orientationsByTeacher?: CourseWorkCompletionIndicatorsResponse["orientationsByTeacher"];
 }

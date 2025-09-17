@@ -31,7 +31,6 @@ export class TeacherTechnicalScientificProductionsDataCSService {
   }
 
   static async register(
-    courseId: string,
     teacherId: string,
     registerTeacherTechnicalScientificProductionsDataDto: RegisterTeacherTechnicalScientificProductionsDataDto
   ): Promise<void> {
@@ -39,7 +38,6 @@ export class TeacherTechnicalScientificProductionsDataCSService {
       await apiClient.post<void>(
         UNIDASH_API_ROUTES.teacherTechnicalScientificProductionsData.register,
         {
-          courseId,
           teacherId,
           year: registerTeacherTechnicalScientificProductionsDataDto.year,
           semester:
@@ -61,7 +59,6 @@ export class TeacherTechnicalScientificProductionsDataCSService {
   }
 
   static async registerByTeacher(
-    courseId: string,
     registerTeacherTechnicalScientificProductionsDataDto: RegisterTeacherTechnicalScientificProductionsDataDto
   ): Promise<void> {
     const TeacherTechnicalScientificProductionsDataResponse =
@@ -69,7 +66,6 @@ export class TeacherTechnicalScientificProductionsDataCSService {
         UNIDASH_API_ROUTES.teacherTechnicalScientificProductionsData
           .registerForTeacher,
         {
-          courseId,
           year: registerTeacherTechnicalScientificProductionsDataDto.year,
           semester:
             registerTeacherTechnicalScientificProductionsDataDto.semester,

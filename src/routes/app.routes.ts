@@ -64,14 +64,14 @@ export const APP_ROUTES = {
     registerCourseExtensionActivitiesData:
       "/courseExtensionActivitiesData/register",
 
-    courseInternshipIndicator: "/courseInternshipIndicator/list",
-    registerCourseInternshipIndicator: "/courseInternshipIndicator/register",
+    courseInternshipData: "/courseInternshipData/list/",
+    registerCourseInternshipData: "/courseInternshipData/register/",
+
+    studentIncomingData: "/studentIncomingData/list/",
+    registerStudentIncomingData: "/studentIncomingData/register/",
 
     studentEgressIndicator: "/studentEgressIndicator/list",
     registerStudentEgressIndicator: "/studentEgressIndicator/register",
-
-    studentIngressIndicator: "/studentIngressIndicator/list",
-    registerStudentIngressIndicator: "/studentIngressIndicator/register",
   },
   public: {
     login: "/login",

@@ -10,24 +10,10 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-
-const chartData = [
-  {
-    opinion: "Preferência pelo noturno",
-    yes: 12,
-    no: 18,
-  },
-  {
-    opinion: "Sabe a diferença entre CCO, SIN e ECO",
-    yes: 15,
-    no: 8,
-  },
-  {
-    opinion: "Analisou o PPC antes de optar por CCO",
-    yes: 13,
-    no: 3,
-  },
-];
+import { KnowledgeAndDesireForNightCoursesChartProps } from "./knowledgeAndDesireForNightCoursesChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingCourseComplements } from "@unidash/api/responses/indicators.response";
 
 const chartConfig = {
   yes: {
@@ -40,22 +26,41 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function KnowledgeAndDesireForNightCoursesChart() {
+export function KnowledgeAndDesireForNightCoursesChart({
+  studentIncomingByCourseComplements,
+}: KnowledgeAndDesireForNightCoursesChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingCourseComplements[]>({
+    indicators: studentIncomingByCourseComplements,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Conhecimento prévio e desejo de curso noturno entre ingressantes"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           margin={{
             left: 0,
           }}
         >
           <XAxis
-            dataKey="opinion"
+            dataKey="question"
             tickMargin={10}
             axisLine={false}
             fontSize={12}

@@ -12,7 +12,6 @@ import { useForm, FormProvider } from "react-hook-form";
 import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
-import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
 import { useRouter } from "next/navigation";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
@@ -39,8 +38,6 @@ const REGISTER_TEACHER_TECHNICAL_SCIENTIFIC_PRODUCTIONS_ERROR_MESSAGES = {
 } as const;
 
 export function TeacherTechnicalScientificProductionsDataForm() {
-  const { activeCourse } = useCourseStore();
-
   const router = useRouter();
 
   const formMethods =
@@ -69,17 +66,7 @@ export function TeacherTechnicalScientificProductionsDataForm() {
     registerTeacherTechnicalScientificProductionsDataDto: RegisterTeacherTechnicalScientificProductionsDataDto
   ) {
     try {
-      if (!activeCourse) {
-        Toast.error(
-          "É necessário selecionar o curso para registrar as informações!"
-        );
-        return;
-      }
-
-      console.log(registerTeacherTechnicalScientificProductionsDataDto);
-
       await TeacherTechnicalScientificProductionsDataCSService.registerByTeacher(
-        activeCourse.id,
         registerTeacherTechnicalScientificProductionsDataDto
       );
 
@@ -87,9 +74,7 @@ export function TeacherTechnicalScientificProductionsDataForm() {
         REGISTER_TEACHER_TECHNICAL_SCIENTIFIC_PRODUCTIONS_SUCCESS_MESSAGE
       );
 
-      router.push(
-        `${APP_ROUTES.private.teacherTechnicalScientificProductionsData}${activeCourse.id}`
-      );
+      router.push(APP_ROUTES.private.teacherTechnicalScientificProductionsData);
     } catch (error) {
       ExceptionHandler.handle({
         error,

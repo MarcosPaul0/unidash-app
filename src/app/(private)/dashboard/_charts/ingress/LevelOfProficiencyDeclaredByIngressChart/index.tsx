@@ -10,84 +10,51 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  {
-    discipline: "História",
-    little: 2,
-    average: 7,
-    many: 4,
-  },
-  {
-    discipline: "Geografia",
-    little: 4,
-    average: 9,
-    many: 3,
-  },
-  {
-    discipline: "Biologia",
-    little: 4,
-    average: 2,
-    many: 6,
-  },
-  {
-    discipline: "Química",
-    little: 3,
-    average: 2,
-    many: 3,
-  },
-  {
-    discipline: "Português",
-    little: 4,
-    average: 8,
-    many: 3,
-  },
-  {
-    discipline: "Matemática",
-    little: 4,
-    average: 2,
-    many: 1,
-  },
-  {
-    discipline: "Física",
-    little: 4,
-    average: 5,
-    many: 9,
-  },
-  {
-    discipline: "Inglês",
-    little: 2,
-    average: 2,
-    many: 8,
-  },
-  {
-    discipline: "Tecnologia",
-    little: 8,
-    average: 6,
-    many: 2,
-  },
-];
+import { LevelOfProficiencyDeclaredByIngressChartProps } from "./levelOfProficiencyDeclaredByIngressChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingAffinityByDiscipline } from "@unidash/api/responses/indicators.response";
+import { AFFINITY_LEVEL } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
-  little: {
+  [AFFINITY_LEVEL.low]: {
     label: "Baixa",
     color: "var(--chart-3)",
   },
-  average: {
+  [AFFINITY_LEVEL.medium]: {
     label: "Média",
     color: "var(--chart-5)",
   },
-  many: {
+  [AFFINITY_LEVEL.high]: {
     label: "Muita",
     color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
 
-export function LevelOfProficiencyDeclaredByIngressChart() {
+export function LevelOfProficiencyDeclaredByIngressChart({
+  studentIncomingByAffinityByDiscipline,
+}: LevelOfProficiencyDeclaredByIngressChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingAffinityByDiscipline[]>({
+    indicators: studentIncomingByAffinityByDiscipline,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -95,7 +62,7 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
       >
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           margin={{
             top: 32,
           }}
@@ -113,13 +80,9 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="little"
-            fill="var(--color-little)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="low" fill="var(--color-low)" radius={[8, 8, 8, 8]}>
             <LabelList
-              dataKey="little"
+              dataKey="low"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -129,12 +92,12 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
           </Bar>
 
           <Bar
-            dataKey="average"
-            fill="var(--color-average)"
+            dataKey="medium"
+            fill="var(--color-medium)"
             radius={[8, 8, 8, 8]}
           >
             <LabelList
-              dataKey="average"
+              dataKey="medium"
               position="top"
               offset={12}
               className="fill-card-foreground"
@@ -143,9 +106,9 @@ export function LevelOfProficiencyDeclaredByIngressChart() {
             />
           </Bar>
 
-          <Bar dataKey="many" fill="var(--color-many)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="high" fill="var(--color-high)" radius={[8, 8, 8, 8]}>
             <LabelList
-              dataKey="many"
+              dataKey="high"
               position="top"
               offset={12}
               className="fill-card-foreground"

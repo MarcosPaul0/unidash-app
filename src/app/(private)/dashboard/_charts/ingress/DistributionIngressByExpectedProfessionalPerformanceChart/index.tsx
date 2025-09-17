@@ -10,14 +10,10 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  { option: "CLT", count: 22 },
-  { option: "Não sabe", count: 4 },
-  { option: "PJ", count: 5 },
-  { option: "Área acadêmica", count: 12 },
-  { option: "Empresa pública", count: 12 },
-];
+import { DistributionIngressByExpectedProfessionalPerformanceChartProps } from "./distributionIngressByExpectedProfessionalPerformanceChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingWorkExpectation } from "@unidash/api/responses/indicators.response";
 
 const chartConfig = {
   count: {
@@ -26,11 +22,30 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function DistributionIngressByExpectedProfessionalPerformanceChart() {
+export function DistributionIngressByExpectedProfessionalPerformanceChart({
+  studentIncomingByWorkExpectation,
+}: DistributionIngressByExpectedProfessionalPerformanceChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingWorkExpectation[]>({
+    indicators: studentIncomingByWorkExpectation,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Distribuição dos ingressantes por expectativa de atuação profissional no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -38,7 +53,7 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart() {
       >
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           margin={{
             top: 32,
           }}
@@ -46,7 +61,7 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart() {
           <CartesianGrid vertical={false} />
 
           <XAxis
-            dataKey="option"
+            dataKey="type"
             tickLine={false}
             tickMargin={20}
             axisLine={false}

@@ -10,63 +10,63 @@ import {
 } from "@unidash/components/Chart";
 import { Pie, PieChart } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
-
-const chartData = [
-  {
-    level: "techniqueInTheArea",
-    students: 275,
-    fill: "var(--color-techniqueInTheArea)",
-  },
-  {
-    level: "techniqueOutTheArea",
-    students: 200,
-    fill: "var(--color-techniqueOutTheArea)",
-  },
-  {
-    level: "higherInTheArea",
-    students: 187,
-    fill: "var(--color-higherInTheArea)",
-  },
-  {
-    level: "higherOutTheArea",
-    students: 173,
-    fill: "var(--color-higherOutTheArea)",
-  },
-  { level: "none", students: 90, fill: "var(--color-none)" },
-];
+import { TrainingProfileIngressChartProps } from "./trainingProfileIngressChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingCurrentEducation } from "@unidash/api/responses/indicators.response";
+import { CURRENT_EDUCATION } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   students: {
     label: "Ingressantes",
   },
-  techniqueInTheArea: {
-    label: "Formação técnica em tecnologia",
+  [CURRENT_EDUCATION.technicalInField]: {
+    label: "Formação técnica na área",
     color: "var(--chart-1)",
   },
-  techniqueOutTheArea: {
-    label: "Formação técnica não tecnologica",
+  [CURRENT_EDUCATION.technicalOutField]: {
+    label: "Formação técnica fora da área",
     color: "var(--chart-3)",
   },
-  higherInTheArea: {
-    label: "Formação superior em tecnologia",
+  [CURRENT_EDUCATION.higherInField]: {
+    label: "Formação superior na área",
     color: "var(--chart-5)",
   },
-  higherOutTheArea: {
-    label: "Formação superior não tecnologica",
+  [CURRENT_EDUCATION.higherOutField]: {
+    label: "Formação superior fora da área",
     color: "var(--chart-6)",
   },
-  none: {
+  [CURRENT_EDUCATION.none]: {
     label: "Não possui",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
-export function TrainingProfileIngressChart() {
+export function TrainingProfileIngressChart({
+  studentIncomingByCurrentEducation,
+}: TrainingProfileIngressChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingCurrentEducation[]>({
+    indicators: studentIncomingByCurrentEducation,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Perfil de formação dos ingressantes por tipo e área de conhecimento no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -76,16 +76,16 @@ export function TrainingProfileIngressChart() {
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
           <Pie
-            data={chartData}
-            dataKey="students"
+            data={indicatorsData}
+            dataKey="count"
             label
-            nameKey="level"
+            nameKey="type"
             fontSize={18}
             fontWeight={600}
           />
 
           <ChartLegend
-            content={<ChartLegendContent nameKey="level" />}
+            content={<ChartLegendContent nameKey="type" />}
             layout="vertical"
             align="right"
             verticalAlign="middle"

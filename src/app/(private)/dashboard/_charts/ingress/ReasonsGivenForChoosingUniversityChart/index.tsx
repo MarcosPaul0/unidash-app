@@ -8,89 +8,68 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-
-const chartData = [
-  {
-    reason: "universityRenown",
-    count: 275,
-    fill: "var(--color-universityRenown)",
-  },
-  {
-    reason: "peopleNearby",
-    count: 200,
-    fill: "var(--color-peopleNearby)",
-  },
-  {
-    reason: "publicEducation",
-    count: 187,
-    fill: "var(--color-publicEducation)",
-  },
-  {
-    reason: "professionalReasons",
-    count: 173,
-    fill: "var(--color-professionalReasons)",
-  },
-  {
-    reason: "financialReasons",
-    count: 90,
-    fill: "var(--color-financialReasons)",
-  },
-  {
-    reason: "notFirstChoice",
-    count: 90,
-    fill: "var(--color-notFirstChoice)",
-  },
-  {
-    reason: "other",
-    count: 90,
-    fill: "var(--color-other)",
-  },
-];
+import { ReasonsGivenForChoosingUniversityChartProps } from "./reasonsGivenForChoosingUniversityChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingUniversityChoiceReason } from "@unidash/api/responses/indicators.response";
+import { UNIVERSITY_CHOICE_REASON } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   count: {
     label: "Motivo",
   },
-  universityRenown: {
+  [UNIVERSITY_CHOICE_REASON.reputation]: {
     label: "Renome da UNIFEI",
-    color: "var(--chart-7)",
   },
-  peopleNearby: {
+  [UNIVERSITY_CHOICE_REASON.closePeople]: {
     label: "Pessoas próximas",
-    color: "var(--chart-7)",
   },
-  publicEducation: {
+  [UNIVERSITY_CHOICE_REASON.publicEducation]: {
     label: "Ensino público",
-    color: "var(--chart-7)",
   },
-  professionalReasons: {
+  [UNIVERSITY_CHOICE_REASON.professionalReasons]: {
     label: "Motivos profissionais",
-    color: "var(--chart-7)",
   },
-  financialReasons: {
+  [UNIVERSITY_CHOICE_REASON.financialReasons]: {
     label: "Motivos financeiros",
-    color: "var(--chart-7)",
   },
-  notFirstChoice: {
+  [UNIVERSITY_CHOICE_REASON.notFirstChoice]: {
     label: "Não foi primeira escolha",
-    color: "var(--chart-7)",
   },
-  other: {
+  [UNIVERSITY_CHOICE_REASON.other]: {
     label: "Outras",
-    color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
-export function ReasonsGivenForChoosingUniversityChart() {
+export function ReasonsGivenForChoosingUniversityChart({
+  studentIncomingByUniversityChoiceReason,
+}: ReasonsGivenForChoosingUniversityChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingUniversityChoiceReason[]>({
+    indicators: studentIncomingByUniversityChoiceReason,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Motivos declarados pelos ingressantes para escolha da universidade no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           layout="vertical"
           margin={{
             left: 0,
@@ -98,7 +77,7 @@ export function ReasonsGivenForChoosingUniversityChart() {
           barGap={100}
         >
           <YAxis
-            dataKey="reason"
+            dataKey="choiceReason"
             type="category"
             axisLine={false}
             tickMargin={0}
@@ -116,7 +95,12 @@ export function ReasonsGivenForChoosingUniversityChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5}>
+          <Bar
+            dataKey="count"
+            layout="vertical"
+            radius={5}
+            fill="var(--chart-7)"
+          >
             <LabelList
               dataKey="count"
               position="center"

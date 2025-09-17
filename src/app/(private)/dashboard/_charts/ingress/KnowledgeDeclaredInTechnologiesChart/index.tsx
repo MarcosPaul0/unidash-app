@@ -8,78 +8,69 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-
-const chartData = [
-  {
-    reason: "navigation",
-    count: 275,
-    fill: "var(--color-navigation)",
-  },
-  {
-    reason: "softwareInstallation",
-    count: 200,
-    fill: "var(--color-softwareInstallation)",
-  },
-  {
-    reason: "programsAndLanguages",
-    count: 187,
-    fill: "var(--color-programsAndLanguages)",
-  },
-  {
-    reason: "spreadsheets",
-    count: 173,
-    fill: "var(--color-spreadsheets)",
-  },
-  {
-    reason: "OSInstallation",
-    count: 90,
-    fill: "var(--color-OSInstallation)",
-  },
-];
+import { KnowledgeDeclaredInTechnologiesChartProps } from "./knowledgeDeclaredInTechnologiesChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { IncomingTechnology } from "@unidash/api/responses/indicators.response";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { TECHNOLOGY } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   count: {
     label: "Motivo",
   },
-  navigation: {
+  [TECHNOLOGY.internetNavigation]: {
     label: "Navegação",
-    color: "var(--chart-10)",
   },
-  softwareInstallation: {
+  [TECHNOLOGY.softwareInstallation]: {
     label: "Instalação de softwares",
-    color: "var(--chart-10)",
   },
-  programsAndLanguages: {
+  [TECHNOLOGY.programmingAndLanguages]: {
     label: "Programas e linguagens",
-    color: "var(--chart-10)",
   },
-  spreadsheets: {
+  [TECHNOLOGY.spreadsheets]: {
     label: "Planilhas",
-    color: "var(--chart-10)",
   },
-  OSInstallation: {
+  [TECHNOLOGY.operatingSystemSetup]: {
     label: "Instalação de SO",
-    color: "var(--chart-10)",
   },
 } satisfies ChartConfig;
 
-export function KnowledgeDeclaredInTechnologiesChart() {
+export function KnowledgeDeclaredInTechnologiesChart({
+  studentIncomingByTechnology,
+}: KnowledgeDeclaredInTechnologiesChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingTechnology[]>({
+    indicators: studentIncomingByTechnology,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Conhecimentos declarados em tecnologias pelos ingressantes no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer className="max-h-[430px] h-full" config={chartConfig}>
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           layout="vertical"
           margin={{
             left: 0,
           }}
         >
           <YAxis
-            dataKey="reason"
+            dataKey="technology"
             type="category"
             axisLine={false}
             tickMargin={0}
@@ -97,7 +88,12 @@ export function KnowledgeDeclaredInTechnologiesChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5}>
+          <Bar
+            dataKey="count"
+            layout="vertical"
+            radius={5}
+            fill="var(--chart-10)"
+          >
             <LabelList
               dataKey="count"
               position="center"

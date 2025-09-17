@@ -10,37 +10,55 @@ import {
 } from "@unidash/components/Chart";
 import { Pie, PieChart } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
-
-const chartData = [
-  { level: "fluent", students: 275, fill: "var(--color-fluent)" },
-  { level: "intermediary", students: 200, fill: "var(--color-intermediary)" },
-  { level: "low", students: 187, fill: "var(--color-low)" },
-];
+import { EnglishProficiencyLevelIngressChartProps } from "./englishProficiencyLevelIngressChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingEnglishProficiencyLevel } from "@unidash/api/responses/indicators.response";
+import { ENGLISH_PROFICIENCY_LEVEL } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   students: {
     label: "Ingressantes",
   },
-  fluent: {
+  [ENGLISH_PROFICIENCY_LEVEL.fluent]: {
     label: "Fluente",
     color: "var(--chart-1)",
   },
-  intermediary: {
+  [ENGLISH_PROFICIENCY_LEVEL.intermediate]: {
     label: "Intermediário",
     color: "var(--chart-5)",
   },
-  low: {
+  [ENGLISH_PROFICIENCY_LEVEL.low]: {
     label: "Baixo",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-export function EnglishProficiencyLevelIngressChart() {
+export function EnglishProficiencyLevelIngressChart({
+  studentIncomingByEnglishProficiencyLevel,
+}: EnglishProficiencyLevelIngressChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingEnglishProficiencyLevel[]>({
+    indicators: studentIncomingByEnglishProficiencyLevel,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Nível de proficiência em inglês dos alunos ingressantes no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-3"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -50,16 +68,16 @@ export function EnglishProficiencyLevelIngressChart() {
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
           <Pie
-            data={chartData}
-            dataKey="students"
+            data={indicatorsData}
+            dataKey="count"
             label
-            nameKey="level"
+            nameKey="englishLevel"
             fontSize={18}
             fontWeight={600}
           />
 
           <ChartLegend
-            content={<ChartLegendContent nameKey="level" />}
+            content={<ChartLegendContent nameKey="englishLevel" />}
             layout="vertical"
             align="right"
             verticalAlign="middle"

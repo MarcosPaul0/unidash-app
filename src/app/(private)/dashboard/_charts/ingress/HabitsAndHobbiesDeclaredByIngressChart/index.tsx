@@ -8,150 +8,94 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-
-const chartData = [
-  {
-    habitsAndHobbies: "games",
-    count: 275,
-    fill: "var(--color-games)",
-  },
-  {
-    habitsAndHobbies: "physicalActivity",
-    count: 200,
-    fill: "var(--color-physicalActivity)",
-  },
-  {
-    habitsAndHobbies: "listenMusic",
-    count: 187,
-    fill: "var(--color-listenMusic)",
-  },
-  {
-    habitsAndHobbies: "teamSports",
-    count: 173,
-    fill: "var(--color-teamSports)",
-  },
-  {
-    habitsAndHobbies: "moviesAndSeries",
-    count: 90,
-    fill: "var(--color-moviesAndSeries)",
-  },
-  {
-    habitsAndHobbies: "reading",
-    count: 90,
-    fill: "var(--color-reading)",
-  },
-  {
-    habitsAndHobbies: "surfTheInternet",
-    count: 90,
-    fill: "var(--color-surfTheInternet)",
-  },
-  {
-    habitsAndHobbies: "playMusicalInstrument",
-    count: 90,
-    fill: "var(--color-playMusicalInstrument)",
-  },
-  {
-    habitsAndHobbies: "socialMedia",
-    count: 90,
-    fill: "var(--color-socialMedia)",
-  },
-  {
-    habitsAndHobbies: "travel",
-    count: 90,
-    fill: "var(--color-travel)",
-  },
-  {
-    habitsAndHobbies: "individualSports",
-    count: 90,
-    fill: "var(--color-individualSports)",
-  },
-  {
-    habitsAndHobbies: "handwork",
-    count: 90,
-    fill: "var(--color-handwork)",
-  },
-  {
-    habitsAndHobbies: "other",
-    count: 90,
-    fill: "var(--color-other)",
-  },
-];
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { IncomingHobbyOrHabit } from "@unidash/api/responses/indicators.response";
+import { HabitsAndHobbiesDeclaredByIngressChartProps } from "./habitsAndHobbiesDeclaredByIngressChart.interface";
+import { HOBBY_OR_HABIT } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   count: {
     label: "Hábito e hobbies",
   },
-  games: {
+  [HOBBY_OR_HABIT.videoGames]: {
     label: "Jogos eletrônicos",
-    color: "var(--chart-7)",
   },
-  physicalActivity: {
+  [HOBBY_OR_HABIT.physicalActivity]: {
     label: "Ativideades físicas",
-    color: "var(--chart-7)",
   },
-  listenMusic: {
+  [HOBBY_OR_HABIT.listeningMusic]: {
     label: "Ouvir música",
-    color: "var(--chart-7)",
   },
-  teamSports: {
+  [HOBBY_OR_HABIT.teamSports]: {
     label: "Esportes em grupo",
-    color: "var(--chart-7)",
   },
-  moviesAndSeries: {
+  [HOBBY_OR_HABIT.moviesOrSeries]: {
     label: "Filmes e séries",
-    color: "var(--chart-7)",
   },
-  reading: {
+  [HOBBY_OR_HABIT.reading]: {
     label: "Leitura",
-    color: "var(--chart-7)",
   },
-  surfTheInternet: {
+  [HOBBY_OR_HABIT.internetBrowsing]: {
     label: "Navegar na internet",
-    color: "var(--chart-7)",
   },
-  playMusicalInstrument: {
+  [HOBBY_OR_HABIT.playingInstrument]: {
     label: "Instrumentos musicais",
-    color: "var(--chart-7)",
   },
-  socialMedia: {
+  [HOBBY_OR_HABIT.socialMedia]: {
     label: "Redes sociais",
-    color: "var(--chart-7)",
   },
-  travel: {
+  [HOBBY_OR_HABIT.traveling]: {
     label: "Viajar",
-    color: "var(--chart-7)",
   },
-  individualSports: {
+  [HOBBY_OR_HABIT.individualSports]: {
     label: "Esportes individuais",
-    color: "var(--chart-7)",
   },
-  handwork: {
-    label: "Trabalhos manuais",
-    color: "var(--chart-7)",
-  },
-  other: {
+  // [HOBBY_OR_HABIT.]: {
+  //   label: "Trabalhos manuais",
+  //
+  // },
+  [HOBBY_OR_HABIT.other]: {
     label: "Outros",
-    color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
-export function HabitsAndHobbiesDeclaredByIngressChart() {
+export function HabitsAndHobbiesDeclaredByIngressChart({
+  studentIncomingByHobbyOrHabit,
+}: HabitsAndHobbiesDeclaredByIngressChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingHobbyOrHabit[]>({
+    indicators: studentIncomingByHobbyOrHabit,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Hábitos e hobbies declarados pelos alunos ingressantes no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           layout="vertical"
           margin={{
             left: 0,
           }}
         >
           <YAxis
-            dataKey="habitsAndHobbies"
+            dataKey="hobbyOrHabit"
             type="category"
             axisLine={false}
             tickMargin={0}
@@ -169,7 +113,12 @@ export function HabitsAndHobbiesDeclaredByIngressChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5}>
+          <Bar
+            dataKey="count"
+            layout="vertical"
+            radius={5}
+            fill="var(--chart-7)"
+          >
             <LabelList
               dataKey="count"
               position="center"

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { BaseApiClient } from "./baseApiClient";
 import { Cookies, COOKIES } from "./cookies";
+import { UNIDASH_API_ROUTES } from "@unidash/routes/unidashApi.routes";
 
 export class ApiClient extends BaseApiClient {
   constructor() {
@@ -27,6 +28,14 @@ export class ApiClient extends BaseApiClient {
     await Cookies.remove(COOKIES.token);
 
     redirect(APP_ROUTES.public.login);
+  }
+
+  protected async fetchRefresh(): Promise<Response> {
+    return await fetch(`${this.baseUrl}${UNIDASH_API_ROUTES.auth.refresh}`, {
+      method: "PATCH",
+      headers: this.headers,
+      credentials: "include",
+    });
   }
 
   protected async manageRefreshResponse(

@@ -28,4 +28,27 @@ export class TeacherResearchAndExtensionProjectsDataSSRService {
 
     return coursesResponse;
   }
+
+  static async getAllForTeacher(
+    pagination?: PaginationDto,
+    filters?: FilterTeacherResearchAndExtensionProjectsDataDto
+  ): Promise<TeacherResearchAndExtensionProjectsDataResponse> {
+    const params = new TeacherResearchAndExtensionProjectsDataParamsBuilder()
+      .applyPagination(pagination)
+      .applyFilters(filters)
+      .build();
+
+    const ssrApiClient = await createApiSSRClient();
+
+    const coursesResponse =
+      await ssrApiClient.get<TeacherResearchAndExtensionProjectsDataResponse>(
+        UNIDASH_API_ROUTES.teacherResearchAndExtensionProjectsData
+          .getAllForTeacher,
+        {
+          params,
+        }
+      );
+
+    return coursesResponse;
+  }
 }

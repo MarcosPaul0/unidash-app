@@ -95,12 +95,38 @@ export function SidebarIndicatorsCollapsible() {
             size="sm"
             variant={indicatorsLinkVariant}
           />
+          <SidebarLink
+            text="Estágios"
+            href={`${APP_ROUTES.private.courseInternshipData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Ingressos"
+            href={`${APP_ROUTES.private.studentIncomingData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
         </Can>
 
         <Can allowedRoles={["teacher"]}>
           <SidebarLink
             text="Orientações de TCCs"
             href={`${APP_ROUTES.private.teacherSupervisedCompletionWorkData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+
+          <SidebarLink
+            text="Produções"
+            href={APP_ROUTES.private.teacherTechnicalScientificProductionsData}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+
+          <SidebarLink
+            text="Projetos"
+            href={APP_ROUTES.private.teacherResearchAndExtensionProjectsData}
             size="sm"
             variant={indicatorsLinkVariant}
           />

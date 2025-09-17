@@ -9,27 +9,32 @@ import { InternshipsContent } from "./_contents/InternshipsContent";
 import { ProductionsContent } from "./_contents/ProductionsContent";
 import { ChartTabsList } from "./_components/ChartTabsList";
 import { CHARTS_CATEGORIES } from "./_components/ChartTabsList/chartsTabsList.constant";
+import { DashboardDialogs } from "./_components/DashboardDialogs";
 
 export default function DashboardPage() {
   return (
-    <Tabs defaultValue={CHARTS_CATEGORIES.COURSE}>
-      <Toolbar>
-        <ChartTabsList />
-      </Toolbar>
+    <>
+      <Tabs defaultValue={CHARTS_CATEGORIES.COURSE}>
+        <Toolbar>
+          <ChartTabsList />
+        </Toolbar>
 
-      <CourseContent />
+        <CourseContent />
 
-      <CoordinationContent />
+        <CoordinationContent />
 
-      <IngressContent />
+        <IngressContent />
 
-      <ConclusionContent />
+        <ConclusionContent />
 
-      <ActivitiesContent />
+        <ActivitiesContent />
 
-      <InternshipsContent />
+        <InternshipsContent />
 
-      <ProductionsContent />
-    </Tabs>
+        <ProductionsContent />
+      </Tabs>
+
+      <DashboardDialogs />
+    </>
   );
 }

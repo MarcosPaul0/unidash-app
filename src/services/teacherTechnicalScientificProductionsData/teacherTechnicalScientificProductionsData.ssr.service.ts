@@ -28,4 +28,27 @@ export class TeacherTechnicalScientificProductionsDataSSRService {
 
     return coursesResponse;
   }
+
+  static async getAllForTeacher(
+    pagination?: PaginationDto,
+    filters?: FilterTeacherTechnicalScientificProductionsDataDto
+  ): Promise<TeacherTechnicalScientificProductionsDataResponse> {
+    const params = new TeacherTechnicalScientificProductionsDataParamsBuilder()
+      .applyPagination(pagination)
+      .applyFilters(filters)
+      .build();
+
+    const ssrApiClient = await createApiSSRClient();
+
+    const coursesResponse =
+      await ssrApiClient.get<TeacherTechnicalScientificProductionsDataResponse>(
+        UNIDASH_API_ROUTES.teacherTechnicalScientificProductionsData
+          .getAllForTeacher,
+        {
+          params,
+        }
+      );
+
+    return coursesResponse;
+  }
 }

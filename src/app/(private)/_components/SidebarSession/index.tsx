@@ -54,7 +54,9 @@ export function SidebarSession() {
             />
           </Can>
 
-          <SidebarIndicatorsCollapsible />
+          <Can allowedRoles={["admin", "teacher"]}>
+            <SidebarIndicatorsCollapsible />
+          </Can>
         </SidebarGroup>
       </SidebarContent>
 

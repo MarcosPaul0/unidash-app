@@ -12,7 +12,6 @@ import { useForm, FormProvider } from "react-hook-form";
 import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
-import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
 import { useRouter } from "next/navigation";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
@@ -25,6 +24,8 @@ import {
   registerTeacherResearchAndExtensionProjectsDataDtoSchema,
 } from "@unidash/api/dtos/teacherResearchAndExtensionProjectsData.dto";
 import { TeacherResearchAndExtensionProjectsDataCSService } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsData.cs.service";
+import { useCan } from "@unidash/hooks/useCan";
+import { useCourseStore } from "@unidash/store/course.store";
 
 const REGISTER_TEACHER_RESEARCH_AND_EXTENSION_PROJECTS_DATA_SUCCESS_MESSAGE =
   "Novo registro de projetos de pesquisa e extensão foi adicionado!";
@@ -39,9 +40,9 @@ const REGISTER_TEACHER_RESEARCH_AND_EXTENSION_PROJECTS_DATA_ERROR_MESSAGES = {
 } as const;
 
 export function TeacherResearchAndExtensionProjectsDataForm() {
-  const { activeCourse } = useCourseStore();
-
   const router = useRouter();
+  const isAdmin = useCan(["admin"]);
+  const { activeCourse } = useCourseStore();
 
   const formMethods =
     useForm<RegisterTeacherResearchAndExtensionProjectsDataDto>({
@@ -66,17 +67,7 @@ export function TeacherResearchAndExtensionProjectsDataForm() {
     registerTeacherResearchAndExtensionProjectsDataDto: RegisterTeacherResearchAndExtensionProjectsDataDto
   ) {
     try {
-      if (!activeCourse) {
-        Toast.error(
-          "É necessário selecionar o curso para registrar as informações!"
-        );
-        return;
-      }
-
-      console.log(registerTeacherResearchAndExtensionProjectsDataDto);
-
       await TeacherResearchAndExtensionProjectsDataCSService.registerByTeacher(
-        activeCourse.id,
         registerTeacherResearchAndExtensionProjectsDataDto
       );
 
@@ -84,9 +75,11 @@ export function TeacherResearchAndExtensionProjectsDataForm() {
         REGISTER_TEACHER_RESEARCH_AND_EXTENSION_PROJECTS_DATA_SUCCESS_MESSAGE
       );
 
-      router.push(
-        `${APP_ROUTES.private.teacherResearchAndExtensionProjectsData}${activeCourse.id}`
-      );
+      const redirectRoute = isAdmin
+        ? `${APP_ROUTES.private.teacherResearchAndExtensionProjectsData}${activeCourse?.id}`
+        : APP_ROUTES.private.teacherResearchAndExtensionProjectsData;
+
+      router.push(redirectRoute);
     } catch (error) {
       ExceptionHandler.handle({
         error,

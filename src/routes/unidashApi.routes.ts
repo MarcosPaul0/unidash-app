@@ -20,7 +20,7 @@ export const UNIDASH_API_ROUTES = {
   },
   student: {
     getById: "/students/",
-    getBySession: "/student/me",
+    getBySession: "/students/me",
     getByCourse: "/students/by-course/",
     register: "/students",
     update: "/students/",
@@ -45,6 +45,11 @@ export const UNIDASH_API_ROUTES = {
     getAll: "/course-departure-data/",
     register: "/course-departure-data",
     delete: "/course-departure-data/",
+  },
+  courseInternshipData: {
+    getAll: "/course-internship-data/",
+    register: "/course-internship-data",
+    delete: "/course-internship-data/",
   },
   courseRegistrationLockData: {
     getAll: "/course-registration-lock-data/",
@@ -81,7 +86,6 @@ export const UNIDASH_API_ROUTES = {
     register: "/course-extension-activities-data",
     delete: "/course-extension-activities-data/",
   },
-
   teacherSupervisedCompletionWorkData: {
     getAll: "/teacher-supervised-completion-work-data/",
     getAllForTeacher: "/teacher-supervised-completion-work-data/for-teacher/",
@@ -92,7 +96,7 @@ export const UNIDASH_API_ROUTES = {
   teacherTechnicalScientificProductionsData: {
     getAll: "/teacher-technical-scientific-productions-data/",
     getAllForTeacher:
-      "/teacher-technical-scientific-productions-data/for-teacher/",
+      "/teacher-technical-scientific-productions-data-for-teacher",
     register: "/teacher-technical-scientific-productions-data",
     registerForTeacher:
       "/teacher-technical-scientific-productions-data/by-teacher",
@@ -101,15 +105,28 @@ export const UNIDASH_API_ROUTES = {
   teacherResearchAndExtensionProjectsData: {
     getAll: "/teacher-research-and-extension-projects-data/",
     getAllForTeacher:
-      "/teacher-research-and-extension-projects-data/for-teacher/",
+      "/teacher-research-and-extension-projects-data-for-teacher",
     register: "/teacher-research-and-extension-projects-data",
     registerForTeacher:
       "/teacher-research-and-extension-projects-data/by-teacher",
     delete: "/teacher-research-and-extension-projects-data/",
   },
+  studentIncomingData: {
+    getAll: "/student-incoming-data/",
+    register: "/student-incoming-data",
+    delete: "/student-incoming-data/",
+    checkResponded: "/student-incoming-check-responded",
+  },
   indicators: {
     getCoordinationIndicators: "/course-coordination-indicators/",
     getCourseIndicators: "/course-indicators/",
     getCompletionWorkIndicators: "/course-completion-work-indicators/",
+    getActivitiesIndicators: "/course-activities-indicators/",
+    getInternshipIndicators: "/course-internship-indicators/",
+    getTeacherProductionsIndicators: "/course-teachers-productions-indicators/",
+    getStudentIncomingIndicators: "/course-student-incoming-indicators/",
+  },
+  city: {
+    getAll: "/cities",
   },
 } as const;

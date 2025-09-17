@@ -8,96 +8,78 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-
-const chartData = [
-  {
-    reason: "computerAsHobby",
-    count: 275,
-    fill: "var(--color-computerAsHobby)",
-  },
-  {
-    reason: "financialReasons",
-    count: 200,
-    fill: "var(--color-financialReasons)",
-  },
-  {
-    reason: "courseQuality",
-    count: 187,
-    fill: "var(--color-courseQuality)",
-  },
-  {
-    reason: "moreInterestingBySISU",
-    count: 173,
-    fill: "var(--color-moreInterestingBySISU)",
-  },
-  {
-    reason: "notFirstChoice",
-    count: 90,
-    fill: "var(--color-notFirstChoice)",
-  },
-  {
-    reason: "desireHigherEducation",
-    count: 90,
-    fill: "var(--color-desireHigherEducation)",
-  },
-  {
-    reason: "professionalUpdate",
-    count: 90,
-    fill: "var(--color-professionalUpdate)",
-  },
-];
+import { ReasonsGivenForChoosingTheCourseChartProps } from "./reasonsGivenForChoosingTheCourseChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { IncomingCourseChoiceReason } from "@unidash/api/responses/indicators.response";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { COURSE_CHOICE_REASON } from "@unidash/api/dtos/studentIncomingData.dto";
 
 const chartConfig = {
   count: {
     label: "Motivo",
   },
-  computerAsHobby: {
-    label: "Computador hobby",
-    color: "var(--chart-8)",
+  [COURSE_CHOICE_REASON.hobbyRelation]: {
+    label: "Relação com hobby",
   },
-  financialReasons: {
+  [COURSE_CHOICE_REASON.financialReasons]: {
     label: "Financeiros",
-    color: "var(--chart-8)",
   },
-  courseQuality: {
+  [COURSE_CHOICE_REASON.courseQuality]: {
     label: "Qualidade do curso",
-    color: "var(--chart-8)",
   },
-  moreInterestingBySISU: {
+  [COURSE_CHOICE_REASON.sisuPreference]: {
     label: "Interessante SISU",
-    color: "var(--chart-8)",
   },
-  notFirstChoice: {
+  [COURSE_CHOICE_REASON.notFirstChoice]: {
     label: "Não prioritária",
-    color: "var(--chart-8)",
   },
-  desireHigherEducation: {
+  [COURSE_CHOICE_REASON.higherEducationDesire]: {
     label: "Desejo de graduação",
-    color: "var(--chart-8)",
   },
-  professionalUpdate: {
+  [COURSE_CHOICE_REASON.professionalUpdate]: {
     label: "Atualização profissional",
-    color: "var(--chart-8)",
+  },
+  [COURSE_CHOICE_REASON.other]: {
+    label: "Outro",
   },
 } satisfies ChartConfig;
 
-export function ReasonsGivenForChoosingTheCourseChart() {
+export function ReasonsGivenForChoosingTheCourseChart({
+  studentIncomingByCourseChoiceReason,
+}: ReasonsGivenForChoosingTheCourseChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<IncomingCourseChoiceReason[]>({
+    indicators: studentIncomingByCourseChoiceReason,
+    initialData: [],
+  });
+
   return (
     <ChartCard
       title="Motivos declarados pelos ingressantes para escolha do curso no ano de 2023"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           layout="vertical"
           margin={{
             left: 0,
           }}
         >
           <YAxis
-            dataKey="reason"
+            dataKey="choiceReason"
             type="category"
             axisLine={false}
             tickMargin={0}
@@ -115,7 +97,12 @@ export function ReasonsGivenForChoosingTheCourseChart() {
             content={<ChartTooltipContent hideLabel />}
           />
 
-          <Bar dataKey="count" layout="vertical" radius={5}>
+          <Bar
+            dataKey="count"
+            layout="vertical"
+            radius={5}
+            fill="var(--chart-8)"
+          >
             <LabelList
               dataKey="count"
               position="center"

@@ -10,35 +10,43 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-
-const chartData = [
-  { teacher: "Minoru", orientations: 22 },
-  { teacher: "Isabela", orientations: 4 },
-  { teacher: "Bruno", orientations: 5 },
-  { teacher: "Laércio", orientations: 12 },
-  { teacher: "Phyllipe", orientations: 12 },
-  { teacher: "Claudino", orientations: 1 },
-  { teacher: "Vanessa", orientations: 2 },
-  { teacher: "Lina", orientations: 6 },
-  { teacher: "Rafael", orientations: 3 },
-  { teacher: "Adler", orientations: 1 },
-  { teacher: "Pedro", orientations: 17 },
-  { teacher: "Rodrigo", orientations: 11 },
-];
+import { TotalNumberOfInternshipsByTeacherChartProps } from "./totalNumberOfInternshipsByTeacherChart.interface";
+import { InternshipByAdvisor } from "@unidash/api/responses/indicators.response";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { ChartSelect } from "../../../_components/ChartSelect";
 
 const chartConfig = {
-  orientations: {
+  count: {
     label: "Orientações realizadas",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
-export function TotalNumberOfInternshipsByTeacherChart() {
+export function TotalNumberOfInternshipsByTeacherChart({
+  internshipsByAdvisor,
+}: TotalNumberOfInternshipsByTeacherChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<InternshipByAdvisor[]>({
+    indicators: internshipsByAdvisor,
+    initialData: [],
+  });
+
   return (
     <ChartCard
-      title="Total de orientações de estágio supervisionado por professor no ano de 2023"
+      title="Total de orientações de estágio supervisionado por professor"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       className="col-span-4"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -46,7 +54,7 @@ export function TotalNumberOfInternshipsByTeacherChart() {
       >
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={indicatorsData}
           margin={{
             top: 32,
           }}
@@ -54,7 +62,7 @@ export function TotalNumberOfInternshipsByTeacherChart() {
           <CartesianGrid vertical={false} />
 
           <XAxis
-            dataKey="teacher"
+            dataKey="advisor"
             tickLine={false}
             tickMargin={20}
             axisLine={false}
@@ -67,13 +75,9 @@ export function TotalNumberOfInternshipsByTeacherChart() {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="orientations"
-            fill="var(--color-orientations)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
             <LabelList
-              dataKey="orientations"
+              dataKey="count"
               position="top"
               offset={12}
               className="fill-card-foreground"

@@ -38,32 +38,19 @@ export class ApiSSRClient extends BaseApiClient {
     redirect(APP_ROUTES.public.login);
   }
 
+  protected async fetchRefresh(): Promise<Response> {
+    return await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/auth/refresh`, {
+      method: "POST",
+      credentials: "include",
+    });
+  }
+
   protected async manageRefreshResponse(
     refreshResponse: Response
   ): Promise<void> {
     const { accessToken } = await refreshResponse.json();
 
     this.setAuthorizationWithBearerToken(accessToken);
-
-    const cookiesSSRStore = await cookies();
-
-    const setCookies = refreshResponse.headers.getSetCookie();
-
-    if (setCookies.length > 0) {
-      const newRefreshTokenSetCookie = setCookies[0].split(";")[0];
-      const newRefreshToken = newRefreshTokenSetCookie.split("=")[1];
-
-      cookiesSSRStore.set(COOKIES.refreshToken, newRefreshToken, {
-        path: "/",
-        httpOnly: true,
-        secure: true,
-        sameSite: "strict",
-      });
-    }
-
-    cookiesSSRStore.set(COOKIES.token, accessToken, {
-      path: "/",
-    });
   }
 }
 

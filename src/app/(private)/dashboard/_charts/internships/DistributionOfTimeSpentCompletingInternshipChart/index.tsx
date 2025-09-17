@@ -10,14 +10,10 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList } from "recharts";
-
-const chartData = [
-  {
-    bigger: 22,
-    medium: 12,
-    smaller: 13,
-  },
-];
+import { DistributionOfTimeSpentCompletingInternshipChartProps } from "./distributionOfTimeSpentCompletingInternshipChart.interface";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { InternshipByConclusionTime } from "@unidash/api/responses/indicators.response";
 
 const chartConfig = {
   bigger: {
@@ -34,17 +30,40 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function DistributionOfTimeSpentCompletingInternshipChart() {
+export function DistributionOfTimeSpentCompletingInternshipChart({
+  internshipsByConclusionTime,
+}: DistributionOfTimeSpentCompletingInternshipChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<InternshipByConclusionTime>({
+    indicators: internshipsByConclusionTime,
+    initialData: {
+      bigger: 0,
+      medium: 0,
+      smaller: 0,
+    },
+  });
+
   return (
     <ChartCard
-      title="Distribuição do tempo gasto para conclusão de estágios supervisionados no ano de 2023"
+      title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024). Onde maior corresponde a tempo maior ou igual a 100 horas, médio à 80 horas e menor à 60 horas"
       className="col-span-3"
+      complement={
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      }
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
-          data={chartData}
+          data={[indicatorsData]}
           margin={{
             top: 32,
           }}
