@@ -86,6 +86,11 @@ export const UNIDASH_API_ROUTES = {
     register: "/course-extension-activities-data",
     delete: "/course-extension-activities-data/",
   },
+  courseTeacherWorkloadData: {
+    getAll: "/course-teacher-workload-data/",
+    register: "/course-teacher-workload-data",
+    delete: "/course-teacher-workload-data/",
+  },
   teacherSupervisedCompletionWorkData: {
     getAll: "/teacher-supervised-completion-work-data/",
     getAllForTeacher: "/teacher-supervised-completion-work-data/for-teacher/",
