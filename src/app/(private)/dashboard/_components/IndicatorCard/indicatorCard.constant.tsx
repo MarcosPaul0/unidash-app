@@ -38,6 +38,7 @@ export const SITUATION_TYPE = {
   indifferent: "indifferent",
   increase: "increase",
   regress: "regress",
+  onlyCurrent: "onlyCurrent",
 } as const;
 
 export const SITUATION_ICON = {
@@ -50,6 +51,7 @@ export const SITUATION_ICON = {
   [SITUATION_TYPE.regress]: (
     <ChartLineDownIcon size={28} className="text-regress" />
   ),
+  [SITUATION_TYPE.onlyCurrent]: null,
 } as const;
 
 export type SituationType =
