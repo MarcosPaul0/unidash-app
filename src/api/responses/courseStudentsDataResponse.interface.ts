@@ -7,8 +7,6 @@ export interface CourseStudentsDataResponse {
     semester: Semester;
     entrants: number;
     actives: number;
-    locks: number;
-    canceled: number;
     subscribers: number;
     vacancies: number;
     createdAt: string;
