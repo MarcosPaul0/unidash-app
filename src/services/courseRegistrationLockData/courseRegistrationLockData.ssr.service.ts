@@ -4,6 +4,8 @@ import { FilterCourseRegistrationLockDataDto } from "@unidash/api/dtos/courseReg
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseRegistrationLockDataParamsBuilder } from "./courseRegistrationLockDataParams.builder";
 import { CourseRegistrationLockDataResponse } from "@unidash/api/responses/courseRegistrationLockDataResponse.interface";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class CourseRegistrationLockDataSSRService {
   static async getAll(
@@ -18,7 +20,7 @@ export class CourseRegistrationLockDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse =
+    const courseRegistrationLockResponse =
       await ssrApiClient.get<CourseRegistrationLockDataResponse>(
         `${UNIDASH_API_ROUTES.courseRegistrationLockData.getAll}${courseId}`,
         {
@@ -26,6 +28,10 @@ export class CourseRegistrationLockDataSSRService {
         }
       );
 
-    return coursesResponse;
+    if (courseRegistrationLockResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseRegistrationLockResponse;
   }
 }

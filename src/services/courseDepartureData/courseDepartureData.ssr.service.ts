@@ -4,6 +4,8 @@ import { CourseDepartureDataParamsBuilder } from "./courseDepartureDataParams.bu
 import { FilterCourseDepartureDataDto } from "@unidash/api/dtos/courseDepartureData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseDepartureDataResponse } from "@unidash/api/responses/courseDepartureDataResponse.interface";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
+import { redirect } from "next/navigation";
 
 export class CourseDepartureDataSSRService {
   static async getAll(
@@ -18,13 +20,18 @@ export class CourseDepartureDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse = await ssrApiClient.get<CourseDepartureDataResponse>(
-      `${UNIDASH_API_ROUTES.courseDepartureData.getAll}${courseId}`,
-      {
-        params,
-      }
-    );
+    const courseDepartureResponse =
+      await ssrApiClient.get<CourseDepartureDataResponse>(
+        `${UNIDASH_API_ROUTES.courseDepartureData.getAll}${courseId}`,
+        {
+          params,
+        }
+      );
 
-    return coursesResponse;
+    if (courseDepartureResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseDepartureResponse;
   }
 }

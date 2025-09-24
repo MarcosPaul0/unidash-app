@@ -4,6 +4,8 @@ import { CourseCompletionWorkDataParamsBuilder } from "./courseCompletionWorkDat
 import { FilterCourseCompletionWorkDataDto } from "@unidash/api/dtos/courseCompletionWorkData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseCompletionWorkDataResponse } from "@unidash/api/responses/courseCompletionWorkDataResponse.interface";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
+import { redirect } from "next/navigation";
 
 export class CourseCompletionWorkDataSSRService {
   static async getAll(
@@ -18,7 +20,7 @@ export class CourseCompletionWorkDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse =
+    const courseCompletionWorkResponse =
       await ssrApiClient.get<CourseCompletionWorkDataResponse>(
         `${UNIDASH_API_ROUTES.courseCompletionWorkData.getAll}${courseId}`,
         {
@@ -26,6 +28,10 @@ export class CourseCompletionWorkDataSSRService {
         }
       );
 
-    return coursesResponse;
+    if (courseCompletionWorkResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseCompletionWorkResponse;
   }
 }

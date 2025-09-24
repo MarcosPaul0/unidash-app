@@ -6,6 +6,8 @@ import {
 import { createApiSSRClient } from "@unidash/lib/apiClientSSR";
 import { UNIDASH_API_ROUTES } from "@unidash/routes/unidashApi.routes";
 import { StudentParamsBuilder } from "./studentParams.builder";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
+import { redirect } from "next/navigation";
 
 export class StudentSSRService {
   static async getBySession(): Promise<StudentResponse> {
@@ -24,6 +26,10 @@ export class StudentSSRService {
     const studentResponse = await ssrApiClient.get<StudentResponse>(
       `${UNIDASH_API_ROUTES.student.getById}${studentId}`
     );
+
+    if (studentResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
 
     return studentResponse;
   }
@@ -44,6 +50,10 @@ export class StudentSSRService {
         params,
       }
     );
+
+    if (studentsResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
 
     return studentsResponse;
   }

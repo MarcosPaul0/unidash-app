@@ -42,8 +42,6 @@ export class CourseStudentsDataCSService {
         semester: registerCourseStudentsDataDto.semester,
         entrants: registerCourseStudentsDataDto.entrants,
         actives: registerCourseStudentsDataDto.actives,
-        locks: registerCourseStudentsDataDto.locks,
-        canceled: registerCourseStudentsDataDto.canceled,
         vacancies: registerCourseStudentsDataDto.vacancies,
         subscribers: registerCourseStudentsDataDto.subscribers,
       }

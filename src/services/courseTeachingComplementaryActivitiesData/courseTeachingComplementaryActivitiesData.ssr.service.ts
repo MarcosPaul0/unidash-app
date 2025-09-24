@@ -4,6 +4,8 @@ import { CourseTeachingComplementaryActivitiesDataParamsBuilder } from "./course
 import { FilterCourseTeachingComplementaryActivitiesDataDto } from "@unidash/api/dtos/courseTeachingComplementaryActivitiesData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseTeachingComplementaryActivitiesDataResponse } from "@unidash/api/responses/courseTeachingComplementaryActivitiesDataResponse.interface";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class CourseTeachingComplementaryActivitiesDataSSRService {
   static async getAll(
@@ -18,7 +20,7 @@ export class CourseTeachingComplementaryActivitiesDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse =
+    const courseTeachingComplementaryActivitiesResponse =
       await ssrApiClient.get<CourseTeachingComplementaryActivitiesDataResponse>(
         `${UNIDASH_API_ROUTES.courseTeachingComplementaryActivitiesData.getAll}${courseId}`,
         {
@@ -26,6 +28,10 @@ export class CourseTeachingComplementaryActivitiesDataSSRService {
         }
       );
 
-    return coursesResponse;
+    if (courseTeachingComplementaryActivitiesResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseTeachingComplementaryActivitiesResponse;
   }
 }

@@ -11,14 +11,18 @@ export type GetAllCourseStudentsDataParams = FilterCourseStudentsDataDto &
 export class CourseStudentsDataParamsBuilder extends BaseParamsBuilder<FilterCourseStudentsDataDto> {
   public applyFilters(filtersDto: FilterCourseStudentsDataDto): this {
     const validatedFilters =
-      filterCourseStudentsDataDtoSchema.parse(filtersDto);
+      filterCourseStudentsDataDtoSchema.safeParse(filtersDto);
 
-    if (validatedFilters?.year) {
-      this.params["year"] = validatedFilters.year;
+    if (!validatedFilters.success) {
+      return this;
     }
 
-    if (validatedFilters?.semester) {
-      this.params["semester"] = validatedFilters.semester;
+    if (validatedFilters.data?.year) {
+      this.params["year"] = validatedFilters.data.year;
+    }
+
+    if (validatedFilters.data?.semester) {
+      this.params["semester"] = validatedFilters.data.semester;
     }
 
     return this;

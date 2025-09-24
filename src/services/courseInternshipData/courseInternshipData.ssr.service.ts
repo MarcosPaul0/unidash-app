@@ -4,6 +4,8 @@ import { CourseInternshipDataParamsBuilder } from "./courseInternshipDataParams.
 import { FilterCourseInternshipDataDto } from "@unidash/api/dtos/courseInternshipData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseInternshipDataResponse } from "@unidash/api/responses/courseInternshipDataResponse.interface";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class CourseInternshipDataSSRService {
   static async getAll(
@@ -18,7 +20,7 @@ export class CourseInternshipDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse =
+    const courseInternshipResponse =
       await ssrApiClient.get<CourseInternshipDataResponse>(
         `${UNIDASH_API_ROUTES.courseInternshipData.getAll}${courseId}`,
         {
@@ -26,6 +28,10 @@ export class CourseInternshipDataSSRService {
         }
       );
 
-    return coursesResponse;
+    if (courseInternshipResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseInternshipResponse;
   }
 }

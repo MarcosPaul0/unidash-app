@@ -4,6 +4,8 @@ import { CourseExtensionActivitiesDataParamsBuilder } from "./courseExtensionAct
 import { FilterCourseExtensionActivitiesDataDto } from "@unidash/api/dtos/courseExtensionActivitiesData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseExtensionActivitiesDataResponse } from "@unidash/api/responses/courseExtensionActivitiesDataResponse.interface";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class CourseExtensionActivitiesDataSSRService {
   static async getAll(
@@ -18,7 +20,7 @@ export class CourseExtensionActivitiesDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse =
+    const courseExtensionActivitiesResponse =
       await ssrApiClient.get<CourseExtensionActivitiesDataResponse>(
         `${UNIDASH_API_ROUTES.courseExtensionActivitiesData.getAll}${courseId}`,
         {
@@ -26,6 +28,10 @@ export class CourseExtensionActivitiesDataSSRService {
         }
       );
 
-    return coursesResponse;
+    if (courseExtensionActivitiesResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseExtensionActivitiesResponse;
   }
 }

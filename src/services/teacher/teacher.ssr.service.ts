@@ -10,6 +10,8 @@ import {
   filterTeachersDtoSchema,
 } from "@unidash/api/dtos/teacher.dto";
 import { TeacherParamsBuilder } from "./teacherParams.builder";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class TeacherSSRService {
   static async getBySession(): Promise<TeacherResponse> {
@@ -42,6 +44,10 @@ export class TeacherSSRService {
       }
     );
 
+    if (teacherResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
     return teacherResponse;
   }
 
@@ -51,6 +57,10 @@ export class TeacherSSRService {
     const teacherResponse = await ssrApiClient.get<TeacherResponse>(
       `${UNIDASH_API_ROUTES.teacher.getById}${teacherId}`
     );
+
+    if (teacherResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
 
     return teacherResponse;
   }

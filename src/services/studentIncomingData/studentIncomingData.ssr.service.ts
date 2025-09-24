@@ -4,6 +4,8 @@ import { StudentIncomingDataParamsBuilder } from "./studentIncomingDataParams.bu
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { StudentIncomingDataResponse } from "@unidash/api/responses/studentIncomingDataResponse.interface";
 import { FilterStudentIncomingDataDto } from "@unidash/api/dtos/studentIncomingData.dto";
+import { redirect } from "next/navigation";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 export class StudentIncomingDataSSRService {
   static async getAll(
@@ -18,13 +20,18 @@ export class StudentIncomingDataSSRService {
 
     const ssrApiClient = await createApiSSRClient();
 
-    const coursesResponse = await ssrApiClient.get<StudentIncomingDataResponse>(
-      `${UNIDASH_API_ROUTES.studentIncomingData.getAll}${courseId}`,
-      {
-        params,
-      }
-    );
+    const studentIncomingResponse =
+      await ssrApiClient.get<StudentIncomingDataResponse>(
+        `${UNIDASH_API_ROUTES.studentIncomingData.getAll}${courseId}`,
+        {
+          params,
+        }
+      );
 
-    return coursesResponse;
+    if (studentIncomingResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return studentIncomingResponse;
   }
 }
