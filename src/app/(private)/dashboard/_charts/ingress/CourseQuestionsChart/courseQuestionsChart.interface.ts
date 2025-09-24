@@ -1,5 +1,5 @@
 import { CourseStudentIncomingIndicatorsResponse } from "@unidash/api/responses/indicators.response";
 
-export interface KnowledgeAndDesireForNightCoursesChartProps {
+export interface CourseQuestionsChartProps {
   studentIncomingByCourseComplements?: CourseStudentIncomingIndicatorsResponse["studentIncomingByCourseComplements"];
 }

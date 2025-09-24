@@ -3,3 +3,7 @@ import { CourseIndicatorsResponse } from "@unidash/api/responses/indicators.resp
 export interface CourseIndicatorsProps {
   indicators: CourseIndicatorsResponse | null;
 }
+
+export interface IndicatorsCardsProps {
+  complements?: CourseIndicatorsResponse["complements"] | null;
+}

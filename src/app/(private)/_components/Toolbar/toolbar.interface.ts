@@ -13,4 +13,5 @@ export interface ToolbarProps {
     link: string | Url;
   };
   children?: ReactNode;
+  filterForm?: ReactNode;
 }
