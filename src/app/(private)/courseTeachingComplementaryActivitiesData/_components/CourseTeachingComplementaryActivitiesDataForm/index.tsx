@@ -38,6 +38,19 @@ const REGISTER_COURSE_TEACHING_COMPLEMENTARY_ACTIVITIES_DATA_ERROR_MESSAGES = {
     "Esse registro de atividades complementares de ensino do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  complementaryCoursesInTheArea: "",
+  coursesInTheArea: "",
+  coursesOutsideTheArea: "",
+  electivesDisciplines: "",
+  preparationForTest: "",
+  providingTraining: "",
+  sponsorshipOfNewStudents: "",
+  subjectMonitoring: "",
+} as unknown as RegisterCourseTeachingComplementaryActivitiesDataDto;
+
 export function CourseTeachingComplementaryActivitiesDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -48,18 +61,7 @@ export function CourseTeachingComplementaryActivitiesDataForm() {
       resolver: zodResolver(
         registerCourseTeachingComplementaryActivitiesDataDtoSchema
       ),
-      defaultValues: {
-        semester: "first",
-        year: new Date().getFullYear(),
-        complementaryCoursesInTheArea: 0,
-        coursesInTheArea: 0,
-        coursesOutsideTheArea: 0,
-        electivesDisciplines: 0,
-        preparationForTest: 0,
-        providingTraining: 0,
-        sponsorshipOfNewStudents: 0,
-        subjectMonitoring: 0,
-      },
+      defaultValues: INITIAL_VALUES,
     });
 
   const {

@@ -15,6 +15,17 @@ import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChart
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const typeLabels: Record<string, string> = {
+  scientificInitiation: "Iniciações científica",
+  developmentInitiation: "Iniciações em desenvolvimento",
+  publishedArticles: "Artigos publicados",
+  fullPublishedArticles: "Artigos completos publicados",
+  publishedAbstracts: "Resumos publicados",
+  presentationOfWork: "Apresentações de trabalhos",
+  participationInEvents: "Participações em eventos",
+};
 
 const chartConfig = {
   firstSemester: {
@@ -73,7 +84,10 @@ export function RegistrationByTypeOfSearchComplementaryActivity({
             axisLine={false}
             height={80}
             fontSize={14}
-            angle={-25}
+            angle={-15}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

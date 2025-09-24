@@ -66,11 +66,35 @@ export function SidebarIndicatorsCollapsible() {
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="TCC"
-            href={`${APP_ROUTES.private.courseCompletionWorkData}${activeCourse?.id}`}
+            text="Ingressos"
+            href={`${APP_ROUTES.private.studentIncomingData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
+          <SidebarLink
+            text="Carga horária"
+            href={`${APP_ROUTES.private.courseTeacherWorkloadData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+        </Can>
+
+        <Can
+          allowedRoles={["admin", "teacher"]}
+          allowedTeacherRoles={["extensionsActivitiesManagerTeacher"]}
+        >
+          <SidebarLink
+            text="Ativ. de extensão"
+            href={`${APP_ROUTES.private.courseExtensionActivitiesData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+        </Can>
+
+        <Can
+          allowedRoles={["admin", "teacher"]}
+          allowedTeacherRoles={["complementaryActivitiesManagerTeacher"]}
+        >
           <SidebarLink
             text="Ativ. compl. ensino"
             href={`${APP_ROUTES.private.courseTeachingComplementaryActivitiesData}${activeCourse?.id}`}
@@ -89,21 +113,27 @@ export function SidebarIndicatorsCollapsible() {
             size="sm"
             variant={indicatorsLinkVariant}
           />
-          <SidebarLink
-            text="Ativ. de extensão"
-            href={`${APP_ROUTES.private.courseExtensionActivitiesData}${activeCourse?.id}`}
-            size="sm"
-            variant={indicatorsLinkVariant}
-          />
+        </Can>
+
+        <Can
+          allowedRoles={["admin", "teacher"]}
+          allowedTeacherRoles={["internshipManagerTeacher"]}
+        >
           <SidebarLink
             text="Estágios"
             href={`${APP_ROUTES.private.courseInternshipData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
+        </Can>
+
+        <Can
+          allowedRoles={["admin", "teacher"]}
+          allowedTeacherRoles={["workCompletionManagerTeacher"]}
+        >
           <SidebarLink
-            text="Ingressos"
-            href={`${APP_ROUTES.private.studentIncomingData}${activeCourse?.id}`}
+            text="TCC"
+            href={`${APP_ROUTES.private.courseCompletionWorkData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />

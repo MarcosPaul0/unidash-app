@@ -39,6 +39,13 @@ const REGISTER_TEACHER_RESEARCH_AND_EXTENSION_PROJECTS_DATA_ERROR_MESSAGES = {
     "Esse registro de projetos de pesquisa e extensão já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  extensionProjects: "",
+  researchProjects: "",
+} as unknown as RegisterTeacherResearchAndExtensionProjectsDataDto;
+
 export function TeacherResearchAndExtensionProjectsDataForm() {
   const router = useRouter();
   const isAdmin = useCan(["admin"]);
@@ -49,12 +56,7 @@ export function TeacherResearchAndExtensionProjectsDataForm() {
       resolver: zodResolver(
         registerTeacherResearchAndExtensionProjectsDataDtoSchema
       ),
-      defaultValues: {
-        semester: "first",
-        year: new Date().getFullYear(),
-        extensionProjects: 0,
-        researchProjects: 0,
-      },
+      defaultValues: INITIAL_VALUES,
     });
 
   const {

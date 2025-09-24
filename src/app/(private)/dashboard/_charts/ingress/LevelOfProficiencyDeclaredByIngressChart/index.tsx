@@ -14,7 +14,23 @@ import { LevelOfProficiencyDeclaredByIngressChartProps } from "./levelOfProficie
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { IncomingAffinityByDiscipline } from "@unidash/api/responses/indicators.response";
-import { AFFINITY_LEVEL } from "@unidash/api/dtos/studentIncomingData.dto";
+import {
+  AFFINITY_LEVEL,
+  HIGH_SCHOOL_DISCIPLINE,
+} from "@unidash/api/dtos/studentIncomingData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const disciplinesLabels: Record<string, string> = {
+  [HIGH_SCHOOL_DISCIPLINE.history]: "História",
+  [HIGH_SCHOOL_DISCIPLINE.geography]: "Geografia",
+  [HIGH_SCHOOL_DISCIPLINE.portuguese]: "Português",
+  [HIGH_SCHOOL_DISCIPLINE.biology]: "Biologia",
+  [HIGH_SCHOOL_DISCIPLINE.chemical]: "Química",
+  [HIGH_SCHOOL_DISCIPLINE.mathematics]: "Matemática",
+  [HIGH_SCHOOL_DISCIPLINE.physical]: "Física",
+  [HIGH_SCHOOL_DISCIPLINE.english]: "Inglês",
+  [HIGH_SCHOOL_DISCIPLINE.technology]: "Tecnologia",
+};
 
 const chartConfig = {
   [AFFINITY_LEVEL.low]: {
@@ -74,6 +90,9 @@ export function LevelOfProficiencyDeclaredByIngressChart({
             tickLine={false}
             axisLine={false}
             fontSize={14}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, disciplinesLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

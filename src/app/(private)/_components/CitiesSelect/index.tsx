@@ -50,7 +50,7 @@ export function CitiesSelect({ control, name, helper }: CitiesSelectProps) {
     }
 
     debounceRef.current = setTimeout(async () => {
-      if (value.length <= 5) {
+      if (value.length <= 3) {
         return;
       }
 

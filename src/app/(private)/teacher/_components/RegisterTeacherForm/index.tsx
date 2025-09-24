@@ -20,7 +20,7 @@ import {
 } from "@unidash/components/Card";
 import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
-import { PaperPlaneTiltIcon } from "@phosphor-icons/react/dist/ssr";
+import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 
 const REGISTER_TEACHER_ERROR_MESSAGES = {
   [HTTP_STATUS.forbidden]: "Você não tem permissão para realizar essa operação",
@@ -112,7 +112,7 @@ export function RegisterTeacherForm() {
             </div>
 
             <Button className="max-w-56" size="lg" isLoading={isSubmitting}>
-              <PaperPlaneTiltIcon />
+              <FloppyDiskIcon />
               Cadastrar docente
             </Button>
           </CardContent>

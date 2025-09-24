@@ -15,6 +15,16 @@ import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const typeLabels: Record<string, string> = {
+  difficultyInDiscipline: "Dif. na disciplina",
+  workload: "Carga horária",
+  teacherMethodology: "Metodologia docente",
+  incompatibilityWithWork: "Incompat. trabalho",
+  lossOfInterest: "Perda de interesse",
+  other: "Outro",
+};
 
 const chartConfig = {
   firstSemester: {
@@ -72,6 +82,9 @@ export function RegistrationLocksChart({
             height={80}
             fontSize={14}
             angle={-25}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

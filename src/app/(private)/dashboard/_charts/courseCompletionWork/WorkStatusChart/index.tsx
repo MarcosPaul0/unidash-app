@@ -14,6 +14,13 @@ import { WorkStatusChartProps } from "./workStatusChart.interface";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { WorkStatus } from "@unidash/api/responses/indicators.response";
 import { ChartSelect } from "../../../_components/ChartSelect";
+import { SEMESTER } from "@unidash/api/dtos/courseStudentsData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const semesterLabels: Record<string, string> = {
+  [SEMESTER.first]: "Primeiro semestre",
+  [SEMESTER.second]: "Segundo semestre",
+};
 
 const chartConfig = {
   enrollments: {
@@ -69,6 +76,9 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
             tickLine={false}
             axisLine={false}
             fontSize={14}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, semesterLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

@@ -13,46 +13,49 @@ import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
-  RegisterCourseCompletionWorkDataDto,
-  registerCourseCompletionWorkDataDtoSchema,
-} from "@unidash/api/dtos/courseCompletionWorkData.dto";
+  RegisterCourseTeacherWorkloadDataDto,
+  registerCourseTeacherWorkloadDataDtoSchema,
+} from "@unidash/api/dtos/courseTeacherWorkloadData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
-import { CourseCompletionWorkDataCSService } from "@unidash/services/courseCompletionWorkData/courseCompletionWorkData.cs.service";
+import { CourseTeacherWorkloadDataCSService } from "@unidash/services/courseTeacherWorkloadData/courseTeacherWorkloadData.cs.service";
 import { useRouter } from "next/navigation";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { ExceptionHandler } from "@unidash/api/errors/exception.handler";
 import { HTTP_STATUS } from "@unidash/lib/baseApiClient";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PeriodForm } from "@unidash/app/(private)/courseStudentsData/_components/PeriodForm";
+import { CourseTeacherWorkloadDataFormProps } from "./courseTeacherWorkloadDataForm.interface";
+import { FormSelect } from "@unidash/components/FormSelect";
 
-const REGISTER_COURSE_COMPLETION_WORK_DATA_SUCCESS_MESSAGE =
-  "Novo registro de saídas do curso foi adicionado!";
+const REGISTER_COURSE_TEACHER_WORKLOAD_DATA_SUCCESS_MESSAGE =
+  "Novo registro de carga horária do docente no curso foi adicionado!";
 
-const REGISTER_COURSE_COMPLETION_WORK_DATA_ERROR_MESSAGES = {
+const REGISTER_COURSE_TEACHER_WORKLOAD_DATA_ERROR_MESSAGES = {
   [HTTP_STATUS.forbidden]:
     "Você não tem permissão para realizar essa operação!",
   [HTTP_STATUS.notFound]: "O curso informado não foi encontrado!",
   [HTTP_STATUS.badRequest]: "Ocorreu algum erro ao registrar as informações!",
   [HTTP_STATUS.conflict]:
-    "Esse registro de saídas do curso já existe! Confira o período e ano do registro.",
+    "Esse registro de carga horária do docente no curso já existe! Confira o período e ano do registro.",
 } as const;
 
 const INITIAL_VALUES = {
   semester: "first",
   year: new Date().getFullYear(),
-  abandonments: "",
-  defenses: "",
-  enrollments: "",
-} as unknown as RegisterCourseCompletionWorkDataDto;
+  teacherId: "",
+  workloadInMinutes: "",
+} as unknown as RegisterCourseTeacherWorkloadDataDto;
 
-export function CourseCompletionWorkDataForm() {
+export function CourseTeacherWorkloadDataForm({
+  teachersOptions,
+}: CourseTeacherWorkloadDataFormProps) {
   const { activeCourse } = useCourseStore();
 
   const router = useRouter();
 
-  const formMethods = useForm<RegisterCourseCompletionWorkDataDto>({
-    resolver: zodResolver(registerCourseCompletionWorkDataDtoSchema),
+  const formMethods = useForm<RegisterCourseTeacherWorkloadDataDto>({
+    resolver: zodResolver(registerCourseTeacherWorkloadDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 
@@ -62,8 +65,8 @@ export function CourseCompletionWorkDataForm() {
     formState: { errors, isSubmitting },
   } = formMethods;
 
-  async function sendCourseCompletionWorkData(
-    registerCourseCompletionWorkDataDto: RegisterCourseCompletionWorkDataDto
+  async function sendCourseTeacherWorkloadData(
+    registerCourseTeacherWorkloadDataDto: RegisterCourseTeacherWorkloadDataDto
   ) {
     try {
       if (!activeCourse) {
@@ -73,20 +76,20 @@ export function CourseCompletionWorkDataForm() {
         return;
       }
 
-      await CourseCompletionWorkDataCSService.register(
+      await CourseTeacherWorkloadDataCSService.register(
         activeCourse.id,
-        registerCourseCompletionWorkDataDto
+        registerCourseTeacherWorkloadDataDto
       );
 
-      Toast.success(REGISTER_COURSE_COMPLETION_WORK_DATA_SUCCESS_MESSAGE);
+      Toast.success(REGISTER_COURSE_TEACHER_WORKLOAD_DATA_SUCCESS_MESSAGE);
 
       router.push(
-        `${APP_ROUTES.private.courseCompletionWorkData}${activeCourse.id}`
+        `${APP_ROUTES.private.courseTeacherWorkloadData}${activeCourse.id}`
       );
     } catch (error) {
       ExceptionHandler.handle({
         error,
-        errorMap: REGISTER_COURSE_COMPLETION_WORK_DATA_ERROR_MESSAGES,
+        errorMap: REGISTER_COURSE_TEACHER_WORKLOAD_DATA_ERROR_MESSAGES,
         onError: (handledError) => {
           Toast.error(handledError.message);
         },
@@ -96,11 +99,12 @@ export function CourseCompletionWorkDataForm() {
 
   return (
     <FormProvider {...formMethods}>
-      <form onSubmit={handleSubmit(sendCourseCompletionWorkData)}>
+      <form onSubmit={handleSubmit(sendCourseTeacherWorkloadData)}>
         <Card>
           <CardHeader>
             <CardTitle>
-              Registro de informações de saídas do curso de {activeCourse?.name}
+              Registro de informações de carga horária do docente no curso de{" "}
+              {activeCourse?.name}
             </CardTitle>
           </CardHeader>
 
@@ -108,29 +112,21 @@ export function CourseCompletionWorkDataForm() {
             <PeriodForm />
 
             <CardInputsRow>
-              <FormInput
+              <FormSelect
+                options={teachersOptions}
                 control={control}
-                type="number"
-                name="enrollments"
-                placeholder="Quantidade de matrículas"
-                label="Matrículas"
-                helper={errors.enrollments?.message}
+                name="teacherId"
+                placeholder="Informe o docente"
+                label="Docente"
+                helper={errors.teacherId?.message}
               />
               <FormInput
                 control={control}
                 type="number"
-                name="defenses"
-                placeholder="Quantidade de defeses"
-                label="Defesas"
-                helper={errors.defenses?.message}
-              />
-              <FormInput
-                control={control}
-                type="number"
-                name="abandonments"
-                placeholder="Quantidade de abandonos"
-                label="Abandonos"
-                helper={errors.abandonments?.message}
+                name="workloadInMinutes"
+                placeholder="Carga horária do docente para o curso"
+                label="Carga horária  em minutos"
+                helper={errors.workloadInMinutes?.message}
               />
             </CardInputsRow>
           </CardContent>

@@ -14,6 +14,16 @@ import { DistributionIngressByExpectedProfessionalPerformanceChartProps } from "
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { IncomingWorkExpectation } from "@unidash/api/responses/indicators.response";
+import { Formatter } from "@unidash/utils/formatter.util";
+import { WORK_EXPECTATION } from "@unidash/api/dtos/studentIncomingData.dto";
+
+const typeLabels: Record<string, string> = {
+  [WORK_EXPECTATION.employmentContract]: "CLT",
+  [WORK_EXPECTATION.independentContractor]: "PJ",
+  [WORK_EXPECTATION.undecided]: "Indeciso",
+  [WORK_EXPECTATION.publicSector]: "Setor público",
+  [WORK_EXPECTATION.academicCareer]: "Academia",
+};
 
 const chartConfig = {
   count: {
@@ -68,6 +78,9 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart({
             angle={338}
             height={70}
             fontSize={14}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

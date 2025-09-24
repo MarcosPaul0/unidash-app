@@ -1,20 +1,21 @@
 import { StudentIcon } from "@phosphor-icons/react/dist/ssr";
 import { IndicatorCard } from "../../../_components/IndicatorCard";
 import { IndicatorBuilder } from "@unidash/utils/indicatorBuilder/indicatorBuilder.util";
-import { StudentsActiveIndicatorProps } from "./studentsActiveIndicator.interface";
+import { ApplicantsToSeatRatioIndicatorProps } from "./applicantsToSeatRatioIndicator.interface";
+import { Formatter } from "@unidash/utils/formatter.util";
 
-export function StudentsActiveIndicator({
-  currentStudentsActive,
-  previousStudentsActive,
-}: StudentsActiveIndicatorProps) {
+export function ApplicantsToSeatRatioIndicator({
+  currentApplicantsToSeatRatio,
+  previousApplicantsToSeatRatio,
+}: ApplicantsToSeatRatioIndicatorProps) {
   const percentageObservation = IndicatorBuilder.buildPercentageFromValues({
-    currentValue: currentStudentsActive,
-    previousValue: previousStudentsActive,
+    currentValue: currentApplicantsToSeatRatio,
+    previousValue: previousApplicantsToSeatRatio,
     observations: {
       increase: "mais alunos ativos em relação ao ano de 2024",
       indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
       regress: "menos alunos ativos em relação ao ano de 2024",
-      onlyCurrent: "Taxa atual referente ao ano de 2025",
+      onlyCurrent: "",
     },
   });
 
@@ -23,8 +24,8 @@ export function StudentsActiveIndicator({
       icon={<StudentIcon />}
       observation={percentageObservation.observation}
       situation={percentageObservation.situation}
-      title="Alunos ativos em 2025"
-      value={currentStudentsActive}
+      title="Relação candidato vaga"
+      value={Formatter.toDecimal(currentApplicantsToSeatRatio)}
       variant="blue"
     />
   );

@@ -1,23 +1,45 @@
+import { ApplicantsToSeatRatioIndicator } from "../../../_indicators/course/ApplicantsToSeatRatioIndicator";
 import { DropoutRateIndicator } from "../../../_indicators/course/DropoutRateIndicator";
 import { OccupancyRateIndicator } from "../../../_indicators/course/OccupancyRateIndicator";
-import { StudentsActiveIndicator } from "../../../_indicators/course/StudentsActiveIndicator";
 import { SuccessRateIndicator } from "../../../_indicators/course/SuccessRateIndicator";
 import { ActiveStudentsOverTimeChart } from "../ActiveStudentsOverTimeChart";
 import { DistributionStudentsExitChart } from "../DistributionStudentsExitChart";
 import { RegistrationLocksChart } from "../RegistrationLocksChart ";
 import { TeacherHoursDistributionChart } from "../TeacherHoursDistributionChart";
-import { CourseIndicatorsProps } from "./courseIndicators.interface";
+import {
+  CourseIndicatorsProps,
+  IndicatorsCardsProps,
+} from "./courseIndicators.interface";
 
-export function IndicatorsCards() {
+export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
+  if (!complements) {
+    return null;
+  }
+
+  const years = Object.keys(complements);
+
+  if (years.length === 0) {
+    return null;
+  }
+
+  const lastYear = years[0];
+
+  const lastApplicantsToSeatRatio = complements[lastYear].applicantsToSeatRatio;
+  const lastDropoutRate = complements[lastYear].dropoutRate;
+  const lastOccupancyRate = complements[lastYear].occupancyRate;
+  const lastSuccessRate = complements[lastYear].successRate;
+
   return (
     <div className="grid grid-cols-4 gap-8">
-      <StudentsActiveIndicator />
+      <ApplicantsToSeatRatioIndicator
+        currentApplicantsToSeatRatio={lastApplicantsToSeatRatio}
+      />
 
-      <OccupancyRateIndicator />
+      <OccupancyRateIndicator currentOccupancyRate={lastOccupancyRate} />
 
-      <DropoutRateIndicator />
+      <DropoutRateIndicator currentDropoutRate={lastDropoutRate} />
 
-      <SuccessRateIndicator />
+      <SuccessRateIndicator currentSuccessRate={lastSuccessRate} />
     </div>
   );
 }
@@ -25,7 +47,7 @@ export function IndicatorsCards() {
 export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
   return (
     <>
-      <IndicatorsCards />
+      <IndicatorsCards complements={indicators?.complements} />
 
       <div className="grid grid-cols-7 gap-8">
         <ActiveStudentsOverTimeChart students={indicators?.students ?? []} />
@@ -38,7 +60,9 @@ export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
           registrationLocks={indicators?.registrationLocks}
         />
 
-        <TeacherHoursDistributionChart />
+        <TeacherHoursDistributionChart
+          teachersWorkload={indicators?.teachersWorkload}
+        />
       </div>
     </>
   );

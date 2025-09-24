@@ -39,6 +39,12 @@ export function SidebarSession() {
               href={APP_ROUTES.private.courses}
               icon={<BookBookmarkIcon />}
             />
+
+            <SidebarLink
+              text="Docentes"
+              href={APP_ROUTES.private.teachers}
+              icon={<ChalkboardTeacherIcon />}
+            />
           </Can>
 
           <Can
@@ -46,12 +52,6 @@ export function SidebarSession() {
             allowedTeacherRoles={["courseManagerTeacher"]}
           >
             <SidebarStudentsLink />
-
-            <SidebarLink
-              text="Docentes"
-              href={APP_ROUTES.private.teachers}
-              icon={<ChalkboardTeacherIcon />}
-            />
           </Can>
 
           <Can allowedRoles={["admin", "teacher"]}>

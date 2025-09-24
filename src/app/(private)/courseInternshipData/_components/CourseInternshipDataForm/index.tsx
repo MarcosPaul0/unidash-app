@@ -39,7 +39,7 @@ const REGISTER_COURSE_INTERNSHIP_DATA_ERROR_MESSAGES = {
   [HTTP_STATUS.notFound]: "O curso informado não foi encontrado!",
   [HTTP_STATUS.badRequest]: "Ocorreu algum erro ao registrar as informações!",
   [HTTP_STATUS.conflict]:
-    "Esse registro de estágio do curso já existe! Confira o período e ano do registro.",
+    "Esse registro de estágio do curso já existe! Confira a matrícula do discente.",
 } as const;
 
 export function CourseInternshipDataForm({

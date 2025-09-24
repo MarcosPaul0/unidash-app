@@ -9,13 +9,13 @@ import { useFormContext } from "react-hook-form";
 import { CourseFormProps } from "./courseForm.interface";
 import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
-import { PaperPlaneTiltIcon } from "@phosphor-icons/react/dist/ssr";
+import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import { RegisterCourseDto } from "@unidash/api/dtos/course.dto";
 
 export function CourseForm({ title }: CourseFormProps) {
   const {
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useFormContext<RegisterCourseDto>();
 
   return (
@@ -48,8 +48,13 @@ export function CourseForm({ title }: CourseFormProps) {
       </CardContent>
 
       <CardFooter>
-        <Button className="max-w-80 w-full" size="lg" type="submit">
-          <PaperPlaneTiltIcon />
+        <Button
+          className="max-w-80 w-full"
+          size="lg"
+          type="submit"
+          isLoading={isSubmitting}
+        >
+          <FloppyDiskIcon />
           Enviar
         </Button>
       </CardFooter>

@@ -38,6 +38,16 @@ const REGISTER_COURSE_EXTENSION_COMPLEMENTARY_ACTIVITIES_DATA_ERROR_MESSAGES = {
     "Esse registro de atividades complementares de extensão do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  awardsAtEvents: "",
+  culturalActivities: "",
+  participationInCollegiateBodies: "",
+  sportsCompetitions: "",
+  studentRepresentation: "",
+} as unknown as RegisterCourseExtensionComplementaryActivitiesDataDto;
+
 export function CourseExtensionComplementaryActivitiesDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -48,15 +58,7 @@ export function CourseExtensionComplementaryActivitiesDataForm() {
       resolver: zodResolver(
         registerCourseExtensionComplementaryActivitiesDataDtoSchema
       ),
-      defaultValues: {
-        semester: "first",
-        year: new Date().getFullYear(),
-        awardsAtEvents: 0,
-        culturalActivities: 0,
-        participationInCollegiateBodies: 0,
-        sportsCompetitions: 0,
-        studentRepresentation: 0,
-      },
+      defaultValues: INITIAL_VALUES,
     });
 
   const {

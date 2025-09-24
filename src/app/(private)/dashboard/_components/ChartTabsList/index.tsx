@@ -10,7 +10,7 @@ export function ChartTabsList() {
         Coordenação
       </TabsTrigger>
 
-      <TabsTrigger value={CHARTS_CATEGORIES.INGRESS}>Ingresso</TabsTrigger>
+      <TabsTrigger value={CHARTS_CATEGORIES.INGRESS}>Ingressos</TabsTrigger>
 
       <TabsTrigger value={CHARTS_CATEGORIES.CONCLUSION}>Conclusão</TabsTrigger>
 

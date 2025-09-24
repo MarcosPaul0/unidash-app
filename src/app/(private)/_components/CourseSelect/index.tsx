@@ -61,6 +61,11 @@ export function CourseSelect() {
 
       setCourses(coursesResponse.courses);
 
+      if (coursesResponse.courses.length === 1) {
+        setActiveCourse(coursesResponse.courses[0]);
+        return;
+      }
+
       const lastActiveCourseId = localStorage.getItem(
         LOCAL_STORAGE_COURSE_ID_ITEM
       );

@@ -38,6 +38,21 @@ const REGISTER_COURSE_EXTENSION_ACTIVITIES_DATA_ERROR_MESSAGES = {
     "Esse registro de atividades de extensão do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  specialProjects: "",
+  cultureAndExtensionProjects: "",
+  participationInCompetitions: "",
+  entrepreneurshipAndInnovation: "",
+  eventOrganization: "",
+  externalInternship: "",
+  semiannualProjects: "",
+  workNonGovernmentalOrganization: "",
+  juniorCompanies: "",
+  provisionOfServicesWithSelfEmployedWorkers: "",
+} as unknown as RegisterCourseExtensionActivitiesDataDto;
+
 export function CourseExtensionActivitiesDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,20 +60,7 @@ export function CourseExtensionActivitiesDataForm() {
 
   const formMethods = useForm<RegisterCourseExtensionActivitiesDataDto>({
     resolver: zodResolver(registerCourseExtensionActivitiesDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      specialProjects: 0,
-      cultureAndExtensionProjects: 0,
-      participationInCompetitions: 0,
-      entrepreneurshipAndInnovation: 0,
-      eventOrganization: 0,
-      externalInternship: 0,
-      semiannualProjects: 0,
-      workNonGovernmentalOrganization: 0,
-      juniorCompanies: 0,
-      provisionOfServicesWithSelfEmployedWorkers: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {

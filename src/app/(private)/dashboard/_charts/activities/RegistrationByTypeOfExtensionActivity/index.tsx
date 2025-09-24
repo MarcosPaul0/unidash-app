@@ -15,6 +15,20 @@ import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChart
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const typeLabels: Record<string, string> = {
+  specialProjects: "Projetos especiais",
+  participationInCompetitions: "Participação em competições",
+  entrepreneurshipAndInnovation: "Empreendedorismo e inovação",
+  eventOrganization: "Organização de eventos",
+  externalInternship: "Estágios externos",
+  cultureAndExtensionProjects: "Projetos de cultura e extensão",
+  semiannualProjects: "Projeto semestral",
+  workNonGovernmentalOrganization: "Organização não governamental",
+  juniorCompanies: "Empresas juniores",
+  provisionOfServicesWithSelfEmployedWorkers: "Serviços com autônomo",
+};
 
 const chartConfig = {
   firstSemester: {
@@ -46,8 +60,6 @@ export function RegistrationByTypeOfExtensionActivity({
 
   const { firstSemesterRadius, secondSemesterRadius } =
     useSemestersChartConfiguration({ indicatorsData });
-
-  console.log({ indicatorsData });
 
   return (
     <ChartCard
@@ -82,6 +94,9 @@ export function RegistrationByTypeOfExtensionActivity({
             height={80}
             fontSize={14}
             angle={-25}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

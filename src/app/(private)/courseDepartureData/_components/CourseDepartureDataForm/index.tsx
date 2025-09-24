@@ -38,6 +38,19 @@ const REGISTER_COURSE_DEPARTURE_DATA_ERROR_MESSAGES = {
     "Esse registro de saídas do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  completed: "",
+  deaths: "",
+  dropouts: "",
+  maximumDuration: "",
+  newExams: "",
+  removals: "",
+  transfers: "",
+  withdrawals: "",
+} as unknown as RegisterCourseDepartureDataDto;
+
 export function CourseDepartureDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,24 +58,13 @@ export function CourseDepartureDataForm() {
 
   const formMethods = useForm<RegisterCourseDepartureDataDto>({
     resolver: zodResolver(registerCourseDepartureDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      completed: 0,
-      deaths: 0,
-      dropouts: 0,
-      maximumDuration: 0,
-      newExams: 0,
-      removals: 0,
-      transfers: 0,
-      withdrawals: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = formMethods;
 
   async function sendCourseDepartureData(
@@ -182,7 +184,11 @@ export function CourseDepartureDataForm() {
           </CardContent>
 
           <CardFooter className="gap-6">
-            <Button className="w-full max-w-80" size="lg">
+            <Button
+              className="w-full max-w-80"
+              size="lg"
+              isLoading={isSubmitting}
+            >
               <FloppyDiskIcon />
               Registrar dados
             </Button>

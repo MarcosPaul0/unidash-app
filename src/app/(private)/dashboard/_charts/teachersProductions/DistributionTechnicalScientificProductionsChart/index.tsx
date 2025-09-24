@@ -14,6 +14,15 @@ import { DistributionTechnicalScientificProductionsChartProps } from "./distribu
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ProductionByType } from "@unidash/api/responses/indicators.response";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const productionsLabels: Record<string, string> = {
+  periodicals: "Periódicos",
+  congress: "Congressos",
+  booksChapter: "Capítulo de livros",
+  programs: "Programas",
+  abstracts: "Resumos",
+};
 
 const chartConfig = {
   count: {
@@ -37,7 +46,7 @@ export function DistributionTechnicalScientificProductionsChart({
 
   return (
     <ChartCard
-      title="Distribuição de produções técnico-científicas por tipo no ano de 2023"
+      title="Distribuição de produções técnico-científicas por tipo"
       description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
       complement={
         <ChartSelect
@@ -67,6 +76,9 @@ export function DistributionTechnicalScientificProductionsChart({
             axisLine={false}
             fontSize={14}
             height={50}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, productionsLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

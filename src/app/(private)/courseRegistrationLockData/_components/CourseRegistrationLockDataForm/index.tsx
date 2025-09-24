@@ -38,6 +38,17 @@ const REGISTER_COURSE_REGISTRATION_LOCK_DATA_ERROR_MESSAGES = {
     "Esse registro de trancamentos do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  difficultyInDiscipline: "",
+  incompatibilityWithWork: "",
+  lossOfInterest: "",
+  other: "",
+  teacherMethodology: "",
+  workload: "",
+} as unknown as RegisterCourseRegistrationLockDataDto;
+
 export function CourseRegistrationLockDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,22 +56,13 @@ export function CourseRegistrationLockDataForm() {
 
   const formMethods = useForm<RegisterCourseRegistrationLockDataDto>({
     resolver: zodResolver(registerCourseRegistrationLockDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      difficultyInDiscipline: 0,
-      incompatibilityWithWork: 0,
-      lossOfInterest: 0,
-      other: 0,
-      teacherMethodology: 0,
-      workload: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = formMethods;
 
   async function sendCourseRegistrationLockData(
@@ -168,7 +170,11 @@ export function CourseRegistrationLockDataForm() {
           </CardContent>
 
           <CardFooter className="gap-6">
-            <Button className="w-full max-w-80" size="lg">
+            <Button
+              className="w-full max-w-80"
+              size="lg"
+              isLoading={isSubmitting}
+            >
               <FloppyDiskIcon />
               Registrar dados
             </Button>

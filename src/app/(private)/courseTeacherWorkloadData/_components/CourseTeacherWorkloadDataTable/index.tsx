@@ -6,13 +6,13 @@ import {
   TableHeader,
   TableRow,
 } from "@unidash/components/Table";
-import { CourseStudentsDataTableProps } from "./courseStudentsDataTable.interface";
-import { CourseStudentsDataActions } from "../CourseStudentsDataActions";
+import { CourseTeacherWorkloadDataTableProps } from "./courseTeacherWorkloadDataTable.interface";
+import { CourseTeacherWorkloadDataActions } from "../CourseTeacherWorkloadDataActions";
 import { SemesterTag } from "@unidash/app/(private)/courseCoordinationData/_components/SemesterTag";
 
-export function CourseStudentsDataTable({
-  courseStudentsData,
-}: CourseStudentsDataTableProps) {
+export function CourseTeacherWorkloadDataTable({
+  courseTeacherWorkloadData,
+}: CourseTeacherWorkloadDataTableProps) {
   return (
     <Table>
       {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
@@ -23,20 +23,16 @@ export function CourseStudentsDataTable({
 
           <TableHead>Semestre</TableHead>
 
-          <TableHead>Vagas</TableHead>
+          <TableHead>Docente</TableHead>
 
-          <TableHead>Inscritos</TableHead>
-
-          <TableHead>Ativos</TableHead>
-
-          <TableHead>Ingressantes</TableHead>
+          <TableHead>Carga horária</TableHead>
 
           <TableHead className="w-[100px] text-center">Ações</TableHead>
         </TableRow>
       </TableHeader>
 
       <TableBody>
-        {courseStudentsData.map((data) => (
+        {courseTeacherWorkloadData.map((data) => (
           <TableRow key={data.id}>
             <TableCell>{data.year}</TableCell>
 
@@ -44,16 +40,14 @@ export function CourseStudentsDataTable({
               <SemesterTag semester={data.semester} />
             </TableCell>
 
-            <TableCell>{data.vacancies}</TableCell>
+            <TableCell>{data.teacherName}</TableCell>
 
-            <TableCell>{data.subscribers}</TableCell>
-
-            <TableCell>{data.actives}</TableCell>
-
-            <TableCell>{data.entrants}</TableCell>
+            <TableCell>{data.workloadInMinutes} minutos</TableCell>
 
             <TableCell className="w-[100px] text-center">
-              <CourseStudentsDataActions courseStudentsDataId={data.id} />
+              <CourseTeacherWorkloadDataActions
+                courseTeacherWorkloadDataId={data.id}
+              />
             </TableCell>
           </TableRow>
         ))}

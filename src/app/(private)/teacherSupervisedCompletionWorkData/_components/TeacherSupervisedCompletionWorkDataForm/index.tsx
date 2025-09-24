@@ -38,6 +38,13 @@ const REGISTER_TEACHER_SUPERVISED_COMPLETION_WORK_DATA_ERROR_MESSAGES = {
     "Esse registro de orientações em TCCs já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  approved: "",
+  failed: "",
+} as unknown as RegisterTeacherSupervisedCompletionWorkDataDto;
+
 export function TeacherSupervisedCompletionWorkDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,12 +52,7 @@ export function TeacherSupervisedCompletionWorkDataForm() {
 
   const formMethods = useForm<RegisterTeacherSupervisedCompletionWorkDataDto>({
     resolver: zodResolver(registerTeacherSupervisedCompletionWorkDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      approved: 0,
-      failed: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {
@@ -69,8 +71,6 @@ export function TeacherSupervisedCompletionWorkDataForm() {
         );
         return;
       }
-
-      console.log(registerTeacherSupervisedCompletionWorkDataDto);
 
       await TeacherSupervisedCompletionWorkDataCSService.registerByTeacher(
         activeCourse.id,

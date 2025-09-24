@@ -1,6 +1,7 @@
 import {
   Collapsible,
   CollapsibleContent,
+  CollapsibleTrigger,
 } from "@unidash/components/Collapsible";
 import { ToolbarProps } from "./toolbar.interface";
 import {
@@ -12,14 +13,16 @@ import {
   BreadcrumbSeparator,
 } from "@unidash/components/Breadcrumb";
 import { LinkButton } from "@unidash/components/LinkButton";
-import { PlusIcon } from "@phosphor-icons/react/dist/ssr";
+import { FunnelIcon, PlusIcon } from "@phosphor-icons/react/dist/ssr";
 import { Fragment } from "react";
+import { Button } from "@unidash/components/Button";
 
 export function Toolbar({
   breadcrumbItems,
   breadcrumbPage,
   addLink,
   children,
+  filterForm,
 }: ToolbarProps) {
   return (
     <Collapsible>
@@ -49,7 +52,16 @@ export function Toolbar({
 
         {children}
 
-        <div>
+        <div className="flex items-center gap-2">
+          {filterForm && (
+            <CollapsibleTrigger asChild>
+              <Button type="button" variant="ghost">
+                <FunnelIcon />
+                Filtro
+              </Button>
+            </CollapsibleTrigger>
+          )}
+
           {addLink && (
             <LinkButton href={addLink.link} variant="filled" size="md">
               <PlusIcon />
@@ -59,21 +71,7 @@ export function Toolbar({
         </div>
       </div>
 
-      <CollapsibleContent>
-        <div>
-          {/* <FormSelect
-              control={control}
-              label="Filtrar por ano"
-              name="year"
-              options={[
-                { label: "2022", value: "2022" },
-                { label: "2023", value: "2023" },
-                { label: "2024", value: "2024" },
-                { label: "2025", value: "2025" },
-              ]}
-            /> */}
-        </div>
-      </CollapsibleContent>
+      {filterForm && <CollapsibleContent>{filterForm}</CollapsibleContent>}
     </Collapsible>
   );
 }

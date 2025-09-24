@@ -1,19 +1,22 @@
 import { StudentIcon } from "@phosphor-icons/react/dist/ssr";
 import { IndicatorCard } from "../../../_components/IndicatorCard";
 import { IndicatorBuilder } from "@unidash/utils/indicatorBuilder/indicatorBuilder.util";
+import { SuccessRateIndicatorProps } from "./successRateIndicator.interface";
+import { Formatter } from "@unidash/utils/formatter.util";
 
-export function SuccessRateIndicator() {
-  const currentStudentsActive = 30;
-  const previousStudentsActive = 40;
-
+export function SuccessRateIndicator({
+  currentSuccessRate,
+  previousSuccessRate,
+}: SuccessRateIndicatorProps) {
   const percentageObservation = IndicatorBuilder.buildPercentageFromPercentages(
     {
-      currentValue: currentStudentsActive,
-      previousValue: previousStudentsActive,
+      currentValue: currentSuccessRate,
+      previousValue: previousSuccessRate,
       observations: {
         increase: "mais alunos ativos em relação ao ano de 2024",
         indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
         regress: "menos alunos ativos em relação ao ano de 2024",
+        onlyCurrent: "",
       },
     }
   );
@@ -23,8 +26,8 @@ export function SuccessRateIndicator() {
       icon={<StudentIcon />}
       observation={percentageObservation.observation}
       situation={percentageObservation.situation}
-      title="Taxa de sucesso em 2025"
-      value={currentStudentsActive + "%"}
+      title="Taxa de sucesso"
+      value={Formatter.toPercentage(currentSuccessRate)}
       variant="blue"
     />
   );

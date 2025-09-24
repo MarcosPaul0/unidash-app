@@ -37,6 +37,16 @@ const REGISTER_TEACHER_TECHNICAL_SCIENTIFIC_PRODUCTIONS_ERROR_MESSAGES = {
     "Esse registro de produções técnico-científicas já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  abstracts: "",
+  booksChapter: "",
+  congress: "",
+  periodicals: "",
+  programs: "",
+} as unknown as RegisterTeacherTechnicalScientificProductionsDataDto;
+
 export function TeacherTechnicalScientificProductionsDataForm() {
   const router = useRouter();
 
@@ -45,15 +55,7 @@ export function TeacherTechnicalScientificProductionsDataForm() {
       resolver: zodResolver(
         registerTeacherTechnicalScientificProductionsDataDtoSchema
       ),
-      defaultValues: {
-        semester: "first",
-        year: new Date().getFullYear(),
-        abstracts: 0,
-        booksChapter: 0,
-        congress: 0,
-        periodicals: 0,
-        programs: 0,
-      },
+      defaultValues: INITIAL_VALUES,
     });
 
   const {

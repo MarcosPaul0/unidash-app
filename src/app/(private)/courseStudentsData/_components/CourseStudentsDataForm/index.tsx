@@ -38,6 +38,15 @@ const REGISTER_COURSE_STUDENTS_DATA_ERROR_MESSAGES = {
     "Esse registro de alunos do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  actives: "",
+  entrants: "",
+  subscribers: "",
+  vacancies: "",
+} as unknown as RegisterCourseStudentsDataDto;
+
 export function CourseStudentsDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,22 +54,13 @@ export function CourseStudentsDataForm() {
 
   const formMethods = useForm<RegisterCourseStudentsDataDto>({
     resolver: zodResolver(registerCourseStudentsDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      actives: 0,
-      canceled: 0,
-      entrants: 0,
-      locks: 0,
-      subscribers: 0,
-      vacancies: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = formMethods;
 
   async function sendCourseStudentsData(
@@ -110,18 +110,18 @@ export function CourseStudentsDataForm() {
               <FormInput
                 control={control}
                 type="number"
-                name="vacancies"
-                placeholder="Quantidade vagas para alunos alunos"
-                label="Vagas para alunos"
-                helper={errors.vacancies?.message}
+                name="actives"
+                placeholder="Quantidade de discentes ativos"
+                label="Ativos"
+                helper={errors.actives?.message}
               />
               <FormInput
                 control={control}
                 type="number"
-                name="subscribers"
-                placeholder="Quantidade de inscritos"
-                label="Inscritos"
-                helper={errors.subscribers?.message}
+                name="vacancies"
+                placeholder="Quantidade vagas para alunos"
+                label="Vagas para alunos"
+                helper={errors.vacancies?.message}
               />
             </CardInputsRow>
 
@@ -129,10 +129,10 @@ export function CourseStudentsDataForm() {
               <FormInput
                 control={control}
                 type="number"
-                name="actives"
-                placeholder="Quantidade de alunos ativos"
-                label="Alunos ativos"
-                helper={errors.actives?.message}
+                name="subscribers"
+                placeholder="Quantidade de inscritos"
+                label="Inscritos"
+                helper={errors.subscribers?.message}
               />
               <FormInput
                 control={control}
@@ -143,29 +143,14 @@ export function CourseStudentsDataForm() {
                 helper={errors.entrants?.message}
               />
             </CardInputsRow>
-
-            <CardInputsRow>
-              <FormInput
-                control={control}
-                type="number"
-                name="canceled"
-                placeholder="Quantidade de alunos cancelados"
-                label="Alunos cancelados"
-                helper={errors.canceled?.message}
-              />
-              <FormInput
-                control={control}
-                type="number"
-                name="locks"
-                placeholder="Quantidade de trancamentos"
-                label="Trancamentos de alunos"
-                helper={errors.locks?.message}
-              />
-            </CardInputsRow>
           </CardContent>
 
           <CardFooter className="gap-6">
-            <Button className="w-full max-w-80" size="lg">
+            <Button
+              className="w-full max-w-80"
+              size="lg"
+              isLoading={isSubmitting}
+            >
               <FloppyDiskIcon />
               Registrar dados
             </Button>

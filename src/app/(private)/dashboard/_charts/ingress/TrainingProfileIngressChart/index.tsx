@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-import { Pie, PieChart } from "recharts";
+import { Cell, Pie, PieChart } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import { TrainingProfileIngressChartProps } from "./trainingProfileIngressChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
@@ -82,7 +82,14 @@ export function TrainingProfileIngressChart({
             nameKey="type"
             fontSize={18}
             fontWeight={600}
-          />
+          >
+            {indicatorsData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={chartConfig[entry.type]?.color || "var(--chart-7)"}
+              />
+            ))}
+          </Pie>
 
           <ChartLegend
             content={<ChartLegendContent nameKey="type" />}

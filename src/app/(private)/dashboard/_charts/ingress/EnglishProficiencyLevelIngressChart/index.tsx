@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
-import { Pie, PieChart } from "recharts";
+import { Cell, Pie, PieChart } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
 import { EnglishProficiencyLevelIngressChartProps } from "./englishProficiencyLevelIngressChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
@@ -74,7 +74,16 @@ export function EnglishProficiencyLevelIngressChart({
             nameKey="englishLevel"
             fontSize={18}
             fontWeight={600}
-          />
+          >
+            {indicatorsData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={
+                  chartConfig[entry.englishLevel]?.color || "var(--chart-5)"
+                }
+              />
+            ))}
+          </Pie>
 
           <ChartLegend
             content={<ChartLegendContent nameKey="englishLevel" />}

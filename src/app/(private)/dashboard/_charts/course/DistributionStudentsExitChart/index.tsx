@@ -15,6 +15,18 @@ import { DistributionStudentsExitChartProps } from "./distributionStudentsExitCh
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
+import { Formatter } from "@unidash/utils/formatter.util";
+
+const typeLabels: Record<string, string> = {
+  completed: "Completo",
+  maximumDuration: "Tempo máximo",
+  dropouts: "Abandonos",
+  transfers: "Transferências",
+  withdrawals: "Desistências",
+  removals: "Removidos",
+  newExams: "Novo vestibular",
+  deaths: "Falecimento",
+};
 
 const chartConfig = {
   firstSemester: {
@@ -72,6 +84,9 @@ export function DistributionStudentsExitChart({
             angle={340}
             height={100}
             fontSize={14}
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

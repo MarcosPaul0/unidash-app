@@ -10,7 +10,7 @@ import { KnowledgeDeclaredInTechnologiesChart } from "../../_charts/ingress/Know
 import { ReasonsGivenForChoosingUniversityChart } from "../../_charts/ingress/ReasonsGivenForChoosingUniversityChart";
 import { AssetsDeclaredByIngressChart } from "../../_charts/ingress/AssetsDeclaredByIngressChart";
 import { HabitsAndHobbiesDeclaredByIngressChart } from "../../_charts/ingress/HabitsAndHobbiesDeclaredByIngressChart";
-import { KnowledgeAndDesireForNightCoursesChart } from "../../_charts/ingress/KnowledgeAndDesireForNightCoursesChart";
+import { CourseQuestionsChart } from "../../_charts/ingress/CourseQuestionsChart";
 import { DistributionIngressByExpectedProfessionalPerformanceChart } from "../../_charts/ingress/DistributionIngressByExpectedProfessionalPerformanceChart";
 import { Topic } from "../../_components/Topic";
 import { IndicatorsCSService } from "@unidash/services/indicators/indicators.cs.service";
@@ -79,7 +79,7 @@ export function IngressContent() {
       </div>
 
       <div className="grid grid-cols-2 gap-8">
-        <KnowledgeAndDesireForNightCoursesChart
+        <CourseQuestionsChart
           studentIncomingByCourseComplements={
             indicators?.studentIncomingByCourseComplements
           }

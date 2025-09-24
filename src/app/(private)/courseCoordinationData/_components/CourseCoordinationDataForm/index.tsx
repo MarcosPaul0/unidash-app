@@ -38,6 +38,18 @@ const REGISTER_COURSE_COORDINATION_DATA_ERROR_MESSAGES = {
     "Esse registro da coordenação do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  administrativeDecisionActions: "",
+  meetingsByBoardOfDirectors: "",
+  meetingsByCourseCouncil: "",
+  meetingsByUndergraduateChamber: "",
+  resolutionActions: "",
+  servicesRequestsByEmail: "",
+  servicesRequestsBySystem: "",
+} as unknown as RegisterCourseCoordinationDataDto;
+
 export function CourseCoordinationDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -45,23 +57,13 @@ export function CourseCoordinationDataForm() {
 
   const formMethods = useForm<RegisterCourseCoordinationDataDto>({
     resolver: zodResolver(registerCourseCoordinationDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      administrativeDecisionActions: 0,
-      meetingsByBoardOfDirectors: 0,
-      meetingsByCourseCouncil: 0,
-      meetingsByUndergraduateChamber: 0,
-      resolutionActions: 0,
-      servicesRequestsByEmail: 0,
-      servicesRequestsBySystem: 0,
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = formMethods;
 
   async function sendCourseCoordinationData(
@@ -177,7 +179,11 @@ export function CourseCoordinationDataForm() {
           </CardContent>
 
           <CardFooter className="gap-6">
-            <Button className="w-full max-w-80" size="lg">
+            <Button
+              className="w-full max-w-80"
+              size="lg"
+              isLoading={isSubmitting}
+            >
               <FloppyDiskIcon />
               Registrar dados
             </Button>

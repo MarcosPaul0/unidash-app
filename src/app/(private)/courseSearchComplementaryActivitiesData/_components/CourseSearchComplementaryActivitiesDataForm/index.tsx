@@ -38,6 +38,18 @@ const REGISTER_COURSE_SEARCH_COMPLEMENTARY_ACTIVITIES_DATA_ERROR_MESSAGES = {
     "Esse registro de atividades complementares de pesquisa do curso já existe! Confira o período e ano do registro.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear(),
+  developmentInitiation: "",
+  fullPublishedArticles: "",
+  participationInEvents: "",
+  presentationOfWork: "",
+  publishedAbstracts: "",
+  publishedArticles: "",
+  scientificInitiation: "",
+} as unknown as RegisterCourseSearchComplementaryActivitiesDataDto;
+
 export function CourseSearchComplementaryActivitiesDataForm() {
   const { activeCourse } = useCourseStore();
 
@@ -48,17 +60,7 @@ export function CourseSearchComplementaryActivitiesDataForm() {
       resolver: zodResolver(
         registerCourseSearchComplementaryActivitiesDataDtoSchema
       ),
-      defaultValues: {
-        semester: "first",
-        year: new Date().getFullYear(),
-        developmentInitiation: 0,
-        fullPublishedArticles: 0,
-        participationInEvents: 0,
-        presentationOfWork: 0,
-        publishedAbstracts: 0,
-        publishedArticles: 0,
-        scientificInitiation: 0,
-      },
+      defaultValues: INITIAL_VALUES,
     });
 
   const {
@@ -138,10 +140,10 @@ export function CourseSearchComplementaryActivitiesDataForm() {
               <FormInput
                 control={control}
                 type="number"
-                name="fullPublishedArticles"
+                name="publishedArticles"
                 placeholder="Quantidade de artigos publicados em periódicos"
                 label="Artigos publicados em periódicos"
-                helper={errors.fullPublishedArticles?.message}
+                helper={errors.publishedArticles?.message}
               />
             </CardInputsRow>
 
@@ -149,10 +151,10 @@ export function CourseSearchComplementaryActivitiesDataForm() {
               <FormInput
                 control={control}
                 type="number"
-                name="publishedArticles"
+                name="fullPublishedArticles"
                 placeholder="Quantidade de artigos completos publicados em congressos"
                 label="Artigos completos publicados em anais de congressos"
-                helper={errors.publishedArticles?.message}
+                helper={errors.fullPublishedArticles?.message}
               />
               <FormInput
                 control={control}
