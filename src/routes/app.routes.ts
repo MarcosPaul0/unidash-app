@@ -27,6 +27,9 @@ export const APP_ROUTES = {
     courseDepartureData: "/courseDepartureData/list/",
     registerCourseDepartureData: "/courseDepartureData/register",
 
+    courseTeacherWorkloadData: "/courseTeacherWorkloadData/list/",
+    registerCourseTeacherWorkloadData: "/courseTeacherWorkloadData/register/",
+
     courseCompletionWorkData: "/courseCompletionWorkData/list/",
     registerCourseCompletionWorkData: "/courseCompletionWorkData/register",
 
