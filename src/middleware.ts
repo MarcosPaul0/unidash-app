@@ -15,8 +15,10 @@ export default async function middleware(req: NextRequest) {
 
   const isPublicRoute = publicRoutes.includes(formattedPathname);
 
+  const nextResponse = NextResponse.next();
+
   if (isPublicRoute) {
-    return NextResponse.next();
+    return nextResponse;
   }
 
   const token = req.cookies.get(COOKIES.token)?.value;
@@ -39,57 +41,59 @@ export default async function middleware(req: NextRequest) {
       }
     );
 
-    if (!response.ok) {
-      const errorResponse = await response.json();
+    if (response.ok) {
+      return nextResponse;
+    }
 
-      if (errorResponse.statusCode === HTTP_STATUS.unauthorized) {
-        const refreshToken = req.cookies.get(COOKIES.refreshToken)?.value;
+    const errorResponse = await response.json();
 
-        const refreshResponse = await fetch(
-          `${baseUrl}${UNIDASH_API_ROUTES.auth.refresh}`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Cookie: `${COOKIES.refreshToken}=${refreshToken}`,
-            },
-          }
-        );
+    if (errorResponse.statusCode !== HTTP_STATUS.unauthorized) {
+      return clearCookiesAndRedirect(req, pathname);
+    }
 
-        if (refreshResponse.ok) {
-          const { accessToken } = await refreshResponse.json();
+    const refreshToken = req.cookies.get(COOKIES.refreshToken)?.value;
 
-          const nextResponse = NextResponse.next();
-
-          nextResponse.cookies.set(COOKIES.token, accessToken, {
-            path: "/",
-          });
-
-          const setCookies = refreshResponse.headers.getSetCookie();
-
-          if (setCookies.length > 0) {
-            const newRefreshTokenSetCookie = setCookies[0].split(";")[0];
-            const newRefreshToken = newRefreshTokenSetCookie.split("=")[1];
-
-            nextResponse.cookies.set(COOKIES.refreshToken, newRefreshToken, {
-              path: "/",
-              httpOnly: true,
-              secure: true,
-              sameSite: "strict",
-            });
-          }
-
-          return nextResponse;
-        }
-
-        return clearCookiesAndRedirect(req, pathname);
+    const refreshResponse = await fetch(
+      `${baseUrl}${UNIDASH_API_ROUTES.auth.refresh}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `${COOKIES.refreshToken}=${refreshToken}`,
+        },
       }
+    );
+
+    if (!refreshResponse.ok) {
+      // TODO adicionar notificação via DISCORD
+      return clearCookiesAndRedirect(req, pathname);
+    }
+
+    const { accessToken } = await refreshResponse.json();
+
+    nextResponse.cookies.set(COOKIES.token, accessToken, {
+      path: "/",
+    });
+
+    const setCookies = refreshResponse.headers.getSetCookie();
+
+    if (setCookies.length > 0) {
+      const newRefreshTokenSetCookie = setCookies[0].split(";")[0];
+      const newRefreshToken = newRefreshTokenSetCookie.split("=")[1];
+
+      nextResponse.cookies.set(COOKIES.refreshToken, newRefreshToken, {
+        path: "/",
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+      });
     }
   } catch {
+    // TODO adicionar notificação via DISCORD
     return clearCookiesAndRedirect(req, pathname);
   }
 
-  return NextResponse.next();
+  return nextResponse;
 }
 
 function clearCookiesAndRedirect(req: NextRequest, pathname: string) {
