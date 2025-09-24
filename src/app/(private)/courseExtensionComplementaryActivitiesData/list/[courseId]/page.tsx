@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseExtensionComplementaryActivitiesDataSSRService } from "@unidash/services/courseExtensionComplementaryActivitiesData/courseExtensionComplementaryActivitiesData.ssr.service";
 import { GetAllCourseExtensionComplementaryActivitiesDataParams } from "@unidash/services/courseExtensionComplementaryActivitiesData/courseExtensionComplementaryActivitiesDataParams.builder";
 import { CourseExtensionComplementaryActivitiesDataTable } from "../../_components/CourseExtensionComplementaryActivitiesDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseExtensionComplementaryActivitiesDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -38,6 +39,7 @@ export default async function ListCourseExtensionComplementaryActivitiesDataPage
             .registerCourseExtensionComplementaryActivitiesData,
           label: "Novo registro de atividades complementares de extensão",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseExtensionComplementaryActivitiesDataTable

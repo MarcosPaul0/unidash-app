@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseCompletionWorkDataSSRService } from "@unidash/services/courseCompletionWorkData/courseCompletionWorkData.ssr.service";
 import { GetAllCourseCompletionWorkDataParams } from "@unidash/services/courseCompletionWorkData/courseCompletionWorkDataParams.builder";
 import { CourseCompletionWorkDataTable } from "../../_components/CourseCompletionWorkDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseCompletionWorkDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -37,6 +38,7 @@ export default async function ListCourseCompletionWorkDataPage({
           link: APP_ROUTES.private.registerCourseCompletionWorkData,
           label: "Novo registro de TCC",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseCompletionWorkDataTable

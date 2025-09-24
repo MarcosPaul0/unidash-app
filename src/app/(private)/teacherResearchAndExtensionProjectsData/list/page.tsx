@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { TeacherResearchAndExtensionProjectsDataTable } from "../_components/TeacherResearchAndExtensionProjectsDataTable";
 import { GetAllTeacherResearchAndExtensionProjectsDataParams } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsDataParams.builder";
 import { TeacherResearchAndExtensionProjectsDataSSRService } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsData.ssr.service";
+import { IndicatorsFilterForm } from "../../_components/IndicatorsFilterForm";
 
 interface ListTeacherResearchAndExtensionProjectsDataPageProps {
   searchParams: Promise<GetAllTeacherResearchAndExtensionProjectsDataParams>;
@@ -34,6 +35,7 @@ export default async function ListTeacherResearchAndExtensionProjectsDataPage({
             .registerTeacherResearchAndExtensionProjectsData,
           label: "Novo registro de projetos de pesquisa e extensão",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <TeacherResearchAndExtensionProjectsDataTable

@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseStudentsDataTable } from "../../_components/CourseStudentsDataTable";
 import { CourseStudentsDataSSRService } from "@unidash/services/courseStudentsData/courseStudentsData.ssr.service";
 import { GetAllCourseStudentsDataParams } from "@unidash/services/courseStudentsData/courseStudentsDataParams.builder";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseStudentsDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -36,6 +37,7 @@ export default async function ListCourseStudentsDataPage({
           label: "Novo registro de estudantes",
         }}
         breadcrumbPage="Indicadores de estudents do curso"
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseStudentsDataTable

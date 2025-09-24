@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseExtensionActivitiesDataSSRService } from "@unidash/services/courseExtensionActivitiesData/courseExtensionActivitiesData.ssr.service";
 import { GetAllCourseExtensionActivitiesDataParams } from "@unidash/services/courseExtensionActivitiesData/courseExtensionActivitiesDataParams.builder";
 import { CourseExtensionActivitiesDataTable } from "../../_components/CourseExtensionActivitiesDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseExtensionActivitiesDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -37,6 +38,7 @@ export default async function ListCourseExtensionActivitiesDataPage({
           link: APP_ROUTES.private.registerCourseExtensionActivitiesData,
           label: "Novo registro de atividades de extensão",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseExtensionActivitiesDataTable

@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseRegistrationLockDataSSRService } from "@unidash/services/courseRegistrationLockData/courseRegistrationLockData.ssr.service";
 import { GetAllCourseRegistrationLockDataParams } from "@unidash/services/courseRegistrationLockData/courseRegistrationLockDataParams.builder";
 import { CourseRegistrationLockDataTable } from "../../_components/CourseRegistrationLockDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseRegistrationLockDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -37,6 +38,7 @@ export default async function ListCourseRegistrationLockDataPage({
           link: APP_ROUTES.private.registerCourseRegistrationLockData,
           label: "Novo registro de trancamentos",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseRegistrationLockDataTable

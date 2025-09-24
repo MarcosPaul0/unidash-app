@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseCoordinationDataSSRService } from "@unidash/services/courseCoordinationData/courseCoordinationData.ssr.service";
 import { GetAllCourseCoordinationDataParams } from "@unidash/services/courseCoordinationData/courseCoordinationDataParams.builder";
 import { CourseCoordinationDataTable } from "../../_components/CourseCoordinationDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseCoordinationDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -39,6 +40,7 @@ export default async function ListCourseCoordinationDataPage({
           link: APP_ROUTES.private.registerCourseCoordinationData,
           label: "Novo registro da coordenação",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseCoordinationDataTable

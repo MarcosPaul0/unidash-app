@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseDepartureDataSSRService } from "@unidash/services/courseDepartureData/courseDepartureData.ssr.service";
 import { GetAllCourseDepartureDataParams } from "@unidash/services/courseDepartureData/courseDepartureDataParams.builder";
 import { CourseDepartureDataTable } from "../../_components/CourseDepartureDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseDepartureDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -37,6 +38,7 @@ export default async function ListCourseDepartureDataPage({
           link: APP_ROUTES.private.registerCourseDepartureData,
           label: "Novo registro de saídas",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseDepartureDataTable

@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { CourseInternshipDataSSRService } from "@unidash/services/courseInternshipData/courseInternshipData.ssr.service";
 import { GetAllCourseInternshipDataParams } from "@unidash/services/courseInternshipData/courseInternshipDataParams.builder";
 import { CourseInternshipDataTable } from "../../_components/CourseInternshipDataTable";
+import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
 
 interface ListCourseInternshipDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -37,6 +38,7 @@ export default async function ListCourseInternshipDataPage({
           link: `${APP_ROUTES.private.registerCourseInternshipData}${courseId}`,
           label: "Novo registro de estágio",
         }}
+        filterForm={<IndicatorsFilterForm />}
       />
 
       <CourseInternshipDataTable
