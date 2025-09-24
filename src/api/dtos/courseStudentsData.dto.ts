@@ -1,3 +1,4 @@
+import { Validator } from "@unidash/utils/validator.util";
 import z from "zod";
 
 export const SEMESTER = {
@@ -14,8 +15,6 @@ export const registerCourseStudentsDataDtoSchema = z.object({
   semester: z.enum(SEMESTER),
   entrants: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
   actives: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
-  locks: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
-  canceled: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
   vacancies: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
   subscribers: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
 });
@@ -26,7 +25,7 @@ export type RegisterCourseStudentsDataDto = z.infer<
 
 export const filterCourseStudentsDataDtoSchema = z
   .object({
-    year: z.int().max(new Date().getFullYear()).min(0).optional(),
+    year: Validator.validateOptionalYear(),
     semester: z.enum(SEMESTER).optional(),
   })
   .optional();

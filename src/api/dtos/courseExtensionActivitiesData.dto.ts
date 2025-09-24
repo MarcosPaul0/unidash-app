@@ -1,5 +1,6 @@
 import z from "zod";
 import { SEMESTER } from "./courseStudentsData.dto";
+import { Validator } from "@unidash/utils/validator.util";
 
 export const registerCourseExtensionActivitiesDataDtoSchema = z.object({
   year: z
@@ -40,7 +41,7 @@ export type RegisterCourseExtensionActivitiesDataDto = z.infer<
 
 export const filterCourseExtensionActivitiesDataDtoSchema = z
   .object({
-    year: z.int().max(new Date().getFullYear()).min(0).optional(),
+    year: Validator.validateOptionalYear(),
     semester: z.enum(SEMESTER).optional(),
   })
   .optional();
