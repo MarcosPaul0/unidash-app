@@ -31,7 +31,6 @@ export abstract class BaseApiClient {
   }
 
   protected abstract getStoredToken(): Promise<string | null>;
-  protected abstract storeToken(token: string): Promise<void>;
   protected abstract clearAuthDataAndRedirect(): Promise<void>;
   protected abstract fetchRefresh(): Promise<Response>;
   protected abstract manageRefreshResponse(
@@ -55,10 +54,15 @@ export abstract class BaseApiClient {
 
     this.refreshPromise = (async () => {
       try {
+        console.log("=-=-=-=-=-=- COMEÇOU O REFRESH -=-=-=-=-=-=-");
         const refreshResponse = await this.fetchRefresh();
+
+        console.log({ refreshResponse });
 
         if (!refreshResponse.ok) {
           const errorResponse = await refreshResponse.json();
+
+          console.log({ errorResponse });
 
           throw new ApiResponseError(
             errorResponse.message,
@@ -126,7 +130,6 @@ export abstract class BaseApiClient {
       );
     }
 
-    // TODO validar se a string é um JSON
     const textResponse = await response.text();
     return Boolean(textResponse) && textResponse.length > 0
       ? (JSON.parse(textResponse) as T)

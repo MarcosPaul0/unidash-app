@@ -23,24 +23,13 @@ export class ApiSSRClient extends BaseApiClient {
     return cookieToken?.value || null;
   }
 
-  protected async storeToken(token: string): Promise<void> {
-    const cookiesSSRStore = await cookies();
-
-    cookiesSSRStore.set(COOKIES.token, token, { path: "/" });
-  }
-
   protected async clearAuthDataAndRedirect(): Promise<void> {
-    const cookiesSSRStore = await cookies();
-
-    cookiesSSRStore.delete(COOKIES.refreshToken);
-    cookiesSSRStore.delete(COOKIES.token);
-
     redirect(APP_ROUTES.public.login);
   }
 
   protected async fetchRefresh(): Promise<Response> {
     return await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/auth/refresh`, {
-      method: "POST",
+      method: "PATCH",
       credentials: "include",
     });
   }
