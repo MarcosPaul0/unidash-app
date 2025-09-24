@@ -32,4 +32,20 @@ export class Formatter {
 
     return `${result})`;
   }
+
+  static toPercentage(value: number): string {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "percent",
+    }).format(value);
+  }
+
+  static toDecimal(value: number): string {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "decimal",
+    }).format(value);
+  }
+
+  static getChartLabel(value: string, mapper: Record<string, string>) {
+    return mapper[value] ?? value;
+  }
 }
