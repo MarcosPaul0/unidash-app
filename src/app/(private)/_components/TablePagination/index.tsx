@@ -17,20 +17,26 @@ export function TablePagination({ totalPages }: TablePaginationProps) {
 
   if (totalPages <= 1) return null;
 
-  const previousPageIsDisabled = currentPage <= 0;
+  const previousPageIsDisabled = currentPage <= 1;
   const nextPageIsDisabled = currentPage >= totalPages;
 
   return (
     <Pagination>
-      <PaginationContent>
-        <PaginationItem aria-disabled={previousPageIsDisabled}>
-          <PaginationPrevious href={`?page=${currentPage - 1}`} />
+      <PaginationContent className="flex items-center gap-4">
+        <PaginationItem>
+          <PaginationPrevious
+            href={`?page=${currentPage - 1}`}
+            aria-disabled={previousPageIsDisabled}
+          />
         </PaginationItem>
 
-        <span>{currentPage}</span>
+        <span className="font-bold">{currentPage}</span>
 
-        <PaginationItem aria-disabled={nextPageIsDisabled}>
-          <PaginationNext href={`?page=${currentPage + 1}`} />
+        <PaginationItem>
+          <PaginationNext
+            href={`?page=${currentPage + 1}`}
+            aria-disabled={nextPageIsDisabled}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
