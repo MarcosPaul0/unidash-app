@@ -13,4 +13,6 @@ export interface TeacherResearchAndExtensionProjectsDataResponse {
     teacherName?: string;
     teacherEmail?: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

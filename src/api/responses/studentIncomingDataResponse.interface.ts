@@ -50,6 +50,8 @@ export interface StudentIncomingDataResponse {
       description: string;
     }[];
   }[];
+  totalItems: number;
+  totalPages: number;
 }
 
 export interface CheckIncomingStudentRespondedResponse {

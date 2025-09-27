@@ -13,4 +13,6 @@ export interface TeacherSupervisedCompletionWorkDataResponse {
     teacherName?: string;
     teacherEmail?: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

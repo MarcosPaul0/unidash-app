@@ -16,4 +16,6 @@ export interface TeacherTechnicalScientificProductionsDataResponse {
     teacherName?: string;
     teacherEmail?: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }
