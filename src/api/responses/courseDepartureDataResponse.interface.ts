@@ -15,4 +15,6 @@ export interface CourseDepartureDataResponse {
     deaths: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

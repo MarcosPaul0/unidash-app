@@ -12,4 +12,6 @@ export interface CourseRegistrationLockDataResponse {
     lossOfInterest: number;
     other: number;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

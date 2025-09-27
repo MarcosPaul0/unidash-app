@@ -9,4 +9,6 @@ export interface CourseTeacherWorkloadDataResponse {
     workloadInMinutes: string;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

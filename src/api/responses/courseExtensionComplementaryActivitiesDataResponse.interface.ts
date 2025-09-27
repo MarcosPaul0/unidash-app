@@ -12,4 +12,6 @@ export interface CourseExtensionComplementaryActivitiesDataResponse {
     participationInCollegiateBodies: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

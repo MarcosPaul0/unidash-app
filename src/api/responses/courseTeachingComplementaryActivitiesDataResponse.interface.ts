@@ -15,4 +15,6 @@ export interface CourseTeachingComplementaryActivitiesDataResponse {
     preparationForTest: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

@@ -10,4 +10,6 @@ export interface CourseCompletionWorkDataResponse {
     abandonments: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

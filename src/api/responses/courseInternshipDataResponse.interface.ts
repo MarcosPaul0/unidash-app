@@ -16,4 +16,6 @@ export interface CourseInternshipDataResponse {
     advisorName: string;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

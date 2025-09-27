@@ -11,4 +11,6 @@ export interface CourseStudentsDataResponse {
     vacancies: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

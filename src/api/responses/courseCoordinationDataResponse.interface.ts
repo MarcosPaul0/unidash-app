@@ -14,4 +14,6 @@ export interface CourseCoordinationDataResponse {
     meetingsByCourseCouncil: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

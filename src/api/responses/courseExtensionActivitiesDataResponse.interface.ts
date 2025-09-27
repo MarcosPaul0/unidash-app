@@ -17,4 +17,6 @@ export interface CourseExtensionActivitiesDataResponse {
     provisionOfServicesWithSelfEmployedWorkers: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }

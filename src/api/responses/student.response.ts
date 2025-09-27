@@ -25,4 +25,6 @@ export interface StudentResponse {
 
 export interface StudentsResponse {
   students: StudentResponse["student"][];
+  totalItems: number;
+  totalPages: number;
 }

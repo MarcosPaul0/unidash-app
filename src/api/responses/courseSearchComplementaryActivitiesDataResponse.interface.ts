@@ -14,4 +14,6 @@ export interface CourseSearchComplementaryActivitiesDataResponse {
     participationInEvents: number;
     createdAt: string;
   }[];
+  totalItems: number;
+  totalPages: number;
 }
