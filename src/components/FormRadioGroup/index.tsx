@@ -37,10 +37,10 @@ export function FormRadioGroup({
               {options.map((option) => (
                 <FormItem
                   className="flex items-center gap-3"
-                  key={option.value}
+                  key={String(option.value)}
                 >
                   <FormControl>
-                    <RadioGroupItem value={option.value} />
+                    <RadioGroupItem value={option.value as string} />
                   </FormControl>
                   <FormLabel className="font-normal">{option.label}</FormLabel>
                 </FormItem>

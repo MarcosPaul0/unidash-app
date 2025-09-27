@@ -14,6 +14,7 @@ export function ComplementaryActivitiesTotalIndicator() {
         increase: "mais de atividades em relação ao ano de 2024",
         indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
         regress: "menos de atividades em relação ao ano de 2024",
+        onlyCurrent: "",
       },
     }
   );

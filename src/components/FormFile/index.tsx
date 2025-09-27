@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter } from "../Card";
 import { Button } from "../Button";
 import { FormFileProps } from "./formFile.interface";
 
-export function FormFile({ control, name, helper, label }: FormFileProps) {
+export function FormFile({ helper, label }: FormFileProps) {
   return (
     <Card
       className={`

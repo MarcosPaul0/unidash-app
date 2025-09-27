@@ -1,4 +1,4 @@
-import { HttpStatus } from "@unidash/constants/httpStatus.constant";
+import { HttpStatus } from "@unidash/lib/baseApiClient";
 
 export class ApiResponseError extends Error {
   public error: string;

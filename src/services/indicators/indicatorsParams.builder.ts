@@ -10,10 +10,6 @@ export class IndicatorsParamsBuilder extends BaseParamsBuilder<FilterIndicatorsD
   public applyFilters(filtersDto: FilterIndicatorsDto): this {
     const validatedFilters = filterIndicatorsDtoSchema.parse(filtersDto);
 
-    if (validatedFilters?.year) {
-      this.params["year"] = validatedFilters.year;
-    }
-
     if (validatedFilters?.yearFrom) {
       this.params["yearFrom"] = validatedFilters.yearFrom;
     }
