@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           items-center p-8
         `}
       >
-        <LogoMaster className="hidden md:ml-auto my-0" />
+        <LogoMaster className="hidden md:block md:ml-auto my-0" />
 
         <div
           className={`
