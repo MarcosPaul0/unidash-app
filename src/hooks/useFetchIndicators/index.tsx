@@ -1,6 +1,4 @@
-import { Semester } from "@unidash/api/dtos/courseStudentsData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UseFetchIndicatorsParams } from "./useFetchIndicators.interface";
 
@@ -10,37 +8,37 @@ export function useFetchIndicators<T>({
   const [indicators, setIndicators] = useState<T | null>(null);
   const [isFetching, setIsFetching] = useState(true);
 
-  const searchParams = useSearchParams();
-
   const { activeCourse } = useCourseStore();
 
-  const yearFrom = searchParams.get("yearFrom");
-  const yearTo = searchParams.get("yearTo");
-  const semester = searchParams.get("semester") as Semester;
-
   useEffect(() => {
+    setIsFetching(true);
+
+    if (!activeCourse) {
+      return;
+    }
+
     (async () => {
-      setIsFetching(true);
+      try {
+        const indicatorsResponse = await fetchIndicators(activeCourse.id, {
+          semester: null,
+          yearFrom: null,
+          yearTo: null,
+        });
 
-      if (!activeCourse?.id) {
-        return;
+        setIndicators(indicatorsResponse);
+        setIsFetching(false);
+      } catch {
+        setIndicators(null);
+        setIsFetching(false);
       }
-
-      const indicatorsResponse = await fetchIndicators(activeCourse.id, {
-        semester,
-        yearFrom,
-        yearTo,
-      });
-
-      setIndicators(indicatorsResponse);
-
-      setIsFetching(false);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCourse, semester, yearFrom, yearTo]);
+  }, [activeCourse]);
 
   return {
     indicators,
     isFetching,
+    courseIsSelected: Boolean(activeCourse),
+    hasIndicator: Boolean(indicators),
   };
 }

@@ -4,6 +4,7 @@ import { CourseCompletionWorkDataSSRService } from "@unidash/services/courseComp
 import { GetAllCourseCompletionWorkDataParams } from "@unidash/services/courseCompletionWorkData/courseCompletionWorkDataParams.builder";
 import { CourseCompletionWorkDataTable } from "../../_components/CourseCompletionWorkDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
 
 interface ListCourseCompletionWorkDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +22,7 @@ export default async function ListCourseCompletionWorkDataPage({
     await CourseCompletionWorkDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {

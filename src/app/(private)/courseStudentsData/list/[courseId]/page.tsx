@@ -4,6 +4,9 @@ import { CourseStudentsDataTable } from "../../_components/CourseStudentsDataTab
 import { CourseStudentsDataSSRService } from "@unidash/services/courseStudentsData/courseStudentsData.ssr.service";
 import { GetAllCourseStudentsDataParams } from "@unidash/services/courseStudentsData/courseStudentsDataParams.builder";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseStudentsDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -20,7 +23,7 @@ export default async function ListCourseStudentsDataPage({
   const courseStudentsDataResponse = await CourseStudentsDataSSRService.getAll(
     courseId,
     {
-      itemsPerPage: searchParamsResult?.itemsPerPage,
+      itemsPerPage: environment.ITEMS_PER_PAGE,
       page: searchParamsResult?.page,
     },
     {
@@ -40,9 +43,12 @@ export default async function ListCourseStudentsDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseStudentsDataTable
-        courseStudentsData={courseStudentsDataResponse.courseStudentsData}
-      />
+      <Suspense fallback="carregando">
+        <CourseStudentsDataTable
+          courseStudentsData={courseStudentsDataResponse.courseStudentsData}
+        />
+        <TablePagination totalPages={courseStudentsDataResponse.totalPages} />
+      </Suspense>
     </>
   );
 }

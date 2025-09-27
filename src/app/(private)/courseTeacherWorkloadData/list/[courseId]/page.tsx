@@ -4,6 +4,9 @@ import { CourseTeacherWorkloadDataSSRService } from "@unidash/services/courseTea
 import { GetAllCourseTeacherWorkloadDataParams } from "@unidash/services/courseTeacherWorkloadData/courseTeacherWorkloadDataParams.builder";
 import { CourseTeacherWorkloadDataTable } from "../../_components/CourseTeacherWorkloadDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseTeacherWorkloadDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseTeacherWorkloadDataPage({
     await CourseTeacherWorkloadDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -41,11 +44,16 @@ export default async function ListCourseTeacherWorkloadDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseTeacherWorkloadDataTable
-        courseTeacherWorkloadData={
-          courseTeacherWorkloadDataResponse.courseTeacherWorkloadData
-        }
-      />
+      <Suspense fallback="carregando">
+        <CourseTeacherWorkloadDataTable
+          courseTeacherWorkloadData={
+            courseTeacherWorkloadDataResponse.courseTeacherWorkloadData
+          }
+        />
+        <TablePagination
+          totalPages={courseTeacherWorkloadDataResponse.totalPages}
+        />
+      </Suspense>
     </>
   );
 }

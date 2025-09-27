@@ -4,6 +4,9 @@ import { CourseRegistrationLockDataSSRService } from "@unidash/services/courseRe
 import { GetAllCourseRegistrationLockDataParams } from "@unidash/services/courseRegistrationLockData/courseRegistrationLockDataParams.builder";
 import { CourseRegistrationLockDataTable } from "../../_components/CourseRegistrationLockDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseRegistrationLockDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseRegistrationLockDataPage({
     await CourseRegistrationLockDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -41,11 +44,16 @@ export default async function ListCourseRegistrationLockDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseRegistrationLockDataTable
-        courseRegistrationLockData={
-          courseRegistrationLockDataResponse.courseRegistrationLockData
-        }
-      />
+      <Suspense fallback="carregando">
+        <CourseRegistrationLockDataTable
+          courseRegistrationLockData={
+            courseRegistrationLockDataResponse.courseRegistrationLockData
+          }
+        />
+        <TablePagination
+          totalPages={courseRegistrationLockDataResponse.totalPages}
+        />
+      </Suspense>
     </>
   );
 }

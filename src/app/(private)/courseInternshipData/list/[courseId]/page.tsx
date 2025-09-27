@@ -4,6 +4,9 @@ import { CourseInternshipDataSSRService } from "@unidash/services/courseInternsh
 import { GetAllCourseInternshipDataParams } from "@unidash/services/courseInternshipData/courseInternshipDataParams.builder";
 import { CourseInternshipDataTable } from "../../_components/CourseInternshipDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseInternshipDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseInternshipDataPage({
     await CourseInternshipDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -41,9 +44,14 @@ export default async function ListCourseInternshipDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseInternshipDataTable
-        courseInternshipData={courseInternshipDataResponse.courseInternshipData}
-      />
+      <Suspense fallback="carregando">
+        <CourseInternshipDataTable
+          courseInternshipData={
+            courseInternshipDataResponse.courseInternshipData
+          }
+        />
+        <TablePagination totalPages={courseInternshipDataResponse.totalPages} />
+      </Suspense>
     </>
   );
 }

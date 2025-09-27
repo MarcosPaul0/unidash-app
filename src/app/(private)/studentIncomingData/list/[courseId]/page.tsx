@@ -2,6 +2,9 @@ import { Toolbar } from "@unidash/app/(private)/_components/Toolbar";
 import { StudentIncomingDataSSRService } from "@unidash/services/studentIncomingData/studentIncomingData.ssr.service";
 import { GetAllStudentIncomingDataParams } from "@unidash/services/studentIncomingData/studentIncomingDataParams.builder";
 import { StudentIncomingDataTable } from "../../_components/StudentIncomingDataTable";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListIncomingDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -19,7 +22,7 @@ export default async function ListIncomingDataPage({
     await StudentIncomingDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -32,9 +35,12 @@ export default async function ListIncomingDataPage({
     <>
       <Toolbar breadcrumbPage="Indicadores de estágios do curso" />
 
-      <StudentIncomingDataTable
-        studentIncomingData={studentIncomingDataResponse.studentIncomingData}
-      />
+      <Suspense fallback="carregando">
+        <StudentIncomingDataTable
+          studentIncomingData={studentIncomingDataResponse.studentIncomingData}
+        />
+        <TablePagination totalPages={studentIncomingDataResponse.totalPages} />
+      </Suspense>
     </>
   );
 }

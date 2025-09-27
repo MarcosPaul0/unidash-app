@@ -4,6 +4,9 @@ import { CourseTeachingComplementaryActivitiesDataSSRService } from "@unidash/se
 import { GetAllCourseTeachingComplementaryActivitiesDataParams } from "@unidash/services/courseTeachingComplementaryActivitiesData/courseTeachingComplementaryActivitiesDataParams.builder";
 import { CourseTeachingComplementaryActivitiesDataTable } from "../../_components/CourseTeachingComplementaryActivitiesDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseTeachingComplementaryActivitiesDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseTeachingComplementaryActivitiesDataPage(
     await CourseTeachingComplementaryActivitiesDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -42,11 +45,18 @@ export default async function ListCourseTeachingComplementaryActivitiesDataPage(
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseTeachingComplementaryActivitiesDataTable
-        courseTeachingComplementaryActivitiesData={
-          courseTeachingComplementaryActivitiesDataResponse.courseTeachingComplementaryActivitiesData
-        }
-      />
+      <Suspense fallback="carregando">
+        <CourseTeachingComplementaryActivitiesDataTable
+          courseTeachingComplementaryActivitiesData={
+            courseTeachingComplementaryActivitiesDataResponse.courseTeachingComplementaryActivitiesData
+          }
+        />
+        <TablePagination
+          totalPages={
+            courseTeachingComplementaryActivitiesDataResponse.totalPages
+          }
+        />
+      </Suspense>
     </>
   );
 }

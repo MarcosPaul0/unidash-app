@@ -1,27 +1,29 @@
 "use client";
 
-import { TabsContent } from "@unidash/components/Tabs";
-import { CHARTS_CATEGORIES } from "../../_components/ChartTabsList/chartsTabsList.constant";
 import { IndicatorsCSService } from "@unidash/services/indicators/indicators.cs.service";
 import { useFetchIndicators } from "@unidash/hooks/useFetchIndicators";
 import { InternshipSkeletons } from "../../_charts/internships/InternshipSkeletons";
 import { InternshipIndicators } from "../../_charts/internships/InternshipIndicators";
+import { CourseNotSelectedCard } from "../../_components/CourseNotSelectedCard";
+import { EmptyIndicatorsCard } from "../../_components/EmptyIndicatorsCard";
 
 export function InternshipsContent() {
-  const { indicators, isFetching } = useFetchIndicators({
-    fetchIndicators: IndicatorsCSService.getInternshipIndicators,
-  });
+  const { indicators, isFetching, courseIsSelected, hasIndicator } =
+    useFetchIndicators({
+      fetchIndicators: IndicatorsCSService.getInternshipIndicators,
+    });
 
-  return (
-    <TabsContent
-      value={CHARTS_CATEGORIES.INTERNSHIPS}
-      className="flex flex-col gap-8"
-    >
-      {isFetching ? (
-        <InternshipSkeletons />
-      ) : (
-        <InternshipIndicators indicators={indicators} />
-      )}
-    </TabsContent>
-  );
+  if (isFetching) {
+    return <InternshipSkeletons />;
+  }
+
+  if (!courseIsSelected) {
+    return <CourseNotSelectedCard />;
+  }
+
+  if (hasIndicator) {
+    return <InternshipIndicators indicators={indicators} />;
+  }
+
+  return <EmptyIndicatorsCard />;
 }

@@ -1,4 +1,4 @@
-import { Tabs } from "@unidash/components/Tabs";
+import { Tabs, TabsContent } from "@unidash/components/Tabs";
 import { Toolbar } from "../_components/Toolbar";
 import { CourseContent } from "./_contents/CourseContent";
 import { IngressContent } from "./_contents/IngressContent";
@@ -19,19 +19,54 @@ export default function DashboardPage() {
           <ChartTabsList />
         </Toolbar>
 
-        <CourseContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.COURSE}
+          className="flex flex-col gap-8"
+        >
+          <CourseContent />
+        </TabsContent>
 
-        <CoordinationContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.COORDINATION}
+          className="flex flex-col gap-8"
+        >
+          <CoordinationContent />
+        </TabsContent>
 
-        <IngressContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.INGRESS}
+          className="flex flex-col gap-8"
+        >
+          <IngressContent />
+        </TabsContent>
 
-        <ConclusionContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.CONCLUSION}
+          className="flex flex-col gap-8"
+        >
+          <ConclusionContent />
+        </TabsContent>
 
-        <ActivitiesContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.ACTIVITIES}
+          className="flex flex-col gap-8"
+        >
+          <ActivitiesContent />
+        </TabsContent>
 
-        <InternshipsContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.INTERNSHIPS}
+          className="flex flex-col gap-8"
+        >
+          <InternshipsContent />
+        </TabsContent>
 
-        <ProductionsContent />
+        <TabsContent
+          value={CHARTS_CATEGORIES.PRODUCTIONS}
+          className="flex flex-col gap-8"
+        >
+          <ProductionsContent />
+        </TabsContent>
       </Tabs>
 
       <DashboardDialogs />

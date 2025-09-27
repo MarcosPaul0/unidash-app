@@ -4,6 +4,9 @@ import { CourseDepartureDataSSRService } from "@unidash/services/courseDeparture
 import { GetAllCourseDepartureDataParams } from "@unidash/services/courseDepartureData/courseDepartureDataParams.builder";
 import { CourseDepartureDataTable } from "../../_components/CourseDepartureDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseDepartureDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseDepartureDataPage({
     await CourseDepartureDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -41,9 +44,12 @@ export default async function ListCourseDepartureDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseDepartureDataTable
-        courseDepartureData={courseDepartureDataResponse.courseDepartureData}
-      />
+      <Suspense fallback="carregando">
+        <CourseDepartureDataTable
+          courseDepartureData={courseDepartureDataResponse.courseDepartureData}
+        />
+        <TablePagination totalPages={courseDepartureDataResponse.totalPages} />
+      </Suspense>
     </>
   );
 }

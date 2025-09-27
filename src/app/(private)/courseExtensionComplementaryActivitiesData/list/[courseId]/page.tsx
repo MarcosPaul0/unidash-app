@@ -4,6 +4,9 @@ import { CourseExtensionComplementaryActivitiesDataSSRService } from "@unidash/s
 import { GetAllCourseExtensionComplementaryActivitiesDataParams } from "@unidash/services/courseExtensionComplementaryActivitiesData/courseExtensionComplementaryActivitiesDataParams.builder";
 import { CourseExtensionComplementaryActivitiesDataTable } from "../../_components/CourseExtensionComplementaryActivitiesDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
+import { Suspense } from "react";
 
 interface ListCourseExtensionComplementaryActivitiesDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseExtensionComplementaryActivitiesDataPage
     await CourseExtensionComplementaryActivitiesDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -42,11 +45,18 @@ export default async function ListCourseExtensionComplementaryActivitiesDataPage
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseExtensionComplementaryActivitiesDataTable
-        courseExtensionComplementaryActivitiesData={
-          courseExtensionComplementaryActivitiesDataResponse.courseExtensionComplementaryActivitiesData
-        }
-      />
+      <Suspense fallback="carregando">
+        <CourseExtensionComplementaryActivitiesDataTable
+          courseExtensionComplementaryActivitiesData={
+            courseExtensionComplementaryActivitiesDataResponse.courseExtensionComplementaryActivitiesData
+          }
+        />
+        <TablePagination
+          totalPages={
+            courseExtensionComplementaryActivitiesDataResponse.totalPages
+          }
+        />
+      </Suspense>
     </>
   );
 }

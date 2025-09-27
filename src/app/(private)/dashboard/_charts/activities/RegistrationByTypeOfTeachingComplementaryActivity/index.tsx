@@ -31,11 +31,11 @@ const typeLabels: Record<string, string> = {
 const chartConfig = {
   firstSemester: {
     label: "Primeiro semestre",
-    color: "var(--chart-9)",
+    color: "var(--chart-12)",
   },
   secondSemester: {
     label: "Segundo semestre",
-    color: "var(--chart-9)",
+    color: "var(--chart-12)",
   },
 } satisfies ChartConfig;
 

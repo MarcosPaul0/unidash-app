@@ -9,9 +9,7 @@ export abstract class BaseParamsBuilder<T> {
   public applyPagination(paginationDto: PaginationDto) {
     const validatedPagination = paginationDtoSchema.parse(paginationDto);
 
-    if (validatedPagination?.page) {
-      this.params["page"] = validatedPagination.page;
-    }
+    this.params["page"] = validatedPagination?.page ?? 1;
 
     if (validatedPagination?.itemsPerPage) {
       this.params["itemsPerPage"] = validatedPagination.itemsPerPage;

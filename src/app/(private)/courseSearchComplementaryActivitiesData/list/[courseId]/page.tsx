@@ -4,6 +4,9 @@ import { CourseSearchComplementaryActivitiesDataSSRService } from "@unidash/serv
 import { GetAllCourseSearchComplementaryActivitiesDataParams } from "@unidash/services/courseSearchComplementaryActivitiesData/courseSearchComplementaryActivitiesDataParams.builder";
 import { CourseSearchComplementaryActivitiesDataTable } from "../../_components/CourseSearchComplementaryActivitiesDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "@unidash/app/(private)/_components/TablePagination";
 
 interface ListCourseSearchComplementaryActivitiesDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +24,7 @@ export default async function ListCourseSearchComplementaryActivitiesDataPage({
     await CourseSearchComplementaryActivitiesDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -42,11 +45,18 @@ export default async function ListCourseSearchComplementaryActivitiesDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <CourseSearchComplementaryActivitiesDataTable
-        courseSearchComplementaryActivitiesData={
-          courseSearchComplementaryActivitiesDataResponse.courseSearchComplementaryActivitiesData
-        }
-      />
+      <Suspense fallback="carregando">
+        <CourseSearchComplementaryActivitiesDataTable
+          courseSearchComplementaryActivitiesData={
+            courseSearchComplementaryActivitiesDataResponse.courseSearchComplementaryActivitiesData
+          }
+        />
+        <TablePagination
+          totalPages={
+            courseSearchComplementaryActivitiesDataResponse.totalPages
+          }
+        />
+      </Suspense>
     </>
   );
 }

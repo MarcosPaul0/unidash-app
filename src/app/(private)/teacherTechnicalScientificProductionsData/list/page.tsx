@@ -4,6 +4,9 @@ import { TeacherTechnicalScientificProductionsDataTable } from "../_components/T
 import { GetAllTeacherTechnicalScientificProductionsDataParams } from "@unidash/services/teacherTechnicalScientificProductionsData/teacherTechnicalScientificProductionsDataParams.builder";
 import { TeacherTechnicalScientificProductionsDataSSRService } from "@unidash/services/teacherTechnicalScientificProductionsData/teacherTechnicalScientificProductionsData.ssr.service";
 import { IndicatorsFilterForm } from "../../_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { TablePagination } from "../../_components/TablePagination";
+import { Suspense } from "react";
 
 interface ListTeacherTechnicalScientificProductionsDataPageProps {
   searchParams: Promise<GetAllTeacherTechnicalScientificProductionsDataParams>;
@@ -17,7 +20,7 @@ export default async function ListTeacherTechnicalScientificProductionsDataPage(
   const teacherTechnicalScientificProductionsDataResponse =
     await TeacherTechnicalScientificProductionsDataSSRService.getAllForTeacher(
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -38,11 +41,18 @@ export default async function ListTeacherTechnicalScientificProductionsDataPage(
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <TeacherTechnicalScientificProductionsDataTable
-        teacherTechnicalScientificProductionsData={
-          teacherTechnicalScientificProductionsDataResponse.teacherTechnicalScientificProductionsData
-        }
-      />
+      <Suspense fallback="carregando">
+        <TeacherTechnicalScientificProductionsDataTable
+          teacherTechnicalScientificProductionsData={
+            teacherTechnicalScientificProductionsDataResponse.teacherTechnicalScientificProductionsData
+          }
+        />
+        <TablePagination
+          totalPages={
+            teacherTechnicalScientificProductionsDataResponse.totalPages
+          }
+        />
+      </Suspense>
     </>
   );
 }

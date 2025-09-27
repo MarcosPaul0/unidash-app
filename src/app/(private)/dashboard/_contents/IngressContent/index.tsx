@@ -1,96 +1,29 @@
 "use client";
 
-import { TabsContent } from "@unidash/components/Tabs";
-import { CHARTS_CATEGORIES } from "../../_components/ChartTabsList/chartsTabsList.constant";
-import { TrainingProfileIngressChart } from "../../_charts/ingress/TrainingProfileIngressChart";
-import { EnglishProficiencyLevelIngressChart } from "../../_charts/ingress/EnglishProficiencyLevelIngressChart";
-import { LevelOfProficiencyDeclaredByIngressChart } from "../../_charts/ingress/LevelOfProficiencyDeclaredByIngressChart";
-import { ReasonsGivenForChoosingTheCourseChart } from "../../_charts/ingress/ReasonsGivenForChoosingTheCourseChart";
-import { KnowledgeDeclaredInTechnologiesChart } from "../../_charts/ingress/KnowledgeDeclaredInTechnologiesChart";
-import { ReasonsGivenForChoosingUniversityChart } from "../../_charts/ingress/ReasonsGivenForChoosingUniversityChart";
-import { AssetsDeclaredByIngressChart } from "../../_charts/ingress/AssetsDeclaredByIngressChart";
-import { HabitsAndHobbiesDeclaredByIngressChart } from "../../_charts/ingress/HabitsAndHobbiesDeclaredByIngressChart";
-import { CourseQuestionsChart } from "../../_charts/ingress/CourseQuestionsChart";
-import { DistributionIngressByExpectedProfessionalPerformanceChart } from "../../_charts/ingress/DistributionIngressByExpectedProfessionalPerformanceChart";
-import { Topic } from "../../_components/Topic";
 import { IndicatorsCSService } from "@unidash/services/indicators/indicators.cs.service";
 import { useFetchIndicators } from "@unidash/hooks/useFetchIndicators";
+import { StudentIncomingSkeletons } from "../../_charts/ingress/StudentIncomingSkeletons";
+import { StudentIncomingIndicators } from "../../_charts/ingress/StudentIncomingIndicators";
+import { CourseNotSelectedCard } from "../../_components/CourseNotSelectedCard";
+import { EmptyIndicatorsCard } from "../../_components/EmptyIndicatorsCard";
 
 export function IngressContent() {
-  const { indicators, isFetching } = useFetchIndicators({
-    fetchIndicators: IndicatorsCSService.getStudentIncomingIndicators,
-  });
+  const { indicators, isFetching, courseIsSelected, hasIndicator } =
+    useFetchIndicators({
+      fetchIndicators: IndicatorsCSService.getStudentIncomingIndicators,
+    });
 
-  return (
-    <TabsContent
-      value={CHARTS_CATEGORIES.INGRESS}
-      className="flex flex-col gap-8"
-    >
-      <Topic title="Indicadores de ingresso" />
+  if (isFetching) {
+    return <StudentIncomingSkeletons />;
+  }
 
-      <div className="grid grid-cols-7 gap-8">
-        <TrainingProfileIngressChart
-          studentIncomingByCurrentEducation={
-            indicators?.studentIncomingByCurrentEducation
-          }
-        />
+  if (!courseIsSelected) {
+    return <CourseNotSelectedCard />;
+  }
 
-        <EnglishProficiencyLevelIngressChart
-          studentIncomingByEnglishProficiencyLevel={
-            indicators?.studentIncomingByEnglishProficiencyLevel
-          }
-        />
-      </div>
+  if (hasIndicator) {
+    return <StudentIncomingIndicators indicators={indicators} />;
+  }
 
-      <LevelOfProficiencyDeclaredByIngressChart
-        studentIncomingByAffinityByDiscipline={
-          indicators?.studentIncomingByAffinityByDiscipline
-        }
-      />
-
-      <div className="grid grid-cols-3 gap-8">
-        <ReasonsGivenForChoosingTheCourseChart
-          studentIncomingByCourseChoiceReason={
-            indicators?.studentIncomingByCourseChoiceReason
-          }
-        />
-
-        <KnowledgeDeclaredInTechnologiesChart
-          studentIncomingByTechnology={indicators?.studentIncomingByTechnology}
-        />
-
-        <ReasonsGivenForChoosingUniversityChart
-          studentIncomingByUniversityChoiceReason={
-            indicators?.studentIncomingByUniversityChoiceReason
-          }
-        />
-      </div>
-
-      <div className="grid grid-cols-2 gap-8">
-        <AssetsDeclaredByIngressChart
-          studentIncomingByAsset={indicators?.studentIncomingByAsset}
-        />
-
-        <HabitsAndHobbiesDeclaredByIngressChart
-          studentIncomingByHobbyOrHabit={
-            indicators?.studentIncomingByHobbyOrHabit
-          }
-        />
-      </div>
-
-      <div className="grid grid-cols-2 gap-8">
-        <CourseQuestionsChart
-          studentIncomingByCourseComplements={
-            indicators?.studentIncomingByCourseComplements
-          }
-        />
-
-        <DistributionIngressByExpectedProfessionalPerformanceChart
-          studentIncomingByWorkExpectation={
-            indicators?.studentIncomingByWorkExpectation
-          }
-        />
-      </div>
-    </TabsContent>
-  );
+  return <EmptyIndicatorsCard />;
 }

@@ -3,6 +3,7 @@ import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { GetAllTeacherResearchAndExtensionProjectsDataParams } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsDataParams.builder";
 import { TeacherResearchAndExtensionProjectsDataSSRService } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsData.ssr.service";
 import { TeacherResearchAndExtensionProjectsDataTable } from "../../_components/TeacherResearchAndExtensionProjectsDataTable";
+import { environment } from "@unidash/config/environment.config";
 
 interface ListTeacherResearchAndExtensionProjectsDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +22,7 @@ export default async function ListTeacherResearchAndExtensionProjectsDataPage({
     await TeacherResearchAndExtensionProjectsDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {

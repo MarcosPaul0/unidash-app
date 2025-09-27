@@ -13,13 +13,16 @@ interface ListTeacherPageProps {
 export default async function ListTeacherPage({
   searchParams,
 }: ListTeacherPageProps) {
-  const params = await searchParams;
+  const searchParamsResult = await searchParams;
 
   const teachersResponse = await TeacherSSRService.getAll(
-    { itemsPerPage: 12, page: params?.page },
     {
-      isActive: params?.isActive,
-      name: params?.name,
+      itemsPerPage: Number(process.env.ITEMS_PER_PAGE),
+      page: searchParamsResult?.page,
+    },
+    {
+      isActive: searchParamsResult?.isActive,
+      name: searchParamsResult?.name,
     }
   );
 
@@ -35,9 +38,8 @@ export default async function ListTeacherPage({
 
       <Suspense fallback={<div>carregando...</div>}>
         <TeachersTable teachers={teachersResponse.teachers} />
+        <TablePagination totalPages={teachersResponse.totalPages} />
       </Suspense>
-
-      <TablePagination totalPages={teachersResponse.totalPages} />
     </>
   );
 }

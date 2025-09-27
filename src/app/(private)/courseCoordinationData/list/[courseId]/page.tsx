@@ -4,6 +4,7 @@ import { CourseCoordinationDataSSRService } from "@unidash/services/courseCoordi
 import { GetAllCourseCoordinationDataParams } from "@unidash/services/courseCoordinationData/courseCoordinationDataParams.builder";
 import { CourseCoordinationDataTable } from "../../_components/CourseCoordinationDataTable";
 import { IndicatorsFilterForm } from "@unidash/app/(private)/_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
 
 interface ListCourseCoordinationDataPageProps {
   params: Promise<{ courseId: string }>;
@@ -21,7 +22,7 @@ export default async function ListCourseCoordinationDataPage({
     await CourseCoordinationDataSSRService.getAll(
       courseId,
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {

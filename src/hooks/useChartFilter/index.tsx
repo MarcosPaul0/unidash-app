@@ -17,7 +17,7 @@ export function useChartFilter<T>({
       return;
     }
 
-    const allFilterOptions = Object.keys(indicators);
+    const allFilterOptions = Object.keys(indicators).reverse();
 
     if (allFilterOptions.length > 0) {
       setActiveFilterOption(allFilterOptions[0]);
@@ -27,7 +27,7 @@ export function useChartFilter<T>({
     setActiveFilterOption(null);
   }, [indicators]);
 
-  const options = indicators ? Object.keys(indicators) : [];
+  const options = indicators ? Object.keys(indicators).reverse() : [];
 
   const filterOptions = options.map((year) => ({
     label: year,

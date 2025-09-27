@@ -74,8 +74,8 @@ export abstract class BaseApiClient {
 
         await this.manageRefreshResponse(refreshResponse);
       } catch (error) {
-        console.error("-=-=-=-=-=-=- REFRESH ERROR -=-=-=-=-=-=-");
-        console.error(error);
+        console.log("-=-=-=-=-=-=- REFRESH ERROR -=-=-=-=-=-=-");
+        console.log(error);
 
         this.clearAuthDataAndRedirect();
         throw error;

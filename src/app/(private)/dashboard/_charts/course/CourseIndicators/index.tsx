@@ -1,3 +1,4 @@
+import { Topic } from "../../../_components/Topic";
 import { ApplicantsToSeatRatioIndicator } from "../../../_indicators/course/ApplicantsToSeatRatioIndicator";
 import { DropoutRateIndicator } from "../../../_indicators/course/DropoutRateIndicator";
 import { OccupancyRateIndicator } from "../../../_indicators/course/OccupancyRateIndicator";
@@ -47,6 +48,8 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
 export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
   return (
     <>
+      <Topic title="Indicadores do curso" />
+
       <IndicatorsCards complements={indicators?.complements} />
 
       <div className="grid grid-cols-7 gap-8">

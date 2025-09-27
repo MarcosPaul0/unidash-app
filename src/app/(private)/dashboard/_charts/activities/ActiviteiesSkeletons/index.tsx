@@ -13,12 +13,12 @@ export function ActivitiesSkeletons() {
       <Skeleton className="w-ful h-[46px] max-w-[300px] rounded-xl" />
 
       <Skeleton className="w-ful h-[568px]" />
-      <Skeleton className="w-ful h-[568px]" />
+      {/* <Skeleton className="w-ful h-[568px]" />
       <Skeleton className="w-ful h-[568px]" />
 
       <Skeleton className="w-ful h-[46px] max-w-[300px] rounded-xl" />
 
-      <Skeleton className="w-ful h-[568px]" />
+      <Skeleton className="w-ful h-[568px]" /> */}
     </>
   );
 }

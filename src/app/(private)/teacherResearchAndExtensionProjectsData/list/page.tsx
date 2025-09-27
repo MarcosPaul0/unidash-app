@@ -4,6 +4,9 @@ import { TeacherResearchAndExtensionProjectsDataTable } from "../_components/Tea
 import { GetAllTeacherResearchAndExtensionProjectsDataParams } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsDataParams.builder";
 import { TeacherResearchAndExtensionProjectsDataSSRService } from "@unidash/services/teacherResearchAndExtensionProjectsData/teacherResearchAndExtensionProjectsData.ssr.service";
 import { IndicatorsFilterForm } from "../../_components/IndicatorsFilterForm";
+import { environment } from "@unidash/config/environment.config";
+import { Suspense } from "react";
+import { TablePagination } from "../../_components/TablePagination";
 
 interface ListTeacherResearchAndExtensionProjectsDataPageProps {
   searchParams: Promise<GetAllTeacherResearchAndExtensionProjectsDataParams>;
@@ -17,7 +20,7 @@ export default async function ListTeacherResearchAndExtensionProjectsDataPage({
   const teacherResearchAndExtensionProjectsDataResponse =
     await TeacherResearchAndExtensionProjectsDataSSRService.getAllForTeacher(
       {
-        itemsPerPage: searchParamsResult?.itemsPerPage,
+        itemsPerPage: environment.ITEMS_PER_PAGE,
         page: searchParamsResult?.page,
       },
       {
@@ -38,11 +41,18 @@ export default async function ListTeacherResearchAndExtensionProjectsDataPage({
         filterForm={<IndicatorsFilterForm />}
       />
 
-      <TeacherResearchAndExtensionProjectsDataTable
-        teacherResearchAndExtensionProjectsData={
-          teacherResearchAndExtensionProjectsDataResponse.teacherResearchAndExtensionProjectsData
-        }
-      />
+      <Suspense fallback="carregando">
+        <TeacherResearchAndExtensionProjectsDataTable
+          teacherResearchAndExtensionProjectsData={
+            teacherResearchAndExtensionProjectsDataResponse.teacherResearchAndExtensionProjectsData
+          }
+        />
+        <TablePagination
+          totalPages={
+            teacherResearchAndExtensionProjectsDataResponse.totalPages
+          }
+        />
+      </Suspense>
     </>
   );
 }
