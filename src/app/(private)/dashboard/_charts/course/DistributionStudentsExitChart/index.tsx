@@ -99,6 +99,7 @@ export function DistributionStudentsExitChart({
               stackId="a"
               fill="var(--color-firstSemester)"
               radius={firstSemesterRadius}
+              height={440}
             >
               <LabelList
                 dataKey="firstSemester"
@@ -118,6 +119,7 @@ export function DistributionStudentsExitChart({
               stackId="a"
               fill="var(--color-secondSemester)"
               radius={secondSemesterRadius}
+              height={440}
             >
               <LabelList
                 dataKey="secondSemester"
