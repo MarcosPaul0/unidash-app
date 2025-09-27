@@ -82,7 +82,7 @@ export function IndicatorsFilterForm() {
   }
 
   return (
-    <form className="flex flex-row items-end w-full gap-8 mt-5 rounded-2xl">
+    <form className="flex flex-row items-end w-full gap-4 mt-5 rounded-2xl">
       <Select onValueChange={handleChangeYear} value={year ?? ""}>
         <SelectTrigger className="w-full max-w-[360px] bg-input">
           <i className="text-button-foreground ">
