@@ -18,8 +18,9 @@ export function UserMenu() {
   return session ? (
     <span
       className={`
+        hidden md:flex md:mr-0 md:ml-auto
         p-2 bg-menu text-menu-foreground rounded-full
-        flex items-center gap-2 cursor-pointer mr-0 ml-auto
+        items-center gap-2 cursor-pointer 
       `}
     >
       <Avatar>
@@ -32,6 +33,6 @@ export function UserMenu() {
       </div>
     </span>
   ) : (
-    <Skeleton className="w-[228px] h-[52px] rounded-full  mr-0 ml-auto" />
+    <Skeleton className="hidden md:block w-[228px] h-[52px] rounded-full mr-0 ml-auto" />
   );
 }

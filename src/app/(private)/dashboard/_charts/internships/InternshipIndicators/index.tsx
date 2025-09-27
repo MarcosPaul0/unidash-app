@@ -12,7 +12,7 @@ export function InternshipIndicators({
     <>
       <Topic title="Indicadores de estágios supervisionados" />
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <CitiesWithTheHighestInternshipsChart
           internshipsByCity={indicators?.internshipsByCity}
         />
@@ -22,7 +22,7 @@ export function InternshipIndicators({
         />
       </div>
 
-      <div className="grid grid-cols-7 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
         <DistributionOfTimeSpentCompletingInternshipChart
           internshipsByConclusionTime={indicators?.internshipsByConclusionTime}
         />

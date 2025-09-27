@@ -29,7 +29,7 @@ export default async function ListCoursePage({ params }: ListCoursePageProps) {
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="flex flex-col gap-8">
+        <CardContent className="flex flex-col gap-4 md:gap-8">
           <AddTeacherPopover courseId={currentParams.courseId} />
 
           <TeacherCourseTable courseId={currentParams.courseId} />

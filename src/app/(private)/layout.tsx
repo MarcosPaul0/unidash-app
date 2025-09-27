@@ -11,7 +11,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <SidebarProvider>
           <SidebarSession />
 
-          <main className="w-[calc(100svw-320px)] ml-[320px] flex flex-col gap-8 p-8">
+          <main className="w-screen md:w-[calc(100svw-320px)] md:ml-[320px] flex flex-col gap-4 md:gap-8 p-4 md:p-8">
             <HeaderSession />
 
             {children}

@@ -118,7 +118,7 @@ export function CourseTeachingComplementaryActivitiesDataForm() {
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="flex flex-col gap-8">
+          <CardContent className="flex flex-col gap-4 md:gap-8">
             <PeriodForm />
 
             <CardInputsRow>

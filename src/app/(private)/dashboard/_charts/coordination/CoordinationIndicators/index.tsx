@@ -16,7 +16,7 @@ export function CoordinationIndicators({
     <>
       <Topic title="Indicadores da coordenação do curso" />
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <DistributionCoordinationMeetingsChart
           meetings={indicators?.meetings ?? []}
           yearFrom={yearFromIndicators}

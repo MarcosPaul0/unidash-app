@@ -18,6 +18,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardInputsRow,
   CardTitle,
 } from "@unidash/components/Card";
 import { FormInput } from "@unidash/components/FormInput";
@@ -66,8 +67,8 @@ export function EditTeacherForm({ teacher }: EditTeacherFormProps) {
             <CardTitle>Editar docente</CardTitle>
           </CardHeader>
 
-          <CardContent className="flex flex-col gap-8">
-            <div className="flex items-start gap-8 w-full">
+          <CardContent className="flex flex-col gap-4 md:gap-8">
+            <CardInputsRow>
               <FormInput
                 control={control}
                 name="name"
@@ -85,7 +86,7 @@ export function EditTeacherForm({ teacher }: EditTeacherFormProps) {
                   disabled
                 />
               </Label>
-            </div>
+            </CardInputsRow>
 
             <FormSwitch
               name="isActive"

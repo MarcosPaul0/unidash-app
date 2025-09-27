@@ -18,7 +18,7 @@ export function StudentIncomingIndicators({
     <>
       <Topic title="Indicadores de ingresso" />
 
-      <div className="grid grid-cols-7 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
         <TrainingProfileIngressChart
           studentIncomingByCurrentEducation={
             indicators?.studentIncomingByCurrentEducation
@@ -38,7 +38,7 @@ export function StudentIncomingIndicators({
         }
       />
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-8">
         <ReasonsGivenForChoosingTheCourseChart
           studentIncomingByCourseChoiceReason={
             indicators?.studentIncomingByCourseChoiceReason
@@ -56,7 +56,7 @@ export function StudentIncomingIndicators({
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <AssetsDeclaredByIngressChart
           studentIncomingByAsset={indicators?.studentIncomingByAsset}
         />
@@ -68,7 +68,7 @@ export function StudentIncomingIndicators({
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <CourseQuestionsChart
           studentIncomingByCourseComplements={
             indicators?.studentIncomingByCourseComplements

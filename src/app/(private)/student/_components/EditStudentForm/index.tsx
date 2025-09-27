@@ -13,6 +13,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardInputsRow,
   CardTitle,
 } from "@unidash/components/Card";
 import { Button } from "@unidash/components/Button";
@@ -68,8 +69,8 @@ export function EditStudentForm({ student }: EditStudentFormProps) {
             <CardTitle>Registrar novo aluno</CardTitle>
           </CardHeader>
 
-          <CardContent className="flex flex-col gap-8">
-            <div className="flex items-start gap-8 w-full">
+          <CardContent className="flex flex-col gap-4 md:gap-8">
+            <CardInputsRow>
               <FormInput
                 control={control}
                 name="name"
@@ -86,9 +87,9 @@ export function EditStudentForm({ student }: EditStudentFormProps) {
                   disabled
                 />
               </Label>
-            </div>
+            </CardInputsRow>
 
-            <div className="flex items-start gap-8 w-full">
+            <CardInputsRow>
               <FormSelect
                 control={control}
                 name="type"
@@ -107,7 +108,7 @@ export function EditStudentForm({ student }: EditStudentFormProps) {
                 label="Matrícula"
                 helper={errors.matriculation?.message}
               />
-            </div>
+            </CardInputsRow>
 
             <Button className="max-w-56" size="lg" isLoading={isSubmitting}>
               <PaperPlaneTiltIcon />

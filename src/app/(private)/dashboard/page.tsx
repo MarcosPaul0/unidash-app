@@ -21,49 +21,49 @@ export default function DashboardPage() {
 
         <TabsContent
           value={CHARTS_CATEGORIES.COURSE}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <CourseContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.COORDINATION}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <CoordinationContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.INGRESS}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <IngressContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.CONCLUSION}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <ConclusionContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.ACTIVITIES}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <ActivitiesContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.INTERNSHIPS}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <InternshipsContent />
         </TabsContent>
 
         <TabsContent
           value={CHARTS_CATEGORIES.PRODUCTIONS}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4 md:gap-8"
         >
           <ProductionsContent />
         </TabsContent>

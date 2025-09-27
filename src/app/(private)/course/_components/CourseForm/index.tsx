@@ -24,16 +24,16 @@ export function CourseForm({ title }: CourseFormProps) {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-8">
-        <div className="flex gap-8 w-full">
-          <FormInput
-            control={control}
-            name="name"
-            placeholder="Digite o nome do curso"
-            label="Nome do curso"
-            helper={errors.name?.message}
-          />
-          {/* <FormSelect
+      <CardContent className="flex flex-col gap-4 md:gap-8">
+        <FormInput
+          control={control}
+          name="name"
+          placeholder="Digite o nome do curso"
+          label="Nome do curso"
+          helper={errors.name?.message}
+        />
+        {/* <div className="flex gap-8 w-full">
+          <FormSelect
               control={control}
               name="status"
               placeholder="Selecione um status para o curso"
@@ -43,8 +43,8 @@ export function CourseForm({ title }: CourseFormProps) {
                 { label: "Ativo", value: COURSE_STATUS.active },
                 { label: "Inativo", value: COURSE_STATUS.inactive },
               ]}
-            /> */}
-        </div>
+            />
+        </div> */}
       </CardContent>
 
       <CardFooter>

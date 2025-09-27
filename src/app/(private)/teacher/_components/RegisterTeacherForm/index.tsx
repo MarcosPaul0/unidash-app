@@ -16,6 +16,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardInputsRow,
   CardTitle,
 } from "@unidash/components/Card";
 import { FormInput } from "@unidash/components/FormInput";
@@ -73,8 +74,8 @@ export function RegisterTeacherForm() {
             <CardTitle>Registro de docente</CardTitle>
           </CardHeader>
 
-          <CardContent className="flex flex-col gap-8">
-            <div className="flex items-start gap-8 w-full">
+          <CardContent className="flex flex-col gap-4 md:gap-8">
+            <CardInputsRow>
               <FormInput
                 control={control}
                 name="name"
@@ -90,9 +91,9 @@ export function RegisterTeacherForm() {
                 label="E-mail"
                 helper={errors.email?.message}
               />
-            </div>
+            </CardInputsRow>
 
-            <div className="flex items-start gap-8 w-full">
+            <CardInputsRow>
               <FormInput
                 control={control}
                 name="password"
@@ -109,7 +110,7 @@ export function RegisterTeacherForm() {
                 label="Confirmar senha"
                 helper={errors.passwordConfirmation?.message}
               />
-            </div>
+            </CardInputsRow>
 
             <Button className="max-w-56" size="lg" isLoading={isSubmitting}>
               <FloppyDiskIcon />

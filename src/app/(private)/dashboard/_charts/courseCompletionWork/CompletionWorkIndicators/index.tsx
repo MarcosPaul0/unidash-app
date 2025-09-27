@@ -10,7 +10,7 @@ export function CompletionWorkIndicators({
     <>
       <Topic title="Indicadores de tabalho de conclusão do curso" />
 
-      <div className="grid grid-cols-7 gap-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
         <WorkStatusChart worksStatus={indicators?.worksStatus} />
 
         <PerformanceInDefensesChart

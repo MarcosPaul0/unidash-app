@@ -31,7 +31,7 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   const lastSuccessRate = complements[lastYear].successRate;
 
   return (
-    <div className="grid grid-cols-4 gap-8">
+    <div className="flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-8">
       <ApplicantsToSeatRatioIndicator
         currentApplicantsToSeatRatio={lastApplicantsToSeatRatio}
       />
@@ -52,13 +52,13 @@ export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
 
       <IndicatorsCards complements={indicators?.complements} />
 
-      <div className="grid grid-cols-7 gap-8">
+      <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
         <ActiveStudentsOverTimeChart students={indicators?.students ?? []} />
 
         <DistributionStudentsExitChart departures={indicators?.departures} />
       </div>
 
-      <div className="grid grid-cols-7 gap-8">
+      <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
         <RegistrationLocksChart
           registrationLocks={indicators?.registrationLocks}
         />

@@ -87,7 +87,10 @@ function CardInputsRow({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-inputs-row"
-      className={cn("flex items-start gap-8 w-full", className)}
+      className={cn(
+        "flex flex-col md:flex-row items-start gap-4 md:gap-8 w-full",
+        className
+      )}
       {...props}
     />
   );

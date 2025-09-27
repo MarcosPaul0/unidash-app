@@ -10,12 +10,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           items-center p-8
         `}
       >
-        <LogoMaster className="ml-auto my-0" />
+        <LogoMaster className="hidden md:ml-auto my-0" />
 
         <div
           className={`
-            bg-accent-foreground p-24 flex flex-col rounded-3xl
-            max-h-[800px] max-w-[720px] w-full my-0 ml-auto gap-20
+            bg-accent-foreground p-12 md:p-24 flex flex-col rounded-3xl
+            max-h-[800px] max-w-[720px] w-full my-0 ml-auto gap-8 md:gap-20
           `}
         >
           {children}

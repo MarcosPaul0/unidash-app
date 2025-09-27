@@ -26,7 +26,7 @@ export function Toolbar({
 }: ToolbarProps) {
   return (
     <Collapsible>
-      <div className="flex items-center justify-between border-b-1 border-muted pb-1">
+      <div className="flex flex-col gap-4 md:flex-row items-start md:items-center md:justify-between border-b-1 border-muted pb-1">
         {breadcrumbPage && (
           <Breadcrumb>
             <BreadcrumbList>
