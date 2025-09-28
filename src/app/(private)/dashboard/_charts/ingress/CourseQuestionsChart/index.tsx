@@ -49,7 +49,7 @@ export function CourseQuestionsChart({
   return (
     <ChartCard
       title="Conhecimento prévio e desejo de curso noturno entre ingressantes"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
           options={filterOptions}

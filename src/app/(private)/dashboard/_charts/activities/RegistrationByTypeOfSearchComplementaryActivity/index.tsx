@@ -61,7 +61,7 @@ export function RegistrationByTypeOfSearchComplementaryActivity({
   return (
     <ChartCard
       title="Cadastros de atividades complementares de pesquisa por tipo de atividade"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
           options={filterOptions}

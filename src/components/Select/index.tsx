@@ -48,7 +48,7 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <CaretDownIcon className="size-4 ml-auto mr-0" />
+        <CaretDownIcon className="size-2 md:size-4 ml-auto mr-0" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );

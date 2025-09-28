@@ -36,7 +36,7 @@ export function WorkGuidanceByTeacherChart() {
   return (
     <ChartCard
       title="Total de orientações de TCC por professor no ano de 2023"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação de TCCs do curso"
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart

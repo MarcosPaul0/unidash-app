@@ -66,7 +66,7 @@ export function AssetsDeclaredByIngressChart({
   return (
     <ChartCard
       title="Bens de uso pessoal declarados pelos alunos ingressantes no ano de 2023"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
           options={filterOptions}

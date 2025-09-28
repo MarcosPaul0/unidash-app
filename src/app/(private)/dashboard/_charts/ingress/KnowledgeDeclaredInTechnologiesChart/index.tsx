@@ -51,7 +51,7 @@ export function KnowledgeDeclaredInTechnologiesChart({
   return (
     <ChartCard
       title="Conhecimentos declarados em tecnologias pelos ingressantes no ano de 2023"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
           options={filterOptions}

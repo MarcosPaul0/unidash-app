@@ -7,7 +7,7 @@ import { Session } from "./_components/Session";
 export default async function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="3xl:max-w-[1920px] 3xl:mx-auto relative">
+      <div className="3xl:max-w-[1920px] py-16 md:py-0 3xl:mx-auto relative">
         <SidebarProvider>
           <SidebarSession />
 

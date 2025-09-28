@@ -38,7 +38,7 @@ export function InternshipsByRoleChart({
   return (
     <ChartCard
       title="Estágios supervisionados por área de atuação profissional"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais da coordenação de estágios do curso"
       complement={
         <ChartSelect
           options={filterOptions}

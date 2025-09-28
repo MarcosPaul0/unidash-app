@@ -12,7 +12,12 @@ export function SidebarMenu() {
   }
 
   return (
-    <Button type="button" variant="ghost" onClick={() => setOpenMobile(true)}>
+    <Button
+      type="button"
+      variant="ghost"
+      className="text-menu"
+      onClick={() => setOpenMobile(true)}
+    >
       <ListIcon />
     </Button>
   );

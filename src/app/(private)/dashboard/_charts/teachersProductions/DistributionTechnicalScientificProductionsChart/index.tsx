@@ -47,7 +47,7 @@ export function DistributionTechnicalScientificProductionsChart({
   return (
     <ChartCard
       title="Distribuição de produções técnico-científicas por tipo"
-      description="Fonte dos dados: registros institucionais da coordenação do curso (2018–2024)"
+      description="Fonte dos dados: registros institucionais dos docentes do curso"
       complement={
         <ChartSelect
           options={filterOptions}

@@ -98,15 +98,12 @@ export function CourseSelect() {
       <SelectTrigger
         className={`
             max-w-[460px] bg-button data-[placeholder]:text-button-foreground
-            px-4 text-xl font-title font-semibold text-button-foreground
+            px-2 md:px-4 text-sm md:text-xl font-title font-semibold text-button-foreground
             [&_svg:not([class*='text-'])]:text-button-foreground rounded-2xl
             disabled:cursor-default disabled:text-button-foreground disabled:border-button
           `}
       >
-        <GraduationCapIcon
-          size={24}
-          className="text-button-foreground size-6"
-        />
+        <GraduationCapIcon className="text-button-foreground size-4 md:size-6" />
 
         <SelectValue className="" placeholder="Selecione um curso" />
       </SelectTrigger>

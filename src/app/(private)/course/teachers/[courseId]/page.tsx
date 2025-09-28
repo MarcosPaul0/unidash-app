@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@unidash/components/Card";
 import { AddTeacherPopover } from "../../_components/AddTeacherPopover";
+import { APP_ROUTES } from "@unidash/routes/app.routes";
 
 interface ListCoursePageProps {
   params: Promise<{ courseId: string }>;
@@ -20,7 +21,15 @@ export default async function ListCoursePage({ params }: ListCoursePageProps) {
 
   return (
     <>
-      <Toolbar breadcrumbPage="Lista de cursos" />
+      <Toolbar
+        breadcrumbItems={[
+          {
+            label: "Lista de cursos",
+            link: APP_ROUTES.private.courses,
+          },
+        ]}
+        breadcrumbPage="Docentes do curso"
+      />
 
       <Card>
         <CardHeader>
