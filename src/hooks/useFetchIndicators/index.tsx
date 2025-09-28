@@ -8,12 +8,17 @@ export function useFetchIndicators<T>({
   const [indicators, setIndicators] = useState<T | null>(null);
   const [isFetching, setIsFetching] = useState(true);
 
-  const { activeCourse } = useCourseStore();
+  const { activeCourse, courses } = useCourseStore();
 
   useEffect(() => {
     setIsFetching(true);
 
+    if (courses.length === 0) {
+      return;
+    }
+
     if (!activeCourse) {
+      setIsFetching(false);
       return;
     }
 
@@ -33,7 +38,7 @@ export function useFetchIndicators<T>({
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCourse]);
+  }, [activeCourse, courses]);
 
   return {
     indicators,
