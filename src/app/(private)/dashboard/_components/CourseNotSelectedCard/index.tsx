@@ -11,7 +11,7 @@ export function CourseNotSelectedCard() {
   return (
     <Card className="max-w-3xl w-full flex-row items-center">
       <CardHeader className="flex-1">
-        <CardTitle className="text-2xl">👉 Selecione um curso</CardTitle>
+        <CardTitle className="text-2xl">👆 Selecione um curso</CardTitle>
 
         <CardDescription className="text-xl">
           Para visualizar os indicadores e gráficos, escolha um curso na barra
