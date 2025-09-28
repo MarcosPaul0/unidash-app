@@ -10,6 +10,7 @@ import { StudentIncomingDataTableProps } from "./studentIncomingDataTable.interf
 import { SemesterTag } from "@unidash/app/(private)/courseCoordinationData/_components/SemesterTag";
 import { StudentIncomingDataActions } from "../StudentIncomingDataActions";
 import { Can } from "@unidash/components/Can";
+import { WorkExpectationTag } from "../WorkExpectationTag";
 
 export function StudentIncomingDataTable({
   studentIncomingData,
@@ -28,8 +29,6 @@ export function StudentIncomingDataTable({
 
           <TableHead>Leu o PPC</TableHead>
 
-          <TableHead>Sabe diferenciar cursos correlatos</TableHead>
-
           <TableHead>Espectativa de atuação</TableHead>
 
           <Can allowedRoles={["admin"]}>
@@ -47,13 +46,13 @@ export function StudentIncomingDataTable({
               <SemesterTag semester={data.semester} />
             </TableCell>
 
-            <TableCell>{data.nocturnalPreference}</TableCell>
+            <TableCell>{data.nocturnalPreference ? "Sim" : "Não"}</TableCell>
 
-            <TableCell>{data.readPedagogicalProject}</TableCell>
+            <TableCell>{data.readPedagogicalProject ? "Sim" : "Não"}</TableCell>
 
-            <TableCell>{data.knowRelatedCourseDifference}</TableCell>
-
-            <TableCell>{data.workExpectation}</TableCell>
+            <TableCell>
+              <WorkExpectationTag workExpectation={data.workExpectation} />
+            </TableCell>
 
             <Can allowedRoles={["admin"]}>
               <TableCell className="w-[100px] text-center">

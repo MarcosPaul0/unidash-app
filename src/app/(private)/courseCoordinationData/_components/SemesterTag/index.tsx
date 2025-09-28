@@ -14,7 +14,7 @@ const SEMESTER_LABEL = {
 
 export function SemesterTag({ semester }: SemesterTagProps) {
   return (
-    <Badge className={`text-sm ${SEMESTER_COLOR[semester]}`}>
+    <Badge className={`text-xs md:text-sm ${SEMESTER_COLOR[semester]}`}>
       {SEMESTER_LABEL[semester]}
     </Badge>
   );

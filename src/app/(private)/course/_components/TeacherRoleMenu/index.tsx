@@ -73,7 +73,9 @@ export function TeacherRoleMenu({ teacherCourse }: TeacherRoleMenuProps) {
       <PopoverTrigger>
         <Badge
           className={`
-            text-sm ${TEACHER_ROLE_BADGE_COLOR[teacherCourse.teacherRole]}
+            text-xs md:text-sm ${
+              TEACHER_ROLE_BADGE_COLOR[teacherCourse.teacherRole]
+            }
           `}
         >
           {TEACHER_ROLE_LABELS[teacherCourse.teacherRole]}

@@ -14,7 +14,7 @@ const STUDENT_TYPE_LABEL = {
 
 export function StudentType({ type }: StudentTypeProps) {
   return (
-    <Badge className={`text-sm ${STUDENT_TYPE_COLOR[type]}`}>
+    <Badge className={`text-xs md:text-sm ${STUDENT_TYPE_COLOR[type]}`}>
       {STUDENT_TYPE_LABEL[type]}
     </Badge>
   );

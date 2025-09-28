@@ -5,7 +5,7 @@ export function TeacherStatus({ isActive }: TeacherStatusProps) {
   return (
     <Badge
       className={`
-            text-sm ${
+            text-xs md:text-sm ${
               isActive
                 ? "bg-icon-green text-icon-green-foreground"
                 : "bg-icon-red text-icon-red-foreground"
