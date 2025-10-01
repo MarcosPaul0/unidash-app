@@ -10,6 +10,7 @@ import { CourseInternshipDataTableProps } from "./courseInternshipDataTable.inte
 import { CourseInternshipDataActions } from "../CourseInternshipDataActions";
 import { SemesterTag } from "@unidash/app/(private)/courseCoordinationData/_components/SemesterTag";
 import { WorkExpectationTag } from "../InternshipConclusionTimeTag";
+import { EmploymentTypeTag } from "../EmploymentTypeTag";
 
 export function CourseInternshipDataTable({
   courseInternshipData,
@@ -33,6 +34,8 @@ export function CourseInternshipDataTable({
           <TableHead>CNPJ</TableHead>
 
           <TableHead>Atuação</TableHead>
+
+          <TableHead>Vínculo</TableHead>
 
           <TableHead>Tempo de conclusão</TableHead>
 
@@ -58,6 +61,10 @@ export function CourseInternshipDataTable({
             <TableCell>{data.enterpriseCnpj}</TableCell>
 
             <TableCell>{data.role}</TableCell>
+
+            <TableCell>
+              <EmploymentTypeTag employmentType={data.employmentType} />
+            </TableCell>
 
             <TableCell>
               <WorkExpectationTag conclusionTime={data.conclusionTime} />

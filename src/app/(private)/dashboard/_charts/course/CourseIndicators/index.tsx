@@ -48,7 +48,7 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
 export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
   return (
     <>
-      <Topic title="Indicadores do curso" />
+      <Topic title="Indicadores do Curso" />
 
       <IndicatorsCards complements={indicators?.complements} />
 

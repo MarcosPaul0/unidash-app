@@ -1,4 +1,7 @@
-import { ConclusionTime } from "../dtos/courseInternshipData.dto";
+import {
+  ConclusionTime,
+  EmploymentType,
+} from "../dtos/courseInternshipData.dto";
 import { Semester } from "../dtos/courseStudentsData.dto";
 
 export interface CourseInternshipDataResponse {
@@ -14,6 +17,7 @@ export interface CourseInternshipDataResponse {
     cityName: string;
     advisorId: string;
     advisorName: string;
+    employmentType: EmploymentType;
     createdAt: string;
   }[];
   totalItems: number;

@@ -51,10 +51,9 @@ const chartConfig = {
   [HOBBY_OR_HABIT.individualSports]: {
     label: "Esportes individuais",
   },
-  // [HOBBY_OR_HABIT.]: {
-  //   label: "Trabalhos manuais",
-  //
-  // },
+  [HOBBY_OR_HABIT.handcrafting]: {
+    label: "Trabalhos manuais",
+  },
   [HOBBY_OR_HABIT.other]: {
     label: "Outros",
   },

@@ -1,4 +1,5 @@
 import { Topic } from "../../../_components/Topic";
+import { ActionPlansChart } from "../ActionPlansChart";
 import { DistributionCoordinationMeetingsChart } from "../DistributionCoordinationMeetingsChart";
 import { ServicesProvidedByCoordinationChart } from "../ServicesProvidedByCoordinationChart";
 import { CoordinationIndicatorsProps } from "./coordinationIndicators.interface";
@@ -14,7 +15,7 @@ export function CoordinationIndicators({
 
   return (
     <>
-      <Topic title="Indicadores da coordenação do curso" />
+      <Topic title="Indicadores da Coordenação do Curso" />
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <DistributionCoordinationMeetingsChart
@@ -29,6 +30,12 @@ export function CoordinationIndicators({
           yearTo={yearToIndicators}
         />
       </div>
+
+      <ActionPlansChart
+        actionPlans={indicators?.actionPlans}
+        yearFrom={yearFromIndicators}
+        yearTo={yearToIndicators}
+      />
     </>
   );
 }

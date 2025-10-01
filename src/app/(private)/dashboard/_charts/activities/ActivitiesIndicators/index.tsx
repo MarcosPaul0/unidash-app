@@ -10,7 +10,7 @@ export function ActivitiesIndicators({
 }: ActivitiesIndicatorsProps) {
   return (
     <>
-      <Topic title="Indicadores de atividades complementares" />
+      <Topic title="Indicadores de Atividades Complementares" />
 
       {/* <div className="grid grid-cols-3 gap-8">
         <ExtensionActivitiesTotalIndicator />
@@ -38,7 +38,7 @@ export function ActivitiesIndicators({
         }
       />
 
-      <Topic title="Indicadores de atividades de extensão" />
+      <Topic title="Indicadores de Atividades de Extensão" />
       {/* 
       <div className="grid grid-cols-3 gap-8">
         <ComplementaryActivitiesTotalIndicator />

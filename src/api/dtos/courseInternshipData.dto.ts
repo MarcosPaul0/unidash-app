@@ -11,6 +11,15 @@ export const CONCLUSION_TIME = {
 export type ConclusionTime =
   (typeof CONCLUSION_TIME)[keyof typeof CONCLUSION_TIME];
 
+export const EMPLOYMENT_TYPE = {
+  employmentContract: "employmentContract",
+  independentContractor: "independentContractor",
+  internship: "internship",
+} as const;
+
+export type EmploymentType =
+  (typeof EMPLOYMENT_TYPE)[keyof typeof EMPLOYMENT_TYPE];
+
 export const registerCourseInternshipDataDtoSchema = z.object({
   year: z
     .transform(Number)
@@ -20,6 +29,7 @@ export const registerCourseInternshipDataDtoSchema = z.object({
   enterpriseCnpj: z.string().min(14).max(14),
   role: z.string().min(1).max(60),
   conclusionTime: z.enum(CONCLUSION_TIME),
+  employmentType: z.enum(EMPLOYMENT_TYPE),
   cityId: z.uuid(),
   advisorId: z.uuid(),
 });

@@ -9,7 +9,7 @@ export function TeacherProductionsIndicators({
 }: TeacherProductionsIndicatorsProps) {
   return (
     <>
-      <Topic title="Indicadores de produções técnico-científicas" />
+      <Topic title="Indicadores de Produções Técnico-Científicas" />
 
       <DistributionTechnicalScientificProductionsChart
         technicalScientificProductionsByType={
@@ -23,7 +23,7 @@ export function TeacherProductionsIndicators({
         }
       />
 
-      <Topic title="Indicadores de projetos de pesquisa e de extensão" />
+      <Topic title="Indicadores de Projetos de Pesquisa e de Extensão" />
 
       <ResearchAndExtensionProjectsByTeacherChart
         researchAndExtensionProjectsByTeacher={

@@ -8,7 +8,7 @@ export function CompletionWorkIndicators({
 }: CompletionWorkIndicatorsProps) {
   return (
     <>
-      <Topic title="Indicadores de tabalho de conclusão do curso" />
+      <Topic title="Indicadores de Trabalhos de Conclusão de Curso" />
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
         <WorkStatusChart worksStatus={indicators?.worksStatus} />

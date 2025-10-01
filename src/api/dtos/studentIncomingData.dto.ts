@@ -144,6 +144,7 @@ export const registerStudentIncomingDataDtoSchema = z.object({
       discipline: z.enum(HIGH_SCHOOL_DISCIPLINE),
     })
   ),
+  cityId: z.uuid(),
   assets: z.array(z.enum(ASSET)),
   courseChoiceReasons: z.array(z.enum(COURSE_CHOICE_REASON)),
   hobbyOrHabits: z.array(z.enum(HOBBY_OR_HABIT)),

@@ -19,11 +19,11 @@ import { Formatter } from "@unidash/utils/formatter.util";
 
 const typeLabels: Record<string, string> = {
   completed: "Completo",
-  maximumDuration: "Tempo máximo",
+  maximumDuration: "Prazo máximo",
   dropouts: "Abandonos",
   transfers: "Transferências",
   withdrawals: "Desistências",
-  removals: "Removidos",
+  removals: "Excluídos",
   newExams: "Novo vestibular",
   deaths: "Falecimento",
 };

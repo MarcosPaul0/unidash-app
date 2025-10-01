@@ -1,4 +1,7 @@
-import { ConclusionTime } from "../dtos/courseInternshipData.dto";
+import {
+  ConclusionTime,
+  EmploymentType,
+} from "../dtos/courseInternshipData.dto";
 import { Semester } from "../dtos/courseStudentsData.dto";
 import {
   Asset,
@@ -55,6 +58,11 @@ export interface CourseCoordinationIndicatorsResponse {
     resolutionActions: number;
     administrativeDecisionActions: number;
   }[];
+  actionPlans: {
+    year: number;
+    academicActionPlans: number;
+    administrativeActionPlans: number;
+  }[];
   period: number[];
 }
 
@@ -85,6 +93,11 @@ export interface CourseActivitiesIndicatorsResponse {
 
 export type InternshipByCity = { city: string; count: number };
 
+export type InternshipByEmploymentType = {
+  employmentType: EmploymentType;
+  count: number;
+};
+
 export type InternshipByRole = { role: string; count: number };
 
 export type InternshipByAdvisor = { city: string; count: number };
@@ -93,6 +106,7 @@ export type InternshipByConclusionTime = Record<ConclusionTime, number>;
 
 export interface CourseInternshipIndicatorsResponse {
   internshipsByCity: Record<string, InternshipByCity[]>;
+  internshipsByEmploymentType: Record<string, InternshipByEmploymentType[]>;
   internshipsByRole: Record<string, InternshipByRole[]>;
   internshipsByAdvisor: Record<string, InternshipByAdvisor[]>;
   internshipsByConclusionTime: Record<string, InternshipByConclusionTime>;

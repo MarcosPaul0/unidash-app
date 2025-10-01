@@ -12,6 +12,8 @@ export interface CourseCoordinationDataResponse {
     meetingsByBoardOfDirectors: number;
     meetingsByUndergraduateChamber: number;
     meetingsByCourseCouncil: number;
+    academicActionPlans: number;
+    administrativeActionPlans: number;
     createdAt: string;
   }[];
   totalItems: number;

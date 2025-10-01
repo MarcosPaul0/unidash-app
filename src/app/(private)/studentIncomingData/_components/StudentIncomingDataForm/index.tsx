@@ -27,6 +27,7 @@ import { Toast } from "@unidash/utils/toast.util";
 import { StudentIncomingDataCSService } from "@unidash/services/studentIncomingData/studentIncomingData.cs.service";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { ExceptionHandler } from "@unidash/api/errors/exception.handler";
+import { CitiesSelect } from "@unidash/app/(private)/_components/CitiesSelect";
 
 const REGISTER_COURSE_INTERNSHIP_DATA_SUCCESS_MESSAGE =
   "Novo registro de estágio do curso foi adicionado!";
@@ -54,7 +55,7 @@ const CURRENT_EDUCATION_OPTIONS = [
     value: CURRENT_EDUCATION.higherInField,
   },
   {
-    label: "Formação técnica na área do curso",
+    label: "Formação superior não relacionado a área do curso",
     value: CURRENT_EDUCATION.higherOutField,
   },
   {
@@ -65,15 +66,16 @@ const CURRENT_EDUCATION_OPTIONS = [
 
 const ENGLISH_PROFICIENCY_LEVEL_OPTIONS = [
   {
-    label: "Fluente",
+    label: "Fluente (leitura, escrita e conversação).",
     value: ENGLISH_PROFICIENCY_LEVEL.fluent,
   },
   {
-    label: "Intermediário",
+    label:
+      "Intermediário (ex. leitura técnica, legendas de vídeos em inglês e entendimento parcial de áudio em inglês).",
     value: ENGLISH_PROFICIENCY_LEVEL.intermediate,
   },
   {
-    label: "Baixo",
+    label: "Baixo, necessito da ajuda de tradutor.",
     value: ENGLISH_PROFICIENCY_LEVEL.low,
   },
 ];
@@ -103,7 +105,7 @@ const WORK_EXPECTATION_OPTIONS = [
 
 const BOOLEAN_OPTIONS = [
   {
-    label: "Sim",
+    label: "Sim, o período noturno se encaixa melhor com",
     value: true,
   },
   {
@@ -137,12 +139,20 @@ const HOBBY_OR_HABITS_OPTIONS = [
     value: HOBBY_OR_HABIT.individualSports,
   },
   {
-    label: "Jogos eletrônicos",
+    label: "Jogos Eletrônicos",
     value: HOBBY_OR_HABIT.videoGames,
   },
   {
     label: "Leituras",
     value: HOBBY_OR_HABIT.reading,
+  },
+  {
+    label: "Escutar Música",
+    value: HOBBY_OR_HABIT.listeningMusic,
+  },
+  {
+    label: "Passar o tempo navegando na internet",
+    value: HOBBY_OR_HABIT.internetBrowsing,
   },
   {
     label: "Redes sociais",
@@ -153,8 +163,20 @@ const HOBBY_OR_HABITS_OPTIONS = [
     value: HOBBY_OR_HABIT.traveling,
   },
   {
+    label: "Tabalhos manuais",
+    value: HOBBY_OR_HABIT.handcrafting,
+  },
+  {
+    label: "Filmes e séries",
+    value: HOBBY_OR_HABIT.moviesOrSeries,
+  },
+  {
     label: "Tocar instrumento musical",
     value: HOBBY_OR_HABIT.playingInstrument,
+  },
+  {
+    label: "Outros",
+    value: HOBBY_OR_HABIT.other,
   },
 ];
 
@@ -295,6 +317,7 @@ export function StudentIncomingDataForm() {
     defaultValues: {
       semester: "first",
       year: new Date().getFullYear(),
+      cityId: "",
       affinityByDisciplines: [
         {
           affinityLevel: "low",
@@ -350,7 +373,7 @@ export function StudentIncomingDataForm() {
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = formMethods;
 
   async function sendStudentIncomingData(
@@ -380,6 +403,14 @@ export function StudentIncomingDataForm() {
       <form onSubmit={handleSubmit(sendStudentIncomingData)}>
         <Card>
           <CardContent className="flex flex-col gap-4 md:gap-8">
+            <CardSubtitle>Qual e nome da sua cidade origem?</CardSubtitle>
+
+            <CitiesSelect
+              control={control}
+              name="cityId"
+              helper={errors.cityId?.message}
+            />
+
             <CardSubtitle>Qual sua formação atual?</CardSubtitle>
 
             <FormRadioGroup
@@ -409,7 +440,7 @@ export function StudentIncomingDataForm() {
               options={WORK_EXPECTATION_OPTIONS}
             />
 
-            <CardSubtitle>Gostaria que o curso fosse noturno?</CardSubtitle>
+            <CardSubtitle>Tem preferência pelo período noturno?</CardSubtitle>
 
             <FormRadioGroup
               control={control}
@@ -439,7 +470,7 @@ export function StudentIncomingDataForm() {
               Qual o nível de afinidade com as matérias abaixo?
             </CardSubtitle>
 
-            <div className="grid grid-cols-3 gap-8 w-full">
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-8 w-full">
               <FormRadioGroup
                 control={control}
                 name="affinityByDisciplines[0].affinityLevel"

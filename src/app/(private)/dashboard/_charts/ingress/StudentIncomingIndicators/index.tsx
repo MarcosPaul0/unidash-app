@@ -16,7 +16,7 @@ export function StudentIncomingIndicators({
 }: StudentIncomingIndicatorsProps) {
   return (
     <>
-      <Topic title="Indicadores de ingresso" />
+      <Topic title="Indicadores de Ingresso" />
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
         <TrainingProfileIngressChart

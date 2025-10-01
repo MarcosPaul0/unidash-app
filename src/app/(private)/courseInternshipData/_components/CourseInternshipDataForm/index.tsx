@@ -14,6 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   CONCLUSION_TIME,
+  EMPLOYMENT_TYPE,
   RegisterCourseInternshipDataDto,
   registerCourseInternshipDataDtoSchema,
 } from "@unidash/api/dtos/courseInternshipData.dto";
@@ -57,6 +58,7 @@ export function CourseInternshipDataForm({
       advisorId: "",
       cityId: "",
       conclusionTime: "medium",
+      employmentType: "internship",
       enterpriseCnpj: "",
       role: "",
       studentMatriculation: "",
@@ -161,6 +163,27 @@ export function CourseInternshipDataForm({
                 placeholder="Informe o tempo para conclusão"
                 label="Tempo de conclusão"
                 helper={errors.conclusionTime?.message}
+              />
+              <FormSelect
+                options={[
+                  {
+                    label: "Estágio",
+                    value: EMPLOYMENT_TYPE.internship,
+                  },
+                  {
+                    label: "CLT",
+                    value: EMPLOYMENT_TYPE.employmentContract,
+                  },
+                  {
+                    label: "PJ",
+                    value: EMPLOYMENT_TYPE.independentContractor,
+                  },
+                ]}
+                control={control}
+                name="employmentType"
+                placeholder="Informe o tipo de vínculo"
+                label="Tipo de vínculo"
+                helper={errors.employmentType?.message}
               />
             </CardInputsRow>
 

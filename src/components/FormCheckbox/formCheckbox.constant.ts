@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const formCheckboxVariants = cva(`grid gap-8 w-full`, {
+export const formCheckboxVariants = cva(`flex flex-col md:grid gap-8 w-full`, {
   variants: {
     cols: {
       four: "grid-cols-4",

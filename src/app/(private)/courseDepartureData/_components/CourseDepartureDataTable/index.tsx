@@ -27,11 +27,11 @@ export function CourseDepartureDataTable({
 
           <TableHead>Expirações</TableHead>
 
-          <TableHead>Vertibular</TableHead>
+          <TableHead>Vestibular</TableHead>
 
           <TableHead>Removidos</TableHead>
 
-          <TableHead>Tranferências</TableHead>
+          <TableHead>Transferências</TableHead>
 
           <TableHead>Desistências</TableHead>
 

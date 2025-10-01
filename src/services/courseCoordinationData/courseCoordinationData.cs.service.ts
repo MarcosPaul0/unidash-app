@@ -53,6 +53,10 @@ export class CourseCoordinationDataCSService {
           registerCourseCoordinationDataDto.meetingsByUndergraduateChamber,
         meetingsByCourseCouncil:
           registerCourseCoordinationDataDto.meetingsByCourseCouncil,
+        academicActionPlans:
+          registerCourseCoordinationDataDto.academicActionPlans,
+        administrativeActionPlans:
+          registerCourseCoordinationDataDto.administrativeActionPlans,
       }
     );
 

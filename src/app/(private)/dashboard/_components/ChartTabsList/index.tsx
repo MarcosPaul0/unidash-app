@@ -14,9 +14,7 @@ export function ChartTabsList() {
 
         <TabsTrigger value={CHARTS_CATEGORIES.INGRESS}>Ingressos</TabsTrigger>
 
-        <TabsTrigger value={CHARTS_CATEGORIES.CONCLUSION}>
-          Conclusão
-        </TabsTrigger>
+        <TabsTrigger value={CHARTS_CATEGORIES.CONCLUSION}>TCC</TabsTrigger>
 
         <TabsTrigger value={CHARTS_CATEGORIES.ACTIVITIES}>
           Atividades

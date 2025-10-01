@@ -42,19 +42,19 @@ export function SidebarIndicatorsCollapsible() {
           allowedTeacherRoles={["courseManagerTeacher"]}
         >
           <SidebarLink
-            text="Alunos do curso"
+            text="Alunos do Curso"
             href={`${APP_ROUTES.private.courseStudentsData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="Saídas do curso"
+            text="Saídas do Curso"
             href={`${APP_ROUTES.private.courseDepartureData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="Trancamentos do curso"
+            text="Trancamentos do Curso"
             href={`${APP_ROUTES.private.courseRegistrationLockData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
@@ -72,7 +72,7 @@ export function SidebarIndicatorsCollapsible() {
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="Carga horária"
+            text="Carga Horária"
             href={`${APP_ROUTES.private.courseTeacherWorkloadData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
@@ -84,7 +84,7 @@ export function SidebarIndicatorsCollapsible() {
           allowedTeacherRoles={["extensionsActivitiesManagerTeacher"]}
         >
           <SidebarLink
-            text="Ativ. de extensão"
+            text="Ativ. de Extensão"
             href={`${APP_ROUTES.private.courseExtensionActivitiesData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
@@ -96,19 +96,19 @@ export function SidebarIndicatorsCollapsible() {
           allowedTeacherRoles={["complementaryActivitiesManagerTeacher"]}
         >
           <SidebarLink
-            text="Ativ. compl. ensino"
+            text="Ativ. compl. Ensino"
             href={`${APP_ROUTES.private.courseTeachingComplementaryActivitiesData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="Ativ. compl. pesquisa"
+            text="Ativ. compl. Pesquisa"
             href={`${APP_ROUTES.private.courseSearchComplementaryActivitiesData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />
           <SidebarLink
-            text="Ativ. compl. extensão"
+            text="Ativ. compl. Extensão"
             href={`${APP_ROUTES.private.courseExtensionComplementaryActivitiesData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}

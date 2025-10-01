@@ -10,34 +10,42 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-import { CitiesWithTheHighestInternshipsChartProps } from "./citiesWithTheHighestInternshipsChart.interface";
-import { InternshipByCity } from "@unidash/api/responses/indicators.response";
+import { EmploymentTypeInternshipsChartProps } from "./employmentTypeInternshipsChart.interface";
+import { InternshipByEmploymentType } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
+import { Formatter } from "@unidash/utils/formatter.util";
+import { EMPLOYMENT_TYPE } from "@unidash/api/dtos/courseInternshipData.dto";
+
+const typeLabels: Record<string, string> = {
+  [EMPLOYMENT_TYPE.employmentContract]: "CLT",
+  [EMPLOYMENT_TYPE.independentContractor]: "PJ",
+  [EMPLOYMENT_TYPE.internship]: "Estágio",
+};
 
 const chartConfig = {
   count: {
-    label: "Quantidade de estágios realizados",
-    color: "var(--chart-9)",
+    label: "Estágios por vínculo empregatício",
+    color: "var(--chart-6)",
   },
 } satisfies ChartConfig;
 
-export function CitiesWithTheHighestInternshipsChart({
-  internshipsByCity,
-}: CitiesWithTheHighestInternshipsChartProps) {
+export function EmploymentTypeInternshipsChart({
+  internshipsByEmploymentType,
+}: EmploymentTypeInternshipsChartProps) {
   const {
     changeFilterOption,
     indicatorsData,
     filterOptions,
     activeFilterOption,
-  } = useChartFilter<InternshipByCity[]>({
-    indicators: internshipsByCity,
+  } = useChartFilter<InternshipByEmploymentType[]>({
+    indicators: internshipsByEmploymentType,
     initialData: [],
   });
 
   return (
     <ChartCard
-      title="Cidades com maior número de estágios supervisionados cadastrados"
+      title="Estágios supervisionados por tipo de vínculo empregatício"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
       complement={
         <ChartSelect
@@ -47,7 +55,10 @@ export function CitiesWithTheHighestInternshipsChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart
           accessibilityLayer
           data={indicatorsData}
@@ -58,7 +69,10 @@ export function CitiesWithTheHighestInternshipsChart({
           <CartesianGrid vertical={false} />
 
           <XAxis
-            dataKey="city"
+            dataKey="employmentType"
+            tickFormatter={(value) =>
+              Formatter.getChartLabel(value, typeLabels)
+            }
             tickLine={false}
             tickMargin={20}
             axisLine={false}

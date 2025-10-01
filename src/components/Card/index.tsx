@@ -42,7 +42,7 @@ function CardSubtitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-subtitle"
       className={cn(
-        "leading-none font-semibold font-title text-xl w-full border-b pb-2",
+        "leading-none font-semibold font-title text-lg w-full border-b pb-2",
         className
       )}
       {...props}

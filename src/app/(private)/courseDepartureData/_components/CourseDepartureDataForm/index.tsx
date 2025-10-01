@@ -142,7 +142,7 @@ export function CourseDepartureDataForm() {
                 type="number"
                 name="maximumDuration"
                 placeholder="Quantidade de saídas por prazo máximo"
-                label="Expirações"
+                label="Prazo máximo"
                 helper={errors.maximumDuration?.message}
               />
             </CardInputsRow>
@@ -168,8 +168,8 @@ export function CourseDepartureDataForm() {
                 control={control}
                 type="number"
                 name="removals"
-                placeholder="Quantidade de alunos removidos"
-                label="Removidos"
+                placeholder="Quantidade de alunos excluídos"
+                label="Excluídos"
                 helper={errors.removals?.message}
               />
               <FormInput

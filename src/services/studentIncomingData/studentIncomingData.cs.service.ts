@@ -67,6 +67,7 @@ export class StudentIncomingDataCSService {
         technologies: registerStudentIncomingDataDto.technologies,
         universityChoiceReasons:
           registerStudentIncomingDataDto.universityChoiceReasons,
+        cityId: registerStudentIncomingDataDto.cityId,
       }
     );
 

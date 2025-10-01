@@ -45,6 +45,7 @@ export class CourseInternshipDataCSService {
         enterpriseCnpj: registerCourseInternshipDataDto.enterpriseCnpj,
         role: registerCourseInternshipDataDto.role,
         conclusionTime: registerCourseInternshipDataDto.conclusionTime,
+        employmentType: registerCourseInternshipDataDto.employmentType,
         cityId: registerCourseInternshipDataDto.cityId,
         advisorId: registerCourseInternshipDataDto.advisorId,
       }

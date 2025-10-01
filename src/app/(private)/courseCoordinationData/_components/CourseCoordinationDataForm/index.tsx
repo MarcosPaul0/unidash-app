@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardInputsRow,
+  CardSubtitle,
   CardTitle,
 } from "@unidash/components/Card";
 import { useForm, FormProvider } from "react-hook-form";
@@ -48,6 +49,8 @@ const INITIAL_VALUES = {
   resolutionActions: "",
   servicesRequestsByEmail: "",
   servicesRequestsBySystem: "",
+  academicActionPlans: "",
+  administrativeActionPlans: "",
 } as unknown as RegisterCourseCoordinationDataDto;
 
 export function CourseCoordinationDataForm() {
@@ -112,6 +115,8 @@ export function CourseCoordinationDataForm() {
           <CardContent className="flex flex-col gap-4 md:gap-8">
             <PeriodForm />
 
+            <CardSubtitle>Informações de reuniões realizadas</CardSubtitle>
+
             <CardInputsRow>
               <FormInput
                 control={control}
@@ -138,6 +143,8 @@ export function CourseCoordinationDataForm() {
                 helper={errors.meetingsByUndergraduateChamber?.message}
               />
             </CardInputsRow>
+
+            <CardSubtitle>Informações de atendimentos realizadas</CardSubtitle>
 
             <CardInputsRow>
               <FormInput
@@ -174,6 +181,29 @@ export function CourseCoordinationDataForm() {
                 placeholder="Quantidade de atendimentos por SIGAA"
                 label="Atendimentos por SIGAA"
                 helper={errors.servicesRequestsBySystem?.message}
+              />
+            </CardInputsRow>
+
+            <CardSubtitle>
+              Informações de plano de ações realizados
+            </CardSubtitle>
+
+            <CardInputsRow>
+              <FormInput
+                control={control}
+                type="number"
+                name="administrativeActionPlans"
+                placeholder="Quantidade de plano de ações administrativos"
+                label="Plano de ações administrativos"
+                helper={errors.administrativeActionPlans?.message}
+              />
+              <FormInput
+                control={control}
+                type="number"
+                name="academicActionPlans"
+                placeholder="Quantidade de plano de ações acadêmicos"
+                label="Plano de ações acadêmicos"
+                helper={errors.academicActionPlans?.message}
               />
             </CardInputsRow>
           </CardContent>
