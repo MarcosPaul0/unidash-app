@@ -10,7 +10,7 @@ export const registerCourseTeacherWorkloadDataDtoSchema = z.object({
   teacherId: z.uuid(),
   workloadInMinutes: z
     .transform(Number)
-    .pipe(z.number().int().min(0).max(1000)),
+    .pipe(z.number().int().min(0).max(10000)),
 });
 
 export type RegisterCourseTeacherWorkloadDataDto = z.infer<
