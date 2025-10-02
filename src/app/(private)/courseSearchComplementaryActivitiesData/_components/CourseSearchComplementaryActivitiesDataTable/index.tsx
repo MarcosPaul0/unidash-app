@@ -25,7 +25,7 @@ export function CourseSearchComplementaryActivitiesDataTable({
 
           <TableHead>Inic. científica</TableHead>
 
-          <TableHead>Desenv. ecológico</TableHead>
+          <TableHead>Desenv. tecnológico</TableHead>
 
           <TableHead>Artigos na área</TableHead>
 

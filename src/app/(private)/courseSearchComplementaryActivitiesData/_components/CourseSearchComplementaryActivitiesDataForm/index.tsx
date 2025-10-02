@@ -133,8 +133,8 @@ export function CourseSearchComplementaryActivitiesDataForm() {
                 control={control}
                 type="number"
                 name="developmentInitiation"
-                placeholder="Quantidade de iniciações em desenvolvimento ecológico"
-                label="Iniciações em desenvolvimento ecológico"
+                placeholder="Quantidade de iniciações em desenvolvimento tecnológico"
+                label="Iniciações em desenvolvimento tecnológico"
                 helper={errors.developmentInitiation?.message}
               />
               <FormInput
