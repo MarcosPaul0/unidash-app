@@ -55,18 +55,16 @@ export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
       <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
         <ActiveStudentsOverTimeChart students={indicators?.students ?? []} />
 
-        <DistributionStudentsExitChart departures={indicators?.departures} />
-      </div>
-
-      <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
         <RegistrationLocksChart
           registrationLocks={indicators?.registrationLocks}
         />
-
-        <TeacherHoursDistributionChart
-          teachersWorkload={indicators?.teachersWorkload}
-        />
       </div>
+
+      <DistributionStudentsExitChart departures={indicators?.departures} />
+
+      <TeacherHoursDistributionChart
+        teachersWorkload={indicators?.teachersWorkload}
+      />
     </>
   );
 }

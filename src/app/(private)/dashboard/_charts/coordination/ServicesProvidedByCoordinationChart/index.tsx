@@ -33,7 +33,7 @@ export function ServicesProvidedByCoordinationChart({
 
   return (
     <ChartCard
-      title="Atendimentos realizados pela coordenação por tipo de canal"
+      title="Número de atendimentos realizados pela coordenação por tipo de canal ao longo dos anos"
       description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">

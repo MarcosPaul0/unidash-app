@@ -28,13 +28,13 @@ export function InternshipIndicators({
           internshipsByConclusionTime={indicators?.internshipsByConclusionTime}
         />
 
-        <TotalNumberOfInternshipsByTeacherChart
-          internshipsByAdvisor={indicators?.internshipsByAdvisor}
+        <EmploymentTypeInternshipsChart
+          internshipsByEmploymentType={indicators?.internshipsByEmploymentType}
         />
       </div>
 
-      <EmploymentTypeInternshipsChart
-        internshipsByEmploymentType={indicators?.internshipsByEmploymentType}
+      <TotalNumberOfInternshipsByTeacherChart
+        internshipsByAdvisor={indicators?.internshipsByAdvisor}
       />
     </>
   );

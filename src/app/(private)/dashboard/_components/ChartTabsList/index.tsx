@@ -4,8 +4,8 @@ import { ScrollArea, ScrollBar } from "@unidash/components/ScrollArea";
 
 export function ChartTabsList() {
   return (
-    <ScrollArea className="w-[calc(100%---spacing(1))]">
-      <TabsList className=" overflow-y-clip md:overflow-x-clip ">
+    <ScrollArea className="w-[calc(100%---spacing(1))] md:h-13 md:top-1">
+      <TabsList className="overflow-y-clip md:overflow-y-visible">
         <TabsTrigger value={CHARTS_CATEGORIES.COURSE}>Curso</TabsTrigger>
 
         <TabsTrigger value={CHARTS_CATEGORIES.COORDINATION}>

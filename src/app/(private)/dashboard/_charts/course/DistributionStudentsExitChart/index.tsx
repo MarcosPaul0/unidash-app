@@ -13,7 +13,6 @@ import { ChartCard } from "../../../_components/ChartCard";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { DistributionStudentsExitChartProps } from "./distributionStudentsExitChart.interface";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
-import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { Formatter } from "@unidash/utils/formatter.util";
 
@@ -56,14 +55,10 @@ export function DistributionStudentsExitChart({
     },
   });
 
-  const { firstSemesterRadius, secondSemesterRadius } =
-    useSemestersChartConfiguration({ indicatorsData });
-
   return (
     <ChartCard
-      title="Distribuição de alunos por tipo de saída e semestre"
+      title="Distribuição do número de alunos por tipo de saída, segundo o semestre do ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
-      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -72,7 +67,10 @@ export function DistributionStudentsExitChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart accessibilityLayer data={indicatorsData.data}>
           <CartesianGrid vertical={false} />
 
@@ -96,9 +94,8 @@ export function DistributionStudentsExitChart({
           {indicatorsData.hasDataInFirstSemester && (
             <Bar
               dataKey="firstSemester"
-              stackId="a"
               fill="var(--color-firstSemester)"
-              radius={firstSemesterRadius}
+              radius={[8, 8, 8, 8]}
               height={440}
             >
               <LabelList
@@ -116,9 +113,8 @@ export function DistributionStudentsExitChart({
           {indicatorsData.hasDataInSecondSemester && (
             <Bar
               dataKey="secondSemester"
-              stackId="a"
               fill="var(--color-secondSemester)"
-              radius={secondSemesterRadius}
+              radius={[8, 8, 8, 8]}
               height={440}
             >
               <LabelList

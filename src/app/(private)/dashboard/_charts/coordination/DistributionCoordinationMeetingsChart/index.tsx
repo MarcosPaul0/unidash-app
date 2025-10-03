@@ -37,7 +37,7 @@ export function DistributionCoordinationMeetingsChart({
 
   return (
     <ChartCard
-      title="Distribuição de reuniões da coordenação por tipo de instância"
+      title="Distribuição do número de reuniões da coordenação por tipo de instância ao longo dos anos"
       description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
     >
       <ChartContainer config={chartConfig} className="min-h-[440px] w-full">

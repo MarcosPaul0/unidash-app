@@ -13,7 +13,6 @@ import { ChartCard } from "../../../_components/ChartCard";
 import { RegistrationLocksChartProps } from "./registrationLocksChart.interface";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
-import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { Formatter } from "@unidash/utils/formatter.util";
 
@@ -54,14 +53,11 @@ export function RegistrationLocksChart({
     },
   });
 
-  const { firstSemesterRadius, secondSemesterRadius } =
-    useSemestersChartConfiguration({ indicatorsData });
-
   return (
     <ChartCard
-      title="Trancamentos de matrícula por semestre e motivo declarado"
+      title="Número de trancamentos de matrícula por semestre e motivo declarado"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
-      className="col-span-3"
+      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -94,9 +90,8 @@ export function RegistrationLocksChart({
           {indicatorsData.hasDataInFirstSemester && (
             <Bar
               dataKey="firstSemester"
-              stackId="a"
               fill="var(--color-firstSemester)"
-              radius={firstSemesterRadius}
+              radius={[8, 8, 8, 8]}
             >
               <LabelList
                 dataKey="firstSemester"
@@ -113,9 +108,8 @@ export function RegistrationLocksChart({
           {indicatorsData.hasDataInSecondSemester && (
             <Bar
               dataKey="secondSemester"
-              stackId="a"
               fill="var(--color-secondSemester)"
-              radius={secondSemesterRadius}
+              radius={[8, 8, 8, 8]}
             >
               <LabelList
                 dataKey="secondSemester"

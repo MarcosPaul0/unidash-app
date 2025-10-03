@@ -47,6 +47,7 @@ export function EmploymentTypeInternshipsChart({
     <ChartCard
       title="Estágios supervisionados por tipo de vínculo empregatício"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
+      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}

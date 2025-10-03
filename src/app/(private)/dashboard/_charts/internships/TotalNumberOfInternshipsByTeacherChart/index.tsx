@@ -39,7 +39,6 @@ export function TotalNumberOfInternshipsByTeacherChart({
     <ChartCard
       title="Total de orientações de estágio supervisionado por professor"
       description="Fonte dos dados: registros institucionais da coordenação de estágios do curso"
-      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -50,7 +49,7 @@ export function TotalNumberOfInternshipsByTeacherChart({
     >
       <ChartContainer
         config={chartConfig}
-        className="min-h-[440px] h-full w-full"
+        className="min-h-[440px] max-h-[440px] w-full"
       >
         <BarChart
           accessibilityLayer
@@ -66,7 +65,7 @@ export function TotalNumberOfInternshipsByTeacherChart({
             tickLine={false}
             tickMargin={20}
             axisLine={false}
-            angle={330}
+            angle={-45}
             height={50}
             fontSize={14}
           />

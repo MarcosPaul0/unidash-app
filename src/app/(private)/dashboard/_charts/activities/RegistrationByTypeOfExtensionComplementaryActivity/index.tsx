@@ -58,7 +58,7 @@ export function RegistrationByTypeOfExtensionComplementaryActivity({
 
   return (
     <ChartCard
-      title="Cadastros de atividades complementares de extensão por tipo de atividade"
+      title="Número de atividades complementares na dimenção extensão por tipo de atividade no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
@@ -89,10 +89,7 @@ export function RegistrationByTypeOfExtensionComplementaryActivity({
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend
-            content={<ChartLegendContent />}
-            className="text-base "
-          />
+          <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
           {indicatorsData.hasDataInFirstSemester && (
             <Bar

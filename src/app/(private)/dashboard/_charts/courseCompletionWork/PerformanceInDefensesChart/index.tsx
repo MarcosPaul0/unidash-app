@@ -41,9 +41,8 @@ export function PerformanceInDefensesChart({
 
   return (
     <ChartCard
-      title="Desempenho nas defesas de TCC por docente"
+      title="Número de resultados de defesas de TCCs, por docente orientador, no ano"
       description="Fonte dos dados: registros institucionais da coordenação de TCCs do curso"
-      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -52,17 +51,21 @@ export function PerformanceInDefensesChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart accessibilityLayer data={indicatorsData}>
           <CartesianGrid vertical={false} />
 
           <XAxis
             dataKey="teacher"
             tickLine={false}
-            tickMargin={10}
+            tickMargin={30}
             axisLine={false}
+            height={80}
             fontSize={14}
-            height={50}
+            angle={-45}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -71,7 +74,6 @@ export function PerformanceInDefensesChart({
 
           <Bar
             dataKey="approved"
-            stackId="a"
             fill="var(--color-approved)"
             radius={[0, 0, 4, 4]}
           >
@@ -88,7 +90,6 @@ export function PerformanceInDefensesChart({
 
           <Bar
             dataKey="failed"
-            stackId="a"
             fill="var(--color-failed)"
             radius={[4, 4, 0, 0]}
           >

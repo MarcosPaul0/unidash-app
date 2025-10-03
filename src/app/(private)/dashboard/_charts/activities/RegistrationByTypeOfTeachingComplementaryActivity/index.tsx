@@ -61,7 +61,7 @@ export function RegistrationByTypeOfTeachingComplementaryActivity({
 
   return (
     <ChartCard
-      title="Cadastros de atividades complementares de ensino por tipo de atividade"
+      title="Cadastros de atividades complementares na dimenção ensino por tipo de atividade no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

@@ -49,9 +49,8 @@ export function TeacherHoursDistributionChart({
 
   return (
     <ChartCard
-      title="Distribuição de carga horária didática por docente"
+      title="Distribuição de carga horária didática por docente em minutos no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
-      className="col-span-4"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -60,7 +59,10 @@ export function TeacherHoursDistributionChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart
           accessibilityLayer
           data={indicatorsData.data}
@@ -77,7 +79,7 @@ export function TeacherHoursDistributionChart({
             axisLine={false}
             height={80}
             fontSize={14}
-            angle={-25}
+            angle={-45}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -96,7 +98,7 @@ export function TeacherHoursDistributionChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-card"
+                className="fill-foreground"
                 fontSize={18}
                 fontWeight={600}
               />
@@ -115,7 +117,7 @@ export function TeacherHoursDistributionChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-card"
+                className="fill-foreground"
                 fontSize={18}
                 fontWeight={600}
               />

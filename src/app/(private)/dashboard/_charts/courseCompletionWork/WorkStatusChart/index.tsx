@@ -50,9 +50,9 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
 
   return (
     <ChartCard
-      title="Situação de TCCs: matrículas, defesas e abandonos por semestre"
+      title="Situação de TCCs no ano, por semestre: matrículas, defesas e abandonos"
       description="Fonte dos dados: registros institucionais da coordenação de TCCs do curso"
-      className="col-span-3"
+      className="col-span-5"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -61,7 +61,10 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart
           accessibilityLayer
           data={indicatorsData}

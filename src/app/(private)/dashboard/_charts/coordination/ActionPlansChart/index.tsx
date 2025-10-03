@@ -33,7 +33,7 @@ export function ActionPlansChart({
 
   return (
     <ChartCard
-      title="Plano de ações realizado ao longo do tempo"
+      title="Número de plano de ações realizados ao longo dos anos"
       description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
     >
       <ChartContainer
