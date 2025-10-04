@@ -37,7 +37,7 @@ export function CitiesWithTheHighestInternshipsChart({
 
   return (
     <ChartCard
-      title="Cidades com maior número de estágios supervisionados cadastrados"
+      title="Número de estágios supervisionados cadastrados por cidade no ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
       complement={
         <ChartSelect
@@ -71,13 +71,12 @@ export function CitiesWithTheHighestInternshipsChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="count" fill="var(--color-count)" radius={8}>
             <LabelList
               dataKey="count"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

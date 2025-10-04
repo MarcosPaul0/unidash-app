@@ -70,8 +70,7 @@ export function DistributionCoordinationMeetingsChart({
               dataKey="meetingsByUndergraduateChamber"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -85,8 +84,7 @@ export function DistributionCoordinationMeetingsChart({
               dataKey="meetingsByBoardOfDirectors"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -100,8 +98,7 @@ export function DistributionCoordinationMeetingsChart({
               dataKey="meetingsByCourseCouncil"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

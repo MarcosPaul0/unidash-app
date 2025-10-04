@@ -60,14 +60,13 @@ export function ServicesProvidedByCoordinationChart({
           <Bar
             dataKey="servicesRequestsByEmail"
             fill="var(--color-servicesRequestsByEmail)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="servicesRequestsByEmail"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -75,14 +74,13 @@ export function ServicesProvidedByCoordinationChart({
           <Bar
             dataKey="servicesRequestsBySystem"
             fill="var(--color-servicesRequestsBySystem)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="servicesRequestsBySystem"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -90,7 +88,7 @@ export function ServicesProvidedByCoordinationChart({
           {/* <Bar
             dataKey="resolution"
             fill="var(--color-resolution)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="resolution"

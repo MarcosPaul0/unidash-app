@@ -40,7 +40,7 @@ const REGISTER_TEACHER_SUPERVISED_COMPLETION_WORK_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   approved: "",
   failed: "",
 } as unknown as RegisterTeacherSupervisedCompletionWorkDataDto;

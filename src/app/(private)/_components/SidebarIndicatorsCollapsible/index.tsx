@@ -29,7 +29,7 @@ export function SidebarIndicatorsCollapsible() {
           <i className="text-2xl">
             <ChartLineUpIcon />
           </i>
-          Indicadores
+          Dados do Curso
           <i className="text-sm ml-auto">
             <CaretDownIcon />
           </i>
@@ -44,6 +44,12 @@ export function SidebarIndicatorsCollapsible() {
           <SidebarLink
             text="Alunos do Curso"
             href={`${APP_ROUTES.private.courseStudentsData}${activeCourse?.id}`}
+            size="sm"
+            variant={indicatorsLinkVariant}
+          />
+          <SidebarLink
+            text="Alunos Ativos"
+            href={`${APP_ROUTES.private.courseActiveStudentsData}${activeCourse?.id}`}
             size="sm"
             variant={indicatorsLinkVariant}
           />

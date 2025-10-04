@@ -62,7 +62,7 @@ export function LevelOfProficiencyDeclaredByIngressChart({
 
   return (
     <ChartCard
-      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio no ano de 2023"
+      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
@@ -99,39 +99,32 @@ export function LevelOfProficiencyDeclaredByIngressChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="low" fill="var(--color-low)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="low" fill="var(--color-low)" radius={8}>
             <LabelList
               dataKey="low"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
-          <Bar
-            dataKey="medium"
-            fill="var(--color-medium)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="medium" fill="var(--color-medium)" radius={8}>
             <LabelList
               dataKey="medium"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
-          <Bar dataKey="high" fill="var(--color-high)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="high" fill="var(--color-high)" radius={8}>
             <LabelList
               dataKey="high"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

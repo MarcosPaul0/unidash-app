@@ -14,7 +14,6 @@ export const registerCourseStudentsDataDtoSchema = z.object({
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
   semester: z.enum(SEMESTER),
   entrants: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
-  actives: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
   vacancies: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
   subscribers: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
 });

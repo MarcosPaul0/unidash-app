@@ -40,8 +40,7 @@ const REGISTER_COURSE_STUDENTS_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
-  actives: "",
+  year: new Date().getFullYear().toString(),
   entrants: "",
   subscribers: "",
   vacancies: "",
@@ -107,14 +106,6 @@ export function CourseStudentsDataForm() {
             <PeriodForm />
 
             <CardInputsRow>
-              <FormInput
-                control={control}
-                type="number"
-                name="actives"
-                placeholder="Quantidade de discentes ativos"
-                label="Ativos"
-                helper={errors.actives?.message}
-              />
               <FormInput
                 control={control}
                 type="number"

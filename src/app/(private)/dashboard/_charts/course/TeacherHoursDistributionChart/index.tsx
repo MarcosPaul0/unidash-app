@@ -98,8 +98,7 @@ export function TeacherHoursDistributionChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-foreground"
-                fontSize={18}
+                className="fill-foreground text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>
@@ -117,8 +116,7 @@ export function TeacherHoursDistributionChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-foreground"
-                fontSize={18}
+                className="fill-foreground text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>

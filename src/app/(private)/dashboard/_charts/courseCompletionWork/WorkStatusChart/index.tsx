@@ -88,32 +88,22 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="enrollments"
-            fill="var(--color-enrollments)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="enrollments" fill="var(--color-enrollments)" radius={8}>
             <LabelList
               dataKey="enrollments"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
-          <Bar
-            dataKey="defenses"
-            fill="var(--color-defenses)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="defenses" fill="var(--color-defenses)" radius={8}>
             <LabelList
               dataKey="defenses"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -121,14 +111,13 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
           <Bar
             dataKey="abandonments"
             fill="var(--color-abandonments)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="abandonments"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

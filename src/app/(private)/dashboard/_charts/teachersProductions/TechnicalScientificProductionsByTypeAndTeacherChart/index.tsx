@@ -88,15 +88,14 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
             dataKey="periodicals"
             stackId="a"
             fill="var(--color-periodicals)"
-            radius={[0, 0, 4, 4]}
+            radius={[0, 0, 8, 8]}
           >
             <LabelList
               dataKey="periodicals"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -107,8 +106,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -119,8 +117,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -135,8 +132,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -145,15 +141,14 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
             dataKey="programs"
             stackId="a"
             fill="var(--color-programs)"
-            radius={[4, 4, 0, 0]}
+            radius={[8, 8, 0, 0]}
           >
             <LabelList
               dataKey="programs"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

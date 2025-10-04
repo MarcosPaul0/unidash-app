@@ -27,8 +27,6 @@ export function CourseStudentsDataTable({
 
           <TableHead>Inscritos</TableHead>
 
-          <TableHead>Ativos</TableHead>
-
           <TableHead>Ingressantes</TableHead>
 
           <TableHead className="w-[100px] text-center">Ações</TableHead>
@@ -47,8 +45,6 @@ export function CourseStudentsDataTable({
             <TableCell>{data.vacancies}</TableCell>
 
             <TableCell>{data.subscribers}</TableCell>
-
-            <TableCell>{data.actives}</TableCell>
 
             <TableCell>{data.entrants}</TableCell>
 

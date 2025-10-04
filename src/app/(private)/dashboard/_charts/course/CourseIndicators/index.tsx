@@ -3,7 +3,7 @@ import { ApplicantsToSeatRatioIndicator } from "../../../_indicators/course/Appl
 import { DropoutRateIndicator } from "../../../_indicators/course/DropoutRateIndicator";
 import { OccupancyRateIndicator } from "../../../_indicators/course/OccupancyRateIndicator";
 import { SuccessRateIndicator } from "../../../_indicators/course/SuccessRateIndicator";
-import { ActiveStudentsOverTimeChart } from "../ActiveStudentsOverTimeChart";
+import { ActiveStudentsChart } from "../ActiveStudentsChart";
 import { DistributionStudentsExitChart } from "../DistributionStudentsExitChart";
 import { RegistrationLocksChart } from "../RegistrationLocksChart ";
 import { TeacherHoursDistributionChart } from "../TeacherHoursDistributionChart";
@@ -53,7 +53,7 @@ export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
       <IndicatorsCards complements={indicators?.complements} />
 
       <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
-        <ActiveStudentsOverTimeChart students={indicators?.students ?? []} />
+        <ActiveStudentsChart activeStudents={indicators?.activeStudents} />
 
         <RegistrationLocksChart
           registrationLocks={indicators?.registrationLocks}

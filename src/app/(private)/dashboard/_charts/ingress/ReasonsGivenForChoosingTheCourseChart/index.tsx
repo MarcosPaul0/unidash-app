@@ -59,7 +59,7 @@ export function ReasonsGivenForChoosingTheCourseChart({
 
   return (
     <ChartCard
-      title="Motivos declarados pelos ingressantes para escolha do curso no ano de 2023"
+      title="Motivos declarados pelos ingressantes para escolha do curso no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
@@ -100,15 +100,14 @@ export function ReasonsGivenForChoosingTheCourseChart({
           <Bar
             dataKey="count"
             layout="vertical"
-            radius={5}
+            radius={8}
             fill="var(--chart-8)"
           >
             <LabelList
               dataKey="count"
               position="center"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

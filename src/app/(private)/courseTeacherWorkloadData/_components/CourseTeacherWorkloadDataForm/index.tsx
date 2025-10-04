@@ -42,7 +42,7 @@ const REGISTER_COURSE_TEACHER_WORKLOAD_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   teacherId: "",
   workloadInMinutes: "",
 } as unknown as RegisterCourseTeacherWorkloadDataDto;

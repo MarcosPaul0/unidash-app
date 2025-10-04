@@ -23,6 +23,17 @@ export type SemestersIndicators = {
 
 export type SemestersIndicatorByYear = Record<string, SemestersIndicators>;
 
+export type CourseStudents = {
+  entrants: number;
+  vacancies: number;
+  subscribers: number;
+};
+
+export type ActiveStudentsByIngress = {
+  ingressYear: number;
+  numberOfStudents: number;
+};
+
 export type CourseComplements = {
   successRate: number;
   dropoutRate: number;
@@ -33,10 +44,8 @@ export type CourseComplements = {
 export interface CourseIndicatorsResponse {
   departures: SemestersIndicatorByYear;
   registrationLocks: SemestersIndicatorByYear;
-  students: {
-    year: number;
-    actives: number;
-  }[];
+  students: Record<string, CourseStudents[]>;
+  activeStudents: Record<string, ActiveStudentsByIngress[]>;
   teachersWorkload: SemestersIndicatorByYear;
   complements: Record<string, CourseComplements>;
 }

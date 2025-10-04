@@ -75,15 +75,14 @@ export function PerformanceInDefensesChart({
           <Bar
             dataKey="approved"
             fill="var(--color-approved)"
-            radius={[0, 0, 4, 4]}
+            radius={[0, 0, 8, 8]}
           >
             <LabelList
               dataKey="approved"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -91,15 +90,14 @@ export function PerformanceInDefensesChart({
           <Bar
             dataKey="failed"
             fill="var(--color-failed)"
-            radius={[4, 4, 0, 0]}
+            radius={[8, 8, 0, 0]}
           >
             <LabelList
               dataKey="failed"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

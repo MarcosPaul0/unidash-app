@@ -40,7 +40,7 @@ const REGISTER_COURSE_TEACHING_COMPLEMENTARY_ACTIVITIES_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   complementaryCoursesInTheArea: "",
   coursesInTheArea: "",
   coursesOutsideTheArea: "",

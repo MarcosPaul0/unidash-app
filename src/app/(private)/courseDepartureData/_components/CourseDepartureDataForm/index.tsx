@@ -40,7 +40,7 @@ const REGISTER_COURSE_DEPARTURE_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   completed: "",
   deaths: "",
   dropouts: "",

@@ -69,8 +69,7 @@ export function ActionPlansChart({
               dataKey="academicActionPlans"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -84,8 +83,7 @@ export function ActionPlansChart({
               dataKey="administrativeActionPlans"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -99,8 +97,7 @@ export function ActionPlansChart({
               dataKey="resolution"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar> */}

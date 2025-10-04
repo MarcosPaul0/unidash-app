@@ -41,7 +41,7 @@ const REGISTER_COURSE_COORDINATION_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   administrativeDecisionActions: "",
   meetingsByBoardOfDirectors: "",
   meetingsByCourseCouncil: "",

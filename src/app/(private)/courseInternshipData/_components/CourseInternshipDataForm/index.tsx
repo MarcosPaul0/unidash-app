@@ -43,6 +43,18 @@ const REGISTER_COURSE_INTERNSHIP_DATA_ERROR_MESSAGES = {
     "Esse registro de estágio do curso já existe! Confira a matrícula do discente.",
 } as const;
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear().toString(),
+  advisorId: "",
+  cityId: "",
+  conclusionTime: "medium",
+  employmentType: "internship",
+  enterpriseCnpj: "",
+  role: "",
+  studentMatriculation: "",
+} as unknown as RegisterCourseInternshipDataDto;
+
 export function CourseInternshipDataForm({
   teachersOptions,
 }: CourseInternshipDataFormProps) {
@@ -52,17 +64,7 @@ export function CourseInternshipDataForm({
 
   const formMethods = useForm<RegisterCourseInternshipDataDto>({
     resolver: zodResolver(registerCourseInternshipDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      advisorId: "",
-      cityId: "",
-      conclusionTime: "medium",
-      employmentType: "internship",
-      enterpriseCnpj: "",
-      role: "",
-      studentMatriculation: "",
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {

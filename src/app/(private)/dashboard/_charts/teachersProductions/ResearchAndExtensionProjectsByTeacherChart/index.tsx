@@ -76,15 +76,14 @@ export function ResearchAndExtensionProjectsByTeacherChart({
             dataKey="researchProjects"
             stackId="a"
             fill="var(--color-researchProjects)"
-            radius={[0, 0, 4, 4]}
+            radius={[0, 0, 8, 8]}
           >
             <LabelList
               dataKey="researchProjects"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -93,15 +92,14 @@ export function ResearchAndExtensionProjectsByTeacherChart({
             dataKey="extensionProjects"
             stackId="a"
             fill="var(--color-extensionProjects)"
-            radius={[4, 4, 0, 0]}
+            radius={[8, 8, 0, 0]}
           >
             <LabelList
               dataKey="extensionProjects"
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground"
-              fontSize={18}
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

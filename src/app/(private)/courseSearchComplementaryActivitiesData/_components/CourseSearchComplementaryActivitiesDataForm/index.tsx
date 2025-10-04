@@ -40,7 +40,7 @@ const REGISTER_COURSE_SEARCH_COMPLEMENTARY_ACTIVITIES_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   developmentInitiation: "",
   fullPublishedArticles: "",
   participationInEvents: "",

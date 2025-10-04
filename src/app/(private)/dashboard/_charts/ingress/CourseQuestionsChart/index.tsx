@@ -85,7 +85,7 @@ export function CourseQuestionsChart({
 
           <Bar
             dataKey="yes"
-            radius={[0, 0, 5, 5]}
+            radius={[0, 0, 8, 8]}
             stackId="a"
             fill="var(--color-yes)"
           >
@@ -93,15 +93,14 @@ export function CourseQuestionsChart({
               dataKey="yes"
               position="center"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
           <Bar
             dataKey="no"
-            radius={[5, 5, 0, 0]}
+            radius={[8, 8, 0, 0]}
             stackId="a"
             fill="var(--color-no)"
           >
@@ -109,8 +108,7 @@ export function CourseQuestionsChart({
               dataKey="no"
               position="center"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

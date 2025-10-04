@@ -91,15 +91,14 @@ export function RegistrationLocksChart({
             <Bar
               dataKey="firstSemester"
               fill="var(--color-firstSemester)"
-              radius={[8, 8, 8, 8]}
+              radius={8}
             >
               <LabelList
                 dataKey="firstSemester"
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-card"
-                fontSize={18}
+                className="fill-card text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>
@@ -109,15 +108,14 @@ export function RegistrationLocksChart({
             <Bar
               dataKey="secondSemester"
               fill="var(--color-secondSemester)"
-              radius={[8, 8, 8, 8]}
+              radius={8}
             >
               <LabelList
                 dataKey="secondSemester"
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-card"
-                fontSize={18}
+                className="fill-card text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>

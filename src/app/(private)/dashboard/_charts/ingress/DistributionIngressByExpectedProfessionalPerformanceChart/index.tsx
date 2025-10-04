@@ -47,7 +47,7 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart({
 
   return (
     <ChartCard
-      title="Distribuição dos ingressantes por expectativa de atuação profissional no ano de 2023"
+      title="Distribuição dos ingressantes por expectativa de atuação profissional no ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
@@ -87,13 +87,12 @@ export function DistributionIngressByExpectedProfessionalPerformanceChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="count" fill="var(--color-count)" radius={8}>
             <LabelList
               dataKey="count"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

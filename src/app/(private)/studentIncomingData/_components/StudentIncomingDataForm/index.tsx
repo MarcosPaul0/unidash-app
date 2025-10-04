@@ -309,65 +309,67 @@ const ASSETS_OPTIONS = [
   },
 ];
 
+const INITIAL_VALUES = {
+  semester: "first",
+  year: new Date().getFullYear().toString(),
+  cityId: "",
+  affinityByDisciplines: [
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.mathematics,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.portuguese,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.chemical,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.history,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.physical,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.geography,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.biology,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.english,
+    },
+    {
+      affinityLevel: "low",
+      discipline: HIGH_SCHOOL_DISCIPLINE.technology,
+    },
+  ],
+  assets: [],
+  courseChoiceReasons: [],
+  hobbyOrHabits: [],
+  knowRelatedCourseDifference: false,
+  nocturnalPreference: false,
+  readPedagogicalProject: false,
+  technologies: [],
+  universityChoiceReasons: [],
+  workExpectation: "undecided",
+  currentEducation: "none",
+  englishProficiencyLevel: "low",
+} as unknown as RegisterStudentIncomingDataDto;
+
 export function StudentIncomingDataForm() {
   const router = useRouter();
 
   const formMethods = useForm<RegisterStudentIncomingDataDto>({
     resolver: zodResolver(registerStudentIncomingDataDtoSchema),
-    defaultValues: {
-      semester: "first",
-      year: new Date().getFullYear(),
-      cityId: "",
-      affinityByDisciplines: [
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.mathematics,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.portuguese,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.chemical,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.history,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.physical,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.geography,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.biology,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.english,
-        },
-        {
-          affinityLevel: "low",
-          discipline: HIGH_SCHOOL_DISCIPLINE.technology,
-        },
-      ],
-      assets: [],
-      courseChoiceReasons: [],
-      hobbyOrHabits: [],
-      knowRelatedCourseDifference: false,
-      nocturnalPreference: false,
-      readPedagogicalProject: false,
-      technologies: [],
-      universityChoiceReasons: [],
-      workExpectation: "undecided",
-      currentEducation: "none",
-      englishProficiencyLevel: "low",
-    },
+    defaultValues: INITIAL_VALUES,
   });
 
   const {

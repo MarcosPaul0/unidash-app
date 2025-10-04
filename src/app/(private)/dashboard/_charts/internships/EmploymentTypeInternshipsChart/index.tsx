@@ -45,7 +45,7 @@ export function EmploymentTypeInternshipsChart({
 
   return (
     <ChartCard
-      title="Estágios supervisionados por tipo de vínculo empregatício"
+      title="Número de estágios supervisionados por tipo de vínculo empregatício no ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
       className="col-span-4"
       complement={
@@ -86,13 +86,12 @@ export function EmploymentTypeInternshipsChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="count" fill="var(--color-count)" radius={8}>
             <LabelList
               dataKey="count"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

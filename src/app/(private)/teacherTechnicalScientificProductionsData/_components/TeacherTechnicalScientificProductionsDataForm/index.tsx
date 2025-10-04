@@ -39,7 +39,7 @@ const REGISTER_TEACHER_TECHNICAL_SCIENTIFIC_PRODUCTIONS_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   abstracts: "",
   booksChapter: "",
   congress: "",

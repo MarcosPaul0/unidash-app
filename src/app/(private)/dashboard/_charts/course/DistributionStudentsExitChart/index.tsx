@@ -103,8 +103,7 @@ export function DistributionStudentsExitChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-foreground"
-                fontSize={18}
+                className="fill-foreground text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>
@@ -122,8 +121,7 @@ export function DistributionStudentsExitChart({
                 position="inside"
                 accumulate="none"
                 offset={12}
-                className="fill-foreground"
-                fontSize={18}
+                className="fill-foreground text-sm md:text-lg"
                 fontWeight={600}
               />
             </Bar>

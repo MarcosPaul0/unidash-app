@@ -49,8 +49,8 @@ export function DistributionOfTimeSpentCompletingInternshipChart({
 
   return (
     <ChartCard
-      title="Distribuição do tempo gasto para conclusão de estágios supervisionados"
-      description="Fonte dos dados: registros institucionais da coordenação de estágios do curso. Onde maior corresponde a tempo maior ou igual a 100 horas, médio à 80 horas e menor à 60 horas"
+      title="Número de alunos, por tempo gasto em dias, para conclusão de estágio supervisionado"
+      description="Fonte dos dados: registros institucionais da coordenação de estágios do curso. Onde maior corresponde a tempo maior ou igual a 100 dias, médio à 80 dias e menor à 60 dias"
       className="col-span-3"
       complement={
         <ChartSelect
@@ -74,47 +74,32 @@ export function DistributionOfTimeSpentCompletingInternshipChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="bigger"
-            fill="var(--color-bigger)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="bigger" fill="var(--color-bigger)" radius={8}>
             <LabelList
               dataKey="bigger"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
-          <Bar
-            dataKey="medium"
-            fill="var(--color-medium)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="medium" fill="var(--color-medium)" radius={8}>
             <LabelList
               dataKey="medium"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
 
-          <Bar
-            dataKey="smaller"
-            fill="var(--color-smaller)"
-            radius={[8, 8, 8, 8]}
-          >
+          <Bar dataKey="smaller" fill="var(--color-smaller)" radius={8}>
             <LabelList
               dataKey="smaller"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

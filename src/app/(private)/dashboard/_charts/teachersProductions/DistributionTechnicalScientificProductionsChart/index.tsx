@@ -85,13 +85,12 @@ export function DistributionTechnicalScientificProductionsChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar dataKey="count" fill="var(--color-count)" radius={[8, 8, 8, 8]}>
+          <Bar dataKey="count" fill="var(--color-count)" radius={8}>
             <LabelList
               dataKey="count"
               position="top"
               offset={12}
-              className="fill-card-foreground"
-              fontSize={18}
+              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

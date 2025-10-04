@@ -41,7 +41,7 @@ const REGISTER_TEACHER_RESEARCH_AND_EXTENSION_PROJECTS_DATA_ERROR_MESSAGES = {
 
 const INITIAL_VALUES = {
   semester: "first",
-  year: new Date().getFullYear(),
+  year: new Date().getFullYear().toString(),
   extensionProjects: "",
   researchProjects: "",
 } as unknown as RegisterTeacherResearchAndExtensionProjectsDataDto;

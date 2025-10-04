@@ -25,7 +25,7 @@ export function CourseExtensionActivitiesDataTable({
 
           <TableHead>Proj. especiais</TableHead>
 
-          <TableHead>Competiçoes</TableHead>
+          <TableHead>Competições</TableHead>
 
           <TableHead>Epreendedorismo</TableHead>
 
@@ -37,7 +37,7 @@ export function CourseExtensionActivitiesDataTable({
 
           <TableHead>Estágio externo</TableHead>
 
-          <TableHead>Atuação em org</TableHead>
+          <TableHead>Atuação em ONG</TableHead>
 
           <TableHead>Empr. juniores</TableHead>
 

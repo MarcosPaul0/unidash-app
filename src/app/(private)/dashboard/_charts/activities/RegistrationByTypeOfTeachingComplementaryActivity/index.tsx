@@ -31,7 +31,7 @@ const typeLabels: Record<string, string> = {
 const chartConfig = {
   firstSemester: {
     label: "Primeiro semestre",
-    color: "var(--chart-12)",
+    color: "var(--chart-11)",
   },
   secondSemester: {
     label: "Segundo semestre",
@@ -98,43 +98,35 @@ export function RegistrationByTypeOfTeachingComplementaryActivity({
             className="text-base "
           />
 
-          {indicatorsData.hasDataInFirstSemester && (
-            <Bar
+          <Bar
+            dataKey="firstSemester"
+            fill="var(--color-firstSemester)"
+            radius={firstSemesterRadius}
+          >
+            <LabelList
               dataKey="firstSemester"
-              stackId="a"
-              fill="var(--color-firstSemester)"
-              radius={firstSemesterRadius}
-            >
-              <LabelList
-                dataKey="firstSemester"
-                position="inside"
-                accumulate="sum"
-                offset={12}
-                className="fill-card"
-                fontSize={18}
-                fontWeight={600}
-              />
-            </Bar>
-          )}
+              position="inside"
+              accumulate="sum"
+              offset={12}
+              className="fill-foreground text-sm md:text-lg"
+              fontWeight={600}
+            />
+          </Bar>
 
-          {indicatorsData.hasDataInSecondSemester && (
-            <Bar
+          <Bar
+            dataKey="secondSemester"
+            fill="var(--color-secondSemester)"
+            radius={secondSemesterRadius}
+          >
+            <LabelList
               dataKey="secondSemester"
-              stackId="a"
-              fill="var(--color-secondSemester)"
-              radius={secondSemesterRadius}
-            >
-              <LabelList
-                dataKey="secondSemester"
-                position="inside"
-                accumulate="sum"
-                offset={12}
-                className="fill-card"
-                fontSize={18}
-                fontWeight={600}
-              />
-            </Bar>
-          )}
+              position="inside"
+              accumulate="sum"
+              offset={12}
+              className="fill-foreground text-sm md:text-lg"
+              fontWeight={600}
+            />
+          </Bar>
         </BarChart>
       </ChartContainer>
     </ChartCard>
