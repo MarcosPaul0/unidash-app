@@ -422,7 +422,7 @@ export function StudentIncomingDataForm() {
             />
 
             <CardSubtitle>
-              Qual seu nível de proeficiência em inglês?
+              Qual seu nível de proficiência em inglês?
             </CardSubtitle>
 
             <FormRadioGroup

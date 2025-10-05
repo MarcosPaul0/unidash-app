@@ -3,21 +3,18 @@
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { RegistrationByTypeOfExtensionActivityProps } from "./registrationByTypeOfExtensionActivity.interface";
-import { useSemestersChartConfiguration } from "@unidash/hooks/useSemestersChartConfiguration";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { Formatter } from "@unidash/utils/formatter.util";
 
-const typeLabels: Record<string, string> = {
+export const EXTENSION_ACTIVITIES_LABELS: Record<string, string> = {
   specialProjects: "Projetos especiais",
   participationInCompetitions: "Participação em competições",
   entrepreneurshipAndInnovation: "Empreendedorismo e inovação",
@@ -37,7 +34,11 @@ const chartConfig = {
   },
   secondSemester: {
     label: "Segundo semestre",
-    color: "var(--chart-8)",
+    color: "var(--chart-10)",
+  },
+  total: {
+    label: "Total de atividades",
+    color: "var(--chart-10)",
   },
 } satisfies ChartConfig;
 
@@ -57,9 +58,6 @@ export function RegistrationByTypeOfExtensionActivity({
       data: [],
     },
   });
-
-  const { firstSemesterRadius, secondSemesterRadius } =
-    useSemestersChartConfiguration({ indicatorsData });
 
   return (
     <ChartCard
@@ -93,42 +91,20 @@ export function RegistrationByTypeOfExtensionActivity({
             axisLine={false}
             height={80}
             fontSize={14}
-            angle={-25}
+            angle={-15}
             tickFormatter={(value) =>
-              Formatter.getChartLabel(value, typeLabels)
+              Formatter.getChartLabel(value, EXTENSION_ACTIVITIES_LABELS)
             }
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
 
-          <ChartLegend content={<ChartLegendContent />} className="text-base" />
-
-          <Bar
-            dataKey="firstSemester"
-            fill="var(--color-firstSemester)"
-            radius={firstSemesterRadius}
-          >
+          <Bar dataKey="total" stackId="a" fill="var(--color-total)" radius={8}>
             <LabelList
-              dataKey="firstSemester"
+              dataKey="total"
               position="inside"
-              accumulate="sum"
               offset={12}
               className="fill-foreground text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
-
-          <Bar
-            dataKey="secondSemester"
-            fill="var(--color-secondSemester)"
-            radius={secondSemesterRadius}
-          >
-            <LabelList
-              dataKey="secondSemester"
-              position="inside"
-              accumulate="sum"
-              offset={12}
-              className="fill-card-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

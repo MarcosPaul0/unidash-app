@@ -18,7 +18,12 @@ import {
 export type SemestersIndicators = {
   hasDataInFirstSemester: boolean;
   hasDataInSecondSemester: boolean;
-  data: { type: string; firstSemester: number; secondSemester: number }[];
+  data: {
+    type: string;
+    firstSemester: number;
+    secondSemester: number;
+    total: number;
+  }[];
 };
 
 export type SemestersIndicatorByYear = Record<string, SemestersIndicators>;
