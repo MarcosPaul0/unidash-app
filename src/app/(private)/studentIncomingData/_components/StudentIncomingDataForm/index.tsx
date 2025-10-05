@@ -135,6 +135,10 @@ const HOBBY_OR_HABITS_OPTIONS = [
     value: HOBBY_OR_HABIT.teamSports,
   },
   {
+    label: "Atividades físicas",
+    value: HOBBY_OR_HABIT.physicalActivity,
+  },
+  {
     label: "Esportes individuais",
     value: HOBBY_OR_HABIT.individualSports,
   },
@@ -174,6 +178,7 @@ const HOBBY_OR_HABITS_OPTIONS = [
     label: "Tocar instrumento musical",
     value: HOBBY_OR_HABIT.playingInstrument,
   },
+
   {
     label: "Outros",
     value: HOBBY_OR_HABIT.other,
@@ -188,6 +193,10 @@ const UNIVERSITY_CHOICE_REASONS_OPTIONS = [
   {
     label: "Pessoas próximas",
     value: UNIVERSITY_CHOICE_REASON.closePeople,
+  },
+  {
+    label: "Próximo a cidade de origem",
+    value: UNIVERSITY_CHOICE_REASON.closeOriginCity,
   },
   {
     label: "Ensino público",
@@ -282,6 +291,10 @@ const ASSETS_OPTIONS = [
   {
     label: "Notebook",
     value: ASSET.laptop,
+  },
+  {
+    label: "Smart TV",
+    value: ASSET.smartTv,
   },
   {
     label: "TV a cabo",

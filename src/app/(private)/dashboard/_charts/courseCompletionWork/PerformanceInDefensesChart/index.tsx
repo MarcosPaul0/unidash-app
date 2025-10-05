@@ -72,11 +72,7 @@ export function PerformanceInDefensesChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="approved"
-            fill="var(--color-approved)"
-            radius={[0, 0, 8, 8]}
-          >
+          <Bar dataKey="approved" fill="var(--color-approved)" radius={8}>
             <LabelList
               dataKey="approved"
               position="inside"
@@ -87,11 +83,7 @@ export function PerformanceInDefensesChart({
             />
           </Bar>
 
-          <Bar
-            dataKey="failed"
-            fill="var(--color-failed)"
-            radius={[8, 8, 0, 0]}
-          >
+          <Bar dataKey="failed" fill="var(--color-failed)" radius={8}>
             <LabelList
               dataKey="failed"
               position="inside"

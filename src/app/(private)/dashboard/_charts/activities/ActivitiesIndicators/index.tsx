@@ -16,14 +16,6 @@ export function ActivitiesIndicators({
     <>
       <Topic title="Indicadores de Atividades Complementares" />
 
-      {/* <div className="grid grid-cols-3 gap-8">
-        <ExtensionActivitiesTotalIndicator />
-
-        <MostRecurrentExtensionActivityIndicator />
-
-        <LessRecurrentExtensionActivityIndicator />
-      </div> */}
-
       <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <ExtensionComplementaryActivitiesTable
           extensionComplementaryActivities={
@@ -66,14 +58,6 @@ export function ActivitiesIndicators({
       </div>
 
       <Topic title="Indicadores de Atividades de Extensão" />
-      {/* 
-      <div className="grid grid-cols-3 gap-8">
-        <ComplementaryActivitiesTotalIndicator />
-
-        <MostRecurrentComplementaryActivityIndicator />
-
-        <LessRecurrentComplementaryActivityIndicator />
-      </div> */}
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
         <ExtensionActivitiesTable

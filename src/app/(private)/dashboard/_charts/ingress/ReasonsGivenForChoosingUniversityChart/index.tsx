@@ -36,6 +36,9 @@ const chartConfig = {
   [UNIVERSITY_CHOICE_REASON.notFirstChoice]: {
     label: "Não foi primeira escolha",
   },
+  [UNIVERSITY_CHOICE_REASON.closeOriginCity]: {
+    label: "Próximo a cidade de origem",
+  },
   [UNIVERSITY_CHOICE_REASON.other]: {
     label: "Outras",
   },

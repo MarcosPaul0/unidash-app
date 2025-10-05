@@ -42,6 +42,7 @@ export const ASSET = {
   motorcycle: "motorcycle",
   virtualAssistant: "virtualAssistant",
   payTv: "payTv",
+  smartTv: "smartTv",
   printer: "printer",
   internet: "internet",
   tablet: "tablet",
@@ -101,6 +102,7 @@ export const UNIVERSITY_CHOICE_REASON = {
   professionalReasons: "professionalReasons",
   financialReasons: "financialReasons",
   notFirstChoice: "notFirstChoice",
+  closeOriginCity: "closeOriginCity",
   other: "other",
 } as const;
 

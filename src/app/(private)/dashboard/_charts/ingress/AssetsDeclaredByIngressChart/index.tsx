@@ -45,6 +45,9 @@ const chartConfig = {
   [ASSET.laptop]: {
     label: "Notebook",
   },
+  [ASSET.smartTv]: {
+    label: "Smart TV",
+  },
   [ASSET.smartphone]: {
     label: "Smartphone",
   },
