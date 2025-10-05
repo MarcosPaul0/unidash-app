@@ -33,6 +33,24 @@ const chartConfig = {
   [TECHNOLOGY.operatingSystemSetup]: {
     label: "Instalação de SO",
   },
+  [TECHNOLOGY.textEditor]: {
+    label: "Editor de texto",
+  },
+  [TECHNOLOGY.electronicsInstallation]: {
+    label: "Instalação de eletrônicos",
+  },
+  [TECHNOLOGY.presentationEditing]: {
+    label: "Editoração de apresentações",
+  },
+  [TECHNOLOGY.videoEditing]: {
+    label: "Edição de vídeo",
+  },
+  [TECHNOLOGY.drawingApps]: {
+    label: "Aplicativos de desenho",
+  },
+  [TECHNOLOGY.prototypingPlatform]: {
+    label: "Plataforma de prototipação",
+  },
 } satisfies ChartConfig;
 
 export function KnowledgeDeclaredInTechnologiesChart({

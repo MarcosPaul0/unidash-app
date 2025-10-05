@@ -272,6 +272,30 @@ const TECHNOLOGIES_OPTIONS = [
     label: "Instalação de SO",
     value: TECHNOLOGY.operatingSystemSetup,
   },
+  {
+    label: "Editor de texto",
+    value: TECHNOLOGY.textEditor,
+  },
+  {
+    label: "Instalação de eletrônicos",
+    value: TECHNOLOGY.electronicsInstallation,
+  },
+  {
+    label: "Editoração de apresentações",
+    value: TECHNOLOGY.presentationEditing,
+  },
+  {
+    label: "Edição de vídeo",
+    value: TECHNOLOGY.videoEditing,
+  },
+  {
+    label: "Aplicativos de desenho",
+    value: TECHNOLOGY.drawingApps,
+  },
+  {
+    label: "Plataforma de prototipação",
+    value: TECHNOLOGY.prototypingPlatform,
+  },
 ];
 
 const ASSETS_OPTIONS = [
