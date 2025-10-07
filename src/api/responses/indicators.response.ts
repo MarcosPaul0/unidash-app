@@ -2,7 +2,7 @@ import {
   ConclusionTime,
   EmploymentType,
 } from "../dtos/courseInternshipData.dto";
-import { Semester } from "../dtos/courseStudentsData.dto";
+import { SEMESTER, Semester } from "../dtos/courseStudentsData.dto";
 import {
   Asset,
   CourseChoiceReason,
@@ -55,6 +55,15 @@ export interface CourseIndicatorsResponse {
   complements: Record<string, CourseComplements>;
 }
 
+export interface ActionPlans {
+  academicActionPlans: number;
+  administrativeActionPlans: number;
+  actionPlansDescriptions: {
+    [SEMESTER.first]?: string;
+    [SEMESTER.second]?: string;
+  };
+}
+
 export interface CourseCoordinationIndicatorsResponse {
   meetings: {
     year: number;
@@ -72,11 +81,7 @@ export interface CourseCoordinationIndicatorsResponse {
     resolutionActions: number;
     administrativeDecisionActions: number;
   }[];
-  actionPlans: {
-    year: number;
-    academicActionPlans: number;
-    administrativeActionPlans: number;
-  }[];
+  actionPlans: Record<string, ActionPlans>;
   period: number[];
 }
 

@@ -60,7 +60,7 @@ export class IndicatorBuilder {
       };
     }
 
-    const percentage = Math.abs(currentValue - previousValue) + "%";
+    const percentage = Math.abs(currentValue - previousValue).toFixed(2) + "%";
 
     if (currentValue > previousValue) {
       return {

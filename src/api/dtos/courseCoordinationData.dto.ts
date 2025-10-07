@@ -34,6 +34,7 @@ export const registerCourseCoordinationDataDtoSchema = z.object({
   administrativeActionPlans: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(1000)),
+  actionPlansDescription: z.string().min(10).max(360).optional(),
 });
 
 export type RegisterCourseCoordinationDataDto = z.infer<

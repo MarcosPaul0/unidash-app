@@ -26,6 +26,7 @@ import { ExceptionHandler } from "@unidash/api/errors/exception.handler";
 import { HTTP_STATUS } from "@unidash/lib/baseApiClient";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PeriodForm } from "@unidash/app/(private)/courseStudentsData/_components/PeriodForm";
+import { FormTextarea } from "@unidash/components/FormTextarea";
 
 const REGISTER_COURSE_COORDINATION_DATA_SUCCESS_MESSAGE =
   "Novo registro da coordenação do curso foi adicionado!";
@@ -51,6 +52,7 @@ const INITIAL_VALUES = {
   servicesRequestsBySystem: "",
   academicActionPlans: "",
   administrativeActionPlans: "",
+  actionPlansDescription: "",
 } as unknown as RegisterCourseCoordinationDataDto;
 
 export function CourseCoordinationDataForm() {
@@ -206,6 +208,16 @@ export function CourseCoordinationDataForm() {
                 helper={errors.academicActionPlans?.message}
               />
             </CardInputsRow>
+
+            <FormTextarea
+              control={control}
+              name="actionPlansDescription"
+              placeholder="Descreva os planos de ações realizados"
+              label="Descrição dos planos de ações"
+              helper={errors.actionPlansDescription?.message}
+              className="resize-none"
+              rows={4}
+            />
           </CardContent>
 
           <CardFooter className="gap-6">

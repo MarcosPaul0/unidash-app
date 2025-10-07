@@ -11,7 +11,10 @@ import {
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ActionPlansChartProps } from "./actionPlansChart.interface";
-import { Formatter } from "@unidash/utils/formatter.util";
+import { ActionPlansTooltip } from "../ActionPlansTooltip";
+import { ChartSelect } from "../../../_components/ChartSelect";
+import { useChartFilter } from "@unidash/hooks/useChartFilter";
+import { ActionPlans } from "@unidash/api/responses/indicators.response";
 
 const chartConfig = {
   academicActionPlans: {
@@ -24,17 +27,41 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ActionPlansChart({
-  actionPlans,
-  yearFrom,
-  yearTo,
-}: ActionPlansChartProps) {
-  const period = Formatter.getIndicatorsPeriod(yearFrom, yearTo);
+export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
+  const {
+    changeFilterOption,
+    indicatorsData,
+    filterOptions,
+    activeFilterOption,
+  } = useChartFilter<ActionPlans>({
+    indicators: actionPlans,
+    initialData: {
+      academicActionPlans: 0,
+      administrativeActionPlans: 0,
+      actionPlansDescriptions: {
+        first: "",
+        second: "",
+      },
+    },
+  });
 
   return (
     <ChartCard
       title="Número de plano de ações realizados ao longo dos anos"
-      description={`Fonte dos dados: registros institucionais da coordenação do curso ${period}`}
+      description={`Fonte dos dados: registros institucionais da coordenação do curso`}
+      complement={
+        <>
+          <ChartSelect
+            options={filterOptions}
+            onChange={changeFilterOption}
+            value={activeFilterOption}
+          />
+
+          <ActionPlansTooltip
+            descriptions={indicatorsData.actionPlansDescriptions}
+          />
+        </>
+      }
     >
       <ChartContainer
         config={chartConfig}
@@ -42,7 +69,7 @@ export function ActionPlansChart({
       >
         <BarChart
           accessibilityLayer
-          data={actionPlans}
+          data={[indicatorsData]}
           margin={{
             top: 32,
           }}

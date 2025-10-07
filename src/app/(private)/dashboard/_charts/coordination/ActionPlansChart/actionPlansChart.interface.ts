@@ -2,6 +2,4 @@ import { CourseCoordinationIndicatorsResponse } from "@unidash/api/responses/ind
 
 export interface ActionPlansChartProps {
   actionPlans?: CourseCoordinationIndicatorsResponse["actionPlans"];
-  yearFrom: number | null;
-  yearTo: number | null;
 }

@@ -57,6 +57,8 @@ export class CourseCoordinationDataCSService {
           registerCourseCoordinationDataDto.academicActionPlans,
         administrativeActionPlans:
           registerCourseCoordinationDataDto.administrativeActionPlans,
+        actionPlansDescription:
+          registerCourseCoordinationDataDto.actionPlansDescription,
       }
     );
 

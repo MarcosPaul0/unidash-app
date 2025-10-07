@@ -6,6 +6,7 @@ import { Formatter } from "@unidash/utils/formatter.util";
 
 export function DropoutRateIndicator({
   currentDropoutRate,
+  currentYear,
   previousDropoutRate,
 }: DropoutRateIndicatorProps) {
   const percentageObservation = IndicatorBuilder.buildPercentageFromPercentages(
@@ -13,9 +14,9 @@ export function DropoutRateIndicator({
       currentValue: currentDropoutRate,
       previousValue: previousDropoutRate,
       observations: {
-        increase: "mais alunos ativos em relação ao ano de 2024",
-        indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
-        regress: "menos alunos ativos em relação ao ano de 2024",
+        increase: "maior em relação ao ano anterior",
+        indifferent: "permaneceu o mesmo em relação ao ano anterior",
+        regress: "menor em relação ao ano anterior",
         onlyCurrent: "",
       },
     }
@@ -26,7 +27,7 @@ export function DropoutRateIndicator({
       icon={<StudentIcon />}
       observation={percentageObservation.observation}
       situation={percentageObservation.situation}
-      title="Taxa de evasão"
+      title={`Taxa de evasão em ${currentYear}`}
       value={Formatter.toPercentage(currentDropoutRate)}
       variant="blue"
     />

@@ -105,7 +105,7 @@ const WORK_EXPECTATION_OPTIONS = [
 
 const BOOLEAN_OPTIONS = [
   {
-    label: "Sim, o período noturno se encaixa melhor com",
+    label: "Sim",
     value: true,
   },
   {

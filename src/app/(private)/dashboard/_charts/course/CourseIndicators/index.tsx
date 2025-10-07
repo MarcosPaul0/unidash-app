@@ -17,30 +17,52 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
     return null;
   }
 
-  const years = Object.keys(complements);
+  const years = Object.keys(complements).reverse();
 
   if (years.length === 0) {
     return null;
   }
 
-  const lastYear = years[0];
+  const currentYear = years[0];
+  const previousYear = years[1];
 
-  const lastApplicantsToSeatRatio = complements[lastYear].applicantsToSeatRatio;
-  const lastDropoutRate = complements[lastYear].dropoutRate;
-  const lastOccupancyRate = complements[lastYear].occupancyRate;
-  const lastSuccessRate = complements[lastYear].successRate;
+  const currentApplicantsToSeatRatio =
+    complements[currentYear].applicantsToSeatRatio;
+  const previousApplicantsToSeatRatio = previousYear
+    ? complements[previousYear].applicantsToSeatRatio
+    : undefined;
+  const currentDropoutRate = complements[currentYear].dropoutRate;
+  const previousDropoutRate = complements[previousYear].dropoutRate;
+  const currentOccupancyRate = complements[currentYear].occupancyRate;
+  const previousOccupancyRate = complements[previousYear].occupancyRate;
+  const currentSuccessRate = complements[currentYear].successRate;
+  const previousSuccessRate = complements[previousYear].successRate;
 
   return (
     <div className="flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-8">
       <ApplicantsToSeatRatioIndicator
-        currentApplicantsToSeatRatio={lastApplicantsToSeatRatio}
+        currentApplicantsToSeatRatio={currentApplicantsToSeatRatio}
+        previousApplicantsToSeatRatio={previousApplicantsToSeatRatio}
+        currentYear={currentYear}
       />
 
-      <OccupancyRateIndicator currentOccupancyRate={lastOccupancyRate} />
+      <OccupancyRateIndicator
+        currentOccupancyRate={currentOccupancyRate}
+        currentYear={currentYear}
+        previousOccupancyRate={previousOccupancyRate}
+      />
 
-      <DropoutRateIndicator currentDropoutRate={lastDropoutRate} />
+      <DropoutRateIndicator
+        currentDropoutRate={currentDropoutRate}
+        currentYear={currentYear}
+        previousDropoutRate={previousDropoutRate}
+      />
 
-      <SuccessRateIndicator currentSuccessRate={lastSuccessRate} />
+      <SuccessRateIndicator
+        currentSuccessRate={currentSuccessRate}
+        currentYear={currentYear}
+        previousSuccessRate={previousSuccessRate}
+      />
     </div>
   );
 }

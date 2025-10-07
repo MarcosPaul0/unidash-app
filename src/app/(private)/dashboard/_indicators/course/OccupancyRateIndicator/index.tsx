@@ -6,6 +6,7 @@ import { Formatter } from "@unidash/utils/formatter.util";
 
 export function OccupancyRateIndicator({
   currentOccupancyRate,
+  currentYear,
   previousOccupancyRate,
 }: OccupancyRateIndicatorProps) {
   const percentageObservation = IndicatorBuilder.buildPercentageFromPercentages(
@@ -13,9 +14,9 @@ export function OccupancyRateIndicator({
       currentValue: currentOccupancyRate,
       previousValue: previousOccupancyRate,
       observations: {
-        increase: "mais alunos ativos em relação ao ano de 2024",
-        indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
-        regress: "menos alunos ativos em relação ao ano de 2024",
+        increase: "maior em relação ao ano anterior",
+        indifferent: "permaneceu o mesmo em relação ao ano anterior",
+        regress: "menor em relação ao ano anterior",
         onlyCurrent: "",
       },
     }
@@ -26,7 +27,7 @@ export function OccupancyRateIndicator({
       icon={<StudentIcon />}
       observation={percentageObservation.observation}
       situation={percentageObservation.situation}
-      title="Taxa de ocupação"
+      title={`Taxa de ocupação em ${currentYear}`}
       value={Formatter.toPercentage(currentOccupancyRate)}
       variant="blue"
     />

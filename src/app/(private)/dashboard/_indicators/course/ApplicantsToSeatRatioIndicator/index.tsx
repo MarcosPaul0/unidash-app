@@ -6,15 +6,16 @@ import { Formatter } from "@unidash/utils/formatter.util";
 
 export function ApplicantsToSeatRatioIndicator({
   currentApplicantsToSeatRatio,
+  currentYear,
   previousApplicantsToSeatRatio,
 }: ApplicantsToSeatRatioIndicatorProps) {
   const percentageObservation = IndicatorBuilder.buildPercentageFromValues({
     currentValue: currentApplicantsToSeatRatio,
     previousValue: previousApplicantsToSeatRatio,
     observations: {
-      increase: "mais alunos ativos em relação ao ano de 2024",
-      indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
-      regress: "menos alunos ativos em relação ao ano de 2024",
+      increase: "maior em relação ao ano anterior",
+      indifferent: "permaneceu o mesmo em relação ao ano anterior",
+      regress: "menor em relação ao ano anterior",
       onlyCurrent: "",
     },
   });
@@ -24,7 +25,7 @@ export function ApplicantsToSeatRatioIndicator({
       icon={<StudentIcon />}
       observation={percentageObservation.observation}
       situation={percentageObservation.situation}
-      title="Relação candidato vaga"
+      title={`Candidato vaga em ${currentYear}`}
       value={Formatter.toDecimal(currentApplicantsToSeatRatio)}
       variant="blue"
     />

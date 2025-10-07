@@ -24,10 +24,10 @@ export function SearchComplementaryActivitiesTable({
 
       <TableHeader>
         <TableRow>
-          <TableHead className="py-2">Atividade</TableHead>
+          <TableHead className="py-2 px-4">Atividade</TableHead>
 
           {activities.map(([year]) => (
-            <TableHead className="py-2" key={year}>
+            <TableHead className="py-2 px-4" key={year}>
               {year}
             </TableHead>
           ))}
@@ -37,10 +37,13 @@ export function SearchComplementaryActivitiesTable({
       <TableBody>
         {activitiesByYear.map((activity) => (
           <TableRow key={activity.activity}>
-            <TableCell className="py-6">{activity.activity}</TableCell>
+            <TableCell className="py-6 px-4">{activity.activity}</TableCell>
 
             {activity.activitiesByYear.map((yearActivities, index) => (
-              <TableCell className="py-6" key={`${yearActivities}-${index}`}>
+              <TableCell
+                className="py-6 px-4"
+                key={`${yearActivities}-${index}`}
+              >
                 {yearActivities}
               </TableCell>
             ))}

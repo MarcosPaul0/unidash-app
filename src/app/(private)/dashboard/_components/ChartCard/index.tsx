@@ -16,7 +16,7 @@ export function ChartCard({
 }: CardChartProps) {
   return (
     <Card className={className}>
-      <CardHeader>
+      <CardHeader className="relative">
         <CardTitle className={complement ? "mr-28" : ""}>{title}</CardTitle>
 
         <CardDescription>{description}</CardDescription>
