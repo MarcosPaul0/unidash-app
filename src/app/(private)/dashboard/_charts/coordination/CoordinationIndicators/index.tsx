@@ -31,11 +31,7 @@ export function CoordinationIndicators({
         />
       </div>
 
-      <ActionPlansChart
-        actionPlans={indicators?.actionPlans}
-        yearFrom={yearFromIndicators}
-        yearTo={yearToIndicators}
-      />
+      <ActionPlansChart actionPlans={indicators?.actionPlans} />
     </>
   );
 }
