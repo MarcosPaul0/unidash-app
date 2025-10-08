@@ -5,12 +5,13 @@ interface Observations {
   increase: string;
   regress: string;
   onlyCurrent: string;
+  none: string;
 }
 
 export interface PercentageBuilderParams {
   observations: Observations;
   previousValue?: number;
-  currentValue: number;
+  currentValue?: number;
 }
 
 export interface PercentageBuilderReturn {

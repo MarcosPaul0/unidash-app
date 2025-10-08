@@ -1,5 +1,5 @@
 export interface SuccessRateIndicatorProps {
-  currentSuccessRate: number;
+  currentSuccessRate?: number;
   previousSuccessRate?: number;
   currentYear: string | number;
 }

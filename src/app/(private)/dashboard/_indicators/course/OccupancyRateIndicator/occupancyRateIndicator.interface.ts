@@ -1,5 +1,5 @@
 export interface OccupancyRateIndicatorProps {
-  currentOccupancyRate: number;
-  currentYear: string | number;
+  currentOccupancyRate?: number;
   previousOccupancyRate?: number;
+  currentYear: string | number;
 }

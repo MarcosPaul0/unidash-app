@@ -18,6 +18,7 @@ export function DropoutRateIndicator({
         indifferent: "permaneceu o mesmo em relação ao ano anterior",
         regress: "menor em relação ao ano anterior",
         onlyCurrent: "",
+        none: "não há dados cadastrados",
       },
     }
   );

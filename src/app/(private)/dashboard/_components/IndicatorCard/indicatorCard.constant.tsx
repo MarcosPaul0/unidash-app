@@ -35,6 +35,7 @@ export const indicatorVariants = cva(``, {
 });
 
 export const SITUATION_TYPE = {
+  none: "none",
   indifferent: "indifferent",
   increase: "increase",
   regress: "regress",
@@ -52,6 +53,7 @@ export const SITUATION_ICON = {
     <ChartLineDownIcon size={28} className="text-regress" />
   ),
   [SITUATION_TYPE.onlyCurrent]: null,
+  [SITUATION_TYPE.none]: null,
 } as const;
 
 export type SituationType =

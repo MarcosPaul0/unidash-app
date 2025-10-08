@@ -24,15 +24,15 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   }
 
   const currentYear = years[0];
-  const previousYear = years[1];
+  const previousYear = years?.[1];
 
   const currentApplicantsToSeatRatio =
     complements[currentYear].applicantsToSeatRatio;
   const previousApplicantsToSeatRatio = previousYear
     ? complements[previousYear].applicantsToSeatRatio
     : undefined;
-  const currentDropoutRate = complements[currentYear].dropoutRate;
-  const previousDropoutRate = complements[previousYear].dropoutRate;
+  const currentDropoutRate = complements[currentYear]?.dropoutRate;
+  const previousDropoutRate = complements[previousYear]?.dropoutRate;
   const currentOccupancyRate = complements[currentYear].occupancyRate;
   const previousOccupancyRate = complements[previousYear].occupancyRate;
   const currentSuccessRate = complements[currentYear].successRate;

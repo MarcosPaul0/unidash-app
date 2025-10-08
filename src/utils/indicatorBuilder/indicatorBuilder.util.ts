@@ -10,6 +10,13 @@ export class IndicatorBuilder {
     previousValue,
     observations,
   }: PercentageBuilderParams): PercentageBuilderReturn {
+    if (!currentValue) {
+      return {
+        observation: observations.none,
+        situation: SITUATION_TYPE.none,
+      };
+    }
+
     if (!previousValue) {
       return {
         observation: observations.onlyCurrent,
@@ -46,6 +53,13 @@ export class IndicatorBuilder {
     previousValue,
     observations,
   }: PercentageBuilderParams): PercentageBuilderReturn {
+    if (!currentValue) {
+      return {
+        observation: observations.onlyCurrent,
+        situation: SITUATION_TYPE.onlyCurrent,
+      };
+    }
+
     if (!previousValue) {
       return {
         observation: observations.onlyCurrent,

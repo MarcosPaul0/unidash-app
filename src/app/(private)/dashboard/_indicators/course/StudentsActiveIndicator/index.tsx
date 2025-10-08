@@ -15,6 +15,7 @@ export function StudentsActiveIndicator({
       indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
       regress: "menos alunos ativos em relação ao ano de 2024",
       onlyCurrent: "Taxa atual referente ao ano de 2025",
+      none: "não há dados cadastrados",
     },
   });
 

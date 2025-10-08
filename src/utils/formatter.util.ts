@@ -33,13 +33,21 @@ export class Formatter {
     return `${result})`;
   }
 
-  static toPercentage(value: number): string {
+  static toPercentage(value?: number): string {
+    if (!value) {
+      return "--";
+    }
+
     return new Intl.NumberFormat("pt-BR", {
       style: "percent",
     }).format(value);
   }
 
-  static toDecimal(value: number): string {
+  static toDecimal(value?: number): string {
+    if (!value) {
+      return "--";
+    }
+
     return new Intl.NumberFormat("pt-BR", {
       style: "decimal",
     }).format(value);

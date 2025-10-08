@@ -15,6 +15,7 @@ export function ExtensionActivitiesTotalIndicator() {
         indifferent: "Permaneceu o mesmo em relação ao ano de 2024",
         regress: "menos de atividades em relação ao ano de 2024",
         onlyCurrent: "",
+        none: "",
       },
     }
   );

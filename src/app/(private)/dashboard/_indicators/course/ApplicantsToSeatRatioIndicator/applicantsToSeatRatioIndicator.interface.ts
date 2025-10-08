@@ -1,5 +1,5 @@
 export interface ApplicantsToSeatRatioIndicatorProps {
-  currentApplicantsToSeatRatio: number;
-  currentYear: string | number;
+  currentApplicantsToSeatRatio?: number;
   previousApplicantsToSeatRatio?: number;
+  currentYear: string | number;
 }

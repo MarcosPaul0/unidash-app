@@ -1,5 +1,5 @@
 export interface DropoutRateIndicatorProps {
-  currentDropoutRate: number;
-  currentYear: string | number;
+  currentDropoutRate?: number;
   previousDropoutRate?: number;
+  currentYear: string | number;
 }
