@@ -1,3 +1,4 @@
+import { CourseComplements } from "@unidash/api/responses/indicators.response";
 import { Topic } from "../../../_components/Topic";
 import { ApplicantsToSeatRatioIndicator } from "../../../_indicators/course/ApplicantsToSeatRatioIndicator";
 import { DropoutRateIndicator } from "../../../_indicators/course/DropoutRateIndicator";
@@ -12,6 +13,27 @@ import {
   IndicatorsCardsProps,
 } from "./courseIndicators.interface";
 
+function getIndicators(
+  year: string,
+  courseComplements?: Record<string, CourseComplements>
+): Partial<CourseComplements> {
+  if (!courseComplements) {
+    return {
+      applicantsToSeatRatio: undefined,
+      dropoutRate: undefined,
+      occupancyRate: undefined,
+      successRate: undefined,
+    };
+  }
+
+  return {
+    applicantsToSeatRatio: courseComplements[year]?.applicantsToSeatRatio,
+    dropoutRate: courseComplements[year]?.dropoutRate,
+    occupancyRate: courseComplements[year]?.occupancyRate,
+    successRate: courseComplements[year]?.successRate,
+  };
+}
+
 export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   if (!complements) {
     return null;
@@ -24,44 +46,35 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   }
 
   const currentYear = years[0];
-  const previousYear = years?.[1];
+  const previousYear = years[1];
 
-  const currentApplicantsToSeatRatio =
-    complements[currentYear].applicantsToSeatRatio;
-  const previousApplicantsToSeatRatio = previousYear
-    ? complements[previousYear].applicantsToSeatRatio
-    : undefined;
-  const currentDropoutRate = complements[currentYear]?.dropoutRate;
-  const previousDropoutRate = complements[previousYear]?.dropoutRate;
-  const currentOccupancyRate = complements[currentYear].occupancyRate;
-  const previousOccupancyRate = complements[previousYear].occupancyRate;
-  const currentSuccessRate = complements[currentYear].successRate;
-  const previousSuccessRate = complements[previousYear].successRate;
+  const current = getIndicators(currentYear, complements);
+  const previous = getIndicators(previousYear, complements);
 
   return (
     <div className="flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-8">
       <ApplicantsToSeatRatioIndicator
-        currentApplicantsToSeatRatio={currentApplicantsToSeatRatio}
-        previousApplicantsToSeatRatio={previousApplicantsToSeatRatio}
+        currentApplicantsToSeatRatio={current.applicantsToSeatRatio}
+        previousApplicantsToSeatRatio={previous.applicantsToSeatRatio}
         currentYear={currentYear}
       />
 
       <OccupancyRateIndicator
-        currentOccupancyRate={currentOccupancyRate}
+        currentOccupancyRate={current.occupancyRate}
+        previousOccupancyRate={previous.occupancyRate}
         currentYear={currentYear}
-        previousOccupancyRate={previousOccupancyRate}
       />
 
       <DropoutRateIndicator
-        currentDropoutRate={currentDropoutRate}
+        currentDropoutRate={current.dropoutRate}
+        previousDropoutRate={previous.dropoutRate}
         currentYear={currentYear}
-        previousDropoutRate={previousDropoutRate}
       />
 
       <SuccessRateIndicator
-        currentSuccessRate={currentSuccessRate}
+        currentSuccessRate={current.successRate}
+        previousSuccessRate={previous.successRate}
         currentYear={currentYear}
-        previousSuccessRate={previousSuccessRate}
       />
     </div>
   );
