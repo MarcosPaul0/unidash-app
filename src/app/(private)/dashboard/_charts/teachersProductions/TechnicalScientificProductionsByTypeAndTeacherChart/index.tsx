@@ -22,19 +22,19 @@ const chartConfig = {
   },
   congress: {
     label: "Congressos",
-    color: "var(--chart-8)",
+    color: "var(--chart-13)",
   },
   abstracts: {
     label: "Resumos",
-    color: "var(--chart-13)",
+    color: "var(--chart-8)",
   },
   booksChapter: {
     label: "Capítulo de livros",
-    color: "var(--chart-9)",
+    color: "var(--chart-6)",
   },
   programs: {
     label: "programsas",
-    color: "var(--chart-14)",
+    color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
 
@@ -95,7 +95,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -106,7 +106,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -117,7 +117,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -132,7 +132,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -148,7 +148,7 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

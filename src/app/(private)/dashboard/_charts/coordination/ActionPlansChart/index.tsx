@@ -19,7 +19,7 @@ import { ActionPlans } from "@unidash/api/responses/indicators.response";
 const chartConfig = {
   academicActionPlans: {
     label: "Plano de ações acadẽmicos",
-    color: "var(--chart-9)",
+    color: "var(--chart-13)",
   },
   administrativeActionPlans: {
     label: "Plano de ações administrativos",
@@ -90,7 +90,7 @@ export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
           <Bar
             dataKey="academicActionPlans"
             fill="var(--color-academicActionPlans)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="academicActionPlans"
@@ -104,7 +104,7 @@ export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
           <Bar
             dataKey="administrativeActionPlans"
             fill="var(--color-administrativeActionPlans)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="administrativeActionPlans"
@@ -118,7 +118,7 @@ export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
           {/* <Bar
             dataKey="resolution"
             fill="var(--color-resolution)"
-            radius={[8, 8, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="resolution"

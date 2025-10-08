@@ -31,6 +31,7 @@ export const UNIDASH_API_ROUTES = {
   },
   course: {
     getAll: "/courses",
+    getAllForGuest: "/courses-for-guest",
     getById: "/courses/",
     register: "/courses",
     update: "/courses/",

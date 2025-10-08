@@ -1,6 +1,7 @@
 "use client";
 
 import { GraduationCapIcon } from "@phosphor-icons/react/dist/ssr";
+import { CoursesResponse } from "@unidash/api/responses/course.response";
 import {
   Select,
   SelectContent,
@@ -11,6 +12,7 @@ import {
   SelectValue,
 } from "@unidash/components/Select";
 import { CourseCSService } from "@unidash/services/course/course.cs.service";
+import { useAuthStore } from "@unidash/store/auth.store";
 import { useCourseStore } from "@unidash/store/course.store";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -22,6 +24,8 @@ export function CourseSelect() {
   const pathname = usePathname();
 
   const router = useRouter();
+
+  const { isAuthenticated } = useAuthStore();
 
   const {
     courses,
@@ -57,7 +61,13 @@ export function CourseSelect() {
 
   useEffect(() => {
     (async () => {
-      const coursesResponse = await CourseCSService.getAll();
+      let coursesResponse: CoursesResponse;
+
+      if (isAuthenticated) {
+        coursesResponse = await CourseCSService.getAll();
+      } else {
+        coursesResponse = await CourseCSService.getAllForGuest();
+      }
 
       setCourses(coursesResponse.courses);
 

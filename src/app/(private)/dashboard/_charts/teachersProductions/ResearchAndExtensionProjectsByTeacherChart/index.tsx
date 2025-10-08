@@ -83,7 +83,7 @@ export function ResearchAndExtensionProjectsByTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
@@ -99,7 +99,7 @@ export function ResearchAndExtensionProjectsByTeacherChart({
               position="inside"
               accumulate="none"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

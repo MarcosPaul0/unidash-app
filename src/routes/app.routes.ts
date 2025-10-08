@@ -80,6 +80,7 @@ export const APP_ROUTES = {
     registerStudentEgressIndicator: "/studentEgressIndicator/register",
   },
   public: {
+    landingPage: "/",
     login: "/login",
     forgotPassword: "/forgot-password",
     recoverPassword: "/recover-password",

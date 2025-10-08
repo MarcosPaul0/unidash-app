@@ -27,6 +27,25 @@ export class CourseCSService {
     return coursesResponse;
   }
 
+  static async getAllForGuest(
+    filters?: FilterCoursesDto
+  ): Promise<CoursesResponse> {
+    const validatedFilters = filterCoursesDtoSchema.parse(filters);
+
+    const params = new CourseParamsBuilder()
+      .applyFilters(validatedFilters)
+      .build();
+
+    const coursesResponse = await apiClient.get<CoursesResponse>(
+      UNIDASH_API_ROUTES.course.getAllForGuest,
+      {
+        params,
+      }
+    );
+
+    return coursesResponse;
+  }
+
   static async register(registerCourseDto: RegisterCourseDto): Promise<void> {
     const courseResponse = await apiClient.post<void>(
       UNIDASH_API_ROUTES.course.register,

@@ -20,7 +20,7 @@ const chartConfig = {
   },
   servicesRequestsBySystem: {
     label: "SIGAA",
-    color: "var(--chart-1)",
+    color: "var(--chart-6)",
   },
 } satisfies ChartConfig;
 

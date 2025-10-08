@@ -3,6 +3,7 @@ import {
   PercentageBuilderParams,
   PercentageBuilderReturn,
 } from "./indicatorBuilder.interface";
+import { CourseComplements } from "@unidash/api/responses/indicators.response";
 
 export class IndicatorBuilder {
   public static buildPercentageFromValues({
@@ -86,6 +87,27 @@ export class IndicatorBuilder {
     return {
       observation: `${percentage} ${observations.regress}`,
       situation: SITUATION_TYPE.regress,
+    };
+  }
+
+  public static buildCourseComplementsIndicators(
+    year: string,
+    courseComplements?: Record<string, CourseComplements>
+  ): Partial<CourseComplements> {
+    if (!courseComplements) {
+      return {
+        applicantsToSeatRatio: undefined,
+        dropoutRate: undefined,
+        occupancyRate: undefined,
+        successRate: undefined,
+      };
+    }
+
+    return {
+      applicantsToSeatRatio: courseComplements[year]?.applicantsToSeatRatio,
+      dropoutRate: courseComplements[year]?.dropoutRate,
+      occupancyRate: courseComplements[year]?.occupancyRate,
+      successRate: courseComplements[year]?.successRate,
     };
   }
 

@@ -7,8 +7,8 @@ import { CoordinationIndicatorsProps } from "./coordinationIndicators.interface"
 export function CoordinationIndicators({
   indicators,
 }: CoordinationIndicatorsProps) {
-  const yearFromIndicators = indicators?.period?.[0] ?? null;
-  const yearToIndicators =
+  const yearToIndicators = indicators?.period?.[0] ?? null;
+  const yearFromIndicators =
     indicators?.period && indicators.period.length > 1
       ? indicators.period[indicators.period.length - 1]
       : null;
@@ -31,7 +31,9 @@ export function CoordinationIndicators({
         />
       </div>
 
-      <ActionPlansChart actionPlans={indicators?.actionPlans} />
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
+        <ActionPlansChart actionPlans={indicators?.actionPlans} />
+      </div>
     </>
   );
 }

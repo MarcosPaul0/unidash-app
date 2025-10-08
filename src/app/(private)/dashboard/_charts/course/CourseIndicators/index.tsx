@@ -1,4 +1,3 @@
-import { CourseComplements } from "@unidash/api/responses/indicators.response";
 import { Topic } from "../../../_components/Topic";
 import { ApplicantsToSeatRatioIndicator } from "../../../_indicators/course/ApplicantsToSeatRatioIndicator";
 import { DropoutRateIndicator } from "../../../_indicators/course/DropoutRateIndicator";
@@ -12,27 +11,7 @@ import {
   CourseIndicatorsProps,
   IndicatorsCardsProps,
 } from "./courseIndicators.interface";
-
-function getIndicators(
-  year: string,
-  courseComplements?: Record<string, CourseComplements>
-): Partial<CourseComplements> {
-  if (!courseComplements) {
-    return {
-      applicantsToSeatRatio: undefined,
-      dropoutRate: undefined,
-      occupancyRate: undefined,
-      successRate: undefined,
-    };
-  }
-
-  return {
-    applicantsToSeatRatio: courseComplements[year]?.applicantsToSeatRatio,
-    dropoutRate: courseComplements[year]?.dropoutRate,
-    occupancyRate: courseComplements[year]?.occupancyRate,
-    successRate: courseComplements[year]?.successRate,
-  };
-}
+import { IndicatorBuilder } from "@unidash/utils/indicatorBuilder/indicatorBuilder.util";
 
 export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   if (!complements) {
@@ -48,8 +27,14 @@ export function IndicatorsCards({ complements }: IndicatorsCardsProps) {
   const currentYear = years[0];
   const previousYear = years[1];
 
-  const current = getIndicators(currentYear, complements);
-  const previous = getIndicators(previousYear, complements);
+  const current = IndicatorBuilder.buildCourseComplementsIndicators(
+    currentYear,
+    complements
+  );
+  const previous = IndicatorBuilder.buildCourseComplementsIndicators(
+    previousYear,
+    complements
+  );
 
   return (
     <div className="flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-8">

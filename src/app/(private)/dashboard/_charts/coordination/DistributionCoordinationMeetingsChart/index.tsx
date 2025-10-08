@@ -16,15 +16,15 @@ import { Formatter } from "@unidash/utils/formatter.util";
 const chartConfig = {
   meetingsByUndergraduateChamber: {
     label: "Câmara de graduação",
-    color: "var(--chart-8)",
+    color: "var(--chart-7)",
   },
   meetingsByBoardOfDirectors: {
     label: "Conselho diretor",
-    color: "var(--chart-1)",
+    color: "var(--chart-10)",
   },
   meetingsByCourseCouncil: {
     label: "Colegiado de curso",
-    color: "var(--chart-10)",
+    color: "var(--chart-8)",
   },
 } satisfies ChartConfig;
 

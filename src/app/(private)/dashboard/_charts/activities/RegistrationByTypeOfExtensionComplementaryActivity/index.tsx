@@ -96,7 +96,7 @@ export function RegistrationByTypeOfExtensionComplementaryActivity({
               dataKey="total"
               position="inside"
               offset={12}
-              className="fill-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>
