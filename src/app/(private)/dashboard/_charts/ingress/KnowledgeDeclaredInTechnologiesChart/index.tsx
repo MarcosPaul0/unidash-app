@@ -78,7 +78,7 @@ export function KnowledgeDeclaredInTechnologiesChart({
         />
       }
     >
-      <ChartContainer className="max-h-[430px] h-full" config={chartConfig}>
+      <ChartContainer className="min-h-[440px] w-full" config={chartConfig}>
         <BarChart
           accessibilityLayer
           data={indicatorsData}

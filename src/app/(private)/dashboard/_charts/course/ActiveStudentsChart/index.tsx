@@ -13,7 +13,11 @@ import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ActiveStudentsByIngress } from "@unidash/api/responses/indicators.response";
 
-const chartConfig = {} satisfies ChartConfig;
+const chartConfig = {
+  numberOfStudents: {
+    label: "Número de estudantes",
+  },
+} satisfies ChartConfig;
 
 export function ActiveStudentsChart({
   activeStudents,

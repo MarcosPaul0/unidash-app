@@ -69,7 +69,7 @@ export function ReasonsGivenForChoosingTheCourseChart({
         />
       }
     >
-      <ChartContainer config={chartConfig}>
+      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
         <BarChart
           accessibilityLayer
           data={indicatorsData}

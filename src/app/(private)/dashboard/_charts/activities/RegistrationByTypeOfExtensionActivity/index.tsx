@@ -7,7 +7,7 @@ import {
   ChartTooltipContent,
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { RegistrationByTypeOfExtensionActivityProps } from "./registrationByTypeOfExtensionActivity.interface";
 import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
@@ -78,31 +78,40 @@ export function RegistrationByTypeOfExtensionActivity({
         <BarChart
           accessibilityLayer
           data={indicatorsData.data}
+          layout="vertical"
           margin={{
-            top: 32,
+            left: 10,
           }}
+          barGap={100}
         >
-          <CartesianGrid vertical={false} />
-
-          <XAxis
+          <YAxis
             dataKey="type"
-            tickLine={false}
-            tickMargin={30}
+            type="category"
             axisLine={false}
-            height={80}
+            tickMargin={0}
+            width={190}
             fontSize={14}
-            angle={-15}
             tickFormatter={(value) =>
               Formatter.getChartLabel(value, EXTENSION_ACTIVITIES_LABELS)
             }
           />
 
-          <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+          <XAxis dataKey="total" type="number" hide />
 
-          <Bar dataKey="total" stackId="a" fill="var(--color-total)" radius={8}>
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
+
+          <Bar
+            dataKey="total"
+            layout="vertical"
+            radius={8}
+            fill="var(--color-total)"
+          >
             <LabelList
               dataKey="total"
-              position="inside"
+              position="center"
               offset={12}
               className="fill-card text-sm md:text-lg"
               fontWeight={600}
