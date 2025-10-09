@@ -31,6 +31,7 @@ export function OccupancyRateIndicator({
       title={`Taxa de ocupação em ${currentYear}`}
       value={Formatter.toPercentage(currentOccupancyRate)}
       variant="blue"
+      tooltip="Mede o grau de preenchimento das vagas oferecidas. Calculada como número de ingressantes dividido pelo número de vagas disponibilizadas no processo seletivo."
     />
   );
 }

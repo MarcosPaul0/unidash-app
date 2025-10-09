@@ -29,6 +29,7 @@ export function ApplicantsToSeatRatioIndicator({
       title={`Candidato vaga em ${currentYear}`}
       value={Formatter.toDecimal(currentApplicantsToSeatRatio)}
       variant="blue"
+      tooltip="Representa a competitividade do curso no processo seletivo. Calculada como número de inscritos dividido pelo número de vagas ofertadas pela COPS (Coordenação de Processos Seletivos)."
     />
   );
 }

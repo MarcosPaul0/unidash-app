@@ -12,6 +12,7 @@ export interface IndicatorCardProps
   icon: ReactNode;
   title: string;
   value: number | string;
+  tooltip?: string;
   observation?: string;
   situation?: SituationType;
 }

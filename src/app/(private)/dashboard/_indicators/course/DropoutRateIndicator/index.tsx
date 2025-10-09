@@ -31,6 +31,7 @@ export function DropoutRateIndicator({
       title={`Taxa de evasão em ${currentYear}`}
       value={Formatter.toPercentage(currentDropoutRate)}
       variant="blue"
+      tooltip="Mostra a proporção de estudantes que abandonam o curso antes da conclusão. Calculada como número de alunos evadidos dividido pelo número de matriculados, com base nos relatórios anuais de cancelamento."
     />
   );
 }
