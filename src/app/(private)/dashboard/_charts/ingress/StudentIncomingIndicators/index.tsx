@@ -45,14 +45,14 @@ export function StudentIncomingIndicators({
           }
         />
 
-        <KnowledgeDeclaredInTechnologiesChart
-          studentIncomingByTechnology={indicators?.studentIncomingByTechnology}
-        />
-
         <ReasonsGivenForChoosingUniversityChart
           studentIncomingByUniversityChoiceReason={
             indicators?.studentIncomingByUniversityChoiceReason
           }
+        />
+
+        <KnowledgeDeclaredInTechnologiesChart
+          studentIncomingByTechnology={indicators?.studentIncomingByTechnology}
         />
       </div>
 

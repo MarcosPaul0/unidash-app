@@ -7,6 +7,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
@@ -17,10 +18,10 @@ import { SemestersIndicators } from "@unidash/api/responses/indicators.response"
 import { Formatter } from "@unidash/utils/formatter.util";
 
 const typeLabels: Record<string, string> = {
-  completed: "Completo",
+  completed: "Concluído",
   maximumDuration: "Prazo máximo",
   dropouts: "Abandonos",
-  transfers: "Transferências",
+  transfers: "Transferência outra IES",
   withdrawals: "Desistências",
   removals: "Excluídos",
   newExams: "Novo vestibular",
@@ -76,15 +77,22 @@ export function DistributionStudentsExitChart({
 
           <XAxis
             dataKey="type"
+            interval={0}
             tickLine={false}
-            tickMargin={30}
+            tickMargin={40}
             axisLine={false}
-            angle={340}
             height={100}
-            fontSize={14}
-            tickFormatter={(value) =>
-              Formatter.getChartLabel(value, typeLabels)
-            }
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={120}
+              />
+            )}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

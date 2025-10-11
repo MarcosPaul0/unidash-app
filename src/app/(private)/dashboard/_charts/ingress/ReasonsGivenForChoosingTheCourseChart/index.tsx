@@ -7,42 +7,31 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { ReasonsGivenForChoosingTheCourseChartProps } from "./reasonsGivenForChoosingTheCourseChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { IncomingCourseChoiceReason } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { COURSE_CHOICE_REASON } from "@unidash/api/dtos/studentIncomingData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
   count: {
     label: "Motivo",
   },
-  [COURSE_CHOICE_REASON.hobbyRelation]: {
-    label: "Relação com hobby",
-  },
-  [COURSE_CHOICE_REASON.financialReasons]: {
-    label: "Financeiros",
-  },
-  [COURSE_CHOICE_REASON.courseQuality]: {
-    label: "Qualidade do curso",
-  },
-  [COURSE_CHOICE_REASON.sisuPreference]: {
-    label: "Interessante SISU",
-  },
-  [COURSE_CHOICE_REASON.notFirstChoice]: {
-    label: "Não prioritária",
-  },
-  [COURSE_CHOICE_REASON.higherEducationDesire]: {
-    label: "Desejo de graduação",
-  },
-  [COURSE_CHOICE_REASON.professionalUpdate]: {
-    label: "Atualização profissional",
-  },
-  [COURSE_CHOICE_REASON.other]: {
-    label: "Outro",
-  },
 } satisfies ChartConfig;
+
+const typeLabels = {
+  [COURSE_CHOICE_REASON.hobbyRelation]: "Relação com hobby",
+  [COURSE_CHOICE_REASON.financialReasons]: "Financeiros",
+  [COURSE_CHOICE_REASON.courseQuality]: "Qualidade do curso",
+  [COURSE_CHOICE_REASON.sisuPreference]: "Interessante SISU",
+  [COURSE_CHOICE_REASON.notFirstChoice]: "Não foi a primeira escolha",
+  [COURSE_CHOICE_REASON.higherEducationDesire]: "Desejo de graduação",
+  [COURSE_CHOICE_REASON.professionalUpdate]: "Atualização profissional",
+  [COURSE_CHOICE_REASON.other]: "Outro",
+};
 
 export function ReasonsGivenForChoosingTheCourseChart({
   studentIncomingByCourseChoiceReason,
@@ -75,19 +64,28 @@ export function ReasonsGivenForChoosingTheCourseChart({
           data={indicatorsData}
           layout="vertical"
           margin={{
-            left: 0,
+            left: 30,
           }}
         >
           <YAxis
             dataKey="choiceReason"
             type="category"
+            interval={0}
+            tickLine={false}
+            tickMargin={40}
             axisLine={false}
-            tickMargin={0}
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
-            width={190}
-            fontSize={14}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={100}
+                angle={0}
+              />
+            )}
           />
 
           <XAxis dataKey="count" type="number" hide />

@@ -36,7 +36,7 @@ export function ActiveStudentsChart({
     <ChartCard
       title="Número de alunos ativos por ano de ingresso"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
-      className="sm:col-span-3"
+      className="col-span-3"
       complement={
         <ChartSelect
           options={filterOptions}
@@ -45,7 +45,10 @@ export function ActiveStudentsChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[620px] w-full"
+      >
         <BarChart
           accessibilityLayer
           data={indicatorsData}

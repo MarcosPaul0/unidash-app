@@ -3,6 +3,7 @@
 import { cn } from "@unidash/lib/cn";
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
+import { XAxisTickProps } from "./chart.interface";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
@@ -344,6 +345,33 @@ function getPayloadConfigFromPayload(
   return configLabelKey in config
     ? config[configLabelKey]
     : config[key as keyof typeof config];
+}
+
+export function XAxisTick({
+  formatter,
+  payload,
+  angle = -45,
+  x,
+  y,
+  width = 120,
+}: XAxisTickProps) {
+  if (!payload) {
+    return null;
+  }
+
+  return (
+    <RechartsPrimitive.Text
+      textAnchor="middle"
+      verticalAnchor="start"
+      x={x}
+      y={y}
+      width={width}
+      angle={angle}
+      fontSize={14}
+    >
+      {formatter(payload.value)}
+    </RechartsPrimitive.Text>
+  );
 }
 
 export {

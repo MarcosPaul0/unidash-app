@@ -7,51 +7,34 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { AssetsDeclaredByIngressChartProps } from "./assetsDeclaredByIngressChart.interface";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { IncomingAsset } from "@unidash/api/responses/indicators.response";
 import { ASSET } from "@unidash/api/dtos/studentIncomingData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
   count: {
     label: "Bens",
   },
-  [ASSET.car]: {
-    label: "Carro",
-  },
-  [ASSET.motorcycle]: {
-    label: "Moto",
-  },
-  [ASSET.virtualAssistant]: {
-    label: "Assitente virtual",
-  },
-  [ASSET.payTv]: {
-    label: "TV por assinatura",
-  },
-  [ASSET.printer]: {
-    label: "Impressora",
-  },
-  [ASSET.internet]: {
-    label: "Internet",
-  },
-  [ASSET.tablet]: {
-    label: "Tablet",
-  },
-  [ASSET.desktopComputer]: {
-    label: "Desktop",
-  },
-  [ASSET.laptop]: {
-    label: "Notebook",
-  },
-  [ASSET.smartTv]: {
-    label: "Smart TV",
-  },
-  [ASSET.smartphone]: {
-    label: "Smartphone",
-  },
 } satisfies ChartConfig;
+
+const typeLabels = {
+  [ASSET.car]: "Carro",
+  [ASSET.motorcycle]: "Moto",
+  [ASSET.virtualAssistant]: "Assitente virtual",
+  [ASSET.payTv]: "TV por assinatura",
+  [ASSET.printer]: "Impressora",
+  [ASSET.internet]: "Internet",
+  [ASSET.tablet]: "Tablet",
+  [ASSET.desktopComputer]: "Desktop",
+  [ASSET.laptop]: "Notebook",
+  [ASSET.smartTv]: "Smart TV",
+  [ASSET.smartphone]: "Smartphone",
+};
 
 export function AssetsDeclaredByIngressChart({
   studentIncomingByAsset,
@@ -84,19 +67,28 @@ export function AssetsDeclaredByIngressChart({
           data={indicatorsData}
           layout="vertical"
           margin={{
-            left: 0,
+            left: 40,
           }}
         >
           <YAxis
             dataKey="asset"
             type="category"
+            interval={0}
+            tickLine={false}
+            tickMargin={50}
             axisLine={false}
-            tickMargin={0}
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
-            width={130}
-            fontSize={14}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={100}
+                angle={0}
+              />
+            )}
           />
 
           <XAxis dataKey="count" type="number" hide />

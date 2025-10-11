@@ -7,57 +7,36 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { IncomingHobbyOrHabit } from "@unidash/api/responses/indicators.response";
 import { HabitsAndHobbiesDeclaredByIngressChartProps } from "./habitsAndHobbiesDeclaredByIngressChart.interface";
 import { HOBBY_OR_HABIT } from "@unidash/api/dtos/studentIncomingData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
   count: {
     label: "Hábito e hobbies",
   },
-  [HOBBY_OR_HABIT.videoGames]: {
-    label: "Jogos eletrônicos",
-  },
-  [HOBBY_OR_HABIT.physicalActivity]: {
-    label: "Ativideades físicas",
-  },
-  [HOBBY_OR_HABIT.listeningMusic]: {
-    label: "Ouvir música",
-  },
-  [HOBBY_OR_HABIT.teamSports]: {
-    label: "Esportes em grupo",
-  },
-  [HOBBY_OR_HABIT.moviesOrSeries]: {
-    label: "Filmes e séries",
-  },
-  [HOBBY_OR_HABIT.reading]: {
-    label: "Leitura",
-  },
-  [HOBBY_OR_HABIT.internetBrowsing]: {
-    label: "Navegar na internet",
-  },
-  [HOBBY_OR_HABIT.playingInstrument]: {
-    label: "Instrumentos musicais",
-  },
-  [HOBBY_OR_HABIT.socialMedia]: {
-    label: "Redes sociais",
-  },
-  [HOBBY_OR_HABIT.traveling]: {
-    label: "Viajar",
-  },
-  [HOBBY_OR_HABIT.individualSports]: {
-    label: "Esportes individuais",
-  },
-  [HOBBY_OR_HABIT.handcrafting]: {
-    label: "Trabalhos manuais",
-  },
-  [HOBBY_OR_HABIT.other]: {
-    label: "Outros",
-  },
 } satisfies ChartConfig;
+
+const typeLabels = {
+  [HOBBY_OR_HABIT.videoGames]: "Jogos eletrônicos",
+  [HOBBY_OR_HABIT.physicalActivity]: "Ativideades físicas",
+  [HOBBY_OR_HABIT.listeningMusic]: "Ouvir música",
+  [HOBBY_OR_HABIT.teamSports]: "Esportes em grupo",
+  [HOBBY_OR_HABIT.moviesOrSeries]: "Filmes e séries",
+  [HOBBY_OR_HABIT.reading]: "Leitura",
+  [HOBBY_OR_HABIT.internetBrowsing]: "Navegar na internet",
+  [HOBBY_OR_HABIT.playingInstrument]: "Instrumentos musicais",
+  [HOBBY_OR_HABIT.socialMedia]: "Redes sociais",
+  [HOBBY_OR_HABIT.traveling]: "Viajar",
+  [HOBBY_OR_HABIT.individualSports]: "Esportes individuais",
+  [HOBBY_OR_HABIT.handcrafting]: "Trabalhos manuais",
+  [HOBBY_OR_HABIT.other]: "Outros",
+};
 
 export function HabitsAndHobbiesDeclaredByIngressChart({
   studentIncomingByHobbyOrHabit,
@@ -90,19 +69,28 @@ export function HabitsAndHobbiesDeclaredByIngressChart({
           data={indicatorsData}
           layout="vertical"
           margin={{
-            left: 0,
+            left: 45,
           }}
         >
           <YAxis
             dataKey="hobbyOrHabit"
             type="category"
+            interval={0}
+            tickLine={false}
+            tickMargin={50}
             axisLine={false}
-            tickMargin={0}
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
-            width={180}
-            fontSize={14}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={100}
+                angle={0}
+              />
+            )}
           />
 
           <XAxis dataKey="count" type="number" hide />

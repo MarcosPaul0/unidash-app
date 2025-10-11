@@ -7,6 +7,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ChartCard } from "../../../_components/ChartCard";
@@ -17,10 +18,10 @@ import { SemestersIndicators } from "@unidash/api/responses/indicators.response"
 import { Formatter } from "@unidash/utils/formatter.util";
 
 const typeLabels: Record<string, string> = {
-  difficultyInDiscipline: "Dif. na disciplina",
-  workload: "Carga horária",
-  teacherMethodology: "Metodologia docente",
-  incompatibilityWithWork: "Incompat. trabalho",
+  difficultyInDiscipline: "Difculdades de acompanhamento da disciplina",
+  workload: "Carga horária excessiva",
+  teacherMethodology: "Não gostou da metodologia do docente",
+  incompatibilityWithWork: "Incompatibilidade com horário do trabalho",
   lossOfInterest: "Perda de interesse",
   other: "Outro",
 };
@@ -66,21 +67,31 @@ export function RegistrationLocksChart({
         />
       }
     >
-      <ChartContainer config={chartConfig} className="min-h-[440px] w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[440px] max-h-[440px] w-full"
+      >
         <BarChart accessibilityLayer data={indicatorsData.data}>
           <CartesianGrid vertical={false} />
 
           <XAxis
             dataKey="type"
+            interval={0}
             tickLine={false}
-            tickMargin={30}
+            tickMargin={40}
             axisLine={false}
-            height={80}
-            fontSize={14}
-            angle={-25}
-            tickFormatter={(value) =>
-              Formatter.getChartLabel(value, typeLabels)
-            }
+            height={100}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={120}
+              />
+            )}
           />
 
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />

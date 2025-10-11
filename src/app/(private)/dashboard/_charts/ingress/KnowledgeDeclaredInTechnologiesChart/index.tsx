@@ -7,51 +7,34 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { KnowledgeDeclaredInTechnologiesChartProps } from "./knowledgeDeclaredInTechnologiesChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { IncomingTechnology } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { TECHNOLOGY } from "@unidash/api/dtos/studentIncomingData.dto";
+import { Formatter } from "@unidash/utils/formatter.util";
 
 const chartConfig = {
   count: {
     label: "Motivo",
   },
-  [TECHNOLOGY.internetNavigation]: {
-    label: "Navegação",
-  },
-  [TECHNOLOGY.softwareInstallation]: {
-    label: "Instalação de softwares",
-  },
-  [TECHNOLOGY.programmingAndLanguages]: {
-    label: "Programas e linguagens",
-  },
-  [TECHNOLOGY.spreadsheets]: {
-    label: "Planilhas",
-  },
-  [TECHNOLOGY.operatingSystemSetup]: {
-    label: "Instalação de SO",
-  },
-  [TECHNOLOGY.textEditor]: {
-    label: "Editor de texto",
-  },
-  [TECHNOLOGY.electronicsInstallation]: {
-    label: "Instalação de eletrônicos",
-  },
-  [TECHNOLOGY.presentationEditing]: {
-    label: "Editoração de apresentações",
-  },
-  [TECHNOLOGY.videoEditing]: {
-    label: "Edição de vídeo",
-  },
-  [TECHNOLOGY.drawingApps]: {
-    label: "Aplicativos de desenho",
-  },
-  [TECHNOLOGY.prototypingPlatform]: {
-    label: "Plataforma de prototipação",
-  },
 } satisfies ChartConfig;
+
+const typeLabels = {
+  [TECHNOLOGY.internetNavigation]: "Navegação",
+  [TECHNOLOGY.softwareInstallation]: "Instalação de softwares",
+  [TECHNOLOGY.programmingAndLanguages]: "Programas e linguagens",
+  [TECHNOLOGY.spreadsheets]: "Planilhas",
+  [TECHNOLOGY.operatingSystemSetup]: "Instalação de SO",
+  [TECHNOLOGY.textEditor]: "Editor de texto",
+  [TECHNOLOGY.electronicsInstallation]: "Instalação de eletrônicos",
+  [TECHNOLOGY.presentationEditing]: "Editoração de apresentações",
+  [TECHNOLOGY.videoEditing]: "Edição de vídeo",
+  [TECHNOLOGY.drawingApps]: "Aplicativos de desenho",
+  [TECHNOLOGY.prototypingPlatform]: "Plataforma de prototipação",
+};
 
 export function KnowledgeDeclaredInTechnologiesChart({
   studentIncomingByTechnology,
@@ -84,19 +67,28 @@ export function KnowledgeDeclaredInTechnologiesChart({
           data={indicatorsData}
           layout="vertical"
           margin={{
-            left: 0,
+            left: 50,
           }}
         >
           <YAxis
             dataKey="technology"
             type="category"
+            interval={0}
+            tickLine={false}
+            tickMargin={50}
             axisLine={false}
-            tickMargin={0}
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
-            width={190}
-            fontSize={14}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, typeLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={100}
+                angle={0}
+              />
+            )}
           />
 
           <XAxis dataKey="count" type="number" hide />

@@ -72,7 +72,7 @@ export function CourseIndicators({ indicators }: CourseIndicatorsProps) {
 
       <IndicatorsCards complements={indicators?.complements} />
 
-      <div className="flex flex-col md:grid md:grid-cols-7 gap-4 md:gap-8">
+      <div className="flex flex-col 2xl:grid 2xl:grid-cols-7 gap-4 md:gap-8">
         <ActiveStudentsChart activeStudents={indicators?.activeStudents} />
 
         <RegistrationLocksChart
