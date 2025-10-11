@@ -41,8 +41,7 @@ export class CourseTeacherWorkloadDataCSService {
         year: registerCourseTeacherWorkloadDataDto.year,
         semester: registerCourseTeacherWorkloadDataDto.semester,
         teacherId: registerCourseTeacherWorkloadDataDto.teacherId,
-        workloadInMinutes:
-          registerCourseTeacherWorkloadDataDto.workloadInMinutes,
+        workloadInHours: registerCourseTeacherWorkloadDataDto.workloadInHours,
       }
     );
 

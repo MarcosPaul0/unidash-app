@@ -8,9 +8,7 @@ export const registerCourseTeacherWorkloadDataDtoSchema = z.object({
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
   semester: z.enum(SEMESTER),
   teacherId: z.uuid(),
-  workloadInMinutes: z
-    .transform(Number)
-    .pipe(z.number().int().min(0).max(10000)),
+  workloadInHours: z.transform(Number).pipe(z.number().int().min(0).max(10000)),
 });
 
 export type RegisterCourseTeacherWorkloadDataDto = z.infer<

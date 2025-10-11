@@ -74,7 +74,7 @@ export function HabitsAndHobbiesDeclaredByIngressChart({
 
   return (
     <ChartCard
-      title="Hábitos e hobbies declarados pelos alunos ingressantes no ano"
+      title="Hábitos e hobbies declarados pelos alunos ingressantes por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

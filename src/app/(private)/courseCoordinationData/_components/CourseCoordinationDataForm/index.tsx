@@ -47,12 +47,12 @@ const INITIAL_VALUES = {
   meetingsByBoardOfDirectors: "",
   meetingsByCourseCouncil: "",
   meetingsByUndergraduateChamber: "",
+  meetingsByNde: "",
   resolutionActions: "",
   servicesRequestsByEmail: "",
   servicesRequestsBySystem: "",
   academicActionPlans: "",
   administrativeActionPlans: "",
-  actionPlansDescription: "",
 } as unknown as RegisterCourseCoordinationDataDto;
 
 export function CourseCoordinationDataForm() {
@@ -70,6 +70,8 @@ export function CourseCoordinationDataForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = formMethods;
+
+  console.log({ errors });
 
   async function sendCourseCoordinationData(
     registerCourseCoordinationDataDto: RegisterCourseCoordinationDataDto
@@ -136,6 +138,9 @@ export function CourseCoordinationDataForm() {
                 label="Reuniões por colegiado de curso"
                 helper={errors.meetingsByCourseCouncil?.message}
               />
+            </CardInputsRow>
+
+            <CardInputsRow>
               <FormInput
                 control={control}
                 type="number"
@@ -143,6 +148,14 @@ export function CourseCoordinationDataForm() {
                 placeholder="Quantidade de reuniões por câmara de graduação"
                 label="Reuniões por câmara de graduação"
                 helper={errors.meetingsByUndergraduateChamber?.message}
+              />
+              <FormInput
+                control={control}
+                type="number"
+                name="meetingsByNde"
+                placeholder="Quantidade de reuniões por NDE"
+                label="Reuniões por NDE"
+                helper={errors.meetingsByNde?.message}
               />
             </CardInputsRow>
 
@@ -186,35 +199,24 @@ export function CourseCoordinationDataForm() {
               />
             </CardInputsRow>
 
-            <CardSubtitle>
-              Informações de plano de ações realizados
-            </CardSubtitle>
-
-            <CardInputsRow>
-              <FormInput
-                control={control}
-                type="number"
-                name="administrativeActionPlans"
-                placeholder="Quantidade de plano de ações administrativos"
-                label="Plano de ações administrativos"
-                helper={errors.administrativeActionPlans?.message}
-              />
-              <FormInput
-                control={control}
-                type="number"
-                name="academicActionPlans"
-                placeholder="Quantidade de plano de ações acadêmicos"
-                label="Plano de ações acadêmicos"
-                helper={errors.academicActionPlans?.message}
-              />
-            </CardInputsRow>
+            <CardSubtitle>Informações do plano de ações executado</CardSubtitle>
 
             <FormTextarea
               control={control}
-              name="actionPlansDescription"
-              placeholder="Descreva os planos de ações realizados"
-              label="Descrição dos planos de ações"
-              helper={errors.actionPlansDescription?.message}
+              name="administrativeActionPlans"
+              placeholder="Descreva as ações administrativas realizadas"
+              label="Descrição das ações administrativas realizadas"
+              helper={errors.administrativeActionPlans?.message}
+              className="resize-none"
+              rows={4}
+            />
+
+            <FormTextarea
+              control={control}
+              name="academicActionPlans"
+              placeholder="Descreva as ações acadêmicas realizadas"
+              label="Descrição das ações acadêmicas realizadas"
+              helper={errors.academicActionPlans?.message}
               className="resize-none"
               rows={4}
             />

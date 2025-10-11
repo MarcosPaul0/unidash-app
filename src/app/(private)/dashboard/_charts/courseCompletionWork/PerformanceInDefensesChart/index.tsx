@@ -41,7 +41,7 @@ export function PerformanceInDefensesChart({
 
   return (
     <ChartCard
-      title="Número de resultados de defesas de TCCs, por docente orientador, no ano"
+      title="Número de resultados de defesas de TCCs, por docente orientador, por ano"
       description="Fonte dos dados: registros institucionais da coordenação de TCCs do curso"
       complement={
         <ChartSelect

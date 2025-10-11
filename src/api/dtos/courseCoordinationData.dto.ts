@@ -28,13 +28,9 @@ export const registerCourseCoordinationDataDtoSchema = z.object({
   meetingsByCourseCouncil: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(1000)),
-  academicActionPlans: z
-    .transform(Number)
-    .pipe(z.number().int().min(0).max(1000)),
-  administrativeActionPlans: z
-    .transform(Number)
-    .pipe(z.number().int().min(0).max(1000)),
-  actionPlansDescription: z.string().min(10).max(360).optional(),
+  meetingsByNde: z.transform(Number).pipe(z.number().int().min(0).max(1000)),
+  academicActionPlans: z.string().min(10).max(360).optional(),
+  administrativeActionPlans: z.string().min(10).max(360).optional(),
 });
 
 export type RegisterCourseCoordinationDataDto = z.infer<

@@ -45,7 +45,7 @@ export function EmploymentTypeInternshipsChart({
 
   return (
     <ChartCard
-      title="Número de estágios supervisionados por tipo de vínculo empregatício no ano"
+      title="Número de estágios supervisionados por tipo de vínculo empregatício por ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
       className="col-span-4"
       complement={

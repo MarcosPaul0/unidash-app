@@ -56,11 +56,13 @@ export interface CourseIndicatorsResponse {
 }
 
 export interface ActionPlans {
-  academicActionPlans: number;
-  administrativeActionPlans: number;
-  actionPlansDescriptions: {
-    [SEMESTER.first]?: string;
-    [SEMESTER.second]?: string;
+  [SEMESTER.first]?: {
+    academicActionPlans?: string;
+    administrativeActionPlans?: string;
+  };
+  [SEMESTER.second]?: {
+    academicActionPlans?: string;
+    administrativeActionPlans?: string;
   };
 }
 
@@ -70,6 +72,7 @@ export interface CourseCoordinationIndicatorsResponse {
     meetingsByBoardOfDirectors: number;
     meetingsByUndergraduateChamber: number;
     meetingsByCourseCouncil: number;
+    meetingsByNde: number;
   }[];
   services: {
     year: number;

@@ -57,7 +57,7 @@ export function TrainingProfileIngressChart({
 
   return (
     <ChartCard
-      title="Perfil de formação dos ingressantes por tipo e área de conhecimento no ano"
+      title="Perfil de formação dos ingressantes por tipo e área de conhecimento por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       className="col-span-4"
       complement={

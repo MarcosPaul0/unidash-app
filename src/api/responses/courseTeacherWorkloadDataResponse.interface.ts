@@ -6,7 +6,7 @@ export interface CourseTeacherWorkloadDataResponse {
     year: number;
     semester: Semester;
     teacherName: string;
-    workloadInMinutes: string;
+    workloadInHours: string;
     createdAt: string;
   }[];
   totalItems: number;

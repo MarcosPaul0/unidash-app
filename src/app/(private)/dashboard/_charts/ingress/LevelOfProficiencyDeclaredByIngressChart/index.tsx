@@ -62,7 +62,7 @@ export function LevelOfProficiencyDeclaredByIngressChart({
 
   return (
     <ChartCard
-      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio no ano"
+      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

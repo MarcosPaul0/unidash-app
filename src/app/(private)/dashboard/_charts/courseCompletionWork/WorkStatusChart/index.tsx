@@ -50,7 +50,7 @@ export function WorkStatusChart({ worksStatus }: WorkStatusChartProps) {
 
   return (
     <ChartCard
-      title="Situação de TCCs no ano, por semestre: matrículas, defesas e abandonos"
+      title="Situação de TCCs por ano, por semestre: matrículas, defesas e abandonos"
       description="Fonte dos dados: registros institucionais da coordenação de TCCs do curso"
       className="col-span-5"
       complement={

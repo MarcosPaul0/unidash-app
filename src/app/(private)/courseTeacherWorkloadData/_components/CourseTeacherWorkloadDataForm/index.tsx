@@ -44,7 +44,7 @@ const INITIAL_VALUES = {
   semester: "first",
   year: new Date().getFullYear().toString(),
   teacherId: "",
-  workloadInMinutes: "",
+  workloadInHours: "",
 } as unknown as RegisterCourseTeacherWorkloadDataDto;
 
 export function CourseTeacherWorkloadDataForm({
@@ -123,10 +123,10 @@ export function CourseTeacherWorkloadDataForm({
               <FormInput
                 control={control}
                 type="number"
-                name="workloadInMinutes"
+                name="workloadInHours"
                 placeholder="Carga horária do docente para o curso"
-                label="Carga horária  em minutos"
-                helper={errors.workloadInMinutes?.message}
+                label="Carga horária em horas"
+                helper={errors.workloadInHours?.message}
               />
             </CardInputsRow>
           </CardContent>

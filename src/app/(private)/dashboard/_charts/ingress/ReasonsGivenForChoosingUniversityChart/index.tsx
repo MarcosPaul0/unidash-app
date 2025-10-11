@@ -59,7 +59,7 @@ export function ReasonsGivenForChoosingUniversityChart({
 
   return (
     <ChartCard
-      title="Motivos declarados pelos ingressantes para escolha da universidade no ano"
+      title="Motivos declarados pelos ingressantes para escolha da universidade por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

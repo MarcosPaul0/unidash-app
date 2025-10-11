@@ -37,7 +37,7 @@ export function CitiesWithTheHighestInternshipsChart({
 
   return (
     <ChartCard
-      title="Número de estágios supervisionados cadastrados por cidade no ano"
+      title="Número de estágios supervisionados cadastrados por cidade por ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios curso"
       complement={
         <ChartSelect

@@ -37,7 +37,7 @@ export function TotalNumberOfInternshipsByTeacherChart({
 
   return (
     <ChartCard
-      title="Número de orientações de estágio supervisionado por professor no ano"
+      title="Número de orientações de estágio supervisionado por professor por ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios do curso"
       complement={
         <ChartSelect

@@ -61,7 +61,7 @@ export function RegistrationByTypeOfExtensionActivity({
 
   return (
     <ChartCard
-      title="Número de atividades de extensão por tipo de atividade no ano"
+      title="Número de atividades de extensão por tipo de atividade por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

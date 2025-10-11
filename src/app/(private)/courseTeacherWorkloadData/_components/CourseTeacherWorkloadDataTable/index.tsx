@@ -42,7 +42,7 @@ export function CourseTeacherWorkloadDataTable({
 
             <TableCell>{data.teacherName}</TableCell>
 
-            <TableCell>{data.workloadInMinutes} minutos</TableCell>
+            <TableCell>{data.workloadInHours} horas</TableCell>
 
             <TableCell className="w-[100px] text-center">
               <CourseTeacherWorkloadDataActions

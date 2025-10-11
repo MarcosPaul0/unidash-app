@@ -49,7 +49,7 @@ export function TeacherHoursDistributionChart({
 
   return (
     <ChartCard
-      title="Distribuição de carga horária didática por docente em minutos no ano"
+      title="Distribuição de carga horária didática por docente em horas por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

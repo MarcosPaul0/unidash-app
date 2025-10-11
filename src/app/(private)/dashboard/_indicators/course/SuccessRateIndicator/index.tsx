@@ -31,7 +31,7 @@ export function SuccessRateIndicator({
       title={`Taxa de sucesso em ${currentYear}`}
       value={Formatter.toPercentage(currentSuccessRate)}
       variant="blue"
-      tooltip="Indica o percentual de alunos que concluem o curso em relação aos que ingressaram. Calculada como número de concluintes dividido pelo número de ingressantes, considerando a duração padrão do curso."
+      tooltip="Indica o percentual de alunos que concluíram o curso em relação aos que ingressaram. Calculada como número de concluintes dividido pelo número de ingressantes, considerando a duração padrão do curso."
     />
   );
 }

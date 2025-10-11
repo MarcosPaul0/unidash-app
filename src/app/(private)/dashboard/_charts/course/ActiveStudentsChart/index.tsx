@@ -34,7 +34,7 @@ export function ActiveStudentsChart({
 
   return (
     <ChartCard
-      title="Alunos ativos do curso no período"
+      title="Número de alunos ativos por ano de ingresso"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       className="sm:col-span-3"
       complement={

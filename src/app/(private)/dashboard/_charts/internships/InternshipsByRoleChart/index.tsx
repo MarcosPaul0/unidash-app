@@ -37,7 +37,7 @@ export function InternshipsByRoleChart({
 
   return (
     <ChartCard
-      title="Número de estágios supervisionados por área de atuação profissional no ano"
+      title="Número de estágios supervisionados por área de atuação profissional por ano"
       description="Fonte dos dados: registros institucionais da coordenação de estágios do curso"
       complement={
         <ChartSelect

@@ -68,7 +68,7 @@ export function KnowledgeDeclaredInTechnologiesChart({
 
   return (
     <ChartCard
-      title="Conhecimentos declarados em tecnologias pelos ingressantes no ano"
+      title="Conhecimentos declarados em tecnologias pelos ingressantes por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

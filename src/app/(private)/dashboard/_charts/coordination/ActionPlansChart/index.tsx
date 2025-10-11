@@ -1,31 +1,16 @@
 "use client";
 
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@unidash/components/Chart";
-import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 import { ActionPlansChartProps } from "./actionPlansChart.interface";
-import { ActionPlansTooltip } from "../ActionPlansTooltip";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ActionPlans } from "@unidash/api/responses/indicators.response";
-
-const chartConfig = {
-  academicActionPlans: {
-    label: "Plano de ações acadẽmicos",
-    color: "var(--chart-13)",
-  },
-  administrativeActionPlans: {
-    label: "Plano de ações administrativos",
-    color: "var(--chart-12)",
-  },
-} satisfies ChartConfig;
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@unidash/components/Card";
+import { ChecksIcon, SparkleIcon } from "@phosphor-icons/react/dist/ssr";
 
 export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
   const {
@@ -35,101 +20,53 @@ export function ActionPlansChart({ actionPlans }: ActionPlansChartProps) {
     activeFilterOption,
   } = useChartFilter<ActionPlans>({
     indicators: actionPlans,
-    initialData: {
-      academicActionPlans: 0,
-      administrativeActionPlans: 0,
-      actionPlansDescriptions: {
-        first: "",
-        second: "",
-      },
-    },
+    initialData: {},
   });
 
+  const hasFirstDescription = Boolean(indicatorsData?.first);
+  const hasSecondDescription = Boolean(indicatorsData?.second);
+
+  if (!hasFirstDescription && !hasSecondDescription) {
+    return null;
+  }
+
   return (
-    <ChartCard
-      title="Número de plano de ações realizados ao longo dos anos"
-      description={`Fonte dos dados: registros institucionais da coordenação do curso`}
-      complement={
-        <>
-          <ChartSelect
-            options={filterOptions}
-            onChange={changeFilterOption}
-            value={activeFilterOption}
-          />
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-4">
+          <SparkleIcon size={24} weight="fill" /> Plano de Ação executado
+        </CardTitle>
 
-          <ActionPlansTooltip
-            descriptions={indicatorsData.actionPlansDescriptions}
-          />
-        </>
-      }
-    >
-      <ChartContainer
-        config={chartConfig}
-        className="min-h-[440px] max-h-[440px] w-full"
-      >
-        <BarChart
-          accessibilityLayer
-          data={[indicatorsData]}
-          margin={{
-            top: 32,
-          }}
-        >
-          <CartesianGrid vertical={false} />
+        <ChartSelect
+          options={filterOptions}
+          onChange={changeFilterOption}
+          value={activeFilterOption}
+        />
+      </CardHeader>
 
-          <XAxis
-            dataKey="year"
-            tickLine={false}
-            axisLine={false}
-            fontSize={14}
-          />
+      <CardContent>
+        {hasFirstDescription && (
+          <p className="flex flex-col gap-2 p-2 rounded-xl max-w-xl">
+            <strong className="flex items-center gap-2">
+              <ChecksIcon size={24} />
+              Descrição das ações no primeiro semestre:
+            </strong>
+            <span>{indicatorsData.first?.academicActionPlans}</span>
+            <span>{indicatorsData.first?.administrativeActionPlans}</span>
+          </p>
+        )}
 
-          <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-
-          <ChartLegend content={<ChartLegendContent />} />
-
-          <Bar
-            dataKey="academicActionPlans"
-            fill="var(--color-academicActionPlans)"
-            radius={8}
-          >
-            <LabelList
-              dataKey="academicActionPlans"
-              position="top"
-              offset={12}
-              className="fill-card-foreground text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
-
-          <Bar
-            dataKey="administrativeActionPlans"
-            fill="var(--color-administrativeActionPlans)"
-            radius={8}
-          >
-            <LabelList
-              dataKey="administrativeActionPlans"
-              position="top"
-              offset={12}
-              className="fill-card-foreground text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
-
-          {/* <Bar
-            dataKey="resolution"
-            fill="var(--color-resolution)"
-            radius={8}
-          >
-            <LabelList
-              dataKey="resolution"
-              position="top"
-              offset={12}
-              className="fill-card-foreground text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar> */}
-        </BarChart>
-      </ChartContainer>
-    </ChartCard>
+        {hasSecondDescription && (
+          <p className="flex flex-col gap-2 p-2 rounded-xl max-w-xl">
+            <strong className="flex items-center gap-2">
+              <ChecksIcon size={24} />
+              Descrição das ações no segundo semestre:
+            </strong>
+            <span>{indicatorsData.second?.academicActionPlans}</span>
+            <span>{indicatorsData.second?.administrativeActionPlans}</span>
+          </p>
+        )}
+      </CardContent>
+    </Card>
   );
 }

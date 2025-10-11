@@ -68,7 +68,7 @@ export function AssetsDeclaredByIngressChart({
 
   return (
     <ChartCard
-      title="Bens de uso pessoal declarados pelos alunos ingressantes no ano"
+      title="Bens de uso pessoal declarados pelos alunos ingressantes por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect

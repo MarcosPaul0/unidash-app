@@ -26,6 +26,10 @@ const chartConfig = {
     label: "Colegiado de curso",
     color: "var(--chart-8)",
   },
+  meetingsByNde: {
+    label: "NDE",
+    color: "var(--chart-11)",
+  },
 } satisfies ChartConfig;
 
 export function DistributionCoordinationMeetingsChart({
@@ -96,6 +100,20 @@ export function DistributionCoordinationMeetingsChart({
           >
             <LabelList
               dataKey="meetingsByCourseCouncil"
+              position="top"
+              offset={12}
+              className="fill-card-foreground text-sm md:text-lg"
+              fontWeight={600}
+            />
+          </Bar>
+
+          <Bar
+            dataKey="meetingsByNde"
+            fill="var(--color-meetingsByNde)"
+            radius={[8, 8, 8, 8]}
+          >
+            <LabelList
+              dataKey="meetingsByNde"
               position="top"
               offset={12}
               className="fill-card-foreground text-sm md:text-lg"

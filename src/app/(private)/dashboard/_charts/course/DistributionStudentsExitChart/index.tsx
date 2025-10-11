@@ -57,7 +57,7 @@ export function DistributionStudentsExitChart({
 
   return (
     <ChartCard
-      title="Distribuição do número de alunos por tipo de saída, segundo o semestre do ano"
+      title="Número de alunos por tipo de saída, por semestre por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
