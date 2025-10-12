@@ -5,7 +5,7 @@ import { DistributionIngressByExpectedProfessionalPerformanceChart } from "../Di
 import { EnglishProficiencyLevelIngressChart } from "../EnglishProficiencyLevelIngressChart";
 import { HabitsAndHobbiesDeclaredByIngressChart } from "../HabitsAndHobbiesDeclaredByIngressChart";
 import { KnowledgeDeclaredInTechnologiesChart } from "../KnowledgeDeclaredInTechnologiesChart";
-import { LevelOfProficiencyDeclaredByIngressChart } from "../LevelOfProficiencyDeclaredByIngressChart";
+import { AffinityLevelDeclaredByIngressChart } from "../AffinityLevelDeclaredByIngressChart";
 import { ReasonsGivenForChoosingTheCourseChart } from "../ReasonsGivenForChoosingTheCourseChart";
 import { ReasonsGivenForChoosingUniversityChart } from "../ReasonsGivenForChoosingUniversityChart";
 import { TrainingProfileIngressChart } from "../TrainingProfileIngressChart";
@@ -32,7 +32,7 @@ export function StudentIncomingIndicators({
         />
       </div>
 
-      <LevelOfProficiencyDeclaredByIngressChart
+      <AffinityLevelDeclaredByIngressChart
         studentIncomingByAffinityByDiscipline={
           indicators?.studentIncomingByAffinityByDiscipline
         }

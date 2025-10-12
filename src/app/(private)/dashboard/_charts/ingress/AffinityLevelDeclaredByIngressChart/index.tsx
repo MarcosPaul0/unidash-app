@@ -10,7 +10,7 @@ import {
 } from "@unidash/components/Chart";
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-import { LevelOfProficiencyDeclaredByIngressChartProps } from "./levelOfProficiencyDeclaredByIngressChart.interface";
+import { AffinityLevelDeclaredByIngressChartProps } from "./affinityLevelDeclaredByIngressChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { IncomingAffinityByDiscipline } from "@unidash/api/responses/indicators.response";
@@ -47,9 +47,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function LevelOfProficiencyDeclaredByIngressChart({
+export function AffinityLevelDeclaredByIngressChart({
   studentIncomingByAffinityByDiscipline,
-}: LevelOfProficiencyDeclaredByIngressChartProps) {
+}: AffinityLevelDeclaredByIngressChartProps) {
   const {
     changeFilterOption,
     indicatorsData,
@@ -62,7 +62,7 @@ export function LevelOfProficiencyDeclaredByIngressChart({
 
   return (
     <ChartCard
-      title="Nível de proficiência  declarada pelos ingressantes com disciplinas do ensino médio por ano"
+      title="Nível de afinidade  declarada pelos ingressantes com disciplinas do ensino médio por ano"
       description="Fonte dos dados: registros institucionais da coordenação do curso"
       complement={
         <ChartSelect
