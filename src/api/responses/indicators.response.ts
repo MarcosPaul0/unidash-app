@@ -142,6 +142,7 @@ export type ProductionByTeacher = {
   booksChapter: number;
   programs: number;
   abstracts: number;
+  total: number;
 };
 
 export type ProductionByType = {
@@ -217,6 +218,21 @@ export type IncomingUniversityChoiceReason = {
   count: number;
 };
 
+export const COURSE_AND_UNIVERSITY_CHOICE = {
+  universityAndCourseIsNotFirstChoice: "universityAndCourseIsNotFirstChoice",
+  universityIsNotFirstChoice: "universityIsNotFirstChoice",
+  courseIsNotFirstChoice: "courseIsNotFirstChoice",
+  universityAndCourseIsFirstChoice: "universityAndCourseIsFirstChoice",
+} as const;
+
+export type CourseAndUniversityChoice =
+  (typeof COURSE_AND_UNIVERSITY_CHOICE)[keyof typeof COURSE_AND_UNIVERSITY_CHOICE];
+
+export type IncomingCourseAndUniversityChoiceDistribution = {
+  choiceClassification: CourseAndUniversityChoice;
+  count: number;
+};
+
 export interface CourseStudentIncomingIndicatorsResponse {
   studentIncomingByEnglishProficiencyLevel: Record<
     string,
@@ -242,5 +258,9 @@ export interface CourseStudentIncomingIndicatorsResponse {
   studentIncomingByUniversityChoiceReason: Record<
     string,
     IncomingUniversityChoiceReason[]
+  >;
+  studentIncomingCourseAndUniversityChoiceDistribution: Record<
+    string,
+    IncomingCourseAndUniversityChoiceDistribution[]
   >;
 }

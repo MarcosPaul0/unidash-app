@@ -144,8 +144,8 @@ export function TeacherTechnicalScientificProductionsDataForm() {
                 control={control}
                 type="number"
                 name="programs"
-                placeholder="Quantidade de programas"
-                label="Programas"
+                placeholder="Quantidade de softwares"
+                label="Softwares"
                 helper={errors.programs?.message}
               />
             </CardInputsRow>

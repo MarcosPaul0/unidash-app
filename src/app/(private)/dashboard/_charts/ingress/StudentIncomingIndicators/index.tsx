@@ -10,6 +10,7 @@ import { ReasonsGivenForChoosingTheCourseChart } from "../ReasonsGivenForChoosin
 import { ReasonsGivenForChoosingUniversityChart } from "../ReasonsGivenForChoosingUniversityChart";
 import { TrainingProfileIngressChart } from "../TrainingProfileIngressChart";
 import { StudentIncomingIndicatorsProps } from "./incomingIndicators.interface";
+import { CourseAndUniversityChoiceChart } from "../CourseAndUniversityChoiceChart";
 
 export function StudentIncomingIndicators({
   indicators,
@@ -18,16 +19,15 @@ export function StudentIncomingIndicators({
     <>
       <Topic title="Indicadores de Ingresso" />
 
-      <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
+      <div className="flex flex-col gap-4 2xl:grid 2xl:grid-cols-9 md:gap-8">
+        <CourseAndUniversityChoiceChart
+          studentIncomingCourseAndUniversityChoiceDistribution={
+            indicators?.studentIncomingCourseAndUniversityChoiceDistribution
+          }
+        />
         <TrainingProfileIngressChart
           studentIncomingByCurrentEducation={
             indicators?.studentIncomingByCurrentEducation
-          }
-        />
-
-        <EnglishProficiencyLevelIngressChart
-          studentIncomingByEnglishProficiencyLevel={
-            indicators?.studentIncomingByEnglishProficiencyLevel
           }
         />
       </div>
@@ -38,7 +38,21 @@ export function StudentIncomingIndicators({
         }
       />
 
-      <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-8">
+      <div className="flex flex-col gap-4 2xl:grid 2xl:grid-cols-2 md:gap-8">
+        <CourseQuestionsChart
+          studentIncomingByCourseComplements={
+            indicators?.studentIncomingByCourseComplements
+          }
+        />
+
+        <DistributionIngressByExpectedProfessionalPerformanceChart
+          studentIncomingByWorkExpectation={
+            indicators?.studentIncomingByWorkExpectation
+          }
+        />
+      </div>
+
+      <div className="flex flex-col gap-4 2xl:grid 2xl:grid-cols-3 md:gap-8">
         <ReasonsGivenForChoosingTheCourseChart
           studentIncomingByCourseChoiceReason={
             indicators?.studentIncomingByCourseChoiceReason
@@ -56,7 +70,7 @@ export function StudentIncomingIndicators({
         />
       </div>
 
-      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
+      <div className="flex flex-col gap-4 2xl:grid 2xl:grid-cols-2 md:gap-8">
         <AssetsDeclaredByIngressChart
           studentIncomingByAsset={indicators?.studentIncomingByAsset}
         />
@@ -68,16 +82,10 @@ export function StudentIncomingIndicators({
         />
       </div>
 
-      <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
-        <CourseQuestionsChart
-          studentIncomingByCourseComplements={
-            indicators?.studentIncomingByCourseComplements
-          }
-        />
-
-        <DistributionIngressByExpectedProfessionalPerformanceChart
-          studentIncomingByWorkExpectation={
-            indicators?.studentIncomingByWorkExpectation
+      <div className="flex flex-col gap-4 2xl:grid 2xl:grid-cols-7 md:gap-8">
+        <EnglishProficiencyLevelIngressChart
+          studentIncomingByEnglishProficiencyLevel={
+            indicators?.studentIncomingByEnglishProficiencyLevel
           }
         />
       </div>

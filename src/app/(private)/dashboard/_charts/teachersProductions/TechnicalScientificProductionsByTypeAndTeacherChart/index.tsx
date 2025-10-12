@@ -33,7 +33,7 @@ const chartConfig = {
     color: "var(--chart-6)",
   },
   programs: {
-    label: "programsas",
+    label: "Softwares",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
@@ -67,7 +67,13 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
         config={chartConfig}
         className="min-h-[440px] max-h-[440px] w-full"
       >
-        <BarChart accessibilityLayer data={indicatorsData}>
+        <BarChart
+          accessibilityLayer
+          data={indicatorsData}
+          margin={{
+            top: 32,
+          }}
+        >
           <CartesianGrid vertical={false} />
 
           <XAxis
@@ -89,53 +95,17 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
             stackId="a"
             fill="var(--color-periodicals)"
             radius={[0, 0, 8, 8]}
-          >
-            <LabelList
-              dataKey="periodicals"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-card text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
+          />
 
-          <Bar dataKey="congress" stackId="a" fill="var(--color-congress)">
-            <LabelList
-              dataKey="congress"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-card text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
+          <Bar dataKey="congress" stackId="a" fill="var(--color-congress)" />
 
-          <Bar dataKey="abstracts" stackId="a" fill="var(--color-abstracts)">
-            <LabelList
-              dataKey="abstracts"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-card text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
+          <Bar dataKey="abstracts" stackId="a" fill="var(--color-abstracts)" />
 
           <Bar
             dataKey="booksChapter"
             stackId="a"
             fill="var(--color-booksChapter)"
-          >
-            <LabelList
-              dataKey="booksChapter"
-              position="inside"
-              accumulate="none"
-              offset={12}
-              className="fill-card text-sm md:text-lg"
-              fontWeight={600}
-            />
-          </Bar>
+          />
 
           <Bar
             dataKey="programs"
@@ -144,11 +114,11 @@ export function TechnicalScientificProductionsByTypeAndTeacherChart({
             radius={[8, 8, 0, 0]}
           >
             <LabelList
-              dataKey="programs"
-              position="inside"
+              dataKey="total"
+              position="top"
               accumulate="none"
               offset={12}
-              className="fill-card text-sm md:text-lg"
+              className="fill-foreground text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

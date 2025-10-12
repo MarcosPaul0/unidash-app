@@ -74,9 +74,8 @@ export function ResearchAndExtensionProjectsByTeacherChart({
 
           <Bar
             dataKey="researchProjects"
-            stackId="a"
             fill="var(--color-researchProjects)"
-            radius={[0, 0, 8, 8]}
+            radius={8}
           >
             <LabelList
               dataKey="researchProjects"
@@ -90,9 +89,8 @@ export function ResearchAndExtensionProjectsByTeacherChart({
 
           <Bar
             dataKey="extensionProjects"
-            stackId="a"
             fill="var(--color-extensionProjects)"
-            radius={[8, 8, 0, 0]}
+            radius={8}
           >
             <LabelList
               dataKey="extensionProjects"
