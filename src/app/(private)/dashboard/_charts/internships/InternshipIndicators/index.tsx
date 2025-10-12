@@ -1,6 +1,6 @@
 import { Topic } from "../../../_components/Topic";
 import { CitiesWithTheHighestInternshipsChart } from "../CitiesWithTheHighestInternshipsChart";
-import { DistributionOfTimeSpentCompletingInternshipChart } from "../DistributionOfTimeSpentCompletingInternshipChart";
+import { DistributionOfTimeSpentCompletingInternshipCard } from "../DistributionOfTimeSpentCompletingInternshipCard";
 import { EmploymentTypeInternshipsChart } from "../EmploymentTypeInternshipsChart";
 import { InternshipsByRoleChart } from "../InternshipsByRoleChart";
 import { TotalNumberOfInternshipsByTeacherChart } from "../TotalNumberOfInternshipsByTeacherChart";
@@ -24,7 +24,7 @@ export function InternshipIndicators({
       </div>
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
-        <DistributionOfTimeSpentCompletingInternshipChart
+        <DistributionOfTimeSpentCompletingInternshipCard
           internshipsByConclusionTime={indicators?.internshipsByConclusionTime}
         />
 

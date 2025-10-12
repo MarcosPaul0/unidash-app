@@ -9,7 +9,6 @@ import {
 import { CourseInternshipDataTableProps } from "./courseInternshipDataTable.interface";
 import { CourseInternshipDataActions } from "../CourseInternshipDataActions";
 import { SemesterTag } from "@unidash/app/(private)/courseCoordinationData/_components/SemesterTag";
-import { WorkExpectationTag } from "../InternshipConclusionTimeTag";
 import { EmploymentTypeTag } from "../EmploymentTypeTag";
 
 export function CourseInternshipDataTable({
@@ -66,9 +65,7 @@ export function CourseInternshipDataTable({
               <EmploymentTypeTag employmentType={data.employmentType} />
             </TableCell>
 
-            <TableCell>
-              <WorkExpectationTag conclusionTime={data.conclusionTime} />
-            </TableCell>
+            <TableCell>{data.conclusionTimeInDays} dias</TableCell>
 
             <TableCell className="w-[100px] text-center">
               <CourseInternshipDataActions courseInternshipDataId={data.id} />

@@ -1,5 +1,5 @@
 import { CourseCoordinationIndicatorsResponse } from "@unidash/api/responses/indicators.response";
 
-export interface ActionPlansChartProps {
+export interface ActionPlansCardProps {
   actionPlans?: CourseCoordinationIndicatorsResponse["actionPlans"];
 }

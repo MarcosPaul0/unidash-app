@@ -1,7 +1,4 @@
-import {
-  ConclusionTime,
-  EmploymentType,
-} from "../dtos/courseInternshipData.dto";
+import { EmploymentType } from "../dtos/courseInternshipData.dto";
 import { SEMESTER, Semester } from "../dtos/courseStudentsData.dto";
 import {
   Asset,
@@ -124,7 +121,11 @@ export type InternshipByRole = { role: string; count: number };
 
 export type InternshipByAdvisor = { city: string; count: number };
 
-export type InternshipByConclusionTime = Record<ConclusionTime, number>;
+export type InternshipByConclusionTime = {
+  averageTimeInDays: number;
+  maxTimeInDays: number;
+  minTimeInDays: number;
+};
 
 export interface CourseInternshipIndicatorsResponse {
   internshipsByCity: Record<string, InternshipByCity[]>;

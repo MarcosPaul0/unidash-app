@@ -1,5 +1,5 @@
 import { Topic } from "../../../_components/Topic";
-import { ActionPlansChart } from "../ActionPlansChart";
+import { ActionPlansCard } from "../ActionPlansCard";
 import { DistributionCoordinationMeetingsChart } from "../DistributionCoordinationMeetingsChart";
 import { ServicesProvidedByCoordinationChart } from "../ServicesProvidedByCoordinationChart";
 import { CoordinationIndicatorsProps } from "./coordinationIndicators.interface";
@@ -32,7 +32,7 @@ export function CoordinationIndicators({
       </div>
 
       <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-8">
-        <ActionPlansChart actionPlans={indicators?.actionPlans} />
+        <ActionPlansCard actionPlans={indicators?.actionPlans} />
       </div>
     </>
   );

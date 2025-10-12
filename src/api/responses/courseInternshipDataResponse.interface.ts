@@ -1,7 +1,4 @@
-import {
-  ConclusionTime,
-  EmploymentType,
-} from "../dtos/courseInternshipData.dto";
+import { EmploymentType } from "../dtos/courseInternshipData.dto";
 import { Semester } from "../dtos/courseStudentsData.dto";
 
 export interface CourseInternshipDataResponse {
@@ -12,7 +9,7 @@ export interface CourseInternshipDataResponse {
     studentMatriculation: string;
     enterpriseCnpj: string;
     role: string;
-    conclusionTime: ConclusionTime;
+    conclusionTimeInDays: number;
     cityId: string;
     cityName: string;
     advisorId: string;

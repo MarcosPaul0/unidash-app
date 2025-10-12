@@ -13,7 +13,6 @@ import { FormInput } from "@unidash/components/FormInput";
 import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
-  CONCLUSION_TIME,
   EMPLOYMENT_TYPE,
   RegisterCourseInternshipDataDto,
   registerCourseInternshipDataDtoSchema,
@@ -48,7 +47,7 @@ const INITIAL_VALUES = {
   year: new Date().getFullYear().toString(),
   advisorId: "",
   cityId: "",
-  conclusionTime: "medium",
+  conclusionTimeInDays: "",
   employmentType: "internship",
   enterpriseCnpj: "",
   role: "",
@@ -145,26 +144,13 @@ export function CourseInternshipDataForm({
                 label="Atuação"
                 helper={errors.role?.message}
               />
-              <FormSelect
-                options={[
-                  {
-                    label: "Maior (tempo em horas)",
-                    value: CONCLUSION_TIME.bigger,
-                  },
-                  {
-                    label: "Médio (tempo em horas)",
-                    value: CONCLUSION_TIME.medium,
-                  },
-                  {
-                    label: "Menor (tempo em horas)",
-                    value: CONCLUSION_TIME.smaller,
-                  },
-                ]}
+              <FormInput
                 control={control}
-                name="conclusionTime"
-                placeholder="Informe o tempo para conclusão"
-                label="Tempo de conclusão"
-                helper={errors.conclusionTime?.message}
+                type="number"
+                name="conclusionTimeInDays"
+                placeholder="Informe o número de dias para conclusão"
+                label="Tempo de conclusão em dias"
+                helper={errors.conclusionTimeInDays?.message}
               />
               <FormSelect
                 options={[

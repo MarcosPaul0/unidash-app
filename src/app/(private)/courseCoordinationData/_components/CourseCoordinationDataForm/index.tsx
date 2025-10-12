@@ -71,8 +71,6 @@ export function CourseCoordinationDataForm() {
     formState: { errors, isSubmitting },
   } = formMethods;
 
-  console.log({ errors });
-
   async function sendCourseCoordinationData(
     registerCourseCoordinationDataDto: RegisterCourseCoordinationDataDto
   ) {
