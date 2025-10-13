@@ -1,6 +1,6 @@
-import { SemestersIndicatorByYear } from "@unidash/api/responses/indicators.response";
+import { ActivitiesIndicators } from "@unidash/api/responses/indicators.response";
 
 export interface UseActivitiesTableParams {
-  data?: SemestersIndicatorByYear;
+  data?: Record<string, ActivitiesIndicators>;
   labels: Record<string, string>;
 }

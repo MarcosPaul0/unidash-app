@@ -12,6 +12,7 @@ import { ActiveStudentsChartProps } from "./activeStudentsChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ActiveStudentsByIngress } from "@unidash/api/responses/indicators.response";
+import { CardFooter } from "@unidash/components/Card";
 
 const chartConfig = {
   numberOfStudents: {
@@ -27,9 +28,12 @@ export function ActiveStudentsChart({
     indicatorsData,
     filterOptions,
     activeFilterOption,
-  } = useChartFilter<ActiveStudentsByIngress[]>({
+  } = useChartFilter<ActiveStudentsByIngress>({
     indicators: activeStudents,
-    initialData: [],
+    initialData: {
+      data: [],
+      total: 0,
+    },
   });
 
   return (
@@ -51,7 +55,7 @@ export function ActiveStudentsChart({
       >
         <BarChart
           accessibilityLayer
-          data={indicatorsData}
+          data={indicatorsData.data}
           layout="vertical"
           margin={{
             left: -140,
@@ -90,6 +94,17 @@ export function ActiveStudentsChart({
           </Bar>
         </BarChart>
       </ChartContainer>
+
+      <CardFooter
+        className={`
+          bg-table-head py-2 px-6 rounded-lg flex 
+          items-center justify-between
+        `}
+      >
+        <strong>Total de alunos ativos</strong>
+
+        <strong>{indicatorsData.total}</strong>
+      </CardFooter>
     </ChartCard>
   );
 }

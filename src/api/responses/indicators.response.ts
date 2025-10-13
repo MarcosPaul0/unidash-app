@@ -32,8 +32,11 @@ export type CourseStudents = {
 };
 
 export type ActiveStudentsByIngress = {
-  ingressYear: number;
-  numberOfStudents: number;
+  total: number;
+  data: {
+    ingressYear: number;
+    numberOfStudents: number;
+  }[];
 };
 
 export type CourseComplements = {
@@ -47,7 +50,7 @@ export interface CourseIndicatorsResponse {
   departures: SemestersIndicatorByYear;
   registrationLocks: SemestersIndicatorByYear;
   students: Record<string, CourseStudents[]>;
-  activeStudents: Record<string, ActiveStudentsByIngress[]>;
+  activeStudents: Record<string, ActiveStudentsByIngress>;
   teachersWorkload: SemestersIndicatorByYear;
   complements: Record<string, CourseComplements>;
 }
@@ -103,11 +106,21 @@ export interface CourseWorkCompletionIndicatorsResponse {
   orientationsByTeacher: Record<string, OrientationsByTeacher[]>;
 }
 
+export type ActivitiesIndicators = {
+  total: number;
+  data: {
+    type: string;
+    firstSemester: number;
+    secondSemester: number;
+    total: number;
+  }[];
+};
+
 export interface CourseActivitiesIndicatorsResponse {
-  extensionActivities: SemestersIndicatorByYear;
-  extensionComplementaryActivities: SemestersIndicatorByYear;
-  searchComplementaryActivities: SemestersIndicatorByYear;
-  teachingComplementaryActivities: SemestersIndicatorByYear;
+  extensionActivities: Record<string, ActivitiesIndicators>;
+  extensionComplementaryActivities: Record<string, ActivitiesIndicators>;
+  searchComplementaryActivities: Record<string, ActivitiesIndicators>;
+  teachingComplementaryActivities: Record<string, ActivitiesIndicators>;
 }
 
 export type InternshipByCity = { city: string; count: number };

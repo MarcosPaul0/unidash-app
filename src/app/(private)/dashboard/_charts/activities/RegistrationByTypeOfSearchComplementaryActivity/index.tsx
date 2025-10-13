@@ -9,7 +9,7 @@ import {
 import { ChartCard } from "@unidash/app/(private)/dashboard/_components/ChartCard";
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { RegistrationByTypeOfSearchComplementaryActivityProps } from "./registrationByTypeOfSearchComplementaryActivity.interface";
-import { SemestersIndicators } from "@unidash/api/responses/indicators.response";
+import { ActivitiesIndicators } from "@unidash/api/responses/indicators.response";
 import { useChartFilter } from "@unidash/hooks/useChartFilter";
 import { ChartSelect } from "../../../_components/ChartSelect";
 import { Formatter } from "@unidash/utils/formatter.util";
@@ -47,11 +47,10 @@ export function RegistrationByTypeOfSearchComplementaryActivity({
     indicatorsData,
     filterOptions,
     activeFilterOption,
-  } = useChartFilter<SemestersIndicators>({
+  } = useChartFilter<ActivitiesIndicators>({
     indicators: searchComplementaryActivities,
     initialData: {
-      hasDataInFirstSemester: false,
-      hasDataInSecondSemester: false,
+      total: 0,
       data: [],
     },
   });

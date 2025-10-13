@@ -24,7 +24,7 @@ const chartConfig = {
     label: "Ingressantes",
   },
   [COURSE_AND_UNIVERSITY_CHOICE.courseIsNotFirstChoice]: {
-    label: "O curso não foi a primeira escolha",
+    label: "A universidade foi a primeira escolha, já o curso não",
     color: "var(--chart-5)",
   },
   [COURSE_AND_UNIVERSITY_CHOICE.universityAndCourseIsFirstChoice]: {
@@ -36,7 +36,7 @@ const chartConfig = {
     color: "var(--chart-3)",
   },
   [COURSE_AND_UNIVERSITY_CHOICE.universityIsNotFirstChoice]: {
-    label: "A universidade não foi a primeira escolha",
+    label: "O curso foi a primeira escolha, já a universidade não",
     color: "var(--chart-7)",
   },
 } satisfies ChartConfig;
