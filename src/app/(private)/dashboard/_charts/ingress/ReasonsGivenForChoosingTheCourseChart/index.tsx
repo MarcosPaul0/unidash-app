@@ -105,7 +105,7 @@ export function ReasonsGivenForChoosingTheCourseChart({
               dataKey="count"
               position="center"
               offset={12}
-              className="fill-card-foreground text-sm md:text-lg"
+              className="fill-card text-sm md:text-lg"
               fontWeight={600}
             />
           </Bar>

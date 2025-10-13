@@ -9,6 +9,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  XAxisTick,
 } from "@unidash/components/Chart";
 import { CourseQuestionsChartProps } from "./courseQuestionsChart.interface";
 import { ChartSelect } from "../../../_components/ChartSelect";
@@ -17,9 +18,9 @@ import { IncomingCourseComplements } from "@unidash/api/responses/indicators.res
 import { Formatter } from "@unidash/utils/formatter.util";
 
 const questionsLabels: Record<string, string> = {
-  knowRelatedCourseDifference: "Sabe a diferença entre cursos correlatos",
-  nocturnalPreference: "Preferência pelo noturno",
-  readPedagogicalProject: "Leu o PPC",
+  knowRelatedCourseDifference: "Sabe a diferença entre cursos/áreas correlatos",
+  nocturnalPreference: "Gostaria que o curso fosse noturno",
+  readPedagogicalProject: "Analizou o PPC",
 };
 
 const chartConfig = {
@@ -71,9 +72,19 @@ export function CourseQuestionsChart({
             tickMargin={10}
             axisLine={false}
             fontSize={12}
-            tickFormatter={(value) =>
-              Formatter.getChartLabel(value, questionsLabels)
-            }
+            height={40}
+            tick={(props) => (
+              <XAxisTick
+                formatter={(value) =>
+                  Formatter.getChartLabel(value, questionsLabels)
+                }
+                x={props.x}
+                y={props.y}
+                payload={props.payload}
+                width={200}
+                angle={0}
+              />
+            )}
           />
 
           <ChartTooltip
@@ -83,12 +94,7 @@ export function CourseQuestionsChart({
 
           <ChartLegend content={<ChartLegendContent />} className="text-base" />
 
-          <Bar
-            dataKey="yes"
-            radius={[0, 0, 8, 8]}
-            stackId="a"
-            fill="var(--color-yes)"
-          >
+          <Bar dataKey="yes" radius={8} fill="var(--color-yes)">
             <LabelList
               dataKey="yes"
               position="center"
@@ -98,12 +104,7 @@ export function CourseQuestionsChart({
             />
           </Bar>
 
-          <Bar
-            dataKey="no"
-            radius={[8, 8, 0, 0]}
-            stackId="a"
-            fill="var(--color-no)"
-          >
+          <Bar dataKey="no" radius={8} fill="var(--color-no)">
             <LabelList
               dataKey="no"
               position="center"
