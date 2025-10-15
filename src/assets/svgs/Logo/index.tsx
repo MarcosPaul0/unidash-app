@@ -1,4 +1,6 @@
-export function Logo() {
+import { LogoProps } from "./logo.interface";
+
+export function Logo({ className }: LogoProps) {
   return (
     <svg
       width="236"
@@ -6,6 +8,7 @@ export function Logo() {
       viewBox="0 0 236 51"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <rect
         x="0.970703"

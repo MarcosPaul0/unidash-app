@@ -64,7 +64,7 @@ export function ReasonsGivenForChoosingUniversityChart({
           data={indicatorsData}
           layout="vertical"
           margin={{
-            left: 35,
+            left: 48,
           }}
           barGap={100}
         >
@@ -81,9 +81,9 @@ export function ReasonsGivenForChoosingUniversityChart({
                   Formatter.getChartLabel(value, typeLabels)
                 }
                 x={props.x}
-                y={props.y}
+                y={props.y - 10}
                 payload={props.payload}
-                width={100}
+                width={120}
                 angle={0}
               />
             )}

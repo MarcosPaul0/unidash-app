@@ -83,9 +83,9 @@ export function KnowledgeDeclaredInTechnologiesChart({
                   Formatter.getChartLabel(value, typeLabels)
                 }
                 x={props.x}
-                y={props.y}
+                y={props.y - 10}
                 payload={props.payload}
-                width={100}
+                width={110}
                 angle={0}
               />
             )}

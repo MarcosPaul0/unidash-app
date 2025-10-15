@@ -80,7 +80,7 @@ export function ReasonsGivenForChoosingTheCourseChart({
                   Formatter.getChartLabel(value, typeLabels)
                 }
                 x={props.x}
-                y={props.y}
+                y={props.y - 10}
                 payload={props.payload}
                 width={100}
                 angle={0}
