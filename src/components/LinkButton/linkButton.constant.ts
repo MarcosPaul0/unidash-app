@@ -26,7 +26,7 @@ export const linkButtonVariants = cva(
         default: "p-0",
         sm: "rounded-md gap-1.5 px-3",
         md: "px-5 py-3",
-        lg: "rounded-md px-6 py-4",
+        lg: "rounded-md px-4 md:px-6 py-2 md:py-4",
         icon: "size-9",
       },
     },
