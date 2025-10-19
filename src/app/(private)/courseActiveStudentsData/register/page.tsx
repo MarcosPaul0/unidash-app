@@ -1,6 +1,6 @@
 import { Toolbar } from "../../_components/Toolbar";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
-import { CourseActiveStudentsDataForm } from "../_components/CourseActiveStudentsDataForm";
+import { RegisterCourseActiveStudentsDataForm } from "../_components/RegisterCourseActiveStudentsDataForm";
 
 export default function RegisterCourseActiveStudentsPage() {
   return (
@@ -15,7 +15,7 @@ export default function RegisterCourseActiveStudentsPage() {
         ]}
       />
 
-      <CourseActiveStudentsDataForm />
+      <RegisterCourseActiveStudentsDataForm />
     </>
   );
 }

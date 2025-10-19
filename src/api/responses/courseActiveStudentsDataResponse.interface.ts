@@ -5,6 +5,19 @@ export interface CourseActiveStudentsDataResponse {
     id: string;
     year: number;
     semester: Semester;
+    activeStudents: {
+      ingressYear: number;
+      numberOfStudents: number;
+    }[];
+    createdAt: string;
+  };
+}
+
+export interface CourseActiveStudentsDataListResponse {
+  courseActiveStudentsData: {
+    id: string;
+    year: number;
+    semester: Semester;
     activeStudents: number;
     createdAt: string;
   }[];

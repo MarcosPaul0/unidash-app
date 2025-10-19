@@ -20,6 +20,7 @@ export const APP_ROUTES = {
 
     courseActiveStudentsData: "/courseActiveStudentsData/list/",
     registerCourseActiveStudentsData: "/courseActiveStudentsData/register",
+    editCourseActiveStudentsData: "/courseActiveStudentsData/edit/",
 
     courseRegistrationLockData: "/courseRegistrationLockData/list/",
     registerCourseRegistrationLockData: "/courseRegistrationLockData/register",

@@ -44,7 +44,9 @@ export const UNIDASH_API_ROUTES = {
   },
   courseActiveStudentsData: {
     getAll: "/course-active-students-data/",
+    getById: "/course-active-students-data/by-id/",
     register: "/course-active-students-data",
+    update: "/course-active-students-data/",
     delete: "/course-active-students-data/",
   },
   courseDepartureData: {

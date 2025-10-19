@@ -4,23 +4,24 @@ import { CourseActiveStudentsDataParamsBuilder } from "./courseActiveStudentsDat
 import {
   FilterCourseActiveStudentsDataDto,
   RegisterCourseActiveStudentsDataDto,
+  UpdateCourseActiveStudentsDataDto,
 } from "@unidash/api/dtos/courseActiveStudentsData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
-import { CourseActiveStudentsDataResponse } from "@unidash/api/responses/courseActiveStudentsDataResponse.interface";
+import { CourseActiveStudentsDataListResponse } from "@unidash/api/responses/courseActiveStudentsDataResponse.interface";
 
 export class CourseActiveStudentsDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseActiveStudentsDataDto
-  ): Promise<CourseActiveStudentsDataResponse> {
+  ): Promise<CourseActiveStudentsDataListResponse> {
     const params = new CourseActiveStudentsDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseActiveStudentsDataResponse =
-      await apiClient.get<CourseActiveStudentsDataResponse>(
+      await apiClient.get<CourseActiveStudentsDataListResponse>(
         `${UNIDASH_API_ROUTES.courseActiveStudentsData.getAll}${courseId}`,
         {
           params,
@@ -42,6 +43,23 @@ export class CourseActiveStudentsDataCSService {
         semester: registerCourseActiveStudentsDataDto.semester,
         activeStudentsByIngress:
           registerCourseActiveStudentsDataDto.activeStudentsByIngress,
+      }
+    );
+
+    return courseActiveStudentsDataResponse;
+  }
+
+  static async update(
+    courseActiveStudentsDataId: string,
+    updateCourseActiveStudentsDataDto: UpdateCourseActiveStudentsDataDto
+  ): Promise<void> {
+    const courseActiveStudentsDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseActiveStudentsData.update}${courseActiveStudentsDataId}`,
+      {
+        year: updateCourseActiveStudentsDataDto.year,
+        semester: updateCourseActiveStudentsDataDto.semester,
+        activeStudentsByIngress:
+          updateCourseActiveStudentsDataDto.activeStudentsByIngress,
       }
     );
 

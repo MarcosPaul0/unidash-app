@@ -16,8 +16,8 @@ import {
   PlusIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import {
-  RegisterCourseActiveStudentsDataDto,
-  registerCourseActiveStudentsDataDtoSchema,
+  UpdateCourseActiveStudentsDataDto,
+  courseActiveStudentsDataDtoSchema,
 } from "@unidash/api/dtos/courseActiveStudentsData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -29,40 +29,34 @@ import { HTTP_STATUS } from "@unidash/lib/baseApiClient";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PeriodForm } from "@unidash/app/(private)/courseStudentsData/_components/PeriodForm";
 import { useEffect } from "react";
+import { EditCourseActiveStudentsDataFormProps } from "./editCourseActiveStudentsDataForm.interface";
 
-const REGISTER_COURSE_STUDENTS_DATA_SUCCESS_MESSAGE =
-  "Novo registro de alunos ativos do curso foi adicionado!";
+const UPDATE_COURSE_STUDENTS_DATA_SUCCESS_MESSAGE =
+  "Registro de alunos ativos do curso foi atualizado!";
 
-const REGISTER_COURSE_STUDENTS_DATA_ERROR_MESSAGES = {
+const UPDATE_COURSE_STUDENTS_DATA_ERROR_MESSAGES = {
   [HTTP_STATUS.forbidden]:
     "Você não tem permissão para realizar essa operação!",
-  [HTTP_STATUS.notFound]: "O curso informado não foi encontrado!",
-  [HTTP_STATUS.badRequest]: "Ocorreu algum erro ao registrar o aluno!",
-  [HTTP_STATUS.conflict]:
-    "Esse registro de alunos ativos do curso já existe! Confira o período e ano do registro.",
+  [HTTP_STATUS.notFound]: "O registro informado não foi encontrado!",
+  [HTTP_STATUS.badRequest]:
+    "Ocorreu algum erro ao atualizar o regirsto de aluno ativo!",
 } as const;
 
-const INITIAL_VALUES = {
-  semester: "first",
-  year: new Date().getFullYear().toString(),
-  activeStudentsByIngress: [
-    {
-      ingressYear: new Date().getFullYear().toString(),
-      numberOfStudents: "",
-    },
-  ],
-} as unknown as RegisterCourseActiveStudentsDataDto;
-
-export function CourseActiveStudentsDataForm() {
+export function EditCourseActiveStudentsDataForm({
+  courseActiveStudentsData,
+}: EditCourseActiveStudentsDataFormProps) {
   const { activeCourse } = useCourseStore();
 
   const router = useRouter();
 
-  const formMethods = useForm<RegisterCourseActiveStudentsDataDto>({
-    resolver: zodResolver(registerCourseActiveStudentsDataDtoSchema),
-    defaultValues: INITIAL_VALUES,
+  const formMethods = useForm<UpdateCourseActiveStudentsDataDto>({
+    resolver: zodResolver(courseActiveStudentsDataDtoSchema),
+    defaultValues: {
+      activeStudentsByIngress: courseActiveStudentsData.activeStudents,
+      semester: courseActiveStudentsData.semester,
+      year: String(courseActiveStudentsData.year) as unknown as number,
+    },
   });
-
   const {
     control,
     watch,
@@ -72,23 +66,23 @@ export function CourseActiveStudentsDataForm() {
     formState: { errors, isSubmitting },
   } = formMethods;
 
-  async function sendCourseActiveStudentsData(
-    registerCourseActiveStudentsDataDto: RegisterCourseActiveStudentsDataDto
+  async function updateCourseActiveStudentsData(
+    updateCourseActiveStudentsDataDto: UpdateCourseActiveStudentsDataDto
   ) {
     try {
       if (!activeCourse) {
         Toast.error(
-          "É necessário selecionar o curso para registrar as informações!"
+          "É necessário selecionar o curso para atualizar as informações!"
         );
         return;
       }
 
-      await CourseActiveStudentsDataCSService.register(
-        activeCourse.id,
-        registerCourseActiveStudentsDataDto
+      await CourseActiveStudentsDataCSService.update(
+        courseActiveStudentsData.id,
+        updateCourseActiveStudentsDataDto
       );
 
-      Toast.success(REGISTER_COURSE_STUDENTS_DATA_SUCCESS_MESSAGE);
+      Toast.success(UPDATE_COURSE_STUDENTS_DATA_SUCCESS_MESSAGE);
 
       router.push(
         `${APP_ROUTES.private.courseActiveStudentsData}${activeCourse.id}`
@@ -96,7 +90,7 @@ export function CourseActiveStudentsDataForm() {
     } catch (error) {
       ExceptionHandler.handle({
         error,
-        errorMap: REGISTER_COURSE_STUDENTS_DATA_ERROR_MESSAGES,
+        errorMap: UPDATE_COURSE_STUDENTS_DATA_ERROR_MESSAGES,
         onError: (handledError) => {
           Toast.error(handledError.message);
         },
@@ -158,11 +152,11 @@ export function CourseActiveStudentsDataForm() {
 
   return (
     <FormProvider {...formMethods}>
-      <form onSubmit={handleSubmit(sendCourseActiveStudentsData)}>
+      <form onSubmit={handleSubmit(updateCourseActiveStudentsData)}>
         <Card>
           <CardHeader>
             <CardTitle>
-              Registro de informações de alunos ativos do curso de{" "}
+              Atualize as informações de alunos ativos do curso de{" "}
               {activeCourse?.name}
             </CardTitle>
           </CardHeader>
@@ -214,7 +208,7 @@ export function CourseActiveStudentsDataForm() {
               isLoading={isSubmitting}
             >
               <FloppyDiskIcon />
-              Registrar dados
+              Atualizar dados
             </Button>
           </CardFooter>
         </Card>
