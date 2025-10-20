@@ -26,11 +26,12 @@ export default async function RegisterCourseTeacherWorkloadPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Novo registro de carga horária do docente no curso"
+        breadcrumbPage="Novo registro de carga horária do docente"
         breadcrumbItems={[
           {
-            label: "Indicadores de carga horária do docente no curso",
+            label: "Dados de carga horária do docente no curso",
             link: `${APP_ROUTES.private.courseTeacherWorkloadData}${courseId}`,
+            fromCourse: true,
           },
         ]}
       />

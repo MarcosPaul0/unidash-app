@@ -14,7 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   RegisterCourseCompletionWorkDataDto,
-  registerCourseCompletionWorkDataDtoSchema,
+  courseCompletionWorkDataDtoSchema,
 } from "@unidash/api/dtos/courseCompletionWorkData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -27,15 +27,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PeriodForm } from "@unidash/app/(private)/courseStudentsData/_components/PeriodForm";
 
 const REGISTER_COURSE_COMPLETION_WORK_DATA_SUCCESS_MESSAGE =
-  "Novo registro de saídas do curso foi adicionado!";
+  "Novo registro de TCC foi adicionado!";
 
 const REGISTER_COURSE_COMPLETION_WORK_DATA_ERROR_MESSAGES = {
   [HTTP_STATUS.forbidden]:
     "Você não tem permissão para realizar essa operação!",
   [HTTP_STATUS.notFound]: "O curso informado não foi encontrado!",
   [HTTP_STATUS.badRequest]: "Ocorreu algum erro ao registrar as informações!",
-  [HTTP_STATUS.conflict]:
-    "Esse registro de saídas do curso já existe! Confira o período e ano do registro.",
 } as const;
 
 const INITIAL_VALUES = {
@@ -52,7 +50,7 @@ export function CourseCompletionWorkDataForm() {
   const router = useRouter();
 
   const formMethods = useForm<RegisterCourseCompletionWorkDataDto>({
-    resolver: zodResolver(registerCourseCompletionWorkDataDtoSchema),
+    resolver: zodResolver(courseCompletionWorkDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 
@@ -100,7 +98,7 @@ export function CourseCompletionWorkDataForm() {
         <Card>
           <CardHeader>
             <CardTitle>
-              Registro de informações de saídas do curso de {activeCourse?.name}
+              Registro de informações de TCC de {activeCourse?.name}
             </CardTitle>
           </CardHeader>
 

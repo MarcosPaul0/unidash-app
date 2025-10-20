@@ -1,5 +1,5 @@
-import { CourseDepartureDataResponse } from "@unidash/api/responses/courseDepartureDataResponse.interface";
+import { CourseDepartureListDataResponse } from "@unidash/api/responses/courseDepartureDataResponse.interface";
 
 export interface CourseDepartureDataTableProps {
-  courseDepartureData: CourseDepartureDataResponse["courseDepartureData"];
+  courseDepartureData: CourseDepartureListDataResponse["courseDepartureData"];
 }

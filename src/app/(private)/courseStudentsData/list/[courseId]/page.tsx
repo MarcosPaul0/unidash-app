@@ -37,9 +37,9 @@ export default async function ListCourseStudentsDataPage({
       <Toolbar
         addLink={{
           link: APP_ROUTES.private.registerCourseStudentsData,
-          label: "Novo registro de estudantes",
+          label: "Novo registro de alunos",
         }}
-        breadcrumbPage="Indicadores de estudents do curso"
+        breadcrumbPage="Dados de alunos do cuso"
         filterForm={<IndicatorsFilterForm />}
       />
 

@@ -14,7 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   RegisterCourseTeacherWorkloadDataDto,
-  registerCourseTeacherWorkloadDataDtoSchema,
+  courseTeacherWorkloadDataDtoSchema,
 } from "@unidash/api/dtos/courseTeacherWorkloadData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -55,7 +55,7 @@ export function CourseTeacherWorkloadDataForm({
   const router = useRouter();
 
   const formMethods = useForm<RegisterCourseTeacherWorkloadDataDto>({
-    resolver: zodResolver(registerCourseTeacherWorkloadDataDtoSchema),
+    resolver: zodResolver(courseTeacherWorkloadDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 

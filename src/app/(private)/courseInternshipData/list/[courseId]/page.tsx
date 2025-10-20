@@ -36,7 +36,7 @@ export default async function ListCourseInternshipDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de estágios do curso"
+        breadcrumbPage="Dados de estágios do curso"
         addLink={{
           link: `${APP_ROUTES.private.registerCourseInternshipData}${courseId}`,
           label: "Novo registro de estágio",

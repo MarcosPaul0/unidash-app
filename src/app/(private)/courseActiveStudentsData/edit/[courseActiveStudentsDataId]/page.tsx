@@ -20,11 +20,12 @@ export default async function EditCourseActiveStudentsPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Editar registro de alunos ativos do curso"
+        breadcrumbPage="Editar registro de alunos ativos"
         breadcrumbItems={[
           {
             label: "Dados de alunos ativos do cuso",
             link: APP_ROUTES.private.courseActiveStudentsData,
+            fromCourse: true,
           },
         ]}
       />

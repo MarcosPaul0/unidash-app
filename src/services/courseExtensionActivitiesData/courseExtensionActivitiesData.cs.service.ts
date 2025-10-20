@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseExtensionActivitiesDataDto,
   RegisterCourseExtensionActivitiesDataDto,
+  UpdateCourseExtensionActivitiesDataDto,
 } from "@unidash/api/dtos/courseExtensionActivitiesData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseExtensionActivitiesDataParamsBuilder } from "./courseExtensionActivitiesDataParams.builder";
-import { CourseExtensionActivitiesDataResponse } from "@unidash/api/responses/courseExtensionActivitiesDataResponse.interface";
+import { CourseExtensionActivitiesListDataResponse } from "@unidash/api/responses/courseExtensionActivitiesDataResponse.interface";
 
 export class CourseExtensionActivitiesDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseExtensionActivitiesDataDto
-  ): Promise<CourseExtensionActivitiesDataResponse> {
+  ): Promise<CourseExtensionActivitiesListDataResponse> {
     const params = new CourseExtensionActivitiesDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseExtensionActivitiesDataResponse =
-      await apiClient.get<CourseExtensionActivitiesDataResponse>(
+      await apiClient.get<CourseExtensionActivitiesListDataResponse>(
         `${UNIDASH_API_ROUTES.courseExtensionActivitiesData.getAll}${courseId}`,
         {
           params,
@@ -60,6 +61,39 @@ export class CourseExtensionActivitiesDataCSService {
           registerCourseExtensionActivitiesDataDto.juniorCompanies,
         provisionOfServicesWithSelfEmployedWorkers:
           registerCourseExtensionActivitiesDataDto.provisionOfServicesWithSelfEmployedWorkers,
+      }
+    );
+
+    return courseExtensionActivitiesDataResponse;
+  }
+
+  static async update(
+    courseExtensionActivitiesDataId: string,
+    updateCourseExtensionActivitiesDataDto: UpdateCourseExtensionActivitiesDataDto
+  ): Promise<void> {
+    const courseExtensionActivitiesDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseExtensionActivitiesData.update}${courseExtensionActivitiesDataId}`,
+      {
+        year: updateCourseExtensionActivitiesDataDto.year,
+        semester: updateCourseExtensionActivitiesDataDto.semester,
+        specialProjects: updateCourseExtensionActivitiesDataDto.specialProjects,
+        participationInCompetitions:
+          updateCourseExtensionActivitiesDataDto.participationInCompetitions,
+        entrepreneurshipAndInnovation:
+          updateCourseExtensionActivitiesDataDto.entrepreneurshipAndInnovation,
+        eventOrganization:
+          updateCourseExtensionActivitiesDataDto.eventOrganization,
+        externalInternship:
+          updateCourseExtensionActivitiesDataDto.externalInternship,
+        cultureAndExtensionProjects:
+          updateCourseExtensionActivitiesDataDto.cultureAndExtensionProjects,
+        semiannualProjects:
+          updateCourseExtensionActivitiesDataDto.semiannualProjects,
+        workNonGovernmentalOrganization:
+          updateCourseExtensionActivitiesDataDto.workNonGovernmentalOrganization,
+        juniorCompanies: updateCourseExtensionActivitiesDataDto.juniorCompanies,
+        provisionOfServicesWithSelfEmployedWorkers:
+          updateCourseExtensionActivitiesDataDto.provisionOfServicesWithSelfEmployedWorkers,
       }
     );
 

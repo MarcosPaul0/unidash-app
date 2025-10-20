@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseTeacherWorkloadDataDto,
   RegisterCourseTeacherWorkloadDataDto,
+  UpdateCourseTeacherWorkloadDataDto,
 } from "@unidash/api/dtos/courseTeacherWorkloadData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseTeacherWorkloadDataParamsBuilder } from "./courseTeacherWorkloadDataParams.builder";
-import { CourseTeacherWorkloadDataResponse } from "@unidash/api/responses/courseTeacherWorkloadDataResponse.interface";
+import { CourseTeacherWorkloadListDataResponse } from "@unidash/api/responses/courseTeacherWorkloadDataResponse.interface";
 
 export class CourseTeacherWorkloadDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseTeacherWorkloadDataDto
-  ): Promise<CourseTeacherWorkloadDataResponse> {
+  ): Promise<CourseTeacherWorkloadListDataResponse> {
     const params = new CourseTeacherWorkloadDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseTeacherWorkloadDataResponse =
-      await apiClient.get<CourseTeacherWorkloadDataResponse>(
+      await apiClient.get<CourseTeacherWorkloadListDataResponse>(
         `${UNIDASH_API_ROUTES.courseTeacherWorkloadData.getAll}${courseId}`,
         {
           params,
@@ -42,6 +43,23 @@ export class CourseTeacherWorkloadDataCSService {
         semester: registerCourseTeacherWorkloadDataDto.semester,
         teacherId: registerCourseTeacherWorkloadDataDto.teacherId,
         workloadInHours: registerCourseTeacherWorkloadDataDto.workloadInHours,
+      }
+    );
+
+    return courseTeacherWorkloadDataResponse;
+  }
+
+  static async update(
+    updateCourseTeacherWorkloadDataId: string,
+    updateCourseTeacherWorkloadDataDto: UpdateCourseTeacherWorkloadDataDto
+  ): Promise<void> {
+    const courseTeacherWorkloadDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseTeacherWorkloadData.update}${updateCourseTeacherWorkloadDataId}`,
+      {
+        year: updateCourseTeacherWorkloadDataDto.year,
+        semester: updateCourseTeacherWorkloadDataDto.semester,
+        teacherId: updateCourseTeacherWorkloadDataDto.teacherId,
+        workloadInHours: updateCourseTeacherWorkloadDataDto.workloadInHours,
       }
     );
 

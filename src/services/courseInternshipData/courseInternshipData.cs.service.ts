@@ -6,21 +6,21 @@ import {
 } from "@unidash/api/dtos/courseInternshipData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseInternshipDataParamsBuilder } from "./courseInternshipDataParams.builder";
-import { CourseInternshipDataResponse } from "@unidash/api/responses/courseInternshipDataResponse.interface";
+import { CourseInternshipListDataResponse } from "@unidash/api/responses/courseInternshipDataResponse.interface";
 
 export class CourseInternshipDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseInternshipDataDto
-  ): Promise<CourseInternshipDataResponse> {
+  ): Promise<CourseInternshipListDataResponse> {
     const params = new CourseInternshipDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseInternshipDataResponse =
-      await apiClient.get<CourseInternshipDataResponse>(
+      await apiClient.get<CourseInternshipListDataResponse>(
         `${UNIDASH_API_ROUTES.courseInternshipData.getAll}${courseId}`,
         {
           params,
@@ -38,6 +38,30 @@ export class CourseInternshipDataCSService {
       UNIDASH_API_ROUTES.courseInternshipData.register,
       {
         courseId: courseId,
+        year: registerCourseInternshipDataDto.year,
+        semester: registerCourseInternshipDataDto.semester,
+        studentMatriculation:
+          registerCourseInternshipDataDto.studentMatriculation,
+        enterpriseCnpj: registerCourseInternshipDataDto.enterpriseCnpj,
+        role: registerCourseInternshipDataDto.role,
+        conclusionTimeInDays:
+          registerCourseInternshipDataDto.conclusionTimeInDays,
+        employmentType: registerCourseInternshipDataDto.employmentType,
+        cityId: registerCourseInternshipDataDto.cityId,
+        advisorId: registerCourseInternshipDataDto.advisorId,
+      }
+    );
+
+    return courseInternshipDataResponse;
+  }
+
+  static async update(
+    courseInternshipDataId: string,
+    registerCourseInternshipDataDto: RegisterCourseInternshipDataDto
+  ): Promise<void> {
+    const courseInternshipDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseInternshipData.update}${courseInternshipDataId}`,
+      {
         year: registerCourseInternshipDataDto.year,
         semester: registerCourseInternshipDataDto.semester,
         studentMatriculation:

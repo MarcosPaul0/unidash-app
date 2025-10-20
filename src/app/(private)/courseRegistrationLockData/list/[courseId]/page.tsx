@@ -36,7 +36,7 @@ export default async function ListCourseRegistrationLockDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de trancamentos do curso"
+        breadcrumbPage="Dados de trancamentos do curso"
         addLink={{
           link: APP_ROUTES.private.registerCourseRegistrationLockData,
           label: "Novo registro de trancamentos",

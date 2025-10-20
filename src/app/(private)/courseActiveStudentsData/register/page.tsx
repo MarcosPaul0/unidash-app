@@ -6,11 +6,12 @@ export default function RegisterCourseActiveStudentsPage() {
   return (
     <>
       <Toolbar
-        breadcrumbPage="Novo registro de alunos do curso"
+        breadcrumbPage="Novo registro de alunos ativos"
         breadcrumbItems={[
           {
-            label: "Indicadores de alunos do cuso",
+            label: "Dados de alunos ativos do cuso",
             link: APP_ROUTES.private.courseActiveStudentsData,
+            fromCourse: true,
           },
         ]}
       />

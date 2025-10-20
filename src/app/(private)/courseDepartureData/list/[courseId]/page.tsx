@@ -36,7 +36,7 @@ export default async function ListCourseDepartureDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de saídas do curso"
+        breadcrumbPage="Dados de saídas do curso"
         addLink={{
           link: APP_ROUTES.private.registerCourseDepartureData,
           label: "Novo registro de saídas",

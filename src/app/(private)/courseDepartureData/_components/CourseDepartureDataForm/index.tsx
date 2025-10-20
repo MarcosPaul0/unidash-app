@@ -14,7 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   RegisterCourseDepartureDataDto,
-  registerCourseDepartureDataDtoSchema,
+  courseDepartureDataDtoSchema,
 } from "@unidash/api/dtos/courseDepartureData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -57,7 +57,7 @@ export function CourseDepartureDataForm() {
   const router = useRouter();
 
   const formMethods = useForm<RegisterCourseDepartureDataDto>({
-    resolver: zodResolver(registerCourseDepartureDataDtoSchema),
+    resolver: zodResolver(courseDepartureDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 

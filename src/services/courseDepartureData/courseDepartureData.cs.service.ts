@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseDepartureDataDto,
   RegisterCourseDepartureDataDto,
+  UpdateCourseDepartureDataDto,
 } from "@unidash/api/dtos/courseDepartureData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseDepartureDataParamsBuilder } from "./courseDepartureDataParams.builder";
-import { CourseDepartureDataResponse } from "@unidash/api/responses/courseDepartureDataResponse.interface";
+import { CourseDepartureListDataResponse } from "@unidash/api/responses/courseDepartureDataResponse.interface";
 
 export class CourseDepartureDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseDepartureDataDto
-  ): Promise<CourseDepartureDataResponse> {
+  ): Promise<CourseDepartureListDataResponse> {
     const params = new CourseDepartureDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseDepartureDataResponse =
-      await apiClient.get<CourseDepartureDataResponse>(
+      await apiClient.get<CourseDepartureListDataResponse>(
         `${UNIDASH_API_ROUTES.courseDepartureData.getAll}${courseId}`,
         {
           params,
@@ -48,6 +49,29 @@ export class CourseDepartureDataCSService {
         removals: registerCourseDepartureDataDto.removals,
         newExams: registerCourseDepartureDataDto.newExams,
         deaths: registerCourseDepartureDataDto.deaths,
+      }
+    );
+
+    return courseDepartureDataResponse;
+  }
+
+  static async update(
+    courseDepartureDataId: string,
+    updateCourseDepartureDataDto: UpdateCourseDepartureDataDto
+  ): Promise<void> {
+    const courseDepartureDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseDepartureData.update}${courseDepartureDataId}`,
+      {
+        year: updateCourseDepartureDataDto.year,
+        semester: updateCourseDepartureDataDto.semester,
+        completed: updateCourseDepartureDataDto.completed,
+        maximumDuration: updateCourseDepartureDataDto.maximumDuration,
+        dropouts: updateCourseDepartureDataDto.dropouts,
+        transfers: updateCourseDepartureDataDto.transfers,
+        withdrawals: updateCourseDepartureDataDto.withdrawals,
+        removals: updateCourseDepartureDataDto.removals,
+        newExams: updateCourseDepartureDataDto.newExams,
+        deaths: updateCourseDepartureDataDto.deaths,
       }
     );
 

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -16,6 +18,7 @@ import { LinkButton } from "@unidash/components/LinkButton";
 import { FunnelIcon, PlusIcon } from "@phosphor-icons/react/dist/ssr";
 import { Fragment } from "react";
 import { Button } from "@unidash/components/Button";
+import { useCourseStore } from "@unidash/store/course.store";
 
 export function Toolbar({
   breadcrumbItems,
@@ -24,6 +27,8 @@ export function Toolbar({
   children,
   filterForm,
 }: ToolbarProps) {
+  const { activeCourse } = useCourseStore();
+
   return (
     <Collapsible>
       <div className="flex flex-col gap-4 md:flex-row items-start md:items-center md:justify-between border-b-1 border-muted pb-1">
@@ -34,7 +39,13 @@ export function Toolbar({
                 breadcrumbItems.map((item) => (
                   <Fragment key={item.label}>
                     <BreadcrumbItem>
-                      <BreadcrumbLink href={item.link}>
+                      <BreadcrumbLink
+                        href={
+                          item.fromCourse
+                            ? `${item.link}/${activeCourse?.id}`
+                            : item.link
+                        }
+                      >
                         {item.label}
                       </BreadcrumbLink>
                     </BreadcrumbItem>

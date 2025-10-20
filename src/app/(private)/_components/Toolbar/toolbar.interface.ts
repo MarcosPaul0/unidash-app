@@ -5,6 +5,7 @@ export interface ToolbarProps {
   breadcrumbItems?: {
     label: string;
     link: string | Url;
+    fromCourse?: boolean;
   }[];
   breadcrumbPage?: string;
 

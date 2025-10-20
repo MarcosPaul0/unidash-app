@@ -1,5 +1,5 @@
-import { CourseCoordinationDataResponse } from "@unidash/api/responses/courseCoordinationDataResponse.interface";
+import { CourseCoordinationListDataResponse } from "@unidash/api/responses/courseCoordinationDataResponse.interface";
 
 export interface CourseCoordinationDataTableProps {
-  courseCoordinationData: CourseCoordinationDataResponse["courseCoordinationData"];
+  courseCoordinationData: CourseCoordinationListDataResponse["courseCoordinationData"];
 }

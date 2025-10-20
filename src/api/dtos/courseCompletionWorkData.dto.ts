@@ -2,7 +2,7 @@ import z from "zod";
 import { SEMESTER } from "./courseStudentsData.dto";
 import { Validator } from "@unidash/utils/validator.util";
 
-export const registerCourseCompletionWorkDataDtoSchema = z.object({
+export const courseCompletionWorkDataDtoSchema = z.object({
   year: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
@@ -13,7 +13,11 @@ export const registerCourseCompletionWorkDataDtoSchema = z.object({
 });
 
 export type RegisterCourseCompletionWorkDataDto = z.infer<
-  typeof registerCourseCompletionWorkDataDtoSchema
+  typeof courseCompletionWorkDataDtoSchema
+>;
+
+export type UpdateCourseCompletionWorkDataDto = z.infer<
+  typeof courseCompletionWorkDataDtoSchema
 >;
 
 export const filterCourseCompletionWorkDataDtoSchema = z

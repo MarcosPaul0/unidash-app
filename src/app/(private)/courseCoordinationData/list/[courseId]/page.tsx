@@ -36,7 +36,7 @@ export default async function ListCourseCoordinationDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores da coordenação do curso"
+        breadcrumbPage="Dados da coordenação do curso"
         addLink={{
           link: APP_ROUTES.private.registerCourseCoordinationData,
           label: "Novo registro da coordenação",

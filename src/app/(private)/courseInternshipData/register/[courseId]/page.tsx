@@ -29,8 +29,9 @@ export default async function RegisterCourseInternshipPage({
         breadcrumbPage="Novo registro de estágio do curso"
         breadcrumbItems={[
           {
-            label: "Indicadores de estágios do cuso",
-            link: `${APP_ROUTES.private.courseInternshipData}${courseId}`,
+            label: "Dados de estágios do cuso",
+            link: APP_ROUTES.private.courseInternshipData,
+            fromCourse: true,
           },
         ]}
       />

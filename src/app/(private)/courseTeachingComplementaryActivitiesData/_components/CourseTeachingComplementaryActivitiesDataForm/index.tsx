@@ -14,7 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   RegisterCourseTeachingComplementaryActivitiesDataDto,
-  registerCourseTeachingComplementaryActivitiesDataDtoSchema,
+  courseTeachingComplementaryActivitiesDataDtoSchema,
 } from "@unidash/api/dtos/courseTeachingComplementaryActivitiesData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -58,9 +58,7 @@ export function CourseTeachingComplementaryActivitiesDataForm() {
 
   const formMethods =
     useForm<RegisterCourseTeachingComplementaryActivitiesDataDto>({
-      resolver: zodResolver(
-        registerCourseTeachingComplementaryActivitiesDataDtoSchema
-      ),
+      resolver: zodResolver(courseTeachingComplementaryActivitiesDataDtoSchema),
       defaultValues: INITIAL_VALUES,
     });
 

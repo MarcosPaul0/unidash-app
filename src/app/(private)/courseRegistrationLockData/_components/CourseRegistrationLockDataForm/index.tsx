@@ -14,7 +14,7 @@ import { Button } from "@unidash/components/Button";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   RegisterCourseRegistrationLockDataDto,
-  registerCourseRegistrationLockDataDtoSchema,
+  courseRegistrationLockDataDtoSchema,
 } from "@unidash/api/dtos/courseRegistrationLockData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -55,7 +55,7 @@ export function CourseRegistrationLockDataForm() {
   const router = useRouter();
 
   const formMethods = useForm<RegisterCourseRegistrationLockDataDto>({
-    resolver: zodResolver(registerCourseRegistrationLockDataDtoSchema),
+    resolver: zodResolver(courseRegistrationLockDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 

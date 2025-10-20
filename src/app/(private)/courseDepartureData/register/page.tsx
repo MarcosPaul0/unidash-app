@@ -9,8 +9,9 @@ export default function RegisterCourseDeparturePage() {
         breadcrumbPage="Novo registro de saídas do curso"
         breadcrumbItems={[
           {
-            label: "Indicadores de saídas do cuso",
+            label: "Dados de saídas do cuso",
             link: APP_ROUTES.private.courseDepartureData,
+            fromCourse: true,
           },
         ]}
       />

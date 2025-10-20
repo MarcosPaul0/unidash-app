@@ -2,7 +2,7 @@ import { Validator } from "@unidash/utils/validator.util";
 import z from "zod";
 import { SEMESTER } from "./courseStudentsData.dto";
 
-const activeStudentsByIngressDataDtoSchema = z.object({
+const courseActiveStudentsByIngressDataDtoSchema = z.object({
   ingressYear: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
@@ -14,7 +14,7 @@ export const courseActiveStudentsDataDtoSchema = z.object({
     .transform(Number)
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
   semester: z.enum(SEMESTER),
-  activeStudentsByIngress: z.array(activeStudentsByIngressDataDtoSchema),
+  activeStudentsByIngress: z.array(courseActiveStudentsByIngressDataDtoSchema),
 });
 
 export type RegisterCourseActiveStudentsDataDto = z.infer<

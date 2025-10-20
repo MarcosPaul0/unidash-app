@@ -8,7 +8,7 @@ export const SEMESTER = {
 
 export type Semester = (typeof SEMESTER)[keyof typeof SEMESTER];
 
-export const registerCourseStudentsDataDtoSchema = z.object({
+export const courseStudentsDataDtoSchema = z.object({
   year: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
@@ -19,7 +19,11 @@ export const registerCourseStudentsDataDtoSchema = z.object({
 });
 
 export type RegisterCourseStudentsDataDto = z.infer<
-  typeof registerCourseStudentsDataDtoSchema
+  typeof courseStudentsDataDtoSchema
+>;
+
+export type UpdateCourseStudentsDataDto = z.infer<
+  typeof courseStudentsDataDtoSchema
 >;
 
 export const filterCourseStudentsDataDtoSchema = z

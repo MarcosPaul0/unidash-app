@@ -34,10 +34,10 @@ export default async function ListCourseCompletionWorkDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de trabalhos de conclusão de curso"
+        breadcrumbPage="Dados de TCCs do curso"
         addLink={{
           link: APP_ROUTES.private.registerCourseCompletionWorkData,
-          label: "Novo registro de TCC",
+          label: "Novo registro de TCCs",
         }}
         filterForm={<IndicatorsFilterForm />}
       />

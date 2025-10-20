@@ -4,23 +4,24 @@ import { CourseStudentsDataParamsBuilder } from "./courseStudentsDataParams.buil
 import {
   FilterCourseStudentsDataDto,
   RegisterCourseStudentsDataDto,
+  UpdateCourseStudentsDataDto,
 } from "@unidash/api/dtos/courseStudentsData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
-import { CourseStudentsDataResponse } from "@unidash/api/responses/courseStudentsDataResponse.interface";
+import { CourseStudentsListDataResponse } from "@unidash/api/responses/courseStudentsDataResponse.interface";
 
 export class CourseStudentsDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseStudentsDataDto
-  ): Promise<CourseStudentsDataResponse> {
+  ): Promise<CourseStudentsListDataResponse> {
     const params = new CourseStudentsDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseStudentsDataResponse =
-      await apiClient.get<CourseStudentsDataResponse>(
+      await apiClient.get<CourseStudentsListDataResponse>(
         `${UNIDASH_API_ROUTES.courseStudentsData.getAll}${courseId}`,
         {
           params,
@@ -43,6 +44,24 @@ export class CourseStudentsDataCSService {
         entrants: registerCourseStudentsDataDto.entrants,
         vacancies: registerCourseStudentsDataDto.vacancies,
         subscribers: registerCourseStudentsDataDto.subscribers,
+      }
+    );
+
+    return courseStudentsDataResponse;
+  }
+
+  static async update(
+    courseStudentsDataId: string,
+    updateCourseStudentsDataDto: UpdateCourseStudentsDataDto
+  ): Promise<void> {
+    const courseStudentsDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseStudentsData.update}${courseStudentsDataId}`,
+      {
+        year: updateCourseStudentsDataDto.year,
+        semester: updateCourseStudentsDataDto.semester,
+        entrants: updateCourseStudentsDataDto.entrants,
+        vacancies: updateCourseStudentsDataDto.vacancies,
+        subscribers: updateCourseStudentsDataDto.subscribers,
       }
     );
 

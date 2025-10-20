@@ -38,9 +38,9 @@ export default async function ListCourseActiveStudentsDataPage({
       <Toolbar
         addLink={{
           link: APP_ROUTES.private.registerCourseActiveStudentsData,
-          label: "Novo registro de alunos ativos ",
+          label: "Novo registro de alunos ativos",
         }}
-        breadcrumbPage="Indicadores de alunos ativos do curso"
+        breadcrumbPage="Dados de alunos ativos do curso"
         filterForm={<IndicatorsFilterForm />}
       />
 

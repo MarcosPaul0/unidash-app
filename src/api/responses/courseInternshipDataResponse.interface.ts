@@ -16,6 +16,24 @@ export interface CourseInternshipDataResponse {
     advisorName: string;
     employmentType: EmploymentType;
     createdAt: string;
+  };
+}
+
+export interface CourseInternshipListDataResponse {
+  courseInternshipData: {
+    id: string;
+    year: number;
+    semester: Semester;
+    studentMatriculation: string;
+    enterpriseCnpj: string;
+    role: string;
+    conclusionTimeInDays: number;
+    cityId: string;
+    cityName: string;
+    advisorId: string;
+    advisorName: string;
+    employmentType: EmploymentType;
+    createdAt: string;
   }[];
   totalItems: number;
   totalPages: number;

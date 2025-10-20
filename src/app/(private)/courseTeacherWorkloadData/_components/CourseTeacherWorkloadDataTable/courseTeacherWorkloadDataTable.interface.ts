@@ -1,5 +1,5 @@
-import { CourseTeacherWorkloadDataResponse } from "@unidash/api/responses/courseTeacherWorkloadDataResponse.interface";
+import { CourseTeacherWorkloadListDataResponse } from "@unidash/api/responses/courseTeacherWorkloadDataResponse.interface";
 
 export interface CourseTeacherWorkloadDataTableProps {
-  courseTeacherWorkloadData: CourseTeacherWorkloadDataResponse["courseTeacherWorkloadData"];
+  courseTeacherWorkloadData: CourseTeacherWorkloadListDataResponse["courseTeacherWorkloadData"];
 }

@@ -3,7 +3,10 @@ import { createApiSSRClient } from "@unidash/lib/apiClientSSR";
 import { CourseStudentsDataParamsBuilder } from "./courseStudentsDataParams.builder";
 import { FilterCourseStudentsDataDto } from "@unidash/api/dtos/courseStudentsData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
-import { CourseStudentsDataResponse } from "@unidash/api/responses/courseStudentsDataResponse.interface";
+import {
+  CourseStudentsDataResponse,
+  CourseStudentsListDataResponse,
+} from "@unidash/api/responses/courseStudentsDataResponse.interface";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { redirect } from "next/navigation";
 
@@ -12,7 +15,7 @@ export class CourseStudentsDataSSRService {
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseStudentsDataDto
-  ): Promise<CourseStudentsDataResponse> {
+  ): Promise<CourseStudentsListDataResponse> {
     const params = new CourseStudentsDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
@@ -21,11 +24,28 @@ export class CourseStudentsDataSSRService {
     const ssrApiClient = await createApiSSRClient();
 
     const courseStudentsResponse =
-      await ssrApiClient.get<CourseStudentsDataResponse>(
+      await ssrApiClient.get<CourseStudentsListDataResponse>(
         `${UNIDASH_API_ROUTES.courseStudentsData.getAll}${courseId}`,
         {
           params,
         }
+      );
+
+    if (courseStudentsResponse === null) {
+      redirect(APP_ROUTES.private.dashboard);
+    }
+
+    return courseStudentsResponse;
+  }
+
+  static async getById(
+    courseStudentsDataId: string
+  ): Promise<CourseStudentsDataResponse> {
+    const ssrApiClient = await createApiSSRClient();
+
+    const courseStudentsResponse =
+      await ssrApiClient.get<CourseStudentsDataResponse>(
+        `${UNIDASH_API_ROUTES.courseStudentsData.getById}${courseStudentsDataId}`
       );
 
     if (courseStudentsResponse === null) {

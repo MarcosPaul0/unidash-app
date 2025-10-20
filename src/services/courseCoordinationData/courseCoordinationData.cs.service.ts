@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseCoordinationDataDto,
   RegisterCourseCoordinationDataDto,
+  UpdateCourseCoordinationDataDto,
 } from "@unidash/api/dtos/courseCoordinationData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseCoordinationDataParamsBuilder } from "./courseCoordinationDataParams.builder";
-import { CourseCoordinationDataResponse } from "@unidash/api/responses/courseCoordinationDataResponse.interface";
+import { CourseCoordinationListDataResponse } from "@unidash/api/responses/courseCoordinationDataResponse.interface";
 
 export class CourseCoordinationDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseCoordinationDataDto
-  ): Promise<CourseCoordinationDataResponse> {
+  ): Promise<CourseCoordinationListDataResponse> {
     const params = new CourseCoordinationDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseCoordinationDataResponse =
-      await apiClient.get<CourseCoordinationDataResponse>(
+      await apiClient.get<CourseCoordinationListDataResponse>(
         `${UNIDASH_API_ROUTES.courseCoordinationData.getAll}${courseId}`,
         {
           params,
@@ -58,6 +59,39 @@ export class CourseCoordinationDataCSService {
           registerCourseCoordinationDataDto.academicActionPlans,
         administrativeActionPlans:
           registerCourseCoordinationDataDto.administrativeActionPlans,
+      }
+    );
+
+    return courseCoordinationDataResponse;
+  }
+
+  static async update(
+    courseCoordinationDataId: string,
+    updateCourseCoordinationDataDto: UpdateCourseCoordinationDataDto
+  ): Promise<void> {
+    const courseCoordinationDataResponse = await apiClient.patch<void>(
+      `${UNIDASH_API_ROUTES.courseCoordinationData.update}${courseCoordinationDataId}`,
+      {
+        year: updateCourseCoordinationDataDto.year,
+        semester: updateCourseCoordinationDataDto.semester,
+        servicesRequestsBySystem:
+          updateCourseCoordinationDataDto.servicesRequestsBySystem,
+        servicesRequestsByEmail:
+          updateCourseCoordinationDataDto.servicesRequestsByEmail,
+        resolutionActions: updateCourseCoordinationDataDto.resolutionActions,
+        administrativeDecisionActions:
+          updateCourseCoordinationDataDto.administrativeDecisionActions,
+        meetingsByBoardOfDirectors:
+          updateCourseCoordinationDataDto.meetingsByBoardOfDirectors,
+        meetingsByUndergraduateChamber:
+          updateCourseCoordinationDataDto.meetingsByUndergraduateChamber,
+        meetingsByCourseCouncil:
+          updateCourseCoordinationDataDto.meetingsByCourseCouncil,
+        meetingsByNde: updateCourseCoordinationDataDto.meetingsByNde,
+        academicActionPlans:
+          updateCourseCoordinationDataDto.academicActionPlans,
+        administrativeActionPlans:
+          updateCourseCoordinationDataDto.administrativeActionPlans,
       }
     );
 

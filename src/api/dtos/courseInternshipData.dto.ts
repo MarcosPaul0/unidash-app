@@ -11,7 +11,7 @@ export const EMPLOYMENT_TYPE = {
 export type EmploymentType =
   (typeof EMPLOYMENT_TYPE)[keyof typeof EMPLOYMENT_TYPE];
 
-export const registerCourseInternshipDataDtoSchema = z.object({
+export const courseInternshipDataDtoSchema = z.object({
   year: z
     .transform(Number)
     .pipe(z.number().int().min(0).max(new Date().getFullYear())),
@@ -28,7 +28,11 @@ export const registerCourseInternshipDataDtoSchema = z.object({
 });
 
 export type RegisterCourseInternshipDataDto = z.infer<
-  typeof registerCourseInternshipDataDtoSchema
+  typeof courseInternshipDataDtoSchema
+>;
+
+export type UpdateCourseInternshipDataDto = z.infer<
+  typeof courseInternshipDataDtoSchema
 >;
 
 export const filterCourseInternshipDataDtoSchema = z

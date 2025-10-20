@@ -1,5 +1,5 @@
-import { CourseExtensionActivitiesDataResponse } from "@unidash/api/responses/courseExtensionActivitiesDataResponse.interface";
+import { CourseExtensionActivitiesListDataResponse } from "@unidash/api/responses/courseExtensionActivitiesDataResponse.interface";
 
 export interface CourseExtensionActivitiesDataTableProps {
-  courseExtensionActivitiesData: CourseExtensionActivitiesDataResponse["courseExtensionActivitiesData"];
+  courseExtensionActivitiesData: CourseExtensionActivitiesListDataResponse["courseExtensionActivitiesData"];
 }

@@ -22,8 +22,6 @@ import {
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
 import { CourseActiveStudentsDataCSService } from "@unidash/services/courseActiveStudentsData/courseActiveStudentsData.cs.service";
-import { useRouter } from "next/navigation";
-import { APP_ROUTES } from "@unidash/routes/app.routes";
 import { ExceptionHandler } from "@unidash/api/errors/exception.handler";
 import { HTTP_STATUS } from "@unidash/lib/baseApiClient";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -46,8 +44,6 @@ export function EditCourseActiveStudentsDataForm({
   courseActiveStudentsData,
 }: EditCourseActiveStudentsDataFormProps) {
   const { activeCourse } = useCourseStore();
-
-  const router = useRouter();
 
   const formMethods = useForm<UpdateCourseActiveStudentsDataDto>({
     resolver: zodResolver(courseActiveStudentsDataDtoSchema),
@@ -83,10 +79,6 @@ export function EditCourseActiveStudentsDataForm({
       );
 
       Toast.success(UPDATE_COURSE_STUDENTS_DATA_SUCCESS_MESSAGE);
-
-      router.push(
-        `${APP_ROUTES.private.courseActiveStudentsData}${activeCourse.id}`
-      );
     } catch (error) {
       ExceptionHandler.handle({
         error,

@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseSearchComplementaryActivitiesDataDto,
   RegisterCourseSearchComplementaryActivitiesDataDto,
+  UpdateCourseSearchComplementaryActivitiesDataDto,
 } from "@unidash/api/dtos/courseSearchComplementaryActivitiesData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseSearchComplementaryActivitiesDataParamsBuilder } from "./courseSearchComplementaryActivitiesDataParams.builder";
-import { CourseSearchComplementaryActivitiesDataResponse } from "@unidash/api/responses/courseSearchComplementaryActivitiesDataResponse.interface";
+import { CourseSearchComplementaryActivitiesListDataResponse } from "@unidash/api/responses/courseSearchComplementaryActivitiesDataResponse.interface";
 
 export class CourseSearchComplementaryActivitiesDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseSearchComplementaryActivitiesDataDto
-  ): Promise<CourseSearchComplementaryActivitiesDataResponse> {
+  ): Promise<CourseSearchComplementaryActivitiesListDataResponse> {
     const params = new CourseSearchComplementaryActivitiesDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseSearchComplementaryActivitiesDataResponse =
-      await apiClient.get<CourseSearchComplementaryActivitiesDataResponse>(
+      await apiClient.get<CourseSearchComplementaryActivitiesListDataResponse>(
         `${UNIDASH_API_ROUTES.courseSearchComplementaryActivitiesData.getAll}${courseId}`,
         {
           params,
@@ -55,6 +56,36 @@ export class CourseSearchComplementaryActivitiesDataCSService {
             registerCourseSearchComplementaryActivitiesDataDto.presentationOfWork,
           participationInEvents:
             registerCourseSearchComplementaryActivitiesDataDto.participationInEvents,
+        }
+      );
+
+    return courseSearchComplementaryActivitiesDataResponse;
+  }
+
+  static async update(
+    courseSearchComplementaryActivitiesDataId: string,
+    updateCourseSearchComplementaryActivitiesDataDto: UpdateCourseSearchComplementaryActivitiesDataDto
+  ): Promise<void> {
+    const courseSearchComplementaryActivitiesDataResponse =
+      await apiClient.patch<void>(
+        `${UNIDASH_API_ROUTES.courseSearchComplementaryActivitiesData.update}${courseSearchComplementaryActivitiesDataId}`,
+        {
+          year: updateCourseSearchComplementaryActivitiesDataDto.year,
+          semester: updateCourseSearchComplementaryActivitiesDataDto.semester,
+          scientificInitiation:
+            updateCourseSearchComplementaryActivitiesDataDto.scientificInitiation,
+          developmentInitiation:
+            updateCourseSearchComplementaryActivitiesDataDto.developmentInitiation,
+          publishedArticles:
+            updateCourseSearchComplementaryActivitiesDataDto.publishedArticles,
+          fullPublishedArticles:
+            updateCourseSearchComplementaryActivitiesDataDto.fullPublishedArticles,
+          publishedAbstracts:
+            updateCourseSearchComplementaryActivitiesDataDto.publishedAbstracts,
+          presentationOfWork:
+            updateCourseSearchComplementaryActivitiesDataDto.presentationOfWork,
+          participationInEvents:
+            updateCourseSearchComplementaryActivitiesDataDto.participationInEvents,
         }
       );
 

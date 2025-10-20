@@ -6,11 +6,12 @@ export default function RegisterCourseCompletionWorkDataPage() {
   return (
     <>
       <Toolbar
-        breadcrumbPage="Novo registro de TCC"
+        breadcrumbPage="Novo registro de TCCs"
         breadcrumbItems={[
           {
-            label: "Indicadores de TCC",
+            label: "Dados de TCCs do curso",
             link: APP_ROUTES.private.courseCompletionWorkData,
+            fromCourse: true,
           },
         ]}
       />

@@ -36,10 +36,10 @@ export default async function ListCourseTeacherWorkloadDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de carga horária do docente no curso"
+        breadcrumbPage="Dados de carga horária do docente no curso"
         addLink={{
           link: `${APP_ROUTES.private.registerCourseTeacherWorkloadData}${courseId}`,
-          label: "Novo registro de carga horária do docente no curso",
+          label: "Novo registro de carga horária do docente",
         }}
         filterForm={<IndicatorsFilterForm />}
       />

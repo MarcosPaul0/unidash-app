@@ -36,7 +36,7 @@ export default async function ListCourseExtensionActivitiesDataPage({
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de atividades de extensão do curso"
+        breadcrumbPage="Dados de atividades de extensão do curso"
         addLink={{
           link: APP_ROUTES.private.registerCourseExtensionActivitiesData,
           label: "Novo registro de atividades de extensão",

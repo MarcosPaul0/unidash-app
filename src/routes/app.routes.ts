@@ -17,6 +17,7 @@ export const APP_ROUTES = {
 
     courseStudentsData: "/courseStudentsData/list/",
     registerCourseStudentsData: "/courseStudentsData/register",
+    editCourseStudentsData: "/courseStudentsData/edit/",
 
     courseActiveStudentsData: "/courseActiveStudentsData/list/",
     registerCourseActiveStudentsData: "/courseActiveStudentsData/register",
@@ -24,18 +25,23 @@ export const APP_ROUTES = {
 
     courseRegistrationLockData: "/courseRegistrationLockData/list/",
     registerCourseRegistrationLockData: "/courseRegistrationLockData/register",
+    editCourseRegistrationLockData: "/courseRegistrationLockData/edit/",
 
     courseCoordinationData: "/courseCoordinationData/list/",
     registerCourseCoordinationData: "/courseCoordinationData/register",
+    editCourseCoordinationData: "/courseCoordinationData/edit/",
 
     courseDepartureData: "/courseDepartureData/list/",
     registerCourseDepartureData: "/courseDepartureData/register",
+    editCourseDepartureData: "/courseDepartureData/edit/",
 
     courseTeacherWorkloadData: "/courseTeacherWorkloadData/list/",
     registerCourseTeacherWorkloadData: "/courseTeacherWorkloadData/register/",
+    editCourseTeacherWorkloadData: "/courseTeacherWorkloadData/edit/",
 
     courseCompletionWorkData: "/courseCompletionWorkData/list/",
     registerCourseCompletionWorkData: "/courseCompletionWorkData/register",
+    editCourseCompletionWorkData: "/courseCompletionWorkData/edit/",
 
     teacherSupervisedCompletionWorkData:
       "/teacherSupervisedCompletionWorkData/list/",
@@ -56,23 +62,31 @@ export const APP_ROUTES = {
       "/courseTeachingComplementaryActivitiesData/list/",
     registerCourseTeachingComplementaryActivitiesData:
       "/courseTeachingComplementaryActivitiesData/register",
+    editCourseTeachingComplementaryActivitiesData:
+      "/courseTeachingComplementaryActivitiesData/edit/",
 
     courseSearchComplementaryActivitiesData:
       "/courseSearchComplementaryActivitiesData/list/",
     registerCourseSearchComplementaryActivitiesData:
       "/courseSearchComplementaryActivitiesData/register",
+    editCourseSearchComplementaryActivitiesData:
+      "/courseSearchComplementaryActivitiesData/edit/",
 
     courseExtensionComplementaryActivitiesData:
       "/courseExtensionComplementaryActivitiesData/list/",
     registerCourseExtensionComplementaryActivitiesData:
       "/courseExtensionComplementaryActivitiesData/register",
+    editCourseExtensionComplementaryActivitiesData:
+      "/courseExtensionComplementaryActivitiesData/edit/",
 
     courseExtensionActivitiesData: "/courseExtensionActivitiesData/list/",
     registerCourseExtensionActivitiesData:
       "/courseExtensionActivitiesData/register",
+    editCourseExtensionActivitiesData: "/courseExtensionActivitiesData/edit/",
 
     courseInternshipData: "/courseInternshipData/list/",
     registerCourseInternshipData: "/courseInternshipData/register/",
+    editCourseInternshipData: "/courseInternshipData/edit/",
 
     studentIncomingData: "/studentIncomingData/list/",
     registerStudentIncomingData: "/studentIncomingData/register/",

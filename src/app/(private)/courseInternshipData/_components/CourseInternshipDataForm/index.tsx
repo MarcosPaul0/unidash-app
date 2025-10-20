@@ -15,7 +15,7 @@ import { FloppyDiskIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   EMPLOYMENT_TYPE,
   RegisterCourseInternshipDataDto,
-  registerCourseInternshipDataDtoSchema,
+  courseInternshipDataDtoSchema,
 } from "@unidash/api/dtos/courseInternshipData.dto";
 import { useCourseStore } from "@unidash/store/course.store";
 import { Toast } from "@unidash/utils/toast.util";
@@ -62,7 +62,7 @@ export function CourseInternshipDataForm({
   const router = useRouter();
 
   const formMethods = useForm<RegisterCourseInternshipDataDto>({
-    resolver: zodResolver(registerCourseInternshipDataDtoSchema),
+    resolver: zodResolver(courseInternshipDataDtoSchema),
     defaultValues: INITIAL_VALUES,
   });
 

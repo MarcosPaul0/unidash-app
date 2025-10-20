@@ -36,7 +36,7 @@ export default async function ListCourseTeachingComplementaryActivitiesDataPage(
   return (
     <>
       <Toolbar
-        breadcrumbPage="Indicadores de atividades complementares de ensino do curso"
+        breadcrumbPage="Dados de atividades complementares de ensino do curso"
         addLink={{
           link: APP_ROUTES.private
             .registerCourseTeachingComplementaryActivitiesData,

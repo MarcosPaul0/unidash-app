@@ -1,5 +1,5 @@
-import { CourseStudentsDataResponse } from "@unidash/api/responses/courseStudentsDataResponse.interface";
+import { CourseStudentsListDataResponse } from "@unidash/api/responses/courseStudentsDataResponse.interface";
 
 export interface CourseStudentsDataTableProps {
-  courseStudentsData: CourseStudentsDataResponse["courseStudentsData"];
+  courseStudentsData: CourseStudentsListDataResponse["courseStudentsData"];
 }

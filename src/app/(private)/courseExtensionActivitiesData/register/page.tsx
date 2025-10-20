@@ -9,8 +9,9 @@ export default function RegisterCourseExtensionActivitiesPage() {
         breadcrumbPage="Novo registro de atividades de extensão do curso"
         breadcrumbItems={[
           {
-            label: "Indicadores de atividades de extensão do cuso",
+            label: "Dados de atividades de extensão do cuso",
             link: APP_ROUTES.private.courseExtensionActivitiesData,
+            fromCourse: true,
           },
         ]}
       />

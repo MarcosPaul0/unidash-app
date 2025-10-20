@@ -3,24 +3,25 @@ import { apiClient } from "@unidash/lib/apiClient";
 import {
   FilterCourseExtensionComplementaryActivitiesDataDto,
   RegisterCourseExtensionComplementaryActivitiesDataDto,
+  UpdateCourseExtensionComplementaryActivitiesDataDto,
 } from "@unidash/api/dtos/courseExtensionComplementaryActivitiesData.dto";
 import { PaginationDto } from "@unidash/api/dtos/pagination.dto";
 import { CourseExtensionComplementaryActivitiesDataParamsBuilder } from "./courseExtensionComplementaryActivitiesDataParams.builder";
-import { CourseExtensionComplementaryActivitiesDataResponse } from "@unidash/api/responses/courseExtensionComplementaryActivitiesDataResponse.interface";
+import { CourseExtensionComplementaryActivitiesListDataResponse } from "@unidash/api/responses/courseExtensionComplementaryActivitiesDataResponse.interface";
 
 export class CourseExtensionComplementaryActivitiesDataCSService {
   static async getAll(
     courseId: string,
     pagination?: PaginationDto,
     filters?: FilterCourseExtensionComplementaryActivitiesDataDto
-  ): Promise<CourseExtensionComplementaryActivitiesDataResponse> {
+  ): Promise<CourseExtensionComplementaryActivitiesListDataResponse> {
     const params = new CourseExtensionComplementaryActivitiesDataParamsBuilder()
       .applyPagination(pagination)
       .applyFilters(filters)
       .build();
 
     const courseExtensionComplementaryActivitiesDataResponse =
-      await apiClient.get<CourseExtensionComplementaryActivitiesDataResponse>(
+      await apiClient.get<CourseExtensionComplementaryActivitiesListDataResponse>(
         `${UNIDASH_API_ROUTES.courseExtensionComplementaryActivitiesData.getAll}${courseId}`,
         {
           params,
@@ -52,6 +53,33 @@ export class CourseExtensionComplementaryActivitiesDataCSService {
             registerCourseExtensionComplementaryActivitiesDataDto.studentRepresentation,
           participationInCollegiateBodies:
             registerCourseExtensionComplementaryActivitiesDataDto.participationInCollegiateBodies,
+        }
+      );
+
+    return courseExtensionComplementaryActivitiesDataResponse;
+  }
+
+  static async update(
+    courseExtensionComplementaryActivitiesDataId: string,
+    updateCourseExtensionComplementaryActivitiesDataDto: UpdateCourseExtensionComplementaryActivitiesDataDto
+  ): Promise<void> {
+    const courseExtensionComplementaryActivitiesDataResponse =
+      await apiClient.patch<void>(
+        `${UNIDASH_API_ROUTES.courseExtensionComplementaryActivitiesData.update}${courseExtensionComplementaryActivitiesDataId}`,
+        {
+          year: updateCourseExtensionComplementaryActivitiesDataDto.year,
+          semester:
+            updateCourseExtensionComplementaryActivitiesDataDto.semester,
+          culturalActivities:
+            updateCourseExtensionComplementaryActivitiesDataDto.culturalActivities,
+          sportsCompetitions:
+            updateCourseExtensionComplementaryActivitiesDataDto.sportsCompetitions,
+          awardsAtEvents:
+            updateCourseExtensionComplementaryActivitiesDataDto.awardsAtEvents,
+          studentRepresentation:
+            updateCourseExtensionComplementaryActivitiesDataDto.studentRepresentation,
+          participationInCollegiateBodies:
+            updateCourseExtensionComplementaryActivitiesDataDto.participationInCollegiateBodies,
         }
       );
 
