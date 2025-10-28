@@ -21,7 +21,7 @@ const chartConfig = {
     color: "var(--chart-1)",
   },
   failed: {
-    label: "Reprovadas",
+    label: "Pendentes/Desistências",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;

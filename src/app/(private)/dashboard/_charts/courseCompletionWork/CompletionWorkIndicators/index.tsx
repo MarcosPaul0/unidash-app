@@ -10,13 +10,11 @@ export function CompletionWorkIndicators({
     <>
       <Topic title="Indicadores de Trabalhos de Conclusão de Curso" />
 
+      <WorkStatusChart worksStatus={indicators?.worksStatus} />
+
       <PerformanceInDefensesChart
         orientationsByTeacher={indicators?.orientationsByTeacher}
       />
-
-      <div className="flex flex-col gap-4 md:grid md:grid-cols-7 md:gap-8">
-        <WorkStatusChart worksStatus={indicators?.worksStatus} />
-      </div>
     </>
   );
 }

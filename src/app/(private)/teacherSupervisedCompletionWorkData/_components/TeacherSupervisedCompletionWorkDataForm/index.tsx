@@ -122,8 +122,8 @@ export function TeacherSupervisedCompletionWorkDataForm() {
                 control={control}
                 type="number"
                 name="failed"
-                placeholder="Quantidade de defesas reprovadas"
-                label="Defesas reprovadas"
+                placeholder="Quantidade de defesas pendentes ou com desistências"
+                label="Defesas pendentes ou desistências"
                 helper={errors.failed?.message}
               />
             </CardInputsRow>
