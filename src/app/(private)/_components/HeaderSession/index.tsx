@@ -15,7 +15,7 @@ export function HeaderSession() {
     >
       <SidebarMenu />
 
-      <CourseSelect />
+      <CourseSelect type="authenticated" />
 
       <UserMenu />
     </header>

@@ -12,20 +12,18 @@ import {
   SelectValue,
 } from "@unidash/components/Select";
 import { CourseCSService } from "@unidash/services/course/course.cs.service";
-import { useAuthStore } from "@unidash/store/auth.store";
 import { useCourseStore } from "@unidash/store/course.store";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { CourseSelectProps } from "./courseSelect.interface";
 
 const LOCAL_STORAGE_COURSE_ID_ITEM = "unidash_lastActiveCourseId";
 
-export function CourseSelect() {
+export function CourseSelect({ type }: CourseSelectProps) {
   const params = useParams();
   const pathname = usePathname();
 
   const router = useRouter();
-
-  const { isAuthenticated } = useAuthStore();
 
   const {
     courses,
@@ -63,7 +61,7 @@ export function CourseSelect() {
     (async () => {
       let coursesResponse: CoursesResponse;
 
-      if (isAuthenticated) {
+      if (type === "authenticated") {
         coursesResponse = await CourseCSService.getAll();
       } else {
         coursesResponse = await CourseCSService.getAllForGuest();
@@ -89,6 +87,7 @@ export function CourseSelect() {
       );
 
       if (!lastActiveCourse) {
+        localStorage.removeItem(LOCAL_STORAGE_COURSE_ID_ITEM);
         return;
       }
 

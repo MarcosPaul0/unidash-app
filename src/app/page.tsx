@@ -92,7 +92,7 @@ export default function LandingPage() {
       </section>
 
       <section className="w-full pt-32 pb-8 flex flex-col gap-8" id="dashboard">
-        <CourseSelect />
+        <CourseSelect type="guest" />
 
         <Tabs defaultValue={CHARTS_CATEGORIES.COURSE}>
           <Toolbar>
