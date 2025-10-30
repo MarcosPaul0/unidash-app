@@ -1,4 +1,7 @@
-import { SignInIcon, SquaresFourIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowCircleDownIcon,
+  SignInIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@unidash/assets/svgs/Logo";
 import { LinkButton } from "@unidash/components/LinkButton";
 import { APP_ROUTES } from "@unidash/routes/app.routes";
@@ -67,9 +70,13 @@ export default function LandingPage() {
           dashboards interativos, claros e acessíveis.
         </p>
 
-        <NavButton sectionId="dashboard">
-          <SquaresFourIcon />
-          Visualizar dados dos cursos
+        <NavButton
+          sectionId="dashboard"
+          size="lg"
+          className="text-lg font-semibold shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl animate-cta-bounce"
+        >
+          <ArrowCircleDownIcon />
+          Explorar dados dos cursos
         </NavButton>
 
         <div className="flex items-end justify-center gap:4 md:gap-8 w-full mt-4 md:mt-12">

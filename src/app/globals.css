@@ -189,6 +189,22 @@
   --breakpoint-3xl: 120rem;
 }
 
+@keyframes cta-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 0 #2564eb88;
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 20px 5px #2564eb88;
+  }
+}
+
+.animate-cta-bounce {
+  animation: cta-bounce 2s infinite;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #2563eb;
